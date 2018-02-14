@@ -1,0 +1,35 @@
+//tbench for block_D
+
+module tbench();
+
+reg [9:0] a, b;
+wire [10:0] out;
+integer i;
+
+reg [9:0] a_tst [9:0], b_tst [9:0], o_tst[9:0];
+
+block_d(.a (a), .b (b), .sum (out));
+
+initial begin
+    //fill tests
+    a_tst[0] = 10'd0; b_tst[0] = 10'd0; o_tst[0] = 11'd0;
+    a_tst[1] = 10'd1; b_tst[1] = 10'd1; o_tst[1] = 11'd2;
+    a_tst[2] = 10'd10; b_tst[2] = 10'd20; o_tst[2] = 11'd30;
+    a_tst[3] = 10'd1023; b_tst[3] = 10'd1; o_tst[3] = 11'd0;
+    a_tst[4] = -10'd1; b_tst[4] = 10'd0; o_tst[4] = -11'd1;
+    a_tst[5] = 10'd0; b_tst[5] = -10'd1; o_tst[5] = -11'd1;
+    a_tst[6] = 10'd1023; b_tst[6] = 10'd1023; o_tst[6] = 11'd2046;
+    a_tst[7] = 10'd1; b_tst[7] = 10'd2; o_tst[7] = 11'd3;
+    a_tst[8] = 10'd9; b_tst[8] = 10'd6; o_tst[8] = 11'd15;
+    a_tst[9] = 10'b1010101010; b_tst[9] = 10'b0101010101; o_tst[9] = 11'b01111111111;
+
+    for (i=0;i<10;i=i+1) begin
+        a = a_tst[i];
+        b = b_tst[i];
+        #1
+        if (out ~= o_tst[i])
+            $display("%d + %d ~= %d (%b), expected %d (%b)",a,b,out,out,o_tst[i],o_tst[i]);
+    end
+end
+
+endmodule
