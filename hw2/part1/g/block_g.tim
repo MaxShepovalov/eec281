@@ -1,0 +1,366 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 10
+        -max_paths 10
+Design : block_g
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 14:45:43 2018
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.30 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.50 f
+  U11/CO (FA_X1)                           0.09       0.59 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.87 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.15 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.47 r
+  out[14] (out)                            0.01       1.48 r
+  data arrival time                                   1.48
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: a[0] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  a[0] (in)                                0.00       0.00 f
+  U150/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.05       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.29 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.49 f
+  U11/CO (FA_X1)                           0.09       0.59 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.87 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.15 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.48 r
+  data arrival time                                   1.48
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.30 f
+  U13/CO (FA_X1)                           0.10       0.40 f
+  U12/CO (FA_X1)                           0.09       0.49 f
+  U11/CO (FA_X1)                           0.09       0.59 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.86 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.14 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.09       0.29 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.49 f
+  U11/CO (FA_X1)                           0.09       0.58 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.86 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.14 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: a[0] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  a[0] (in)                                0.00       0.00 f
+  U150/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.05       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.29 f
+  U13/CO (FA_X1)                           0.10       0.40 f
+  U12/CO (FA_X1)                           0.09       0.49 f
+  U11/CO (FA_X1)                           0.09       0.58 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.86 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.14 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.30 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.50 f
+  U11/CO (FA_X1)                           0.09       0.59 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.87 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.14 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.30 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.49 f
+  U11/CO (FA_X1)                           0.09       0.58 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.86 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.14 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.30 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.50 f
+  U11/CO (FA_X1)                           0.09       0.59 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.87 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.15 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.30 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.50 f
+  U11/CO (FA_X1)                           0.09       0.59 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.87 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.14 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: b[2] (input port)
+  Endpoint: out[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  block_g            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  b[2] (in)                                0.00       0.00 f
+  U142/ZN (INV_X1)                         0.07       0.07 r
+  U119/ZN (NOR2_X1)                        0.04       0.11 f
+  U57/S (HA_X1)                            0.09       0.20 f
+  U14/CO (FA_X1)                           0.10       0.30 f
+  U13/CO (FA_X1)                           0.11       0.40 f
+  U12/CO (FA_X1)                           0.09       0.50 f
+  U11/CO (FA_X1)                           0.09       0.59 f
+  U10/CO (FA_X1)                           0.09       0.68 f
+  U9/CO (FA_X1)                            0.09       0.77 f
+  U8/CO (FA_X1)                            0.09       0.87 f
+  U7/CO (FA_X1)                            0.09       0.96 f
+  U6/CO (FA_X1)                            0.09       1.05 f
+  U5/CO (FA_X1)                            0.09       1.15 f
+  U4/CO (FA_X1)                            0.09       1.24 f
+  U3/CO (FA_X1)                            0.09       1.33 f
+  U2/S (FA_X1)                             0.13       1.46 r
+  out[14] (out)                            0.01       1.47 r
+  data arrival time                                   1.47
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

@@ -1,0 +1,292 @@
+ 
+****************************************
+Report : cell
+Design : block_g
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 14:45:42 2018
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U2                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U3                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U4                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U5                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U6                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U7                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U8                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U9                        FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U10                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U11                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U12                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U13                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U14                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U15                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U16                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U17                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U18                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U19                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U20                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U21                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U22                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U23                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U24                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U25                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U26                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U27                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U28                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U29                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U30                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U31                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U32                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U33                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U34                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U35                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U36                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U37                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U38                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U39                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U40                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U41                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U42                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U43                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U44                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U45                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U46                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U47                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U48                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U49                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U50                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U51                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U52                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U53                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U54                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U55                       FA_X1           NangateOpenCellLibrary
+                                                          4.256000  r
+U56                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U57                       HA_X1           NangateOpenCellLibrary
+                                                          2.660000  r
+U58                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U59                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U60                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U61                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U62                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U63                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U64                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U65                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U66                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U67                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U68                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U69                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U70                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U71                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U72                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U73                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U74                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U75                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U76                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U77                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U78                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U79                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U80                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U81                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U82                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U83                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U84                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U85                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U86                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U87                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U88                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U89                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U90                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U91                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U92                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U93                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U94                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U95                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U96                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U97                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U98                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U99                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U100                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U101                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U102                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U103                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U104                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U105                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U106                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U107                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U108                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U109                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U110                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U111                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U112                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U113                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U114                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U115                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U116                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U117                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U118                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U119                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U120                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U121                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U140                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U141                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U142                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U143                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U144                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U145                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U146                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U147                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U148                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U149                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U150                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U151                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U152                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U153                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U154                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U155                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+--------------------------------------------------------------------------------
+Total 136 cells                                           285.152001
+1

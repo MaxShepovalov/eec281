@@ -1,0 +1,17 @@
+ 
+****************************************
+Report : hierarchy
+Design : block_g
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 14:45:42 2018
+****************************************
+
+Attributes:
+    r - licensed design
+
+block_g            r
+    FA_X1           NangateOpenCellLibrary
+    HA_X1           NangateOpenCellLibrary
+    INV_X1          NangateOpenCellLibrary
+    NOR2_X1         NangateOpenCellLibrary
+1

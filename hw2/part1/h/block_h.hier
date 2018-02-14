@@ -1,0 +1,26 @@
+ 
+****************************************
+Report : hierarchy
+Design : block_h
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 14:46:40 2018
+****************************************
+
+Attributes:
+    r - licensed design
+
+block_h            r
+    AND2_X1           NangateOpenCellLibrary
+    AOI21_X1          NangateOpenCellLibrary
+    BUF_X1            NangateOpenCellLibrary
+    CLKBUF_X1         NangateOpenCellLibrary
+    FA_X1             NangateOpenCellLibrary
+    HA_X1             NangateOpenCellLibrary
+    INV_X1            NangateOpenCellLibrary
+    NAND2_X1          NangateOpenCellLibrary
+    NOR2_X1           NangateOpenCellLibrary
+    OAI22_X1          NangateOpenCellLibrary
+    OR2_X1            NangateOpenCellLibrary
+    XNOR2_X1          NangateOpenCellLibrary
+    XOR2_X1           NangateOpenCellLibrary
+1
