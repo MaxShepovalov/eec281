@@ -1,0 +1,4 @@
+s1(30Jan2018:19:42:12):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s2(30Jan2018:19:43:09):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s3(30Jan2018:19:43:27):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s4(30Jan2018:19:57:58):  ncverilog +access+r -l tbench.log -f tbench.vf 

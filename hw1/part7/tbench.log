@@ -1,0 +1,65 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Jan 30, 2018 at 14:42:28 PST
+ncverilog
+	+access+r
+	-l
+	tbench.log
+	-f tbench.vf
+		fulladder.v
+		adder42.v
+		cdma.v
+		tbench.vt
+Recompiling... reason: file './cdma.v' is newer than expected.
+	expected: Tue Jan 30 14:01:27 2018
+	actual:   Tue Jan 30 14:42:23 2018
+file: cdma.v
+	module worklib.cdma:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.cdma:v <0x727ba204>
+			streams:   2, words:   925
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 11       4
+		Registers:                4       4
+		Scalar wires:            36       -
+		Expanded wires:          13       2
+		Vectored wires:           1       -
+		Always blocks:            1       1
+		Initial blocks:           1       1
+		Cont. assignments:        1       7
+		Pseudo assignments:       1       1
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+
+Adder for 11 single bit numbers
+N  inp         output correct
+== =========== =====  =
+01 00000000000 10101 Y
+02 10000000000 10111 Y
+03 10001000000 11001 Y
+04 00101000100 11011 Y
+05 01010101000 11101 Y
+06 01100011001 11111 Y
+07 11100000111 00001 Y
+08 00011111110 00011 Y
+09 01110110111 00101 Y
+10 11101110111 00111 Y
+11 11011111111 01001 Y
+12 11111111111 01011 Y
+13 10010010010 11101 Y
+14 00000000001 10111 Y
+15 11111111110 01001 Y
+16 01101011000 11111 Y
+Simulation complete via $finish(1) at time 160 NS + 0
+./tbench.vt:171   $finish;             // ends simulation
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Jan 30, 2018 at 14:42:30 PST  (total: 00:00:02)

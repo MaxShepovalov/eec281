@@ -1,0 +1,226 @@
+// Test bench for verifying the fulladder implementation
+
+`timescale 1ns/10ps
+
+module tbench;
+
+//inputs
+reg [4:0] a,b,c;
+
+// Misc "wires"
+wire [9:0] sum;
+
+integer i;
+reg [9:0] sum_test;
+
+//----- abc submodule
+abcadd adder (
+   .a (a),
+   .b (b),
+   .c (c),
+   .out (sum)
+);
+
+
+initial begin
+   $recordfile("tbench");
+   $recordvars(tbench);
+
+   $display("N  A     B     C     Sum        Correct");
+   $display("== ===== ===== ===== ========== =");
+
+   a = 5'b00000;
+   b = 5'b00000;
+   c = 5'b00000;
+   #200;
+   
+   //test cases
+
+   $display("01) 0 + 0 + 0 = 0");
+   sum_test = 10'b0000000000;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("02) -2 + -8 + 0 = -10");
+   a = 5'b10000;
+   b = 5'b10000;
+   c = 5'b00000;
+   sum_test = 10'b1110110000;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("03) 1.875 + 7.5 + 31 = 40.875");
+   a = 5'b01111;
+   b = 5'b01111;
+   c = 5'b11111;
+   sum_test = 10'b0101000011;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("04) 0.375 + -0.5 + 10 = 9.875");
+   a = 5'b00011;
+   b = 5'b11111;
+   c = 5'b01010;
+   sum_test = 10'b0001001111;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("05) 1.875 + 0 + 0 = 1.875");
+   a = 5'b01111;
+   b = 5'b00000;
+   c = 5'b00000;
+   sum_test = 10'b0000001111;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("06) 0 + 7.5 + 0 = 7.5");
+   a = 5'b00000;
+   b = 5'b01111;
+   c = 5'b00000;
+   sum_test = 10'b0000111100;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("07) 0 + 0 + 31 = 31");
+   a = 5'b00000;
+   b = 5'b00000;
+   c = 5'b11111;
+   sum_test = 10'b0011111000;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("08) -2 + 0 + 0 = -2");
+   a = 5'b10000;
+   b = 5'b00000;
+   c = 5'b00000;
+   sum_test = 10'b1111110000;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("09) 0 + -8 + 0 = -8");
+   a = 5'b00000;
+   b = 5'b10000;
+   c = 5'b00000;
+   sum_test = 10'b1111000000;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("10) -2 + -8 + 10 = 0");
+   a = 5'b10000;
+   b = 5'b10000;
+   c = 5'b01010;
+   sum_test = 10'b0000000000;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("11) 1 + 1 + 1 = 3");
+   a = 5'b01000;
+   b = 5'b00010;
+   c = 5'b00001;
+   sum_test = 10'b0000011000;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("12) 1 + -2 + 1 = 0");
+   a = 5'b01000;
+   b = 5'b11100;
+   c = 5'b00001;
+   sum_test = 10'b0000000000;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("13) -0.125 + -0.5 + 0 = -0.625");
+   a = 5'b11111;
+   b = 5'b11111;
+   c = 5'b00000;
+   sum_test = 10'b1111111011;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("14) -0.125 + 0 + 0 = -0.125");
+   a = 5'b11111;
+   b = 5'b00000;
+   c = 5'b00000;
+   sum_test = 10'b1111111111;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("15) 0 + -0.5 + 0 = -0.5");
+   a = 5'b00000;
+   b = 5'b11111;
+   c = 5'b00000;
+   sum_test = 10'b1111111100;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("16) 0.125 + 0.5 + 16 = 16.625");
+   a = 5'b00001;
+   b = 5'b00001;
+   c = 5'b10000;
+   sum_test = 10'b0010000101;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $display("17) -0.125 + -0.5 + 31 = 30.375");
+   a = 5'b11111;
+   b = 5'b11111;
+   c = 5'b11111;
+   sum_test = 10'b0011110011;
+   #100;
+   if (sum_test == sum)
+      $display("   %b %b %b %b Y",a,b,c,sum);
+   else
+      $display("   %b %b %b %b N, expected %b",a,b,c,sum,sum_test);
+
+   $finish;             // ends simulation
+end
+    
+endmodule
+

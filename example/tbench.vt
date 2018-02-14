@@ -1,0 +1,76 @@
+// tbench.vt
+//
+// Test bench for verifying the DFF implementation
+
+`timescale 1ns/10ps
+
+// Test bench module has no inputs or outputs
+module tbench;
+
+//----- Declarations
+// declare variables to hold signals going into submodule
+reg     data1;
+reg     data2;
+reg     clock;
+reg     reset;
+
+// Misc "wires"
+wire    out;
+
+
+//----- abc submodule
+abc abc_module (
+   .data1       (data1),
+   .data2       (data2),
+   .clock       (clock),
+   .reset       (reset),
+   .out         (out)
+   );
+
+
+//----- Main test loop
+// Modify the test signals as desired to excerise the Flip-flop
+// Note this block is executed once starting at the beginning of the
+// simulation.
+initial begin
+   // creates a dump file of signals which can be displayed by the viewer.
+   $recordfile("tbench");
+   $recordvars(tbench);
+
+   // $display is a simulator directive that prints text to the
+   // simulator screen when this line is executed
+   $display("Initialzing to 0");
+
+   reset        = 1'b1;
+   data1        = 1'b0;
+   data2        = 1'b0;
+   clock        = 1'b0;  
+   #100;
+
+   reset        = 1'b0;
+   #100;
+   
+   data1        = 1'b1;
+   data2        = 1'b0;
+   $display("set to 1");
+   #160;
+   
+   data1        = 1'b1;
+   data2        = 1'b1;
+   #300;
+
+   data1        = 1'b0;
+   data2        = 1'b1;
+   #200;
+
+   $finish;             // ends simulation
+end
+
+// generate a clock for the flip-flop
+always begin
+   #10;                 // wait for initial block to initialize clock
+   clock = ~clock;
+end
+    
+endmodule
+

@@ -1,0 +1,63 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Jan 29, 2018 at 13:29:41 PST
+ncverilog
+	+access+r
+	-l
+	tbench.log
+	-f tbench.vf
+		halfadder.v
+		fulladder.v
+		tbench.vt
+Recompiling... reason: file './tbench.vt' is newer than expected.
+	expected: Wed Jan 24 10:20:55 2018
+	actual:   Mon Jan 29 13:29:39 2018
+file: tbench.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.halfadder:v <0x1fad1466>
+			streams:   1, words:   353
+		worklib.halfadder:v <0x40c7bfb5>
+			streams:   1, words:   353
+		worklib.tbench:vt <0x275fc726>
+			streams:   4, words:  9762
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  5       3
+		Registers:               11       7
+		Scalar wires:            12       -
+		Always blocks:            3       1
+		Initial blocks:           1       1
+		Cont. assignments:        0       1
+		Pseudo assignments:       3       3
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+inp output expect correct
+===   ==     ==   =
+000   00     00   Y
+001   01     01   Y
+010   01     01   Y
+011   10     10   Y
+100   01     01   Y
+101   10     10   Y
+110   10     10   Y
+111   11     11   Y
+HalfAdder:
+inp out expect correct
+==  ==  ==     =
+00  00  00     Y
+01  01  01     Y
+10  01  01     Y
+11  10  10     Y
+Simulation complete via $finish(1) at time 1300 NS + 0
+./tbench.vt:79    $finish;             // ends simulation
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Jan 29, 2018 at 13:29:43 PST  (total: 00:00:02)

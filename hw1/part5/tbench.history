@@ -1,0 +1,11 @@
+s1(29Jan2018:21:41:30):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s2(29Jan2018:21:41:37):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s3(29Jan2018:22:13:22):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s4(29Jan2018:22:13:42):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s5(29Jan2018:22:13:56):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s6(29Jan2018:22:14:32):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s7(29Jan2018:22:14:47):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s8(29Jan2018:22:14:58):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s9(29Jan2018:22:15:02):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s10(30Jan2018:14:06:27):  ncverilog +access+r -l tbench.log -f tbench.vf 
+s11(30Jan2018:14:39:16):  ncverilog +access+r -l tbench.log -f tbench.vf 

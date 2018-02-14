@@ -1,0 +1,83 @@
+// tbench.vt
+//
+// Test bench for verifying the fulladder implementation
+
+`timescale 1ns/10ps
+
+// Test bench module has no inputs or outputs
+module tbench;
+
+//----- Declarations
+// declare variables to hold signals going into submodule
+reg     a,b,c;
+
+// Misc "wires"
+wire    sum, cout,sh,ch;
+
+integer i;
+reg [1:0] sum_test;
+
+//----- abc submodule
+fulladder fa1 (
+   .a    (a),
+   .b    (b),
+   .cin  (c),
+   .cout (cout),
+   .s    (sum)
+   );
+
+halfadder ha1 (
+   .a (a),
+   .b (b),
+   .c (ch),
+   .s (sh)
+);
+
+//----- Main test loop
+// Modify the test signals as desired to excerise the Flip-flop
+// Note this block is executed once starting at the beginning of the
+// simulation.
+initial begin
+   // creates a dump file of signals which can be displayed by the viewer.
+   $recordfile("tbench");
+   $recordvars(tbench);
+
+   // $display is a simulator directive that prints text to the
+   // simulator screen when this line is executed
+   $display("inp output expect correct");
+   $display("===   ==     ==   =");
+
+   a = 1'b0;
+   b = 1'b0;
+   c = 1'b0;
+   #100;
+   
+   for (i=0; i<8; i=i+1) begin
+      {a, b, c} = i;
+      sum_test = a+b+c;
+      #100
+      if ({cout,sum} == sum_test)
+         $display("%b   %b     %b   Y",{a,b,c},{cout,sum},sum_test);
+      else
+         $display("%b   %b     %b   N",{a,b,c},{cout,sum},sum_test);
+   end
+
+   $display("HalfAdder:");
+   $display("inp out expect correct");
+   $display("==  ==  ==     =");
+
+   for (i=0; i<4; i=i+1) begin
+      {a, b} = i;
+      sum_test = a+b;
+      #100
+      if ({ch,sh} == sum_test[1:0])
+         $display("%b  %b  %b     Y",{a,b},{ch,sh},sum_test);
+      else
+         $display("%b  %b  %b     N",{a,b},{ch,sh},sum_test);
+   end
+
+   $finish;             // ends simulation
+end
+    
+endmodule
+

@@ -1,0 +1,52 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Jan 30, 2018 at 14:36:32 PST
+ncverilog
+	+access+r
+	-l
+	tbench.log
+	-f tbench.vf
+		flfix.v
+		tbench.vt
+Recompiling... reason: file './tbench.vt' is newer than expected.
+	expected: Tue Jan 30 14:18:56 2018
+	actual:   Tue Jan 30 14:36:28 2018
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  2       2
+		Registers:                5       5
+		Vectored wires:           3       -
+		Always blocks:            1       1
+		Initial blocks:           1       1
+		Pseudo assignments:       2       2
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+N  mantissa exponent result        Correct
+== ======   ===      ============= =
+01 000000   000      0000000000000 Y
+02 000001   100      0000000000001 Y
+03 111111   100      1111111111111 Y
+04 100000   011      1000000000000 Y
+05 011111   011      0111110000000 Y
+06 100000   100      1111111100000 Y
+07 100001   000      1111000010000 Y
+08 100001   001      1110000100000 Y
+09 100001   010      1100001000000 Y
+10 100001   011      1000010000000 Y
+11 100001   100      1111111100001 Y
+12 100001   101      1111111000010 Y
+13 100001   110      1111110000100 Y
+14 100001   111      1111100001000 Y
+15 010000   011      0100000000000 Y
+16 001101   110      0000000110100 Y
+Simulation complete via $finish(1) at time 160 NS + 0
+./tbench.vt:183    $finish;             // ends simulation
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Jan 30, 2018 at 14:36:34 PST  (total: 00:00:02)

@@ -1,0 +1,81 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Jan 30, 2018 at 14:35:34 PST
+ncverilog
+	+access+r
+	-l
+	tbench.log
+	-f tbench.vf
+		halfadder.v
+		fulladder.v
+		abcadd.v
+		tbench.vt
+Recompiling... reason: file './tbench.vt' is newer than expected.
+	expected: Tue Jan 30 14:24:43 2018
+	actual:   Tue Jan 30 14:35:26 2018
+file: tbench.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.tbench:vt <0x45455cda>
+			streams:   4, words: 70023
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 18       4
+		Registers:               28       8
+		Scalar wires:            28       -
+		Expanded wires:          22       5
+		Vectored wires:           1       -
+		Always blocks:           12       2
+		Initial blocks:           1       1
+		Cont. assignments:        2       4
+		Pseudo assignments:       3       3
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+N  A     B     C     Sum        Correct
+== ===== ===== ===== ========== =
+01) 0 + 0 + 0 = 0
+   00000 00000 00000 0000000000 Y
+02) -2 + -8 + 0 = -10
+   10000 10000 00000 1110110000 Y
+03) 1.875 + 7.5 + 31 = 40.875
+   01111 01111 11111 0101000011 Y
+04) 0.375 + -0.5 + 10 = 9.875
+   00011 11111 01010 0001001111 Y
+05) 1.875 + 0 + 0 = 1.875
+   01111 00000 00000 0000001111 Y
+06) 0 + 7.5 + 0 = 7.5
+   00000 01111 00000 0000111100 Y
+07) 0 + 0 + 31 = 31
+   00000 00000 11111 0011111000 Y
+08) -2 + 0 + 0 = -2
+   10000 00000 00000 1111110000 Y
+09) 0 + -8 + 0 = -8
+   00000 10000 00000 1111000000 Y
+10) -2 + -8 + 10 = 0
+   10000 10000 01010 0000000000 Y
+11) 1 + 1 + 1 = 3
+   01000 00010 00001 0000011000 Y
+12) 1 + -2 + 1 = 0
+   01000 11100 00001 0000000000 Y
+13) -0.125 + -0.5 + 0 = -0.625
+   11111 11111 00000 1111111011 Y
+14) -0.125 + 0 + 0 = -0.125
+   11111 00000 00000 1111111111 Y
+15) 0 + -0.5 + 0 = -0.5
+   00000 11111 00000 1111111100 Y
+16) 0.125 + 0.5 + 16 = 16.625
+   00001 00001 10000 0010000101 Y
+17) -0.125 + -0.5 + 31 = 30.375
+   11111 11111 11111 0011110011 Y
+Simulation complete via $finish(1) at time 1800 NS + 0
+./tbench.vt:222    $finish;             // ends simulation
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Jan 30, 2018 at 14:35:35 PST  (total: 00:00:01)

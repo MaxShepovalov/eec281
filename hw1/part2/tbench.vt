@@ -1,0 +1,187 @@
+// tbench.vt
+
+// Test bench for verifying the fulladder implementation
+
+`timescale 1ns/10ps
+
+// Test bench module has no inputs or outputs
+module tbench;
+
+//inputs
+reg [5:0] mant;
+reg [2:0] exp;
+
+// Misc "wires"
+wire [12:0] result;
+
+integer i;
+reg [12:0] test;
+
+//----- abc submodule
+flfix fixpnt (
+  .m (mant),
+  .e (exp),
+  .fx (result)
+);
+
+
+//----- Main test loop
+initial begin
+  // creates a dump file of signals which can be displayed by the viewer.
+  $recordfile("tbench");
+  $recordvars(tbench);
+
+  $display("N  mantissa exponent result        Correct");
+  $display("== ======   ===      ============= =");
+
+  //test cases
+  
+  mant = 6'b000000;
+  exp = 3'b000;
+  test = 13'b0000000000000;
+  #10;
+  if (test == result)
+    $display("01 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("01 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b000001;
+  exp = 3'b100;
+  test = 13'b0000000000001;
+  #10;
+  if (test == result)
+    $display("02 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("02 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b111111;
+  exp = 3'b100;
+  test = 13'b1111111111111;
+  #10;
+  if (test == result)
+    $display("03 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("03 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b100000;
+  exp = 3'b011;
+  test = 13'b1000000000000;
+  #10;
+  if (test == result)
+    $display("04 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("04 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b011111;
+  exp = 3'b011;
+  test = 13'b0111110000000;
+  #10;
+  if (test == result)
+    $display("05 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("05 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b100000;
+  exp = 3'b100;
+  test = 13'b1111111100000;
+  #10;
+  if (test == result)
+    $display("06 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("06 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b100001;
+  exp = 3'b000;
+  test = 13'b1111000010000;
+  #10;
+  if (test == result)
+    $display("07 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("07 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b100001;
+  exp = 3'b001;
+  test = 13'b1110000100000;
+  #10;
+  if (test == result)
+    $display("08 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("08 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b100001;
+  exp = 3'b010;
+  test = 13'b1100001000000;
+  #10;
+  if (test == result)
+    $display("09 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("09 %b   %b      %b N expected %b",mant,exp,result,test);
+  
+  mant = 6'b100001;
+  exp = 3'b011;
+  test = 13'b1000010000000;
+  #10;
+  if (test == result)
+    $display("10 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("10 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b100001;
+  exp = 3'b100;
+  test = 13'b1111111100001;
+  #10;
+  if (test == result)
+    $display("11 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("11 %b   %b      %b N expected %b",mant,exp,result,test);
+
+  mant = 6'b100001;
+  exp = 3'b101;
+  test = 13'b1111111000010;
+  #10;
+  if (test == result)
+    $display("12 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("12 %b   %b      %b N expected %b",mant,exp,result,test);
+  
+  mant = 6'b100001;
+  exp = 3'b110;
+  test = 13'b1111110000100;
+  #10;
+  if (test == result)
+    $display("13 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("13 %b   %b      %b N expected %b",mant,exp,result,test);
+  
+  mant = 6'b100001;
+  exp = 3'b111;
+  test = 13'b1111100001000;
+  #10;
+  if (test == result)
+    $display("14 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("14 %b   %b      %b N expected %b",mant,exp,result,test);
+  
+  mant = 6'b010000;
+  exp = 3'b011;
+  test = 13'b0100000000000;
+  #10;
+  if (test == result)
+    $display("15 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("15 %b   %b      %b N expected %b",mant,exp,result,test);
+  
+  mant = 6'b001101;
+  exp = 3'b110;
+  test = 13'b0000000110100;
+  #10;
+  if (test == result)
+    $display("16 %b   %b      %b Y",mant,exp,result);
+  else
+    $display("16 %b   %b      %b N expected %b",mant,exp,result,test);
+
+   $finish;             // ends simulation
+end
+    
+endmodule
+

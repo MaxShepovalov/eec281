@@ -1,0 +1,157 @@
+// Test bench for verifying the fulladder implementation
+
+`timescale 1ns/10ps
+
+// Test bench module has no inputs or outputs
+module tbench;
+
+//----- Declarations
+reg [6:0] fixed;
+
+// Misc "wires"
+wire [3:0] mant, exp;
+reg [7:0] test;
+
+fxfl fix2float (
+  .fx (fixed),
+  .m (mant),
+  .e (exp)
+);
+
+
+//----- Main test loop
+initial begin
+  $recordfile("tbench");
+  $recordvars(tbench);
+
+  $display("N  number    mantissa exponent correct");
+  $display("== =======   ====     ====     =");
+
+  //test cases
+  
+  fixed = 7'b0000000;
+  test = 8'h00;
+  #10;
+  if (test == {mant, exp})
+    $display("01 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("01 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b1000000;
+  test = 8'h80;
+  #10;
+  if (test == {mant, exp})
+    $display("02 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("02 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0100000;
+  test = 8'h40;
+  #10;
+  if (test == {mant, exp})
+    $display("03 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("03 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0010000;
+  test = 8'h4f;
+  #10;
+  if (test == {mant, exp})
+    $display("04 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("04 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0001000;
+  test = 8'h4e;
+  #10;
+  if (test == {mant, exp})
+    $display("05 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("05 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0000100;
+  test = 8'h4d;
+  #10;
+  if (test == {mant, exp})
+    $display("06 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("06 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0000010;
+  test = 8'h4c;
+  #10;
+  if (test == {mant, exp})
+    $display("07 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("07 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+
+  fixed = 7'b0000001;
+  test = 8'h4b;
+  #10;
+  if (test == {mant, exp})
+    $display("08 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("08 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b1110101;
+  test = 8'hae;
+  #10;
+  if (test == {mant, exp})
+    $display("09 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("09 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b1111111;
+  test = 8'h8a;
+  #10;
+  if (test == {mant, exp})
+    $display("10 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("10 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0111111;
+  test = 8'h70;
+  #10;
+  if (test == {mant, exp})
+    $display("11 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("11 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0000110;
+  test = 8'h6d;
+  #10;
+  if (test == {mant, exp})
+    $display("12 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("12 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b1111101;
+  test = 8'hac;
+  #10;
+  if (test == {mant, exp})
+    $display("13 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("13 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b1000001;
+  test = 8'h80;
+  #10;
+  if (test == {mant, exp})
+    $display("14 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("14 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+  fixed = 7'b0011111;
+  test = 8'h7f;
+  #10;
+  if (test == {mant, exp})
+    $display("15 %b   %b     %b     Y",fixed,mant,exp);
+  else
+    $display("15 %b   %b     %b     no, expected %b with %b exponent",fixed,mant,exp,test[7:4],test[3:0]);
+
+   $finish;             // ends simulation
+end
+    
+endmodule
+

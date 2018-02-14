@@ -1,0 +1,52 @@
+ncverilog(64): 15.20-s012: (c) Copyright 1995-2016 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s012: Started on Jan 22, 2017 at 19:39:51 PST
+ncverilog
+	+access+r
+	-l
+	tbench.log
+	-f tbench.vf
+		dff.v
+		abc.v
+		tbench.vt
+file: dff.v
+	module worklib.dff:v
+		errors: 0, warnings: 0
+file: abc.v
+	module worklib.abc:v
+		errors: 0, warnings: 0
+file: tbench.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.abc:v <0x01641f29>
+			streams:   1, words:   132
+		worklib.dff:v <0x214a8321>
+			streams:   2, words:   728
+		worklib.dff:v <0x57bfc548>
+			streams:   2, words:   728
+		worklib.tbench:vt <0x32345d25>
+			streams:   2, words:  3618
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  5       3
+		Registers:                8       6
+		Scalar wires:             9       -
+		Always blocks:            5       3
+		Initial blocks:           1       1
+		Cont. assignments:        0       2
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+Initialzing to 0
+set to 1
+Simulation complete via $finish(1) at time 860 NS + 0
+./tbench.vt:66    $finish;             // ends simulation
+ncsim> exit
+TOOL:	ncverilog	15.20-s012: Exiting on Jan 22, 2017 at 19:39:54 PST  (total: 00:00:03)

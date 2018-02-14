@@ -1,0 +1,89 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Jan 30, 2018 at 14:39:16 PST
+ncverilog
+	+access+r
+	-l
+	tbench.log
+	-f tbench.vf
+		fulladder.v
+		adder42.v
+		tbench.vt
+Recompiling... reason: file './tbench.vt' is newer than expected.
+	expected: Tue Jan 30 14:06:23 2018
+	actual:   Tue Jan 30 14:39:10 2018
+file: tbench.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.tbench:vt <0x785babff>
+			streams:   6, words: 11834
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  5       3
+		Registers:                8       8
+		Scalar wires:            23       -
+		Initial blocks:           1       1
+		Cont. assignments:        0       5
+		Pseudo assignments:       5       5
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+
+Full Adder
+inp output correct
+===   ==   =
+000   00   Y
+001   01   Y
+010   01   Y
+011   10   Y
+100   01   Y
+101   10   Y
+110   10   Y
+111   11   Y
+
+4:2 Adder
+input co,c1,sum correct
+===== = = =     =
+00000 0 0 0     Y
+00001 0 0 1     Y
+00010 0 0 1     Y
+00011 0 1 0     Y
+00100 0 0 1     Y
+00101 0 1 0     Y
+00110 0 1 0     Y
+00111 0 1 1     Y
+01000 0 0 1     Y
+01001 0 1 0     Y
+01010 0 1 0     Y
+01011 0 1 1     Y
+01100 1 0 0     Y
+01101 1 0 1     Y
+01110 1 0 1     Y
+01111 1 1 0     Y
+10000 0 0 1     Y
+10001 0 1 0     Y
+10010 0 1 0     Y
+10011 0 1 1     Y
+10100 1 0 0     Y
+10101 1 0 1     Y
+10110 1 0 1     Y
+10111 1 1 0     Y
+11000 1 0 0     Y
+11001 1 0 1     Y
+11010 1 0 1     Y
+11011 1 1 0     Y
+11100 1 0 1     Y
+11101 1 1 0     Y
+11110 1 1 0     Y
+11111 1 1 1     Y
+Simulation complete via $finish(1) at time 500 NS + 0
+./tbench.vt:76   $finish;             // ends simulation
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Jan 30, 2018 at 14:39:17 PST  (total: 00:00:01)

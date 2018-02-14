@@ -1,0 +1,82 @@
+// Test bench for verifying six-input adder implementation
+
+`timescale 1ns/10ps
+
+// Test bench module has no inputs or outputs
+module tbench;
+
+reg [3:0] a,b,c,d,e,f;
+
+//result
+wire [5:0] sum;
+
+integer i;
+reg [5:0] tst;
+
+reg [24:0] tst_case [0:29]; //array of inputs for printing
+
+add6 comp(
+  .a  (a),
+  .b  (b),
+  .c  (c),
+  .d  (d),
+  .e  (e),
+  .f  (f),
+  .out (sum)
+);
+
+initial begin
+  $recordfile("tbench");
+  $recordvars(tbench);
+
+  $display("\nSix-input Adder");
+  $display("inputs(hex)  output correct");
+  $display("= = = = = =  ====== =");
+  
+  //fill what inputs to print during test
+  tst_case[0]  = 24'h000000;
+  tst_case[1]  = 24'h100000;
+  tst_case[2]  = 24'h010000;
+  tst_case[3]  = 24'h001000;
+  tst_case[4]  = 24'h000100;
+  tst_case[5]  = 24'h000010;
+  tst_case[6]  = 24'h000001;
+  tst_case[7]  = 24'hF00000;
+  tst_case[8]  = 24'h0F0000;
+  tst_case[9]  = 24'h00F000;
+  tst_case[10] = 24'h000F00;
+  tst_case[11] = 24'h0000F0;
+  tst_case[12] = 24'h00000F;
+  tst_case[13] = 24'h700000;
+  tst_case[14] = 24'h070000;
+  tst_case[15] = 24'h007000;
+  tst_case[16] = 24'h000700;
+  tst_case[17] = 24'h000070;
+  tst_case[18] = 24'h000007;
+  tst_case[19] = 24'h800000;
+  tst_case[20] = 24'h080000;
+  tst_case[21] = 24'h008000;
+  tst_case[22] = 24'h000800;
+  tst_case[23] = 24'h000080;
+  tst_case[24] = 24'h000008;
+  tst_case[25] = 24'h111111;
+  tst_case[26] = 24'hFFFFFF;
+  tst_case[27] = 24'h123456;
+  tst_case[28] = 24'h655555;
+  tst_case[29] = 24'h9BBBBB;
+
+  for (i=0; i<30; i=i+1) begin
+     {a, b, c, d, e, f} = tst_case[i];
+     tst = {a[3],a[3],a}+{b[3],b[3],b}+{c[3],c[3],c}+{d[3],d[3],d}+{e[3],e[3],e}+{f[3],f[3],f};
+     #10
+     if (sum == tst)
+        $display("%h %h %h %h %h %h %b Y",a,b,c,d,e,f,sum);
+     else
+        $display("%h %h %h %h %h %h %b no, expected %b",a,b,c,d,e,f,sum,tst);
+  end
+
+  $finish;             // ends simulation
+end
+    
+endmodule
+

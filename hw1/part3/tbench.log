@@ -1,0 +1,57 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Jan 30, 2018 at 20:11:18 PST
+ncverilog
+	+access+r
+	-l
+	tbench.log
+	-f tbench.vf
+		fxfl.v
+		tbench.vt
+Recompiling... reason: file './tbench.vt' is newer than expected.
+	expected: Tue Jan 30 14:37:12 2018
+	actual:   Tue Jan 30 20:11:15 2018
+file: tbench.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.tbench:vt <0x5f0cbb9c>
+			streams:   2, words: 49868
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  2       2
+		Registers:                4       4
+		Vectored wires:           3       -
+		Always blocks:            1       1
+		Initial blocks:           1       1
+		Pseudo assignments:       1       1
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+N  number    mantissa exponent correct
+== =======   ====     ====     =
+01 0000000   0000     0000     Y
+02 1000000   1000     0000     Y
+03 0100000   0100     0000     Y
+04 0010000   0100     1111     Y
+05 0001000   0100     1110     Y
+06 0000100   0100     1101     Y
+07 0000010   0100     1100     Y
+08 0000001   0100     1011     Y
+09 1110101   1010     1110     Y
+10 1111111   1000     1010     Y
+11 0111111   0111     0000     Y
+12 0000110   0110     1101     Y
+13 1111101   1010     1100     Y
+14 1000001   1000     0000     Y
+15 0011111   0111     1111     Y
+Simulation complete via $finish(1) at time 150 NS + 0
+./tbench.vt:153    $finish;             // ends simulation
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Jan 30, 2018 at 20:11:20 PST  (total: 00:00:02)
