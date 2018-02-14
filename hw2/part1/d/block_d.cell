@@ -3,7 +3,7 @@
 Report : cell
 Design : block_d
 Version: J-2014.09-SP2
-Date   : Wed Feb 14 14:26:43 2018
+Date   : Wed Feb 14 15:48:19 2018
 ****************************************
 
 Attributes:
@@ -34,10 +34,12 @@ U1_8                      FA_X1           NangateOpenCellLibrary
                                                           4.256000  mo, r
 U1_9                      FA_X1           NangateOpenCellLibrary
                                                           4.256000  mo, r
+U1_10                     FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
 U2                        XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
 U11                       AND2_X1         NangateOpenCellLibrary
                                                           1.064000  
 --------------------------------------------------------------------------------
-Total 11 cells                                            40.964000
+Total 12 cells                                            45.220000
 1

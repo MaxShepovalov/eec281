@@ -16,6 +16,8 @@ module block_d ( a, b, sum );
   FA_X1 U1_6 ( .A(a[6]), .B(b[6]), .CI(carry[6]), .CO(carry[7]), .S(sum[6]) );
   FA_X1 U1_7 ( .A(a[7]), .B(b[7]), .CI(carry[7]), .CO(carry[8]), .S(sum[7]) );
   FA_X1 U1_8 ( .A(a[8]), .B(b[8]), .CI(carry[8]), .CO(carry[9]), .S(sum[8]) );
-  FA_X1 U1_9 ( .A(a[9]), .B(b[9]), .CI(carry[9]), .CO(sum[10]), .S(sum[9]) );
+  FA_X1 U1_9 ( .A(a[9]), .B(b[9]), .CI(carry[9]), .CO(carry[10]), .S(sum[9])
+         );
+  FA_X1 U1_10 ( .A(a[9]), .B(b[9]), .CI(carry[10]), .S(sum[10]) );
 endmodule
 

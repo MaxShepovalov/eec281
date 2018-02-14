@@ -7,14 +7,14 @@ Report : timing
         -max_paths 10
 Design : block_d
 Version: J-2014.09-SP2
-Date   : Wed Feb 14 14:26:44 2018
+Date   : Wed Feb 14 15:48:20 2018
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
 Wire Load Model Mode: top
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -35,15 +35,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.69 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.01 r
+  sum[10] (out)                            0.01       1.02 r
+  data arrival time                                   1.02
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: b[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -64,15 +65,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.69 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.02 r
+  data arrival time                                   1.02
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -93,15 +95,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.68 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -122,15 +125,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.68 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -151,15 +155,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.68 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -180,15 +185,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.68 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -209,15 +215,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.69 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -238,15 +245,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.68 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -267,15 +275,16 @@ Wire Load Model Mode: top
   U1_6/CO (FA_X1)                          0.09       0.59 f
   U1_7/CO (FA_X1)                          0.09       0.68 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 
 
   Startpoint: a[0] (input port)
-  Endpoint: sum[9] (output port)
+  Endpoint: sum[10] (output port)
   Path Group: (none)
   Path Type: max
 
@@ -290,15 +299,16 @@ Wire Load Model Mode: top
   U11/ZN (AND2_X1)                         0.04       0.04 f
   U1_1/CO (FA_X1)                          0.09       0.13 f
   U1_2/CO (FA_X1)                          0.09       0.22 f
-  U1_3/CO (FA_X1)                          0.09       0.31 f
-  U1_4/CO (FA_X1)                          0.09       0.40 f
+  U1_3/CO (FA_X1)                          0.09       0.32 f
+  U1_4/CO (FA_X1)                          0.09       0.41 f
   U1_5/CO (FA_X1)                          0.09       0.50 f
   U1_6/CO (FA_X1)                          0.09       0.59 f
-  U1_7/CO (FA_X1)                          0.09       0.68 f
+  U1_7/CO (FA_X1)                          0.09       0.69 f
   U1_8/CO (FA_X1)                          0.09       0.78 f
-  U1_9/S (FA_X1)                           0.13       0.91 r
-  sum[9] (out)                             0.01       0.92 r
-  data arrival time                                   0.92
+  U1_9/CO (FA_X1)                          0.09       0.87 f
+  U1_10/S (FA_X1)                          0.13       1.00 r
+  sum[10] (out)                            0.01       1.01 r
+  data arrival time                                   1.01
   -----------------------------------------------------------
   (Path is unconstrained)
 

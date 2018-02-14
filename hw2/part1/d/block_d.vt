@@ -1,34 +1,37 @@
 //tbench for block_D
 
+`timescale 1ns/10ps
+
 module tbench();
 
 reg [9:0] a, b;
 wire [10:0] out;
 integer i;
 
-reg [9:0] a_tst [9:0], b_tst [9:0], o_tst[9:0];
+reg [9:0] a_tst [9:0], b_tst [9:0];
+reg [10:0] o_tst[9:0];
 
-block_d(.a (a), .b (b), .sum (out));
+block_d block (.a (a), .b (b), .sum (out));
 
 initial begin
     //fill tests
-    a_tst[0] = 10'd0; b_tst[0] = 10'd0; o_tst[0] = 11'd0;
-    a_tst[1] = 10'd1; b_tst[1] = 10'd1; o_tst[1] = 11'd2;
-    a_tst[2] = 10'd10; b_tst[2] = 10'd20; o_tst[2] = 11'd30;
-    a_tst[3] = 10'd1023; b_tst[3] = 10'd1; o_tst[3] = 11'd0;
-    a_tst[4] = -10'd1; b_tst[4] = 10'd0; o_tst[4] = -11'd1;
-    a_tst[5] = 10'd0; b_tst[5] = -10'd1; o_tst[5] = -11'd1;
-    a_tst[6] = 10'd1023; b_tst[6] = 10'd1023; o_tst[6] = 11'd2046;
-    a_tst[7] = 10'd1; b_tst[7] = 10'd2; o_tst[7] = 11'd3;
-    a_tst[8] = 10'd9; b_tst[8] = 10'd6; o_tst[8] = 11'd15;
-    a_tst[9] = 10'b1010101010; b_tst[9] = 10'b0101010101; o_tst[9] = 11'b01111111111;
+    a_tst[0] = 10'b00_0000_0000; b_tst[0] = 10'b00_0000_0000; o_tst[0] = 11'b000_0000_0000;
+    a_tst[1] = 10'b00_0000_0001; b_tst[1] = 10'b00_0000_0001; o_tst[1] = 11'b000_0000_0010;
+    a_tst[2] = 10'b00_0000_1010; b_tst[2] = 10'b00_0001_0100; o_tst[2] = 11'b000_0001_1110;
+    a_tst[3] = 10'b11_1111_1111; b_tst[3] = 10'b00_0000_0001; o_tst[3] = 11'b000_0000_0000;
+    a_tst[4] = 10'b11_1111_1111; b_tst[4] = 10'b00_0000_0000; o_tst[4] = 11'b111_1111_1111;
+    a_tst[5] = 10'b00_0000_0000; b_tst[5] = 10'b11_1111_1111; o_tst[5] = 11'b111_1111_1111;
+    a_tst[6] = 10'b11_1111_1111; b_tst[6] = 10'b11_1111_1111; o_tst[6] = 11'b111_1111_1110;
+    a_tst[7] = 10'b00_0000_0001; b_tst[7] = 10'b00_0000_0010; o_tst[7] = 11'b000_0000_0011;
+    a_tst[8] = 10'b00_0000_1001; b_tst[8] = 10'b00_0000_0110; o_tst[8] = 11'b000_0000_1111;
+    a_tst[9] = 10'b10_1010_1010; b_tst[9] = 10'b01_0101_0101; o_tst[9] = 11'b111_1111_1111;
 
     for (i=0;i<10;i=i+1) begin
         a = a_tst[i];
         b = b_tst[i];
         #1
-        if (out ~= o_tst[i])
-            $display("%d + %d ~= %d (%b), expected %d (%b)",a,b,out,out,o_tst[i],o_tst[i]);
+        if (out != o_tst[i])
+            $display("%d) %d + %d output: %d (%b), expected %d (%b)",i,a,b,out,out,o_tst[i],o_tst[i]);
     end
 end
 

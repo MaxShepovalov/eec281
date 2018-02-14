@@ -9,6 +9,6 @@ module block_d (
     output [10:0] sum
     );
 
-    assign sum = a + b;
+    assign sum = {a[9], a} + {b[9], b};
 
 endmodule
