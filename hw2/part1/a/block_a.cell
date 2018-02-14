@@ -1,0 +1,40 @@
+ 
+****************************************
+Report : cell
+Design : block_a
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 13:59:09 2018
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U11                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U12                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U13                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U14                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U15                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U16                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U17                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U18                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U19                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U20                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+--------------------------------------------------------------------------------
+Total 10 cells                                            10.640000
+1

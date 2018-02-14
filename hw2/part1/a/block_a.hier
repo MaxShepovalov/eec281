@@ -1,0 +1,11 @@
+ 
+****************************************
+Report : hierarchy
+Design : block_a
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 13:59:09 2018
+****************************************
+
+block_a
+    AND2_X1         NangateOpenCellLibrary
+1

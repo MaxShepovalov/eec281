@@ -1,0 +1,13 @@
+ 
+****************************************
+Report : hierarchy
+Design : block_b
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 14:09:06 2018
+****************************************
+
+block_b
+    AOI22_X1         NangateOpenCellLibrary
+    INV_X1           NangateOpenCellLibrary
+    XOR2_X1          NangateOpenCellLibrary
+1

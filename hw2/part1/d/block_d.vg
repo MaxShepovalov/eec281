@@ -1,0 +1,21 @@
+
+module block_d ( a, b, sum );
+  input [9:0] a;
+  input [9:0] b;
+  output [10:0] sum;
+  wire   n11;
+  wire   [10:1] carry;
+
+  XOR2_X1 U2 ( .A(b[0]), .B(a[0]), .Z(sum[0]) );
+  AND2_X1 U11 ( .A1(b[0]), .A2(a[0]), .ZN(n11) );
+  FA_X1 U1_1 ( .A(a[1]), .B(b[1]), .CI(n11), .CO(carry[2]), .S(sum[1]) );
+  FA_X1 U1_2 ( .A(a[2]), .B(b[2]), .CI(carry[2]), .CO(carry[3]), .S(sum[2]) );
+  FA_X1 U1_3 ( .A(a[3]), .B(b[3]), .CI(carry[3]), .CO(carry[4]), .S(sum[3]) );
+  FA_X1 U1_4 ( .A(a[4]), .B(b[4]), .CI(carry[4]), .CO(carry[5]), .S(sum[4]) );
+  FA_X1 U1_5 ( .A(a[5]), .B(b[5]), .CI(carry[5]), .CO(carry[6]), .S(sum[5]) );
+  FA_X1 U1_6 ( .A(a[6]), .B(b[6]), .CI(carry[6]), .CO(carry[7]), .S(sum[6]) );
+  FA_X1 U1_7 ( .A(a[7]), .B(b[7]), .CI(carry[7]), .CO(carry[8]), .S(sum[7]) );
+  FA_X1 U1_8 ( .A(a[8]), .B(b[8]), .CI(carry[8]), .CO(carry[9]), .S(sum[8]) );
+  FA_X1 U1_9 ( .A(a[9]), .B(b[9]), .CI(carry[9]), .CO(sum[10]), .S(sum[9]) );
+endmodule
+

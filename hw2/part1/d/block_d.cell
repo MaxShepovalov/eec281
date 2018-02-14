@@ -1,0 +1,43 @@
+ 
+****************************************
+Report : cell
+Design : block_d
+Version: J-2014.09-SP2
+Date   : Wed Feb 14 14:26:43 2018
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+   mo - map_only
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U1_1                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_2                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_3                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_4                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_5                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_6                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_7                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_8                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U1_9                      FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U2                        XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U11                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+--------------------------------------------------------------------------------
+Total 11 cells                                            40.964000
+1
