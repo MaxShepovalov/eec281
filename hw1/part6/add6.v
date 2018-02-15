@@ -12,7 +12,7 @@ module add6 (
   output reg [5:0] out
 );
 
-  //STAGE 1
+//STAGE 1
   wire [3:0] st11, st12, st13, st14;
 
   fulladder FA1 (

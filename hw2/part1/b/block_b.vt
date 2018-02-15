@@ -1,0 +1,22 @@
+//tbench for B
+
+`timescale 1ns/10ps
+
+module tbench();
+
+    reg [2:0] a;
+    wire carry, sum;
+    integer i;
+
+    block_b fulladd (.a (a[2]), .b (a[1]), .c (a[0]), .carry (carry), .sum(sum));
+
+    initial begin
+        $display("a b c | cout sum")
+        for (i=0; i<8; i = i + 1) begin
+            a = i;
+            #1
+            $display("%b %b %b   %b    %b",a[2],a[1],a[0],carry,sum);
+        end
+    end
+
+endmodule
