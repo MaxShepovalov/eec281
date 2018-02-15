@@ -58,17 +58,17 @@ module mult (
 
 //stage 1. encoding
     //stage's output
-    reg [7:0] p0,p1,p2,p3,p4,p5,p6,p7;
-    always @(a_r or b_r) begin
-        p0 = {~a_r[7],a_r[6:0]} & {b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0]};
-        p1 = {~a_r[7],a_r[6:0]} & {b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1]};
-        p2 = {~a_r[7],a_r[6:0]} & {b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2]};
-        p3 = {~a_r[7],a_r[6:0]} & {b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3]};
-        p4 = {~a_r[7],a_r[6:0]} & {b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4]};
-        p5 = {~a_r[7],a_r[6:0]} & {b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5]};
-        p6 = {~a_r[7],a_r[6:0]} & {b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6]};
-        p7 = {~a_r[7],a_r[6:0]} & {b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7]};
-    end
+    wire [7:0] p0,p1,p2,p3,p4,p5,p6,p7;
+    //always @(a_r or b_r) begin
+    assign p0 = {~a_r[7],a_r[6:0]} & {b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0]};
+    assign p1 = {~a_r[7],a_r[6:0]} & {b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1]};
+    assign p2 = {~a_r[7],a_r[6:0]} & {b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2]};
+    assign p3 = {~a_r[7],a_r[6:0]} & {b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3]};
+    assign p4 = {~a_r[7],a_r[6:0]} & {b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4]};
+    assign p5 = {~a_r[7],a_r[6:0]} & {b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5]};
+    assign p6 = {~a_r[7],a_r[6:0]} & {b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6]};
+    assign p7 = {~a_r[7],a_r[6:0]} & {b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7]};
+    //end
 
 //clk sync
     reg [7:0] p0_r,p1_r,p2_r,p3_r,p4_r,p5_r,p6_r,p7_r;
@@ -85,19 +85,19 @@ module mult (
 
 //stage 2. CSA
     //stage's output
-    reg [14:0] st2_p0;
-    reg [14:2] st2_p1;
-    reg [11:4] st2_p2;
-    reg [10:6] st2_p3;
-    reg st2_p4;
-    reg [3:0] st2_c1; //carry between top 4:2 adders
-    reg [3:0] st2_c2; //carry between bottom 4:2 adders 
-    always @(p0_r or p3_r or p7_r or p4_r) begin //pass through bits
-        st2_p0[0] = p0_r[0];
-        st2_p2[10] = p3_r[7];
-        st2_p1[14] = p7_r[7];
-        st2_p2[4] = p4_r[0];
-    end
+    wire [14:0] st2_p0;
+    wire [14:2] st2_p1;
+    wire [11:4] st2_p2;
+    wire [10:6] st2_p3;
+    wire st2_p4;
+    wire [3:0] st2_c1; //carry between top 4:2 adders
+    wire [3:0] st2_c2; //carry between bottom 4:2 adders 
+    //always @(p0_r or p3_r or p7_r or p4_r) begin //pass through bits
+    assign st2_p0[0] = p0_r[0];
+    assign st2_p2[10] = p3_r[7];
+    assign st2_p1[14] = p7_r[7];
+    assign st2_p2[4] = p4_r[0];
+    //end
     //top row
     ha st2_ha11 (.a (p0_r[1]), .b (p1_r[0]), .c(st2_p0[2]), .s(st2_p0[1]));
     fa st2_fa11 (.a (p0_r[2]), .b (p1_r[1]), .c (p2_r[0]), .carry (st2_p0[3]), .sum (st2_p1[2]));
@@ -135,16 +135,16 @@ module mult (
 
 //stage 3. CSA cont
     //stage output
-    reg [15:0] st3_p0; //row 0
-    reg [14:3] st3_p1; //row 1
-    reg [1:0] st3_p2;  //row 2 column 11 and 8
-    reg [3:0] st3_c;  //carry between 4:2 adders
+    wire [15:0] st3_p0; //row 0
+    wire [14:3] st3_p1; //row 1
+    wire [1:0] st3_p2;  //row 2 column 11 and 8
+    wire [3:0] st3_c;  //carry between 4:2 adders
 
     //pass through bits
-    always @(st2_p0_r or st2_p4_r) begin
-        st3_p0[1:0] = st2_p0_r[1:0];
-        st3_p2[0] = st2_p4_r;
-    end
+    //always @(st2_p0_r or st2_p4_r) begin
+    assign st3_p0[1:0] = st2_p0_r[1:0];
+    assign st3_p2[0] = st2_p4_r;
+    //end
 
     ha st3_ha1   (.a (st2_p0_r[2]),  .b (st2_p1_r[2]),  .c (st3_p0[3]), .s (st3_p0[2]));
     ha st3_ha2   (.a (st2_p0_r[3]),  .b (st2_p1_r[3]),  .c (st3_p0[4]), .s (st3_p1[3]));
@@ -171,18 +171,18 @@ module mult (
     end
 
 //stage 4. CSA end
-    reg [15:0] st4_p0;
-    reg [15:3] st4_p1;
+    wire [15:0] st4_p0;
+    wire [15:3] st4_p1;
 
     //pass though bits and add constant
-    always @(st3_p0_r or st3_p1_r) begin
-        st4_p0[7:0] = st3_p0_r[7:0];
-        st4_p1[7:3] = st3_p1_r[7:3];
+    //always @(st3_p0_r or st3_p1_r) begin
+    assign st4_p0[7:0] = st3_p0_r[7:0];
+    assign st4_p1[7:3] = st3_p1_r[7:3];
         //add constant
-        st4_p1[8] = 1'b1;
+    assign st4_p1[8] = 1'b1;
         //add constant (to cut half adder)
-        st4_p1[15] = ~st3_p0_r[15];
-    end
+    assign st4_p1[15] = ~st3_p0_r[15];
+    //end
 
     fa st4_fa1 (.a (st3_p0_r[8]), .b (st3_p1_r[8]), .c (st3_p2_r[0]), .carry (st4_p0[9]), .sum (st4_p0[8]));
     ha st4_ha1 (.a (st3_p0_r[9]), .b (st3_p1_r[9]), .c (st4_p0[10]), .s (st4_p1[9]));
