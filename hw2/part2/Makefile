@@ -29,7 +29,7 @@
 
 
 #----- Set the top-level module name here
-NAME		:= abc
+NAME		:= mult
 
 #----- Some variables
 USERNAME	:= $(shell whoami)

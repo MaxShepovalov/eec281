@@ -6,11 +6,11 @@ module tbench();
 
     reg [7:0] a, b;
     wire [15:0] out;
-    wire clk;
+    reg clk;
     integer i;
 
-    reg [7:0] a_tst [:0], b_tst [:0];
-    reg [15:0] o_tst [:0];
+    reg [7:0] a_tst [23:0], b_tst [23:0];
+    reg [15:0] o_tst [23:0];
 
     mult block (.a (a), .b (b), .out (out), .clk (clk));
 
@@ -45,7 +45,7 @@ module tbench();
         a_tst[22] = 8'b0000_0000; b_tst[22] = 8'b0000_0000; o_tst[22] = 16'b0000_0000_0000_0000; //
         a_tst[23] = 8'b0000_0000; b_tst[23] = 8'b0000_0000; o_tst[23] = 16'b0000_0000_0000_0000; //
 
-        for (i = 0; i < ; i = i + 1) begin
+        for (i = 0; i < 24; i = i + 1) begin
             a = a_tst[i];
             b = b_tst[i];
             #10
@@ -69,11 +69,10 @@ module tbench();
             #1
             clk = 1'b0;
             #10 
-            if (out == o_tst[i]) begin
+            if (out == o_tst[i])
                 $display("%d) %b x %b = %b",i,a,b,out);
             else
                 $display("%d) %b x %b got %b expected %b",i,a,b,out,o_tst[i]);
-            end
         end
     end
 
