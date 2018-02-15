@@ -11,7 +11,7 @@ module tbench();
     block_b fulladd (.a (a[2]), .b (a[1]), .c (a[0]), .carry (carry), .sum(sum));
 
     initial begin
-        $display("a b c | cout sum")
+        $display("a b c | cout sum");
         for (i=0; i<8; i = i + 1) begin
             a = i;
             #1

@@ -1,0 +1,3 @@
+s1(14Feb2018:16:22:13):  ncverilog +access+r -l block_b.logv -f block_b.vfv 
+s2(14Feb2018:16:22:33):  ncverilog +access+r -l block_b.logv -f block_b.vfv 
+s3(14Feb2018:16:22:48):  ncverilog +access+r -l block_b.logv -f block_b.vfv 
