@@ -46,7 +46,7 @@ module mult (
     input [7:0] a,
     input [7:0] b,
     input clk,
-    output reg [15:0] out
+    output reg [15:0] out,
 );
 
 //clk sync
@@ -197,12 +197,12 @@ module mult (
     reg [15:3] st4_p1_r;
     always @(posedge clk) begin
         st4_p0_r <= #1 st4_p0;
-        st4_p0_r <= #1 st4_p1;
+        st4_p1_r <= #1 st4_p1;
     end
 
 //stage 5. CPA
     always @(st4_p0_r or st4_p1_r) begin
-        out = st4_p0_r + {st4_p1_r, 2'b00};
+        out = st4_p0_r + {st4_p1_r, 3'b00};
     end
 
 endmodule
