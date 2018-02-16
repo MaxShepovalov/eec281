@@ -53,10 +53,14 @@ module tbench();
         for (i = 0; i < 24; i = i + 1) begin
             a = a_tst[i];
             b = b_tst[i];
+
+            #10
             clk = 1'b1; //start
             #10
             clk = 1'b0;
-            #10 //compute cycle
+
+
+            #10
             clk = 1'b1; //read answer
             #10
             clk = 1'b0;
@@ -69,9 +73,9 @@ module tbench();
     end
 
     // generate a clock. osc inverts clock every #10
-    always begin
-       #10;                 // wait for initial block to initialize clock
-       clk = ~clk;
-    end
+    //always begin
+    //   #10;                 // wait for initial block to initialize clock
+    //   clk = ~clk;
+    //end
 
 endmodule
