@@ -46,7 +46,7 @@ module mult (
     input [7:0] a,
     input [7:0] b,
     input clk,
-    output reg [15:0] out,
+    output reg [15:0] out
 );
 
 //clk sync

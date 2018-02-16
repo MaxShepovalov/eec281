@@ -1,0 +1,86 @@
+// abc.vt
+//
+// Test bench for running abc.v
+
+`timescale 1ns/10ps
+
+// Test bench module has no inputs or outputs
+module abc_test;
+
+//----- Declarations
+// declare variables for signals going into/out of submodule
+reg    [1:0]         in0;
+reg    [1:0]         in1;
+wire   [2:0]         out;
+
+reg                  a;
+wire                 b;
+
+reg    [30:0]        in31a;
+reg    [30:0]        in31b;
+wire   [31:0]        out32;
+
+reg                  reset;
+reg                  clock;
+
+//----- abc submodule
+abc abc_module (
+   .in0         (in0),
+   .in1         (in1),
+   .out         (out),
+   .a           (a),
+   .b           (b),
+   .in31a       (in31a),
+   .in31b       (in31b),
+   .out32       (out32),
+   .reset       (reset),
+   .clk         (clock)
+   );
+
+
+//----- Main test loop
+// Modify the test signals as desired.
+// This block is executed only once starting at the beginning of the simulation.
+initial begin
+   // creates a dump file of signals which can be displayed by the viewer.
+   $recordfile("abc_test");
+   $recordvars(abc_test);
+
+   // $display is a simulator directive that prints text to the
+   // simulator screen when this line is executed
+   $display("Beginning simulation");
+
+   reset        = 1'b1;
+
+   in0          = 2'b00;
+   in1          = 2'b00;
+   a            = 1'b0;
+   in31a        = 32'h0000_0000;
+   in31b        = 32'h0000_0011;
+
+   @(posedge clock); #10;                 // posedge, then #10 clk-to-Q
+
+   @(posedge clock); #10;                 // posedge, then #10 clk-to-Q
+
+   $display("Turning reset off");
+   reset        = 1'b0;
+   @(posedge clock); #10;                 // posedge, then #10 clk-to-Q
+
+   in0          = 2'b11;
+   in1          = 2'b10;
+   @(posedge clock); #10;                 // posedge, then #10 clk-to-Q
+
+   @(posedge clock); #10;                 // posedge, then #10 clk-to-Q
+   @(posedge clock); #10;                 // posedge, then #10 clk-to-Q
+   @(posedge clock); #10;                 // posedge, then #10 clk-to-Q
+
+   $finish;             // ends simulation
+end
+
+// generate a clock. osc inverts clock every #10
+always begin
+   #10;                 // wait for initial block to initialize clock
+   clock = ~clock;
+end
+    
+endmodule
