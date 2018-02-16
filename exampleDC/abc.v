@@ -8,10 +8,11 @@ module abc (
    in0,
    in1,
    out,
-   clk,
    a,
    b,
-   in31a, in31b, out32
+   in31a, in31b, out32,
+   reset,
+   clk
    );
 
    //----- Inputs/outputs
@@ -26,6 +27,7 @@ module abc (
    input  [30:0]	in31b;
    output [31:0]	out32;
 
+   input                reset;
    input                clk;
 
 
@@ -41,16 +43,20 @@ module abc (
       r_in0     <= #1 in0;
       r_in1     <= #1 in1;
       out       <= #1 c_out;
+      if (reset == 1'b1) begin    // logic here is breaking a guideline...
+         out       <= #1 2'b00;
+      end
    end
 
 
-   //----- just a 1-bit register
-   reg          b;
+   //----- just a 2-FF delay line
+   wire         b;
 
-   always @(posedge clk) begin
-      b         <= #1 a;
-   end
-
+   def def1 (
+      .in       (a),
+      .out      (b),
+      .clk      (clk)
+      );
 
    //----- 32-bit adder
    reg  [30:0]   r_in31a, r_in31b;
