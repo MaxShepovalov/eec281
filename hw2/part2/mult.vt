@@ -16,6 +16,7 @@ module tbench();
 
     initial begin
         clk = 1'b0;
+
         //fill test cases
         a_tst[0] = 8'b0000_0000; b_tst[0] = 8'b0000_0000; o_tst[0] = 16'b0000_0000_0000_0000; //       0 x       0
         a_tst[1] = 8'b0000_0001; b_tst[1] = 8'b0111_1111; o_tst[1] = 16'b0000_0000_0111_1111; //       1 x max pos
@@ -48,32 +49,25 @@ module tbench();
         for (i = 0; i < 24; i = i + 1) begin
             a = a_tst[i];
             b = b_tst[i];
+            clk = 1'b1; //start
             #10
-            clk = 1'b1; //encode start
-            #1
             clk = 1'b0;
+            #10 //compute cycle
+            clk = 1'b1; //read answer
             #10
-            clk = 1'b1; //csa 1 start
-            #1
             clk = 1'b0;
-            #10
-            clk = 1'b1; //csa 2 start
-            #1
-            clk = 1'b0;
-            #10
-            clk = 1'b1; //csa 3 start
-            #1
-            clk = 1'b0;
-            #10
-            clk = 1'b1; //cpa start
-            #1
-            clk = 1'b0;
-            #10 
+            
             if (out == o_tst[i])
                 $display("%d) %b x %b = %b",i,a,b,out);
             else
                 $display("%d) %b x %b got %b expected %b",i,a,b,out,o_tst[i]);
         end
+    end
+
+    // generate a clock. osc inverts clock every #10
+    always begin
+       #10;                 // wait for initial block to initialize clock
+       clk = ~clk;
     end
 
 endmodule

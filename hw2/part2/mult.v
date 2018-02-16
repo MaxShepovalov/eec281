@@ -40,7 +40,7 @@ module add42(
     fa scc (.a (s_internal), .b (d), .c (ci), .carry(co), .sum (s));
 endmodule //add42
 
-
+////////////////////////////////////////////////////////////////////////////////
 //main module
 module mult (
     input [7:0] a,
@@ -49,160 +49,99 @@ module mult (
     output reg [15:0] out
 );
 
-//clk sync
+// input clk sync
     reg [7:0] a_r, b_r;
     always @(posedge clk) begin
         a_r <= #1 a;
         b_r <= #1 b;
     end
 
-//stage 1. encoding
+// stage 1. encoding
     //stage's output
     wire [7:0] p0,p1,p2,p3,p4,p5,p6,p7;
     //always @(a_r or b_r) begin
-    assign p0 = {~a_r[7],a_r[6:0]} & {b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0]};
-    assign p1 = {~a_r[7],a_r[6:0]} & {b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1]};
-    assign p2 = {~a_r[7],a_r[6:0]} & {b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2]};
-    assign p3 = {~a_r[7],a_r[6:0]} & {b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3]};
-    assign p4 = {~a_r[7],a_r[6:0]} & {b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4]};
-    assign p5 = {~a_r[7],a_r[6:0]} & {b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5]};
-    assign p6 = {~a_r[7],a_r[6:0]} & {b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6]};
-    assign p7 = {~a_r[7],a_r[6:0]} & {b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7]};
+    assign p0 = a_r & {b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0], b_r[0]};
+    assign p1 = a_r & {b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1], b_r[1]};
+    assign p2 = a_r & {b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2], b_r[2]};
+    assign p3 = a_r & {b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3], b_r[3]};
+    assign p4 = a_r & {b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4]};
+    assign p5 = a_r & {b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5]};
+    assign p6 = a_r & {b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6]};
+    assign p7 = a_r & {b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7]};
     //end
 
-//clk sync
-    reg [7:0] p0_r,p1_r,p2_r,p3_r,p4_r,p5_r,p6_r,p7_r;
-    always @(posedge clk) begin
-        p0_r <= #1 p0;
-        p1_r <= #1 p1;
-        p2_r <= #1 p2;
-        p3_r <= #1 p3;
-        p4_r <= #1 p4;
-        p5_r <= #1 p5;
-        p6_r <= #1 p6;
-        p7_r <= #1 p7;
-    end
-
-//stage 2. CSA
+// stage 2. CSA
     //stage's output
-    wire [14:0] st2_p0;
-    wire [14:2] st2_p1;
-    wire [11:4] st2_p2;
-    wire [10:6] st2_p3;
-    wire st2_p4;
-    wire [3:0] st2_c1; //carry between top 4:2 adders
-    wire [3:0] st2_c2; //carry between bottom 4:2 adders 
-    //always @(p0_r or p3_r or p7_r or p4_r) begin //pass through bits
-    assign st2_p0[0] = p0_r[0];
-    assign st2_p2[10] = p3_r[7];
-    assign st2_p1[14] = p7_r[7];
-    assign st2_p2[4] = p4_r[0];
-    //end
+    wire [11:0] st2_p0;
+    wire [12:2] st2_p1;
+    wire [15:4] st2_p2;
+    wire [15:6] st2_p3;
+    wire [7:0] st2_c1; //carry between top 4:2 adders
+    wire [7:0] st2_c2; //carry between bottom 4:2 adders 
+
+    assign st2_p0[0] = p0[0];
+    assign st2_p2[4] = p4[0];
+
     //top row
-    ha st2_ha11 (.a (p0_r[1]), .b (p1_r[0]), .c(st2_p0[2]), .s(st2_p0[1]));
-    fa st2_fa11 (.a (p0_r[2]), .b (p1_r[1]), .c (p2_r[0]), .carry (st2_p0[3]), .sum (st2_p1[2]));
-    add42 st2_a11 (.a (p0_r[3]), .b (p1_r[2]), .c (p2_r[1]), .d (p3_r[0]), .ci (1'b0), .cc (st2_c1[0]), .co (st2_p0[4]), .s (st2_p1[3]));
-    add42 st2_a12 (.a (p0_r[4]), .b (p1_r[3]), .c (p2_r[2]), .d (p3_r[1]), .ci (st2_c1[0]), .cc (st2_c1[1]), .co (st2_p0[5]), .s (st2_p1[4]));
-    add42 st2_a13 (.a (p0_r[5]), .b (p1_r[4]), .c (p2_r[3]), .d (p3_r[2]), .ci (st2_c1[1]), .cc (st2_c1[2]), .co (st2_p0[6]), .s (st2_p1[5]));
-    add42 st2_a14 (.a (p0_r[6]), .b (p1_r[5]), .c (p2_r[4]), .d (p3_r[3]), .ci (st2_c1[2]), .cc (st2_c1[3]), .co (st2_p0[7]), .s (st2_p1[6]));
-    add42 st2_a15 (.a (p0_r[7]), .b (p1_r[6]), .c (p2_r[5]), .d (p3_r[4]), .ci (st2_c1[3]), .cc (st2_p1[8]), .co (st2_p0[8]), .s (st2_p1[7]));
-    fa st2_fa12 (.a (p1_r[7]), .b (p2_r[6]), .c (p3_r[5]), .carry (st2_p0[9]), .sum (st2_p2[8]));
-    ha st2_ha12 (.a (p2_r[7]), .b (p3_r[6]), .c (st2_p0[10]), .s (st2_p1[9]));
+    ha    st2_t_col1  (.a (p0[1]), .b (p1[0]),                                                           .c  (st2_p1[2]),  .s (st2_p0[1]));
+    fa    st2_t_col2  (.a (p0[2]), .b (p1[1]), .c (p2[0]),                                            .carry (st2_p1[3]), .sum (st2_p0[2]));
+    add42 st2_t_col3  (.a (p0[3]), .b (p1[2]), .c (p2[1]), .d (p3[0]), .ci (1'b0),      .cc (st2_c1[0]), .co (st2_p1[4]),  .s (st2_p0[3]));
+    add42 st2_t_col4  (.a (p0[4]), .b (p1[3]), .c (p2[2]), .d (p3[1]), .ci (st2_c1[0]), .cc (st2_c1[1]), .co (st2_p1[5]),  .s (st2_p0[4]));
+    add42 st2_t_col5  (.a (p0[5]), .b (p1[4]), .c (p2[3]), .d (p3[2]), .ci (st2_c1[1]), .cc (st2_c1[2]), .co (st2_p1[6]),  .s (st2_p0[5]));
+    add42 st2_t_col6  (.a (p0[6]), .b (p1[5]), .c (p2[4]), .d (p3[3]), .ci (st2_c1[2]), .cc (st2_c1[3]), .co (st2_p1[7]),  .s (st2_p0[6]));
+    add42 st2_t_col7  (.a (p0[7]), .b (p1[6]), .c (p2[5]), .d (p3[4]), .ci (st2_c1[3]), .cc (st2_c1[4]), .co (st2_p1[8]),  .s (st2_p0[7]));
+    add42 st2_t_col8  (.a (p0[7]), .b (p1[7]), .c (p2[6]), .d (p3[5]), .ci (st2_c1[4]), .cc (st2_c1[5]), .co (st2_p1[9]),  .s (st2_p0[8]));
+    add42 st2_t_col9  (.a (p0[7]), .b (p1[7]), .c (p2[7]), .d (p3[6]), .ci (st2_c1[5]), .cc (st2_c1[6]), .co (st2_p1[10]), .s (st2_p0[9]));
+    add42 st2_t_col10 (.a (p0[7]), .b (p1[7]), .c (p2[7]), .d (p3[7]), .ci (st2_c1[6]), .cc (st2_c1[7]), .co (st2_p1[11]), .s (st2_p0[10]));
+    add42 st2_t_col11 (.a (p0[7]), .b (p1[7]), .c (p2[7]), .d (p3[7]), .ci (st2_c1[7]), .cc (),          .co (st2_p1[12]), .s (st2_p0[11]));
+
     //bottom row
-    ha st2_ha21 (.a (p4_r[1]), .b (p5_r[0]), .c (st2_p2[6]), .s (st2_p2[5]));
-    fa st2_fa21 (.a (p4_r[2]), .b (p5_r[1]), .c (p6_r[0]), .carry (st2_p2[7]), .sum (st2_p3[6]));
-    add42 st2_a21 (.a (p4_r[3]), .b (p5_r[2]), .c (p6_r[1]), .d (p7_r[0]), .ci (1'b0), .cc (st2_c2[0]), .co (st2_p3[8]), .s (st2_p3[7]));
-    add42 st2_a22 (.a (p4_r[4]), .b (p5_r[3]), .c (p6_r[2]), .d (p7_r[1]), .ci (st2_c2[0]), .cc (st2_c2[1]), .co (st2_p3[9]), .s (st2_p4));
-    add42 st2_a23 (.a (p4_r[5]), .b (p5_r[4]), .c (p6_r[3]), .d (p7_r[2]), .ci (st2_c2[1]), .cc (st2_c2[2]), .co (st2_p1[10]), .s (st2_p2[9]));
-    add42 st2_a24 (.a (p4_r[6]), .b (p5_r[5]), .c (p6_r[4]), .d (p7_r[3]), .ci (st2_c2[2]), .cc (st2_c2[3]), .co (st2_p0[11]), .s (st2_p3[10]));
-    add42 st2_a25 (.a (p4_r[7]), .b (p5_r[6]), .c (p6_r[5]), .d (p7_r[4]), .ci (st2_c2[3]), .cc (st2_p0[12]), .co (st2_p1[12]), .s (st2_p1[11]));
-    fa st2_fa22 (.a (p5_r[7]), .b (p6_r[6]), .c (p7_r[5]), .carry (st2_p0[13]), .sum (st2_p2[11]));
-    ha st2_ha22 (.a (p6_r[7]), .b (p7_r[6]), .c (st2_p0[14]), .s (st2_p1[13]));
+    ha st2_b_col5     (.a (p4[1]), .b (p5[0]),                                                           .c  (st2_p3[6]),  .s (st2_p2[5]));
+    fa st2_b_col6     (.a (p4[2]), .b (p5[1]), .c (p6[0]),                                            .carry (st2_p3[7]), .sum (st2_p2[6]));
+    add42 st2_b_col7  (.a (p4[3]), .b (p5[2]), .c (p6[1]), .d (p7[0]), .ci (1'b0),      .cc (st2_c2[0]), .co (st2_p3[8]),  .s (st2_p2[7]));
+    add42 st2_b_col8  (.a (p4[4]), .b (p5[3]), .c (p6[2]), .d (p7[1]), .ci (st2_c2[0]), .cc (st2_c2[1]), .co (st2_p3[9]),  .s (st2_p2[8]));
+    add42 st2_b_col9  (.a (p4[5]), .b (p5[4]), .c (p6[3]), .d (p7[2]), .ci (st2_c2[1]), .cc (st2_c2[2]), .co (st2_p3[10]), .s (st2_p2[9]));
+    add42 st2_b_col10 (.a (p4[6]), .b (p5[5]), .c (p6[4]), .d (p7[3]), .ci (st2_c2[2]), .cc (st2_c2[3]), .co (st2_p3[11]), .s (st2_p2[10]));
+    add42 st2_b_col11 (.a (p4[7]), .b (p5[6]), .c (p6[5]), .d (p7[4]), .ci (st2_c2[3]), .cc (st2_c2[4]), .co (st2_p3[12]), .s (st2_p2[11]));
+    add42 st2_b_col12 (.a (p4[7]), .b (p5[7]), .c (p6[6]), .d (p7[5]), .ci (st2_c2[4]), .cc (st2_c2[5]), .co (st2_p3[13]), .s (st2_p2[12]));
+    add42 st2_b_col13 (.a (p4[7]), .b (p5[7]), .c (p6[7]), .d (p7[6]), .ci (st2_c2[5]), .cc (st2_c2[6]), .co (st2_p3[14]), .s (st2_p2[13]));
+    add42 st2_b_col14 (.a (p4[7]), .b (p5[7]), .c (p6[7]), .d (p7[7]), .ci (st2_c2[6]), .cc (st2_c2[7]), .co (st2_p3[15]), .s (st2_p2[14]));
+    add42 st2_b_col15 (.a (p4[7]), .b (p5[7]), .c (p6[7]), .d (p7[7]), .ci (st2_c2[7]), .cc (),          .co (),           .s (st2_p2[15]));
 
-//clk sync
-    reg [14:0] st2_p0_r;
-    reg [14:2] st2_p1_r;
-    reg [11:4] st2_p2_r;
-    reg [10:6] st2_p3_r;
-    reg st2_p4_r;
-    always @(posedge clk) begin
-        st2_p0_r <= #1 st2_p0;
-        st2_p1_r <= #1 st2_p1;
-        st2_p2_r <= #1 st2_p2;
-        st2_p3_r <= #1 st2_p3;
-        st2_p4_r <= #1 st2_p4;
-    end
-
-//stage 3. CSA cont
+// stage 3. CSA cont
     //stage output
     wire [15:0] st3_p0; //row 0
-    wire [14:3] st3_p1; //row 1
-    wire [1:0] st3_p2;  //row 2 column 11 and 8
-    wire [3:0] st3_c;  //carry between 4:2 adders
+    wire [15:3] st3_p1; //row 1
+    wire [8:0] st3_c;  //carry between 4:2 adders
 
     //pass through bits
-    //always @(st2_p0_r or st2_p4_r) begin
-    assign st3_p0[1:0] = st2_p0_r[1:0];
-    assign st3_p2[0] = st2_p4_r;
-    //end
+    assign st3_p0[1:0] = st2_p0[1:0];
 
-    ha st3_ha1   (.a (st2_p0_r[2]),  .b (st2_p1_r[2]),  .c (st3_p0[3]), .s (st3_p0[2]));
-    ha st3_ha2   (.a (st2_p0_r[3]),  .b (st2_p1_r[3]),  .c (st3_p0[4]), .s (st3_p1[3]));
-    fa st3_fa1   (.a (st2_p0_r[4]),  .b (st2_p1_r[4]),  .c (st2_p2_r[4]), .carry (st3_p0[5]), .sum (st3_p1[4]));
-    fa st3_fa2   (.a (st2_p0_r[5]),  .b (st2_p1_r[5]),  .c (st2_p2_r[5]), .carry (st3_p0[6]), .sum (st3_p1[5]));
-    add42 st3_a1 (.a (st2_p0_r[6]),  .b (st2_p1_r[6]),  .c (st2_p2_r[6]),  .d (st2_p3_r[6]),  .ci (1'b0),     .cc (st3_c[0]), .co (st3_p0[7]), .s (st3_p1[6]));
-    add42 st3_a2 (.a (st2_p0_r[7]),  .b (st2_p1_r[7]),  .c (st2_p2_r[7]),  .d (st2_p3_r[7]),  .ci (st3_c[0]), .cc (st3_c[1]), .co (st3_p0[8]), .s (st3_p1[7]));
-    add42 st3_a3 (.a (st2_p0_r[8]),  .b (st2_p1_r[8]),  .c (st2_p2_r[8]),  .d (st2_p3_r[8]),  .ci (st3_c[1]), .cc (st3_c[2]), .co (st3_p0[9]), .s (st3_p1[8]));
-    add42 st3_a4 (.a (st2_p0_r[9]),  .b (st2_p1_r[9]),  .c (st2_p2_r[9]),  .d (st2_p3_r[9]),  .ci (st3_c[2]), .cc (st3_c[3]), .co (st3_p0[10]), .s (st3_p1[9]));
-    add42 st3_a5 (.a (st2_p0_r[10]), .b (st2_p1_r[10]), .c (st2_p2_r[10]), .d (st2_p3_r[10]), .ci (st3_c[3]), .cc (st3_p1[11]), .co (st3_p0[11]), .s (st3_p1[10]));
-    ha st3_ha3   (.a (st2_p0_r[11]), .b (st2_p1_r[11]), .c (st3_p0[12]), .s (st3_p2[1]));
-    fa st3_fa3   (.a (st2_p0_r[12]), .b (st2_p1_r[12]), .c (st2_p2_r[11]), .carry (st3_p0[13]), .sum (st3_p1[12]));
-    ha st3_ha4   (.a (st2_p0_r[13]), .b (st2_p1_r[13]), .c (st3_p0[14]), .s (st3_p1[13]));
-    ha st3_ha5   (.a (st2_p0_r[14]), .b (st2_p1_r[14]), .c (st3_p0[15]), .s (st3_p1[14]));
+    ha st_b_col2     (.a (st2_p0[2]),  .b (st2_p1[2]),                                                                    .c  (st3_p1[3]),  .s (st3_p0[2]));
+    ha st_b_col3     (.a (st2_p0[3]),  .b (st2_p1[3]),                                                                    .c  (st3_p1[4]),  .s (st3_p0[3]));
+    fa st_b_col4     (.a (st2_p0[4]),  .b (st2_p1[4]),  .c (st2_p2[4]),                                                .carry (st3_p1[5]), .sum (st3_p0[4]));
+    fa st_b_col5     (.a (st2_p0[5]),  .b (st2_p1[5]),  .c (st2_p2[5]),                                                .carry (st3_p1[6]), .sum (st3_p0[5]));
+    add42 st_b_col6  (.a (st2_p0[6]),  .b (st2_p1[6]),  .c (st2_p2[6]),  .d (st2_p3[6]),  .ci (1'b0),     .cc (st3_c[0]), .co (st3_p1[7]),  .s (st3_p0[6]));
+    add42 st_b_col7  (.a (st2_p0[7]),  .b (st2_p1[7]),  .c (st2_p2[7]),  .d (st2_p3[7]),  .ci (st3_c[0]), .cc (st3_c[1]), .co (st3_p1[8]),  .s (st3_p0[7]));
+    add42 st_b_col8  (.a (st2_p0[8]),  .b (st2_p1[8]),  .c (st2_p2[8]),  .d (st2_p3[8]),  .ci (st3_c[1]), .cc (st3_c[2]), .co (st3_p1[9]),  .s (st3_p0[8]));
+    add42 st_b_col9  (.a (st2_p0[9]),  .b (st2_p1[9]),  .c (st2_p2[9]),  .d (st2_p3[9]),  .ci (st3_c[2]), .cc (st3_c[3]), .co (st3_p1[10]), .s (st3_p0[9]));
+    add42 st_b_col10 (.a (st2_p0[10]), .b (st2_p1[10]), .c (st2_p2[10]), .d (st2_p3[10]), .ci (st3_c[3]), .cc (st3_c[4]), .co (st3_p1[11]), .s (st3_p0[10]));
+    add42 st_b_col11 (.a (st2_p0[11]), .b (st2_p1[11]), .c (st2_p2[11]), .d (st2_p3[11]), .ci (st3_c[4]), .cc (st3_c[5]), .co (st3_p1[12]), .s (st3_p0[11]));
+    add42 st_b_col12 (.a (st2_p0[11]), .b (st2_p1[12]), .c (st2_p2[12]), .d (st2_p3[12]), .ci (st3_c[5]), .cc (st3_c[6]), .co (st3_p1[13]), .s (st3_p0[12]));
+    add42 st_b_col13 (.a (st2_p0[11]), .b (st2_p1[12]), .c (st2_p2[13]), .d (st2_p3[13]), .ci (st3_c[6]), .cc (st3_c[7]), .co (st3_p1[14]), .s (st3_p0[13]));
+    add42 st_b_col14 (.a (st2_p0[11]), .b (st2_p1[12]), .c (st2_p2[14]), .d (st2_p3[14]), .ci (st3_c[7]), .cc (st3_c[8]), .co (st3_p1[15]), .s (st3_p0[14]));
+    add42 st_b_col15 (.a (st2_p0[11]), .b (st2_p1[12]), .c (st2_p2[15]), .d (st2_p3[15]), .ci (st3_c[8]), .cc (),         .co (),           .s (st3_p0[15]));
 
-//clk sync
-    reg [15:0] st3_p0_r;
-    reg [14:3] st3_p1_r;
-    reg [1:0] st3_p2_r;
-    always @(posedge clk) begin
-        st3_p0_r <= #1 st3_p0;
-        st3_p1_r <= #1 st3_p1;
-        st3_p2_r <= #1 st3_p2;
+// stage 5. CPA
+    reg [15:0] out_c;
+
+    always @(st3_p0 or st3_p1) begin
+        out_c = st3_p0 + {st3_p1, 3'b000};
     end
 
-//stage 4. CSA end
-    wire [15:0] st4_p0;
-    wire [15:3] st4_p1;
-
-    //pass though bits and add constant
-    //always @(st3_p0_r or st3_p1_r) begin
-    assign st4_p0[7:0] = st3_p0_r[7:0];
-    assign st4_p1[7:3] = st3_p1_r[7:3];
-        //add constant
-    assign st4_p1[8] = 1'b1;
-        //add constant (to cut half adder)
-    assign st4_p1[15] = ~st3_p0_r[15];
-    //end
-
-    fa st4_fa1 (.a (st3_p0_r[8]), .b (st3_p1_r[8]), .c (st3_p2_r[0]), .carry (st4_p0[9]), .sum (st4_p0[8]));
-    ha st4_ha1 (.a (st3_p0_r[9]), .b (st3_p1_r[9]), .c (st4_p0[10]), .s (st4_p1[9]));
-    ha st4_ha2 (.a (st3_p0_r[10]), .b (st3_p1_r[10]), .c (st4_p0[11]), .s (st4_p1[10]));
-    fa st4_fa2 (.a (st3_p0_r[11]), .b (st3_p1_r[11]), .c (st3_p2_r[1]), .carry (st4_p0[12]), .sum (st4_p1[11]));
-    ha st4_ha3 (.a (st3_p0_r[12]), .b (st3_p1_r[12]), .c (st4_p0[13]), .s (st4_p1[12]));
-    ha st4_ha4 (.a (st3_p0_r[13]), .b (st3_p1_r[13]), .c (st4_p0[14]), .s (st4_p1[13]));
-    ha st4_ha5 (.a (st3_p0_r[14]), .b (st3_p1_r[14]), .c (st4_p0[15]), .s (st4_p1[14]));
-
-//clk sync
-    reg [15:0] st4_p0_r;
-    reg [15:3] st4_p1_r;
+// output clk sync
     always @(posedge clk) begin
-        st4_p0_r <= #1 st4_p0;
-        st4_p1_r <= #1 st4_p1;
-    end
-
-//stage 5. CPA
-    always @(st4_p0_r or st4_p1_r) begin
-        out = st4_p0_r + {st4_p1_r, 3'b00};
+        out <= #1 out_c;
     end
 
 endmodule
