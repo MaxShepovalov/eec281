@@ -67,7 +67,7 @@ module mult (
     assign p4 = a_r & {b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4], b_r[4]};
     assign p5 = a_r & {b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5], b_r[5]};
     assign p6 = a_r & {b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6], b_r[6]};
-    assign p7 = a_r & {b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7]};
+    assign p7 = (~a_r) & {b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7], b_r[7]};
     //end
 
 // stage 2. CSA
@@ -77,7 +77,7 @@ module mult (
     wire [15:4] st2_p2;
     wire [15:6] st2_p3;
     wire [7:0] st2_c1; //carry between top 4:2 adders
-    wire [7:0] st2_c2; //carry between bottom 4:2 adders 
+    wire [9:0] st2_c2; //carry between bottom 4:2 adders 
 
     assign st2_p0[0] = p0[0];
     assign st2_p2[4] = p4[0];
@@ -85,6 +85,8 @@ module mult (
     //top row
     ha    st2_t_col1  (.a (p0[1]), .b (p1[0]),                                                           .c  (st2_p1[2]),  .s (st2_p0[1]));
     fa    st2_t_col2  (.a (p0[2]), .b (p1[1]), .c (p2[0]),                                            .carry (st2_p1[3]), .sum (st2_p0[2]));
+    //add42 st2_t_col1  (.a (p0[1]), .b (p1[0]), .c (b_r[7]), .d (b_r[7]), .ci(1'b0), cc .c  (st2_p1[2]),  .s (st2_p0[1]));
+    //add42 st2_t_col2  (.a (p0[2]), .b (p1[1]), .c (p2[0]),                                            .carry (st2_p1[3]), .sum (st2_p0[2]));
     add42 st2_t_col3  (.a (p0[3]), .b (p1[2]), .c (p2[1]), .d (p3[0]), .ci (1'b0),      .cc (st2_c1[0]), .co (st2_p1[4]),  .s (st2_p0[3]));
     add42 st2_t_col4  (.a (p0[4]), .b (p1[3]), .c (p2[2]), .d (p3[1]), .ci (st2_c1[0]), .cc (st2_c1[1]), .co (st2_p1[5]),  .s (st2_p0[4]));
     add42 st2_t_col5  (.a (p0[5]), .b (p1[4]), .c (p2[3]), .d (p3[2]), .ci (st2_c1[1]), .cc (st2_c1[2]), .co (st2_p1[6]),  .s (st2_p0[5]));
@@ -96,9 +98,11 @@ module mult (
     add42 st2_t_col11 (.a (p0[7]), .b (p1[7]), .c (p2[7]), .d (p3[7]), .ci (st2_c1[7]), .cc (),          .co (st2_p1[12]), .s (st2_p0[11]));
 
     //bottom row
-    ha st2_b_col5     (.a (p4[1]), .b (p5[0]),                                                           .c  (st2_p3[6]),  .s (st2_p2[5]));
-    fa st2_b_col6     (.a (p4[2]), .b (p5[1]), .c (p6[0]),                                            .carry (st2_p3[7]), .sum (st2_p2[6]));
-    add42 st2_b_col7  (.a (p4[3]), .b (p5[2]), .c (p6[1]), .d (p7[0]), .ci (1'b0),      .cc (st2_c2[0]), .co (st2_p3[8]),  .s (st2_p2[7]));
+    //ha st2_b_col5     (.a (p4[1]), .b (p5[0]),                                                           .c  (st2_p3[6]),  .s (st2_p2[5]));
+    //fa st2_b_col6     (.a (p4[2]), .b (p5[1]), .c (p6[0]),                                            .carry (st2_p3[7]), .sum (st2_p2[6]));
+    add42 st2_b_col5  (.a (p4[1]), .b (p5[0]), .c (b_r[7]), .d (b_r[7]), .ci (1'b0), .cc (st2_c2[8]), .co  (st2_p3[6]),  .s (st2_p2[5]));
+    add42 st2_b_col6  (.a (p4[2]), .b (p5[1]), .c (p6[0]), .d (b_r[7]), .ci (st2_c2[8]), .cc (st2_c2[9]), .co (st2_p3[7]), .s (st2_p2[6]));
+    add42 st2_b_col7  (.a (p4[3]), .b (p5[2]), .c (p6[1]), .d (p7[0]), .ci (st2_c2[9]),      .cc (st2_c2[0]), .co (st2_p3[8]),  .s (st2_p2[7]));
     add42 st2_b_col8  (.a (p4[4]), .b (p5[3]), .c (p6[2]), .d (p7[1]), .ci (st2_c2[0]), .cc (st2_c2[1]), .co (st2_p3[9]),  .s (st2_p2[8]));
     add42 st2_b_col9  (.a (p4[5]), .b (p5[4]), .c (p6[3]), .d (p7[2]), .ci (st2_c2[1]), .cc (st2_c2[2]), .co (st2_p3[10]), .s (st2_p2[9]));
     add42 st2_b_col10 (.a (p4[6]), .b (p5[5]), .c (p6[4]), .d (p7[3]), .ci (st2_c2[2]), .cc (st2_c2[3]), .co (st2_p3[11]), .s (st2_p2[10]));
