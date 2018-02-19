@@ -100,7 +100,7 @@ Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standar
 Running PRESTO HDLC
 
 Inferred memory devices in process
-	in routine mult line 54 in file
+	in routine mult line 79 in file
 		'./mult.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -110,7 +110,7 @@ Inferred memory devices in process
 ===============================================================================
 
 Inferred memory devices in process
-	in routine mult line 143 in file
+	in routine mult line 156 in file
 		'./mult.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -120,6 +120,16 @@ Inferred memory devices in process
 Presto compilation completed successfully.
 Elaborated 1 design.
 Current design is now 'mult'.
+Information: Building the design 'booth2'. (HDL-193)
+
+Statistics for case statements in always block at line 53 in file
+	'./mult.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            54            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
 Information: Building the design 'ha'. (HDL-193)
 Presto compilation completed successfully.
 Information: Building the design 'fa'. (HDL-193)
@@ -140,9 +150,10 @@ link
 
 1
 uniquify
-Information: Uniquified 3 instances of design 'ha'. (OPT-1056)
-Information: Uniquified 63 instances of design 'fa'. (OPT-1056)
-Information: Uniquified 30 instances of design 'add42'. (OPT-1056)
+Information: Uniquified 4 instances of design 'booth2'. (OPT-1056)
+Information: Uniquified 12 instances of design 'ha'. (OPT-1056)
+Information: Uniquified 26 instances of design 'fa'. (OPT-1056)
+Information: Uniquified 11 instances of design 'add42'. (OPT-1056)
 1
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
@@ -178,7 +189,7 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 
 
-Information: There are 5 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+Information: There are 3 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
 
 
@@ -200,19 +211,19 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:00     620.0      0.00       0.0       0.0                          
-    0:00:00     620.0      0.00       0.0       0.0                          
-    0:00:00     620.0      0.00       0.0       0.0                          
-    0:00:00     620.0      0.00       0.0       0.0                          
-    0:00:00     620.0      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
+    0:00:01     619.5      0.00       0.0      15.4                          
+    0:00:01     619.5      0.00       0.0      15.4                          
+    0:00:01     619.5      0.00       0.0      15.4                          
+    0:00:01     619.5      0.00       0.0      15.4                          
+    0:00:01     619.5      0.00       0.0      15.4                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
 
 
 
@@ -223,9 +234,9 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     522.7      0.00       0.0       0.0                          
+    0:00:01     518.4      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -235,24 +246,24 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.4      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
-    0:00:00     526.1      0.00       0.0       0.0                          
+    0:00:01     518.4      0.00       0.0       0.0                          
+    0:00:01     518.4      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
+    0:00:01     516.8      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -270,7 +281,7 @@ Information: Updating graph... (UID-83)
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
 write -format verilog -output mult.vg -hierarchy $NameDesign
-Writing verilog file '/home/maxs1993/wq18/281/hw2/part2/mult.vg'.
+Writing verilog file '/home/maxs1993/wq18/281/hw2/part3/mult.vg'.
 1
 report_area               > mult.area
 report_cell               > mult.cell
@@ -299,7 +310,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     J-2014.09-SP2
-Date:        Sun Feb 18 22:13:11 2018
+Date:        Sun Feb 18 22:13:39 2018
 ****************************************
 
                    Name                                            Total
@@ -308,7 +319,7 @@ Nets                                                                2
     Unloaded nets (LINT-2)                                          2
 --------------------------------------------------------------------------------
 
-Warning: In design 'mult', net 'n255' driven by pin 'U268/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'mult', net 'n1' driven by pin 'U7/**logic_0**' has no loads. (LINT-2)
 Warning: In design 'mult', net '*Logic0*' driven by pin 'U2/**logic_0**' has no loads. (LINT-2)
 1
 exit

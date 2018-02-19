@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version J-2014.09-SP2 for amd64 -- Nov 25, 2014
-#@ # Date:   Sun Feb 18 22:13:05 2018
+#@ # Date:   Sun Feb 18 22:13:33 2018
 #@ # Run by: maxs1993@krait
 #@ 
 
@@ -3756,8 +3756,8 @@ source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup
 #@ 
 #@ # -- End source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup
 
-source /home/maxs1993/wq18/281/hw2/part2/.synopsys_dc.setup
-#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part2/.synopsys_dc.setup
+source /home/maxs1993/wq18/281/hw2/part3/.synopsys_dc.setup
+#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part3/.synopsys_dc.setup
 
 #@ # .synopsys_dc.setup 
 #@ #
@@ -3858,10 +3858,10 @@ source /home/maxs1993/wq18/281/hw2/part2/.synopsys_dc.setup
 #@ set edifout_netlist_only  "false"
 #@ set edifout_target_system  "cadence"
 #@ set edifout_instantiate_ports  "true"
-#@ # -- End source /home/maxs1993/wq18/281/hw2/part2/.synopsys_dc.setup
+#@ # -- End source /home/maxs1993/wq18/281/hw2/part3/.synopsys_dc.setup
 
-source -echo -verbose /home/maxs1993/wq18/281/hw2/part2/dc-mult.tcl
-#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part2/dc-mult.tcl
+source -echo -verbose /home/maxs1993/wq18/281/hw2/part3/dc-mult.tcl
+#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part3/dc-mult.tcl
 
 #@ # dc-mult.tcl script 
 #@ #

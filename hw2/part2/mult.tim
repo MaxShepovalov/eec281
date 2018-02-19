@@ -7,7 +7,7 @@ Report : timing
         -max_paths 10
 Design : mult
 Version: J-2014.09-SP2
-Date   : Sun Feb 18 18:40:43 2018
+Date   : Sun Feb 18 22:13:11 2018
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
