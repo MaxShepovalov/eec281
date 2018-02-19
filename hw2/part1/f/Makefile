@@ -29,7 +29,7 @@
 
 
 #----- Set the top-level module name here
-NAME		:= block_f
+NAME		:= cdma
 
 #----- Some variables
 USERNAME	:= $(shell whoami)

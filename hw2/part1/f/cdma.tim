@@ -1,0 +1,316 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 10
+        -max_paths 10
+Design : cdma
+Version: J-2014.09-SP2
+Date   : Sun Feb 18 18:32:12 2018
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  num[4] (in)                              0.00       0.00 f
+  U75/Z (XOR2_X1)                          0.08       0.08 f
+  U65/ZN (AOI22_X1)                        0.07       0.15 r
+  U64/ZN (XNOR2_X1)                        0.08       0.23 r
+  U63/Z (XOR2_X1)                          0.09       0.32 r
+  U62/ZN (NAND2_X1)                        0.04       0.36 f
+  U61/ZN (OAI21_X1)                        0.05       0.41 r
+  U58/ZN (XNOR2_X1)                        0.05       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  num[4] (in)                              0.00       0.00 f
+  U75/Z (XOR2_X1)                          0.08       0.08 f
+  U65/ZN (AOI22_X1)                        0.07       0.15 r
+  U64/ZN (XNOR2_X1)                        0.08       0.23 r
+  U63/Z (XOR2_X1)                          0.09       0.32 r
+  U62/ZN (NAND2_X1)                        0.04       0.36 f
+  U61/ZN (OAI21_X1)                        0.05       0.41 r
+  U58/ZN (XNOR2_X1)                        0.05       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[3] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  num[3] (in)                              0.00       0.00 r
+  U75/Z (XOR2_X1)                          0.09       0.09 r
+  U74/Z (XOR2_X1)                          0.10       0.18 r
+  U73/Z (XOR2_X1)                          0.09       0.28 r
+  U72/ZN (NAND2_X1)                        0.04       0.32 f
+  U60/ZN (INV_X1)                          0.03       0.35 r
+  U59/ZN (AOI21_X1)                        0.03       0.38 f
+  U58/ZN (XNOR2_X1)                        0.07       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[3] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  num[3] (in)                              0.00       0.00 r
+  U75/Z (XOR2_X1)                          0.09       0.09 r
+  U74/Z (XOR2_X1)                          0.10       0.18 r
+  U73/Z (XOR2_X1)                          0.09       0.28 r
+  U72/ZN (NAND2_X1)                        0.04       0.32 f
+  U60/ZN (INV_X1)                          0.03       0.35 r
+  U59/ZN (AOI21_X1)                        0.03       0.38 f
+  U58/ZN (XNOR2_X1)                        0.07       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  num[4] (in)                              0.00       0.00 r
+  U75/Z (XOR2_X1)                          0.09       0.09 r
+  U74/Z (XOR2_X1)                          0.10       0.18 r
+  U73/Z (XOR2_X1)                          0.09       0.28 r
+  U72/ZN (NAND2_X1)                        0.04       0.32 f
+  U60/ZN (INV_X1)                          0.03       0.35 r
+  U59/ZN (AOI21_X1)                        0.03       0.38 f
+  U58/ZN (XNOR2_X1)                        0.07       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  num[4] (in)                              0.00       0.00 r
+  U75/Z (XOR2_X1)                          0.09       0.09 r
+  U74/Z (XOR2_X1)                          0.10       0.18 r
+  U73/Z (XOR2_X1)                          0.09       0.28 r
+  U72/ZN (NAND2_X1)                        0.04       0.32 f
+  U60/ZN (INV_X1)                          0.03       0.35 r
+  U59/ZN (AOI21_X1)                        0.03       0.38 f
+  U58/ZN (XNOR2_X1)                        0.07       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  num[4] (in)                              0.00       0.00 f
+  U75/Z (XOR2_X1)                          0.08       0.08 f
+  U65/ZN (AOI22_X1)                        0.07       0.15 r
+  U64/ZN (XNOR2_X1)                        0.08       0.23 r
+  U63/Z (XOR2_X1)                          0.09       0.32 r
+  U62/ZN (NAND2_X1)                        0.04       0.36 f
+  U61/ZN (OAI21_X1)                        0.05       0.41 r
+  U58/ZN (XNOR2_X1)                        0.05       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  num[4] (in)                              0.00       0.00 f
+  U75/Z (XOR2_X1)                          0.08       0.08 f
+  U65/ZN (AOI22_X1)                        0.07       0.15 r
+  U64/ZN (XNOR2_X1)                        0.08       0.23 r
+  U63/Z (XOR2_X1)                          0.09       0.32 r
+  U62/ZN (NAND2_X1)                        0.04       0.36 f
+  U61/ZN (OAI21_X1)                        0.05       0.41 r
+  U58/ZN (XNOR2_X1)                        0.05       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  num[4] (in)                              0.00       0.00 f
+  U75/Z (XOR2_X1)                          0.08       0.08 f
+  U65/ZN (AOI22_X1)                        0.07       0.15 r
+  U64/ZN (XNOR2_X1)                        0.08       0.23 r
+  U63/Z (XOR2_X1)                          0.09       0.32 r
+  U62/ZN (NAND2_X1)                        0.04       0.36 f
+  U61/ZN (OAI21_X1)                        0.05       0.41 r
+  U58/ZN (XNOR2_X1)                        0.05       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: num[4] (input port)
+  Endpoint: out[3] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  cdma               5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  num[4] (in)                              0.00       0.00 f
+  U75/Z (XOR2_X1)                          0.08       0.08 f
+  U65/ZN (AOI22_X1)                        0.07       0.15 r
+  U64/ZN (XNOR2_X1)                        0.08       0.23 r
+  U63/Z (XOR2_X1)                          0.09       0.32 r
+  U62/ZN (NAND2_X1)                        0.04       0.36 f
+  U61/ZN (OAI21_X1)                        0.05       0.41 r
+  U58/ZN (XNOR2_X1)                        0.05       0.45 f
+  U57/ZN (OR3_X1)                          0.09       0.54 f
+  U47/ZN (OAI22_X1)                        0.07       0.61 r
+  U46/ZN (NOR2_X1)                         0.03       0.64 f
+  U44/Z (MUX2_X1)                          0.07       0.71 f
+  out[3] (out)                             0.01       0.72 f
+  data arrival time                                   0.72
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

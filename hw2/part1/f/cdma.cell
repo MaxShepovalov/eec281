@@ -1,0 +1,94 @@
+ 
+****************************************
+Report : cell
+Design : cdma
+Version: J-2014.09-SP2
+Date   : Sun Feb 18 18:32:11 2018
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+U43                       AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U44                       MUX2_X1         NangateOpenCellLibrary
+                                                          1.862000  
+U45                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U46                       NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U47                       OAI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U48                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U49                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U50                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U51                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U52                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U53                       OAI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U54                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U55                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U56                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U57                       OR3_X1          NangateOpenCellLibrary
+                                                          1.330000  
+U58                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U59                       AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U60                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U61                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U62                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U63                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U64                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U65                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U66                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U67                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U68                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U69                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U70                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U71                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U72                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U73                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U74                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U75                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U76                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U77                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U78                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U79                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+--------------------------------------------------------------------------------
+Total 37 cells                                            44.688000
+1
