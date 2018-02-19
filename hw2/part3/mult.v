@@ -50,16 +50,18 @@ module booth2 (
     output reg invert
     );
 
-    case (section)
-        3'b000: {code, invert} = 10'b0;
-        3'b001: {code, invert} = {number[7], number, 1'b0};
-        3'b010: {code, invert} = {number[7], number, 1'b0};
-        3'b011: {code, invert} = {number, 2'b0};
-        3'b100: {code, invert} = {~number, 2'b11};
-        3'b101: {code, invert} = {~number[7], ~number, 1'b1};
-        3'b110: {code, invert} = {~number[7], ~number, 1'b1};
-        3'b111: {code, invert} = 10'b0;
-    endcase
+    always @(section or number) begin
+        case (section)
+            3'b000: {code, invert} = 10'b0;
+            3'b001: {code, invert} = {number[7], number, 1'b0};
+            3'b010: {code, invert} = {number[7], number, 1'b0};
+            3'b011: {code, invert} = {number, 2'b0};
+            3'b100: {code, invert} = {~number, 2'b11};
+            3'b101: {code, invert} = {~number[7], ~number, 1'b1};
+            3'b110: {code, invert} = {~number[7], ~number, 1'b1};
+            3'b111: {code, invert} = 10'b0;
+        endcase
+    end
 
 endmodule
 
