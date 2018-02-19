@@ -10,33 +10,37 @@ file: mult.v
 		errors: 0, warnings: 0
 	module worklib.add42:v
 		errors: 0, warnings: 0
+	module worklib.booth2:v
+		errors: 0, warnings: 0
 	module worklib.mult:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
+		worklib.booth2:v <0x77c08669>
+			streams:   1, words:   764
 		worklib.fa:v <0x52bf646d>
 			streams:   0, words:     0
 		worklib.ha:v <0x52cafae2>
 			streams:   0, words:     0
-		worklib.mult:v <0x3cc69217>
-			streams:   8, words:  4009
+		worklib.mult:v <0x6cc97f80>
+			streams:   9, words:  2381
 		worklib.tbench:vt <0x0100204a>
 			streams:   3, words: 11212
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
-		Modules:                 98       5
-		Registers:               11      11
-		Scalar wires:           142       -
-		Expanded wires:          66       9
-		Vectored wires:           3       -
-		Always blocks:            3       3
+		Modules:                 55       6
+		Registers:               19      13
+		Scalar wires:            92       -
+		Expanded wires:          36       4
+		Vectored wires:          11       -
+		Always blocks:            7       4
 		Initial blocks:           1       1
-		Cont. assignments:        2      15
-		Pseudo assignments:       3       3
+		Cont. assignments:        0      12
+		Pseudo assignments:       6       6
 		Simulation timescale:  10ps
 	Writing initial simulation snapshot: worklib.tbench:vt
 Loading snapshot worklib.tbench:vt .................... Done
