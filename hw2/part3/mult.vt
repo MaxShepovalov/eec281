@@ -1,0 +1,81 @@
+//test bench for 8x8 multiplier
+
+`timescale 1ns/10ps
+
+module tbench();
+
+    reg [7:0] a, b;
+    wire [15:0] out;
+    reg clk;
+    integer i;
+
+    reg [7:0] a_tst [23:0], b_tst [23:0];
+    reg [15:0] o_tst [23:0];
+
+    mult block (.a (a), .b (b), .out (out), .clk (clk));
+
+    initial begin
+        //tracer
+        $recordfile("mult_test");
+        $recordvars(tbench);
+
+        //fill test cases
+        a_tst[0] = 8'b0000_0000; b_tst[0] = 8'b0000_0000; o_tst[0] = 16'b0000_0000_0000_0000; //       0 x       0
+        a_tst[1] = 8'b0000_0001; b_tst[1] = 8'b0111_1111; o_tst[1] = 16'b0000_0000_0111_1111; //       1 x max pos
+        a_tst[2] = 8'b0000_0001; b_tst[2] = 8'b1000_0000; o_tst[2] = 16'b1111_1111_1000_0000; //       1 x max neg
+        a_tst[3] = 8'b0111_1111; b_tst[3] = 8'b0000_0001; o_tst[3] = 16'b0000_0000_0111_1111; // max pos x       1
+        a_tst[4] = 8'b1000_0000; b_tst[4] = 8'b0000_0001; o_tst[4] = 16'b1111_1111_1000_0000; // max neg x       1
+        a_tst[5] = 8'b0111_1111; b_tst[5] = 8'b0111_1111; o_tst[5] = 16'b0011_1111_0000_0001; // max pos x max pos
+        a_tst[6] = 8'b0111_1111; b_tst[6] = 8'b1000_0000; o_tst[6] = 16'b1100_0000_1000_0000; // max pos x max neg
+        a_tst[7] = 8'b1000_0000; b_tst[7] = 8'b0111_1111; o_tst[7] = 16'b1100_0000_1000_0000; // max neg x max pos
+        a_tst[8] = 8'b1000_0000; b_tst[8] = 8'b1000_0000; o_tst[8] = 16'b0100_0000_0000_0000; // max neg x max neg
+
+        a_tst[9] = 8'b0010_1000; b_tst[9] = 8'b0010_0000; o_tst[9] = 16'b0000_0101_0000_0000;    //   40 x 32 = 1280
+        a_tst[10] = 8'b1111_0001; b_tst[10] = 8'b1000_0111; o_tst[10] = 16'b0000_0111_0001_0111; //  -15 x -121 = 1815
+        a_tst[11] = 8'b0001_1110; b_tst[11] = 8'b1111_1111; o_tst[11] = 16'b1111_1111_1110_0010; //   30 x -1 = -30
+        a_tst[12] = 8'b1111_1111; b_tst[12] = 8'b1111_1111; o_tst[12] = 16'b0000_0000_0000_0001; //   -1 x -1 = 1
+        a_tst[13] = 8'b1111_1111; b_tst[13] = 8'b0010_1101; o_tst[13] = 16'b1111_1111_1101_0011; //   -1 x 45 = -45
+
+        a_tst[14] = 8'b0000_0000; b_tst[14] = 8'b0110_0100; o_tst[14] = 16'b0000_0000_0000_0000; //    0 x 100 = 0
+        a_tst[15] = 8'b0110_0100; b_tst[15] = 8'b0000_0000; o_tst[15] = 16'b0000_0000_0000_0000; //  100 x   0 = 0
+        a_tst[16] = 8'b0000_0001; b_tst[16] = 8'b1111_1111; o_tst[16] = 16'b1111_1111_1111_1111; //    1 x -1  = -1
+        a_tst[17] = 8'b1111_1111; b_tst[17] = 8'b0000_0001; o_tst[17] = 16'b1111_1111_1111_1111; //   -1 x  1  = -1
+        a_tst[18] = 8'b0110_0100; b_tst[18] = 8'b0110_0100; o_tst[18] = 16'b0010_0111_0001_0000; //  100 x 100 = 10000
+
+        a_tst[19] = 8'b0000_0000; b_tst[19] = 8'b0000_0000; o_tst[19] = 16'b0000_0000_0000_0000; //
+        a_tst[20] = 8'b0000_0000; b_tst[20] = 8'b0000_0000; o_tst[20] = 16'b0000_0000_0000_0000; //
+        a_tst[21] = 8'b0000_0000; b_tst[21] = 8'b0000_0000; o_tst[21] = 16'b0000_0000_0000_0000; //
+        a_tst[22] = 8'b0000_0000; b_tst[22] = 8'b0000_0000; o_tst[22] = 16'b0000_0000_0000_0000; //
+        a_tst[23] = 8'b0000_0000; b_tst[23] = 8'b0000_0000; o_tst[23] = 16'b0000_0000_0000_0000; //
+
+        //start tests
+        clk = 1'b0;
+        for (i = 0; i < 24; i = i + 1) begin
+            a = a_tst[i];
+            b = b_tst[i];
+
+            #10
+            clk = 1'b1; //start
+            #10
+            clk = 1'b0;
+
+
+            #10
+            clk = 1'b1; //read answer
+            #10
+            clk = 1'b0;
+            
+            if (out == o_tst[i])
+                $display("%d) %b x %b = %b",i,a,b,out);
+            else
+                $display("%d) %b x %b got %b expected %b",i,a,b,out,o_tst[i]);
+        end
+    end
+
+    // generate a clock. osc inverts clock every #10
+    //always begin
+    //   #10;                 // wait for initial block to initialize clock
+    //   clk = ~clk;
+    //end
+
+endmodule
