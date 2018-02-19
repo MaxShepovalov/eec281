@@ -12,7 +12,7 @@ module machine (
     parameter CAMERA_ON = 2'b01;
     parameter PROCESS = 2'b10;
 
-    reg [2:0] state_c;
+    reg [1:0] state_c;
     reg [2:0] count, count_c;
     reg shutter_c;
 
