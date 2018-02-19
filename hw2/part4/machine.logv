@@ -1,0 +1,41 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Feb 19, 2018 at 00:38:45 PST
+ncverilog
+	+access+r
+	-l
+	machine.logv
+	-f machine.vfv
+		machine.v
+		tbench.vt
+file: machine.v
+	module worklib.machine:v
+		errors: 0, warnings: 0
+file: tbench.vt
+	module worklib.test:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.machine:v <0x41d35fad>
+			streams:   4, words:  3187
+		worklib.test:vt <0x539f328b>
+			streams:   8, words:  3924
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		              Instances  Unique
+		Modules:              2       2
+		Registers:           10      10
+		Scalar wires:         4       -
+		Always blocks:        4       4
+		Initial blocks:       2       2
+		Pseudo assignments:   1       1
+	Writing initial simulation snapshot: worklib.test:vt
+Loading snapshot worklib.test:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+Simulation complete via $finish(1) at time 1230 NS + 0
+./tbench.vt:51             $finish;
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Feb 19, 2018 at 00:38:48 PST  (total: 00:00:03)

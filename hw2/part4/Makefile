@@ -31,7 +31,7 @@
 
 
 #----- Set the top-level module name here
-NAME		:= mult
+NAME		:= machine
 
 #----- Some variables
 USERNAME	:= $(shell whoami)

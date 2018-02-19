@@ -31,24 +31,24 @@ module test();
 
     //logic 
     always @(posedge clk) begin
-        cycle = cycle + 1;
+        cycle <= #1 cycle + 1;
         case (cycle)
         //start circuit with skip = 1'b0
-            3:  reset = 1'b0;
+            3:  reset <= #1 1'b0;
         //reset at some point
-            20: reset = 1'b1;
-            21: reset = 1'b0;
-            24: skip = 1'b1;
+            20: reset <= #1 1'b1;
+            21: reset <= #1 1'b0;
+            24: skip <= #1 1'b1;
         //put some resets again
-            30: reset = 1'b1;
-            31: reset = 1'b0;
+            36: reset <= #1 1'b1;
+            37: reset <= #1 1'b0;
 
-            43: reset = 1'b1;
-            44: reset = 1'b0;
+            47: reset <= #1 1'b1;
+            48: reset <= #1 1'b0;
         endcase
         //finish simulation
         if (cycle > 60)
-            $finish
+            $finish;
     end
 
 
