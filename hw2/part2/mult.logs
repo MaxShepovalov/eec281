@@ -21,7 +21,7 @@ is subject to the terms and conditions of a written license agreement
 between you, or your company, and Synopsys, Inc.
 
 Initializing...
-# dc-template.tcl script 
+# dc-mult.tcl script 
 #
 # 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
 #             cycle time so very short critical paths are visible in timing 
@@ -59,14 +59,14 @@ Initializing...
 #   report_power -net
 #   report_power -hier
 #   set_max_delay
-#   write -format db -output block_e.db
+#   write -format db -output mult.db
 #
 # Doesn't work quite the way I expect
-#   NameDesign = block_e    Set variable ok, but how to concatenate?
-#   write_rtl -format verilog -output block_e.vg
+#   NameDesign = mult    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output mult.vg
 #===== Set: make sure you change design name elsewhere in this file
-set NameDesign "block_e"
-block_e
+set NameDesign "mult"
+mult
 #===== Set some timing parameters
 set CLK "clk"
 clk
@@ -84,9 +84,9 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 # It appears only one "analyze" command is needed with .tcl scripts we use.
 # Strangely, it seems to be needed only the first time synthesis is run.
 # Previously, they worked best with one line per module.
-analyze -format verilog ./block_e.v
+analyze -format verilog ./mult.v
 Running PRESTO HDLC
-Compiling source file ./block_e.v
+Compiling source file ./mult.v
 Presto compilation completed successfully.
 Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
 Information: Using CCS timing libraries. (TIM-024)
@@ -98,16 +98,41 @@ Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standar
   Loading link library 'NangateOpenCellLibrary'
   Loading link library 'gtech'
 Running PRESTO HDLC
+
+Inferred memory devices in process
+	in routine mult line 54 in file
+		'./mult.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       a_r_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|       b_r_reg       | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine mult line 143 in file
+		'./mult.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       out_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
 Presto compilation completed successfully.
 Elaborated 1 design.
-Current design is now 'block_e'.
+Current design is now 'mult'.
+Information: Building the design 'ha'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'fa'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'add42'. (HDL-193)
+Presto compilation completed successfully.
 1
 current_design $NameDesign
-Current design is 'block_e'.
-{block_e}
+Current design is 'mult'.
+{mult}
 link
 
-  Linking design 'block_e'
+  Linking design 'mult'
   Using the following designs and libraries:
   --------------------------------------------------------------------------
   NangateOpenCellLibrary (library) /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db
@@ -115,36 +140,33 @@ link
 
 1
 uniquify
+Information: Uniquified 3 instances of design 'ha'. (OPT-1056)
+Information: Uniquified 63 instances of design 'fa'. (OPT-1056)
+Information: Uniquified 30 instances of design 'add42'. (OPT-1056)
 1
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
    }
+Information: Updating graph... (UID-83)
+1
 set_max_area 0.0
 1
 #===== Timing and input/output load constraints
 create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
-Warning: Can't find object 'clk' in design 'block_e'. (UID-95)
-Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
-0
+1
 set_clock_uncertainty $clock_skew $CLK
-Warning: Can't find object 'clk' in design 'block_e'. (UID-95)
-Error: Value for list 'object_list' must have 1 elements. (CMD-036)
-0
+1
 #set_clock_skew -plus_uncertainty $clock_skew $CLK
 #set_clock_skew -minus_uncertainty $clock_skew $CLK
 set_input_delay     $input_delay  -clock $CLK [all_inputs]
-Warning: Can't find clock 'clk' in design 'block_e'. (UID-95)
-Error: Value for list '-clock' must have 1 elements. (CMD-036)
-0
+1
 #remove_input_delay               -clock $CLK [all_inputs] 
 set_output_delay    $output_delay -clock $CLK [all_outputs]
-Warning: Can't find clock 'clk' in design 'block_e'. (UID-95)
-Error: Value for list '-clock' must have 1 elements. (CMD-036)
-0
+1
 set_load 1.5 [all_outputs]
 1
 compile -map_effort medium
-Warning: Setting attribute 'fix_multiple_port_nets' on design 'block_e'. (UIO-59)
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'mult'. (UIO-59)
 Information: Checking out the license 'DesignWare'. (SEC-104)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
@@ -156,48 +178,41 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 
 
+Information: There are 5 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
 
   Beginning Pass 1 Mapping
   ------------------------
-  Processing 'block_e'
+  Processing 'mult'
 
   Updating timing information
 Information: Updating design information... (UID-85)
 
   Beginning Implementation Selection
   ----------------------------------
-  Processing 'block_e_DW01_add_0'
-  Processing 'block_e_DW01_add_1'
-  Processing 'block_e_DW01_add_2'
-  Processing 'block_e_DW01_add_3'
-  Processing 'block_e_DW01_add_4'
-  Processing 'block_e_DW01_add_5'
-  Processing 'block_e_DW01_add_6'
-  Processing 'block_e_DW01_add_7'
-  Processing 'block_e_DW01_add_8'
-  Processing 'block_e_DW01_add_9'
+  Processing 'mult_DW01_add_0'
 
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
-  Structuring 'block_e'
-  Mapping 'block_e'
 
                                   TOTAL                                      
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:00     620.0      0.00       0.0       0.0                          
+    0:00:00     620.0      0.00       0.0       0.0                          
+    0:00:00     620.0      0.00       0.0       0.0                          
+    0:00:00     620.0      0.00       0.0       0.0                          
+    0:00:00     620.0      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
 
 
 
@@ -208,9 +223,9 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -220,23 +235,24 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.4      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
+    0:00:01     526.1      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -249,17 +265,19 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
    }
+Information: Updating graph... (UID-83)
+1
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
-write -format verilog -output block_e.vg -hierarchy $NameDesign
-Writing verilog file '/home/maxs1993/wq18/281/hw2/part1/e/block_e.vg'.
+write -format verilog -output mult.vg -hierarchy $NameDesign
+Writing verilog file '/home/maxs1993/wq18/281/hw2/part2/mult.vg'.
 1
-report_area               > block_e.area
-report_cell               > block_e.cell
-report_hierarchy          > block_e.hier
-report_net                > block_e.net
-report_power              > block_e.pow
-report_timing -nworst 10  > block_e.tim
+report_area               > mult.area
+report_cell               > mult.cell
+report_hierarchy          > mult.hier
+report_net                > mult.net
+report_power              > mult.pow
+report_timing -nworst 10  > mult.tim
 check_timing
 
 Information: Checking generated_clocks...
@@ -270,16 +288,6 @@ Information: Checking no_input_delay...
 
 Information: Checking unconstrained_endpoints...
 
-Warning: The following end-points are not constrained for maximum delay.
-
-End point
----------------
-sum[0]
-sum[1]
-sum[2]
-sum[3]
-sum[4]
-
 Information: Checking pulse_clock_cell_type...
 
 Information: Checking no_driving_cell...
@@ -287,6 +295,21 @@ Information: Checking no_driving_cell...
 Information: Checking partial_input_delay...
 1
 check_design
+ 
+****************************************
+check_design summary:
+Version:     J-2014.09-SP2
+Date:        Sun Feb 18 18:40:43 2018
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Nets                                                                2
+    Unloaded nets (LINT-2)                                          2
+--------------------------------------------------------------------------------
+
+Warning: In design 'mult', net 'n255' driven by pin 'U268/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'mult', net '*Logic0*' driven by pin 'U2/**logic_0**' has no loads. (LINT-2)
 1
 exit
 

@@ -59,14 +59,14 @@ Initializing...
 #   report_power -net
 #   report_power -hier
 #   set_max_delay
-#   write -format db -output block_e.db
+#   write -format db -output cdma.db
 #
 # Doesn't work quite the way I expect
-#   NameDesign = block_e    Set variable ok, but how to concatenate?
-#   write_rtl -format verilog -output block_e.vg
+#   NameDesign = cdma    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output cdma.vg
 #===== Set: make sure you change design name elsewhere in this file
-set NameDesign "block_e"
-block_e
+set NameDesign "cdma"
+cdma
 #===== Set some timing parameters
 set CLK "clk"
 clk
@@ -84,9 +84,9 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 # It appears only one "analyze" command is needed with .tcl scripts we use.
 # Strangely, it seems to be needed only the first time synthesis is run.
 # Previously, they worked best with one line per module.
-analyze -format verilog ./block_e.v
+analyze -format verilog ./cdma.v
 Running PRESTO HDLC
-Compiling source file ./block_e.v
+Compiling source file ./cdma.v
 Presto compilation completed successfully.
 Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
 Information: Using CCS timing libraries. (TIM-024)
@@ -98,16 +98,28 @@ Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standar
   Loading link library 'NangateOpenCellLibrary'
   Loading link library 'gtech'
 Running PRESTO HDLC
+
+Statistics for case statements in always block at line 106 in file
+	'./cdma.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           109            |    auto/auto     |
+===============================================
 Presto compilation completed successfully.
 Elaborated 1 design.
-Current design is now 'block_e'.
+Current design is now 'cdma'.
+Information: Building the design 'fulladder'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'adder42'. (HDL-193)
+Presto compilation completed successfully.
 1
 current_design $NameDesign
-Current design is 'block_e'.
-{block_e}
+Current design is 'cdma'.
+{cdma}
 link
 
-  Linking design 'block_e'
+  Linking design 'cdma'
   Using the following designs and libraries:
   --------------------------------------------------------------------------
   NangateOpenCellLibrary (library) /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db
@@ -115,36 +127,40 @@ link
 
 1
 uniquify
+Information: Uniquified 7 instances of design 'fulladder'. (OPT-1056)
+Information: Uniquified 2 instances of design 'adder42'. (OPT-1056)
 1
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
    }
+Information: Updating graph... (UID-83)
+1
 set_max_area 0.0
 1
 #===== Timing and input/output load constraints
 create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
-Warning: Can't find object 'clk' in design 'block_e'. (UID-95)
+Warning: Can't find object 'clk' in design 'cdma'. (UID-95)
 Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
 0
 set_clock_uncertainty $clock_skew $CLK
-Warning: Can't find object 'clk' in design 'block_e'. (UID-95)
+Warning: Can't find object 'clk' in design 'cdma'. (UID-95)
 Error: Value for list 'object_list' must have 1 elements. (CMD-036)
 0
 #set_clock_skew -plus_uncertainty $clock_skew $CLK
 #set_clock_skew -minus_uncertainty $clock_skew $CLK
 set_input_delay     $input_delay  -clock $CLK [all_inputs]
-Warning: Can't find clock 'clk' in design 'block_e'. (UID-95)
+Warning: Can't find clock 'clk' in design 'cdma'. (UID-95)
 Error: Value for list '-clock' must have 1 elements. (CMD-036)
 0
 #remove_input_delay               -clock $CLK [all_inputs] 
 set_output_delay    $output_delay -clock $CLK [all_outputs]
-Warning: Can't find clock 'clk' in design 'block_e'. (UID-95)
+Warning: Can't find clock 'clk' in design 'cdma'. (UID-95)
 Error: Value for list '-clock' must have 1 elements. (CMD-036)
 0
 set_load 1.5 [all_outputs]
 1
 compile -map_effort medium
-Warning: Setting attribute 'fix_multiple_port_nets' on design 'block_e'. (UIO-59)
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'cdma'. (UIO-59)
 Information: Checking out the license 'DesignWare'. (SEC-104)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
@@ -159,45 +175,32 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 
   Beginning Pass 1 Mapping
   ------------------------
-  Processing 'block_e'
+  Processing 'cdma'
 
   Updating timing information
 Information: Updating design information... (UID-85)
 
-  Beginning Implementation Selection
-  ----------------------------------
-  Processing 'block_e_DW01_add_0'
-  Processing 'block_e_DW01_add_1'
-  Processing 'block_e_DW01_add_2'
-  Processing 'block_e_DW01_add_3'
-  Processing 'block_e_DW01_add_4'
-  Processing 'block_e_DW01_add_5'
-  Processing 'block_e_DW01_add_6'
-  Processing 'block_e_DW01_add_7'
-  Processing 'block_e_DW01_add_8'
-  Processing 'block_e_DW01_add_9'
-
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
-  Structuring 'block_e'
-  Mapping 'block_e'
+  Structuring 'cdma'
+  Mapping 'cdma'
 
                                   TOTAL                                      
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
 
 
 
@@ -208,9 +211,9 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -220,23 +223,23 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
-    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
+    0:00:01      44.7      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -251,15 +254,16 @@ if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    }
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
-write -format verilog -output block_e.vg -hierarchy $NameDesign
-Writing verilog file '/home/maxs1993/wq18/281/hw2/part1/e/block_e.vg'.
+write -format verilog -output cdma.vg -hierarchy $NameDesign
+Writing verilog file '/home/maxs1993/wq18/281/hw2/part1/f/cdma.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
 1
-report_area               > block_e.area
-report_cell               > block_e.cell
-report_hierarchy          > block_e.hier
-report_net                > block_e.net
-report_power              > block_e.pow
-report_timing -nworst 10  > block_e.tim
+report_area               > cdma.area
+report_cell               > cdma.cell
+report_hierarchy          > cdma.hier
+report_net                > cdma.net
+report_power              > cdma.pow
+report_timing -nworst 10  > cdma.tim
 check_timing
 
 Information: Checking generated_clocks...
@@ -274,11 +278,10 @@ Warning: The following end-points are not constrained for maximum delay.
 
 End point
 ---------------
-sum[0]
-sum[1]
-sum[2]
-sum[3]
-sum[4]
+out[1]
+out[2]
+out[3]
+out[4]
 
 Information: Checking pulse_clock_cell_type...
 
@@ -287,6 +290,20 @@ Information: Checking no_driving_cell...
 Information: Checking partial_input_delay...
 1
 check_design
+ 
+****************************************
+check_design summary:
+Version:     J-2014.09-SP2
+Date:        Sun Feb 18 18:32:12 2018
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      1
+    Constant outputs (LINT-52)                                      1
+--------------------------------------------------------------------------------
+
+Warning: In design 'cdma', output port 'out[0]' is connected directly to 'logic 1'. (LINT-52)
 1
 exit
 

@@ -1,0 +1,175 @@
+//Test bench for 11 single-bit numbers adder
+
+`timescale 1ns/10ps
+
+module cdma_test();
+
+//input
+reg [10:0] a;
+
+// Misc "wires"
+wire [4:0] sum;
+reg [4:0] tst;
+
+cdma adder (
+  .num (a),
+  .out (sum)
+);
+
+initial begin
+  $recordfile("cdma_test");
+  $recordvars(cdma_test);
+
+  $display("\nAdder for 11 single bit numbers");
+  $display("N  inp         output correct");
+  $display("== =========== =====  =");
+
+  //      a9876543210
+  a = 11'b00000000000;
+  tst = 5'b10101;
+  #10;
+  if (sum == tst)
+    $display("01 %b %b Y",a,sum);
+  else
+    $display("01 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b10000000000;
+  tst = 5'b10111;
+  #10;
+  if (sum == tst)
+    $display("02 %b %b Y",a,sum);
+  else
+    $display("02 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b10001000000;
+  tst = 5'b11001;
+  #10;
+  if (sum == tst)
+    $display("03 %b %b Y",a,sum);
+  else
+    $display("03 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b00101000100;
+  tst = 5'b11011;
+  #10;
+  if (sum == tst)
+    $display("04 %b %b Y",a,sum);
+  else
+    $display("04 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b01010101000;
+  tst = 5'b11101;
+  #10;
+  if (sum == tst)
+    $display("05 %b %b Y",a,sum);
+  else
+    $display("05 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b01100011001;
+  tst = 5'b11111;
+  #10;
+  if (sum == tst)
+    $display("06 %b %b Y",a,sum);
+  else
+    $display("06 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b11100000111;
+  tst = 5'b00001;
+  #10;
+  if (sum == tst)
+    $display("07 %b %b Y",a,sum);
+  else
+    $display("07 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b00011111110;
+  tst = 5'b00011;
+  #10;
+  if (sum == tst)
+    $display("08 %b %b Y",a,sum);
+  else
+    $display("08 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b01110110111;
+  tst = 5'b00101;
+  #10;
+  if (sum == tst)
+    $display("09 %b %b Y",a,sum);
+  else
+    $display("09 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b11101110111;
+  tst = 5'b00111;
+  #10;
+  if (sum == tst)
+    $display("10 %b %b Y",a,sum);
+  else
+    $display("10 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b11011111111;
+  tst = 5'b01001;
+  #10;
+  if (sum == tst)
+    $display("11 %b %b Y",a,sum);
+  else
+    $display("11 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b11111111111;
+  tst = 5'b01011;
+  #10;
+  if (sum == tst)
+    $display("12 %b %b Y",a,sum);
+  else
+    $display("12 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b10010010010;
+  tst = 5'b11101;
+  #10;
+  if (sum == tst)
+    $display("13 %b %b Y",a,sum);
+  else
+    $display("13 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b00000000001;
+  tst = 5'b10111;
+  #10;
+  if (sum == tst)
+    $display("14 %b %b Y",a,sum);
+  else
+    $display("14 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b11111111110;
+  tst = 5'b01001;
+  #10;
+  if (sum == tst)
+    $display("15 %b %b Y",a,sum);
+  else
+    $display("15 %b %b << problem occured, expected %b",a,sum,tst);
+
+  //      a9876543210
+  a = 11'b01101011000;
+  tst = 5'b11111;
+  #10;
+  if (sum == tst)
+    $display("16 %b %b Y",a,sum);
+  else
+    $display("16 %b %b << problem occured, expected %b",a,sum,tst);
+
+  $finish;             // ends simulation
+end
+    
+endmodule
+

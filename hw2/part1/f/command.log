@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version J-2014.09-SP2 for amd64 -- Nov 25, 2014
-#@ # Date:   Sun Feb 18 16:45:08 2018
+#@ # Date:   Sun Feb 18 18:32:06 2018
 #@ # Run by: maxs1993@mamba
 #@ 
 
@@ -3756,8 +3756,8 @@ source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup
 #@ 
 #@ # -- End source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup
 
-source /home/maxs1993/wq18/281/hw2/part1/e/.synopsys_dc.setup
-#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part1/e/.synopsys_dc.setup
+source /home/maxs1993/wq18/281/hw2/part1/f/.synopsys_dc.setup
+#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part1/f/.synopsys_dc.setup
 
 #@ # .synopsys_dc.setup 
 #@ #
@@ -3858,10 +3858,10 @@ source /home/maxs1993/wq18/281/hw2/part1/e/.synopsys_dc.setup
 #@ set edifout_netlist_only  "false"
 #@ set edifout_target_system  "cadence"
 #@ set edifout_instantiate_ports  "true"
-#@ # -- End source /home/maxs1993/wq18/281/hw2/part1/e/.synopsys_dc.setup
+#@ # -- End source /home/maxs1993/wq18/281/hw2/part1/f/.synopsys_dc.setup
 
-source -echo -verbose /home/maxs1993/wq18/281/hw2/part1/e/dc-block_e.tcl
-#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part1/e/dc-block_e.tcl
+source -echo -verbose /home/maxs1993/wq18/281/hw2/part1/f/dc-cdma.tcl
+#@ # -- Starting source /home/maxs1993/wq18/281/hw2/part1/f/dc-cdma.tcl
 
 #@ # dc-template.tcl script 
 #@ #
@@ -3901,15 +3901,15 @@ source -echo -verbose /home/maxs1993/wq18/281/hw2/part1/e/dc-block_e.tcl
 #@ #   report_power -net
 #@ #   report_power -hier
 #@ #   set_max_delay
-#@ #   write -format db -output block_e.db
+#@ #   write -format db -output cdma.db
 #@ #
 #@ # Doesn't work quite the way I expect
-#@ #   NameDesign = block_e    Set variable ok, but how to concatenate?
-#@ #   write_rtl -format verilog -output block_e.vg
+#@ #   NameDesign = cdma    Set variable ok, but how to concatenate?
+#@ #   write_rtl -format verilog -output cdma.vg
 #@ 
 #@ 
 #@ #===== Set: make sure you change design name elsewhere in this file
-#@ set NameDesign "block_e"
+#@ set NameDesign "cdma"
 #@ 
 #@ #===== Set some timing parameters
 #@ set CLK "clk"
@@ -3925,7 +3925,7 @@ source -echo -verbose /home/maxs1993/wq18/281/hw2/part1/e/dc-block_e.tcl
 #@ # It appears only one "analyze" command is needed with .tcl scripts we use.
 #@ # Strangely, it seems to be needed only the first time synthesis is run.
 #@ # Previously, they worked best with one line per module.
-#@ analyze -format verilog ./block_e.v
+#@ analyze -format verilog ./cdma.v
 #@ 
 #@ elaborate $NameDesign
 #@ current_design $NameDesign
@@ -3958,14 +3958,14 @@ source -echo -verbose /home/maxs1993/wq18/281/hw2/part1/e/dc-block_e.tcl
 #@ # compile -map_effort medium    # May help, or maybe not
 #@ 
 #@ #===== Reports
-#@ write -format verilog -output block_e.vg -hierarchy $NameDesign
+#@ write -format verilog -output cdma.vg -hierarchy $NameDesign
 #@ 
-#@ report_area               > block_e.area
-#@ report_cell               > block_e.cell
-#@ report_hierarchy          > block_e.hier
-#@ report_net                > block_e.net
-#@ report_power              > block_e.pow
-#@ report_timing -nworst 10  > block_e.tim
+#@ report_area               > cdma.area
+#@ report_cell               > cdma.cell
+#@ report_hierarchy          > cdma.hier
+#@ report_net                > cdma.net
+#@ report_power              > cdma.pow
+#@ report_timing -nworst 10  > cdma.tim
 #@ 
 #@ check_timing
 #@ check_design

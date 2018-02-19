@@ -1,9 +1,9 @@
  
 ****************************************
 Report : area
-Design : block_e
+Design : cdma
 Version: J-2014.09-SP2
-Date   : Sun Feb 18 16:45:15 2018
+Date   : Sun Feb 18 18:32:11 2018
 ****************************************
 
 Information: Updating design information... (UID-85)
@@ -11,21 +11,21 @@ Library(s) Used:
 
     NangateOpenCellLibrary (File: /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db)
 
-Number of ports:                           60
-Number of nets:                           247
-Number of cells:                          192
-Number of combinational cells:            192
+Number of ports:                           16
+Number of nets:                            49
+Number of cells:                           37
+Number of combinational cells:             37
 Number of sequential cells:                 0
 Number of macros/black boxes:               0
-Number of buf/inv:                         32
-Number of references:                      11
+Number of buf/inv:                          5
+Number of references:                      12
 
-Combinational area:                237.005997
-Buf/Inv area:                       17.024000
+Combinational area:                 44.688000
+Buf/Inv area:                        2.660000
 Noncombinational area:               0.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (Wire load has zero net area)
 
-Total cell area:                   237.005997
+Total cell area:                    44.688000
 Total area:                 undefined
 1

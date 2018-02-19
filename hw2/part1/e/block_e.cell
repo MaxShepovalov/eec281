@@ -3,411 +3,402 @@
 Report : cell
 Design : block_e
 Version: J-2014.09-SP2
-Date   : Wed Feb 14 14:41:57 2018
+Date   : Sun Feb 18 16:45:15 2018
 ****************************************
 
 Attributes:
     b - black box (unknown)
     h - hierarchical
-   mo - map_only
     n - noncombinational
     r - removable
     u - contains unmapped logic
 
 Cell                      Reference       Library             Area  Attributes
 --------------------------------------------------------------------------------
-U1_1                      FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_2                      FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_3                      FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_4                      FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_5                      FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_11                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_12                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_13                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_14                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_15                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_16                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_17                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_18                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_19                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_21                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_22                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_23                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_24                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_25                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_26                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_27                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_28                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_29                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_31                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_32                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_33                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_34                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_35                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_36                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_37                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_38                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_39                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_41                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_42                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_43                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_44                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_45                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_46                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_47                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_48                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_49                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_51                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_52                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_53                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_54                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_55                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_56                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_57                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_58                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_59                     FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_110                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_111                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_112                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_113                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_114                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_115                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_116                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_117                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_118                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_119                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_120                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_121                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_122                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_123                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_124                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_125                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_126                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_127                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_210                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_211                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_212                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_213                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_214                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_215                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_216                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_217                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_218                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_219                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_220                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_221                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_222                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_223                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_224                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_225                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_226                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_227                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_310                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_311                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_312                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_313                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_314                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_315                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_316                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_317                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_318                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_319                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_320                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_321                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_322                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_323                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_324                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_325                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_326                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_327                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_410                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_411                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_412                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_413                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_414                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_415                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_416                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_417                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_418                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_419                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_420                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_421                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_422                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_423                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_424                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_425                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_426                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_427                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_510                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_511                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_512                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_513                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_514                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_515                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_516                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_517                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_518                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_519                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_520                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_521                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_522                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_523                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_524                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_525                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_526                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U1_527                    FA_X1           NangateOpenCellLibrary
-                                                          4.256000  mo, r
-U29                       XOR2_X1         NangateOpenCellLibrary
+U21                       XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
-U110                      AND2_X1         NangateOpenCellLibrary
+U22                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U23                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U24                       OAI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U25                       AND2_X1         NangateOpenCellLibrary
                                                           1.064000  
-U111                      AND2_X1         NangateOpenCellLibrary
+U26                       AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U112                      AND2_X1         NangateOpenCellLibrary
+U27                       AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U113                      AND2_X1         NangateOpenCellLibrary
+U28                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U29                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U30                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U31                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U32                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U33                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U34                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U35                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U36                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U37                       OR2_X1          NangateOpenCellLibrary
                                                           1.064000  
+U38                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U39                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U40                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U41                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U42                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U43                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U44                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U45                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U46                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U47                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U48                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U49                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U50                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U51                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U52                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U53                       NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U54                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U55                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U56                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U57                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U58                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U59                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U60                       AOI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U61                       OR2_X1          NangateOpenCellLibrary
+                                                          1.064000  
+U62                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U63                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U64                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U65                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U66                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U67                       AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U68                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U69                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U70                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U71                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U72                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U73                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U74                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U75                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U76                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U77                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U78                       OAI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U79                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U80                       XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U81                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U82                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U83                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U84                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U85                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U86                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U87                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U88                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U89                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U90                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U91                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U92                       AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U93                       INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U94                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U95                       OAI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U96                       AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U97                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U98                       XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U99                       OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U100                      OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U101                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U102                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U103                      OAI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
+U104                      AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U105                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U106                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U107                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U108                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U109                      AOI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U110                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U111                      OAI21_X1        NangateOpenCellLibrary
+                                                          1.064000  
+U112                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U113                      OAI22_X1        NangateOpenCellLibrary
+                                                          1.330000  
 U114                      AND2_X1         NangateOpenCellLibrary
                                                           1.064000  
-U115                      AND2_X1         NangateOpenCellLibrary
+U115                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U116                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U117                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U118                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U119                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U116                      AND2_X1         NangateOpenCellLibrary
+U120                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U121                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U117                      AND2_X1         NangateOpenCellLibrary
+U122                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U123                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U124                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U125                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U126                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U118                      AND2_X1         NangateOpenCellLibrary
+U127                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U128                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U119                      AND2_X1         NangateOpenCellLibrary
+U129                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U130                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U131                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U120                      AND2_X1         NangateOpenCellLibrary
+U132                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U121                      AND2_X1         NangateOpenCellLibrary
+U133                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U134                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U135                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U122                      AND2_X1         NangateOpenCellLibrary
+U136                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U123                      AND2_X1         NangateOpenCellLibrary
+U137                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U138                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U139                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U140                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U124                      AND2_X1         NangateOpenCellLibrary
+U141                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U125                      AND2_X1         NangateOpenCellLibrary
+U142                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U143                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U144                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U145                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U146                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U126                      AND2_X1         NangateOpenCellLibrary
+U147                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U148                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U127                      AND2_X1         NangateOpenCellLibrary
+U149                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U150                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U151                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U152                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U128                      AND2_X1         NangateOpenCellLibrary
+U153                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U154                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U129                      AND2_X1         NangateOpenCellLibrary
+U155                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U156                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U157                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U158                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U130                      AND2_X1         NangateOpenCellLibrary
+U159                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U131                      AND2_X1         NangateOpenCellLibrary
+U160                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U161                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U162                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U163                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U132                      AND2_X1         NangateOpenCellLibrary
+U164                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U133                      AND2_X1         NangateOpenCellLibrary
+U165                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U166                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U167                      AOI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U134                      AND2_X1         NangateOpenCellLibrary
+U168                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U169                      OAI21_X1        NangateOpenCellLibrary
                                                           1.064000  
-U135                      AND2_X1         NangateOpenCellLibrary
+U170                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U171                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U172                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U173                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U174                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U175                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U176                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U177                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U178                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U179                      AND2_X1         NangateOpenCellLibrary
                                                           1.064000  
-U136                      AND2_X1         NangateOpenCellLibrary
+U180                      NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U181                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U182                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U183                      NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U184                      AND2_X1         NangateOpenCellLibrary
                                                           1.064000  
-U137                      AND2_X1         NangateOpenCellLibrary
+U185                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U186                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U187                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U188                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U189                      NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U190                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U191                      AND2_X1         NangateOpenCellLibrary
                                                           1.064000  
+U192                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U193                      NOR2_X1         NangateOpenCellLibrary
+                                                          0.798000  
+U194                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U195                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U196                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U197                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U198                      AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U199                      NAND2_X1        NangateOpenCellLibrary
+                                                          0.798000  
+U200                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U201                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U202                      AND2_X1         NangateOpenCellLibrary
+                                                          1.064000  
+U203                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U204                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U205                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U206                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U207                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U208                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
+U209                      XOR2_X1         NangateOpenCellLibrary
+                                                          1.596000  
 U210                      XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
 U211                      XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
 U212                      XOR2_X1         NangateOpenCellLibrary
                                                           1.596000  
-U213                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U214                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U215                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U216                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U217                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U218                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U219                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U220                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U221                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U222                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U223                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U224                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U225                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U226                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U227                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U228                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U229                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U230                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U231                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U232                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U233                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U234                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U235                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
-U236                      XOR2_X1         NangateOpenCellLibrary
-                                                          1.596000  
 --------------------------------------------------------------------------------
-Total 196 cells                                           670.320005
+Total 192 cells                                           237.005997
 1

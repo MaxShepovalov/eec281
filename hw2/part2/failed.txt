@@ -1,0 +1,70 @@
+ncverilog +access+r -l mult.logv -f mult.vfv
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+file: mult.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+file: mult.v
+	module worklib.ha:v
+		errors: 0, warnings: 0
+	module worklib.fa:v
+		errors: 0, warnings: 0
+	module worklib.add42:v
+		errors: 0, warnings: 0
+	module worklib.mult:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.fa:v <0x52bf646d>
+			streams:   0, words:     0
+		worklib.ha:v <0x52cafae2>
+			streams:   0, words:     0
+		worklib.mult:v <0x3cc69217>
+			streams:   8, words:  4026
+		worklib.tbench:vt <0x0100204a>
+			streams:   3, words: 10942
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 98       5
+		Registers:               11      11
+		Scalar wires:           142       -
+		Expanded wires:          66       9
+		Vectored wires:           3       -
+		Always blocks:            3       3
+		Initial blocks:           1       1
+		Cont. assignments:        2      15
+		Pseudo assignments:       3       3
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+          0) 00000000 x 00000000 = 0000000000000000
+          1) 00000001 x 01111111 = 0000000001111111
+          2) 00000001 x 10000000 got 1111111101000000 expected 1111111110000000
+          3) 01111111 x 00000001 = 0000000001111111
+          4) 10000000 x 00000001 = 1111111110000000
+          5) 01111111 x 01111111 got 0011000001001101 expected 0011111100000001
+          6) 01111111 x 10000000 got 1100000001000000 expected 1100000010000000
+          7) 10000000 x 01111111 got 0111100010000000 expected 1100000010000000
+          8) 10000000 x 10000000 got 0011111111000000 expected 0100000000000000
+          9) 00101000 x 00100000 = 0000010100000000
+         10) 11110001 x 10000111 got 1111111011010111 expected 0000011100010111
+         11) 00011110 x 11111111 got 1111110000111010 expected 1111111111100010
+         12) 11111111 x 11111111 got 1000000000001101 expected 0000000000000001
+         13) 11111111 x 00101101 got 1111111110101011 expected 1111111111010011
+         14) 00000000 x 01100100 = 0000000000000000
+         15) 01100100 x 00000000 = 0000000000000000
+         16) 00000001 x 11111111 = 1111111111111111
+         17) 11111111 x 00000001 = 1111111111111111
+         18) 01100100 x 01100100 = 0010011100010000
+         19) 00000000 x 00000000 = 0000000000000000
+         20) 00000000 x 00000000 = 0000000000000000
+         21) 00000000 x 00000000 = 0000000000000000
+         22) 00000000 x 00000000 = 0000000000000000
+         23) 00000000 x 00000000 = 0000000000000000
+ncsim: *W,RNQUIE: Simulation is complete.
+ncsim> exit
