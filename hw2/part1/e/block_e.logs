@@ -176,45 +176,28 @@ Information: Updating design information... (UID-85)
   Processing 'block_e_DW01_add_7'
   Processing 'block_e_DW01_add_8'
   Processing 'block_e_DW01_add_9'
-  Processing 'block_e_DW01_add_10'
-  Processing 'block_e_DW01_add_11'
-  Processing 'block_e_DW01_add_12'
-  Processing 'block_e_DW01_add_13'
-  Processing 'block_e_DW01_add_14'
-  Processing 'block_e_DW01_add_15'
-  Processing 'block_e_DW01_add_16'
-  Processing 'block_e_DW01_add_17'
-  Processing 'block_e_DW01_add_18'
-  Processing 'block_e_DW01_add_19'
-  Processing 'block_e_DW01_add_20'
-  Processing 'block_e_DW01_add_21'
-  Processing 'block_e_DW01_add_22'
-  Processing 'block_e_DW01_add_23'
-  Processing 'block_e_DW01_add_24'
-  Processing 'block_e_DW01_add_25'
-  Processing 'block_e_DW01_add_26'
-  Processing 'block_e_DW01_add_27'
 
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
+  Structuring 'block_e'
+  Mapping 'block_e'
 
                                   TOTAL                                      
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01     737.4      0.00       0.0       0.0                          
-    0:00:01     737.4      0.00       0.0       0.0                          
-    0:00:01     737.4      0.00       0.0       0.0                          
-    0:00:01     737.4      0.00       0.0       0.0                          
-    0:00:01     737.4      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
 
 
 
@@ -225,9 +208,9 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -237,23 +220,23 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
-    0:00:01     670.3      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
+    0:00:03     237.0      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -266,8 +249,6 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
    }
-Information: Updating graph... (UID-83)
-1
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
 write -format verilog -output block_e.vg -hierarchy $NameDesign
@@ -298,7 +279,6 @@ sum[1]
 sum[2]
 sum[3]
 sum[4]
-sum[5]
 
 Information: Checking pulse_clock_cell_type...
 
@@ -307,47 +287,6 @@ Information: Checking no_driving_cell...
 Information: Checking partial_input_delay...
 1
 check_design
- 
-****************************************
-check_design summary:
-Version:     J-2014.09-SP2
-Date:        Wed Feb 14 14:41:58 2018
-****************************************
-
-                   Name                                            Total
---------------------------------------------------------------------------------
-Nets                                                               28
-    Unloaded nets (LINT-2)                                         28
---------------------------------------------------------------------------------
-
-Warning: In design 'block_e', net 'n28' driven by pin 'U28/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n27' driven by pin 'U27/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n26' driven by pin 'U26/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n25' driven by pin 'U25/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n24' driven by pin 'U24/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n23' driven by pin 'U23/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n22' driven by pin 'U22/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n21' driven by pin 'U21/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n20' driven by pin 'U20/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n19' driven by pin 'U19/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n18' driven by pin 'U18/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n17' driven by pin 'U17/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n16' driven by pin 'U16/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n15' driven by pin 'U15/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n14' driven by pin 'U14/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n13' driven by pin 'U13/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n12' driven by pin 'U12/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n11' driven by pin 'U11/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n10' driven by pin 'U10/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n9' driven by pin 'U9/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n8' driven by pin 'U8/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n7' driven by pin 'U7/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n6' driven by pin 'U6/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n5' driven by pin 'U5/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n4' driven by pin 'U4/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n3' driven by pin 'U3/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n2' driven by pin 'U2/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'block_e', net 'n1' driven by pin 'U1/**logic_0**' has no loads. (LINT-2)
 1
 exit
 

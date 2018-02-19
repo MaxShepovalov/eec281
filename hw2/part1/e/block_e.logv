@@ -1,0 +1,54 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Feb 18, 2018 at 16:44:53 PST
+ncverilog
+	+access+r
+	-l
+	block_e.logv
+	-f block_e.vfv
+		block_e.vt
+		block_e.v
+Recompiling... reason: file './block_e.vt' is newer than expected.
+	expected: Sun Feb 18 16:42:40 2018
+	actual:   Sun Feb 18 16:44:51 2018
+file: block_e.vt
+	module worklib.block_e_test:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.block_e_test:vt <0x4ed23cbb>
+			streams:  12, words: 14277
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  2       2
+		Registers:                4       4
+		Vectored wires:          12       -
+		Initial blocks:           1       1
+		Cont. assignments:        1       1
+		Pseudo assignments:      11      11
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.block_e_test:vt
+Loading snapshot worklib.block_e_test:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+test           0 ok
+test           1 ok
+test           2 ok
+test           3 ok
+test           4 ok
+test           5 ok
+test           6 ok
+test           7 ok
+test           8 ok
+test           9 ok
+test          10 ok
+test          11 ok
+test          12 ok
+test          13 ok
+test          14 ok
+ncsim: *W,RNQUIE: Simulation is complete.
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Feb 18, 2018 at 16:44:55 PST  (total: 00:00:02)

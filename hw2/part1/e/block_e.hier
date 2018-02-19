@@ -3,11 +3,19 @@
 Report : hierarchy
 Design : block_e
 Version: J-2014.09-SP2
-Date   : Wed Feb 14 14:41:57 2018
+Date   : Sun Feb 18 16:45:15 2018
 ****************************************
 
 block_e
-    AND2_X1         NangateOpenCellLibrary
-    FA_X1           NangateOpenCellLibrary
-    XOR2_X1         NangateOpenCellLibrary
+    AND2_X1          NangateOpenCellLibrary
+    AOI21_X1         NangateOpenCellLibrary
+    AOI22_X1         NangateOpenCellLibrary
+    INV_X1           NangateOpenCellLibrary
+    NAND2_X1         NangateOpenCellLibrary
+    NOR2_X1          NangateOpenCellLibrary
+    OAI21_X1         NangateOpenCellLibrary
+    OAI22_X1         NangateOpenCellLibrary
+    OR2_X1           NangateOpenCellLibrary
+    XNOR2_X1         NangateOpenCellLibrary
+    XOR2_X1          NangateOpenCellLibrary
 1

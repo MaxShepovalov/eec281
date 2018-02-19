@@ -1,0 +1,67 @@
+//tbench for hw2 p1 e
+
+`timescale 1ns/10ps
+
+module block_e_test();
+
+    //inputs/outputs
+    reg [4:0] num [10:0];
+    wire [4:0] sum;
+
+    //test cases
+    reg [54:0] tst_input [15:0];
+    reg [4:0] tst_output [15:0];
+    integer i;
+
+    block_e block(
+        .in0 (num[0]),
+        .in1 (num[1]),
+        .in2 (num[2]),
+        .in3 (num[3]),
+        .in4 (num[4]),
+        .in5 (num[5]),
+        .in6 (num[6]),
+        .in7 (num[7]),
+        .in8 (num[8]),
+        .in9 (num[9]),
+        .in10 (num[10]),
+        .sum (sum)
+    );
+
+    initial begin
+        $recordfile("block_e_test");
+        $recordvars(block_e_test);
+
+	//fill test array
+        tst_input[0] = 55'h00000000000000; tst_output[0] = 5'h00;
+        tst_input[1] = 55'h04210842108421; tst_output[1] = 5'h0B;
+        tst_input[2] = 55'h7FFFFFFFFFFFFF; tst_output[2] = 5'h15;
+        tst_input[3] = 55'h00200002000001; tst_output[3] = 5'h03;
+        tst_input[4] = 55'h42108421084210; tst_output[4] = 5'h10;
+
+        tst_input[5] = 55'h46318C6318C631; tst_output[5] = 5'h1B;
+        tst_input[6] = 55'h3DEF7BDEF7BDEF; tst_output[6] = 5'h05;
+        tst_input[7] = 55'h32691F563E2B10; tst_output[7] = 5'h04;
+        tst_input[8] = 55'h44627DC513A223; tst_output[8] = 5'h12;
+        tst_input[9] = 55'h29CE9BB5B021FD; tst_output[9] = 5'h10;
+
+        tst_input[10] = 55'h30F46FEA842838; tst_output[10] = 5'h1B;
+        tst_input[11] = 55'h79FDCB16922A2B; tst_output[11] = 5'h0D;
+        tst_input[12] = 55'h57CCB7F8EAAA98; tst_output[12] = 5'h09;
+        tst_input[13] = 55'h2AF433EAA37782; tst_output[13] = 5'h0A;
+        tst_input[14] = 55'h268DADB68B87DF; tst_output[14] = 5'h0D;
+        tst_input[15] = 55'h29896C16D82741; tst_output[15] = 5'h08;
+
+	for (i = 0; i < 15; i = i + 1) begin
+            {num[10],num[9],num[8],num[7],num[6],num[5],num[4],num[3],num[2],num[1],num[0]} = tst_input[i];
+            #10;
+            if (sum == tst_output[i]) begin
+                $display ("test %d ok",i);
+            end else begin
+                          //    ##  01   02   03   04   05   06   07   08   09   10   11
+                $display ("test %d: %d + %d + %d + %d + %d + %d + %d + %d + %d + %d + %d got %b expect %b",i,num[0],num[1],num[2],num[3],num[4],num[5],num[6],num[7],num[8],num[9],num[10],sum,tst_output[i]);
+            end
+        end
+    end
+
+endmodule
