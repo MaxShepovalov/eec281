@@ -106,7 +106,7 @@ module mult (
     fa    st2_t_col2  (.a (p0[2]), .b (p1[0]), .c (p4[1]),                                           .carry (st2_p0[3]), .sum (st2_p0[2]));
     ha    st2_t_col3  (.a (p0[3]), .b (p1[1]),                                                          .c  (st2_p0[4]),  .s (st2_p1[3]));
     add42 st2_t_col4  (.a (p0[4]), .b (p1[2]), .c (p2[0]), .d (p4[2]), .ci (1'b0),     .cc (st2_p0[5]), .co (st2_p1[5]),  .s (st2_p1[4]));
-    fa    st2_t_col5  (.a (p0[5]), .b (p1[3]), .c (p2[1]),                                           .carry (st2_p0[6]),  .s (st2_p2[1]));
+    fa    st2_t_col5  (.a (p0[5]), .b (p1[3]), .c (p2[1]),                                           .carry (st2_p0[6]), .sum (st2_p2[1]));
     add42 st2_t_col6  (.a (p0[6]), .b (p1[4]), .c (p2[2]), .d (p3[0]), .ci (1'b0),     .cc (st2_c[0]),  .co (st2_p0[7]),  .s (st2_p1[6]));
     add42 st2_t_col7  (.a (p0[7]), .b (p1[5]), .c (p2[3]), .d (p3[1]), .ci (st2_c[0]), .cc (st2_c[1]), .co (st2_p0[8]),  .s (st2_p1[7]));
     add42 st2_t_col8  (.a (p0[8]), .b (p1[6]), .c (p2[4]), .d (p3[2]), .ci (st2_c[1]), .cc (st2_c[2]), .co (st2_p0[9]),  .s (st2_p1[8]));
@@ -133,7 +133,7 @@ module mult (
     assign st3_p2[4] = st2_p1[4];
 
     ha st_b_col1  (.a (st2_p0[1]), .b (st2_p2[0]),                     .c (st3_p2[2]),   .s (st3_p0[1]));
-    fa st_b_col5  (.a (st2_p0[5]), .b (st2_p1[5]), .c (st2_p2[1]), .carry (st3_p0[6]),   .s (st3_p0[5]));
+    fa st_b_col5  (.a (st2_p0[5]), .b (st2_p1[5]), .c (st2_p2[1]), .carry (st3_p0[6]), .sum (st3_p0[5]));
     fa st_b_col6  (.a (st2_p0[6]), .b (st2_p1[6]), .c (st2_p2[2]), .carry (st3_p0[7]), .sum (st3_p1[6]));
     ha st_b_col7  (.a (st2_p0[7]), .b (st2_p1[7]),                     .c (st3_p0[8]),   .s (st3_p1[7]));
     ha st_b_col8  (.a (st2_p0[8]), .b (st2_p1[8]),                     .c (st3_p0[9]),   .s (st3_p1[8]));
