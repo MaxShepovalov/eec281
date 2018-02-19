@@ -4,13 +4,15 @@ module test();
 
     reg clk, reset, skip;
     wire shutter;
+    wire [2:0] state;
     integer cycle = 0;
 
     machine camera (
         .clk (clk),
         .reset (reset),
         .skip (skip),
-        .shutter (shutter)
+        .shutter (shutter),
+        .state (state)
     );
 
     initial begin
@@ -33,21 +35,55 @@ module test();
     always @(posedge clk) begin
         cycle <= #1 cycle + 1;
         case (cycle)
-        //start circuit with skip = 1'b0
-            3:  reset <= #1 1'b0;
-        //reset at some point
-            20: reset <= #1 1'b1;
-            21: reset <= #1 1'b0;
-            24: skip <= #1 1'b1;
-        //put some resets again
-            36: reset <= #1 1'b1;
-            37: reset <= #1 1'b0;
 
-            47: reset <= #1 1'b1;
-            48: reset <= #1 1'b0;
+            //start circuit with skip = 0
+            3:  reset <= #1 1'b0;
+
+            //skip = 1 on 3rd iteration
+            30: skip <= #1 1'b1;
+
+            //testing reset with skip = 0
+            53: {reset, skip} <= #1 2'b10;
+
+            53: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ IDLE 0
+            54: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ IDLE 1
+            56: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ IDLE 2
+            59: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 0
+            63: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 1
+            68: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 2
+            74: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 3
+            81: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 4
+            89: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 5
+            98: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ PROCESS 0
+            108: begin reset <= #1 1'b1; reset <= #3 1'b0; end// @ PROCESS 1
+            119: begin reset <= #1 1'b1; reset <= #3 1'b0; end// @ PROCESS 2
+            131: begin reset <= #1 1'b1; reset <= #3 1'b0; end// @ PROCESS 3
+
+            150: begin reset <= #5 1'b1; reset <= #6 1'b0; end// @ some place in cycle
+
+            //testing reset with skip = 1
+            155: {reset, skip} <= #1 2'b11;
+            156: reset <= #1 1'b0;
+
+            157: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ IDLE 1
+            159: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ IDLE 2
+            162: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 0
+            166: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 1
+            171: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 2
+            177: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 3
+            184: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 4
+            192: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ CAMERA_ON 5
+            101: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ PROCESS 0
+            211: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ IDLE 0
+            222: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ IDLE 1
+            234: begin reset <= #1 1'b1; reset <= #3 1'b0; end // @ PROCESS 3
+
+            //finish
+            238: reset <= #1 1'b1;
         endcase
+
         //finish simulation
-        if (cycle > 60)
+        if (cycle > 240)
             $finish;
     end
 

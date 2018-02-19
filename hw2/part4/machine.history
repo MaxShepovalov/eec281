@@ -1,1 +1,2 @@
-s1(19Feb2018:00:38:45):  ncverilog +access+r -l machine.logv -f machine.vfv 
+s1(19Feb2018:11:15:28):  ncverilog +access+r -l machine.logv -f machine.vfv 
+s2(19Feb2018:11:17:58):  ncverilog +access+r -l machine.logv -f machine.vfv 
