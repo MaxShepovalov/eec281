@@ -1,0 +1,56 @@
+//testbench for state machine
+
+module test();
+
+    reg clk, reset, skip;
+    wire shutter;
+    integer cycle = 0;
+
+    machine camera (
+        .clk (clk),
+        .reset (reset),
+        .skip (skip),
+        .shutter (shutter)
+    );
+
+    initial begin
+        $recordfile("machine_test");
+        $recordvars(test);
+
+        clk = 1'b0;
+        reset = 1'b1;
+        skip = 1'b0;
+
+    end
+
+    //clock
+    always begin
+        #10; //initial begin
+        clk = ~clk;
+    end
+
+    //logic 
+    always @(posedge clk) begin
+        cycle = cycle + 1;
+        case (cycle)
+        //start circuit with skip = 1'b0
+            3:  reset = 1'b0;
+        //reset at some point
+            20: reset = 1'b1;
+            21: reset = 1'b0;
+            24: skip = 1'b1;
+        //put some resets again
+            30: reset = 1'b1;
+            31: reset = 1'b0;
+
+            43: reset = 1'b1;
+            44: reset = 1'b0;
+        endcase
+        //finish simulation
+        if (cycle > 60)
+            $finish
+    end
+
+
+
+endmodule
