@@ -1,0 +1,61 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Mar 11, 2018 at 12:41:54 PDT
+ncverilog
+	+access+r
+	-l
+	compl.logv
+	-f compl.vfv
+		compl.v
+		cos.v
+		tbench.vt
+file: compl.v
+	module worklib.compl:v
+		errors: 0, warnings: 0
+file: cos.v
+	module worklib.cos:v
+		errors: 0, warnings: 0
+file: tbench.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+cos cos_mem (.angle (CM_angle), .result (CM_result));
+          |
+ncelab: *W,CUVWSI (./compl.v,29|10): 1 input port was not connected:
+ncelab: (./cos.v,6): clk
+
+	Building instance overlay tables: ....................
+    if (angle[12:3] == 9'b000000000) begin
+            |
+ncelab: *W,BNDWRN (./cos.v,4117|12): Bit-select or part-select index out of declared bounds.
+    if (angle[12:3] == 9'b111111111) begin
+            |
+ncelab: *W,BNDWRN (./cos.v,4121|12): Bit-select or part-select index out of declared bounds.
+ Done
+	Generating native compiled code:
+		worklib.compl:v <0x7fc1b553>
+			streams:   7, words:  2846
+		worklib.cos:v <0x031ff197>
+			streams:   5, words: 435177
+		worklib.tbench:vt <0x006932d2>
+			streams:   6, words:  3701
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  3       3
+		Registers:               14      14
+		Scalar wires:             2       -
+		Vectored wires:           5       -
+		Always blocks:            9       9
+		Initial blocks:           3       3
+		Pseudo assignments:       1       1
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+Simulation complete via $finish(1) at time 163811 NS + 1
+./tbench.vt:48     		$finish;
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Mar 11, 2018 at 12:41:57 PDT  (total: 00:00:03)
