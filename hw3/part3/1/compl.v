@@ -26,7 +26,7 @@ reg [15:0] r_1;
 //cos module
 reg [11:0] CM_angle;
 wire [15:0] CM_result;
-cos cos_mem (.angle (CM_angle), .result (CM_result));
+cos cos_mem (.angle (CM_angle), .clk (clk), .result (CM_result));
 
 always @(posedge clk) begin
     CM_angle <= #1 angle;
