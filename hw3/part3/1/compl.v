@@ -18,11 +18,11 @@ parameter IDLE = 2'b00;
 parameter COS = 2'b01;
 parameter SIN = 2'b10;
 
-reg [1:0] mode, mode_c;
-reg [11:0] angle_mem;
-reg [15:0] r_c, i_c;
-wire [15:0] cos_val;
-reg ready_c, cos_en;
+reg [1:0] mode = IDLE, mode_c = IDLE;
+reg [11:0] angle_mem = 12'b0000_0000_0000;
+reg [15:0] r_c = 16'b0000_0000_0000_0000, i_c = 16'b0000_0000_0000_0000;
+wire [15:0] cos_val = 16'b0000_0000_0000_0000;
+reg ready_c = 1'b0, cos_en = 1'b0;
 
 cos cos_mem (.angle (angle), .cos_en(cos_en), .result(cos_val));
 
