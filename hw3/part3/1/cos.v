@@ -4131,4 +4131,4 @@ always @(posedge clk) begin
     result <= #1 result_c;
 end
 
-endmodule;
+endmodule

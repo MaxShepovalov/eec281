@@ -50,4 +50,4 @@ module tbench();
     		angle = angle + 1;
     	end
     end
-endmodule;
+endmodule

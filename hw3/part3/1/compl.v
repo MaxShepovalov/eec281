@@ -51,4 +51,4 @@ always @(posedge clk) begin
     i <= #1 CM_result;
 end
 
-endmodule;
+endmodule
