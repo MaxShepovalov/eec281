@@ -14,10 +14,10 @@ angle  #-[V]--------[cos]---------[V]----------------------[V]------
 `timescale 1ns/10ps
 
 module compl(
-	input angle,
-	input clk,
-	output r,
-	output i
+    input angle,
+    input clk,
+    output r,
+    output i
 );
 
 //input/output
@@ -31,26 +31,26 @@ wire [15:0] CM_result;
 cos cos_mem (.angle (CM_angle), .result (CM_result));
 
 always @(posedge clk) begin
-	CM_angle <= #1 angle;
-	angle_r <= #1 angle;
+    CM_angle <= #1 angle;
+    angle_r <= #1 angle;
 end
 
 //stage 1. real [cos()] and sin_angle
 always @(angle_r) begin
-	// sin(a) = cos(90 - a)
-	sin_angle = 12'b010000000000 - angle_r;
+    // sin(a) = cos(90 - a)
+    sin_angle = 12'b010000000000 - angle_r;
 end
 
 //stage 2. imag [sin()]
 always @(posedge clk) begin
-	CM_angle <= #1 sin_angle;
-	r_1 <= #1 CM_result;
+    CM_angle <= #1 sin_angle;
+    r_1 <= #1 CM_result;
 end
 
 //output result
 always @(posedge clk) begin
-	r <= #1 r_1;
-	i <= #1 CM_result;
+    r <= #1 r_1;
+    i <= #1 CM_result;
 end
 
 endmodule;

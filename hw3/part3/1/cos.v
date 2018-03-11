@@ -4120,19 +4120,19 @@ end
 always @(angle) begin
     //exception 
     if (angle[12:3] == 9'b000000000) begin
-        except = (angle[2:0] == 3'b000) or
-                 (angle[2:0] == 3'b001) or
-                 (angle[2:0] == 3'b010) or
-                 (angle[2:0] == 3'b011) or
-                 (angle[2:0] == 3'b100) or
+        except = (angle[2:0] == 3'b000) or \
+                 (angle[2:0] == 3'b001) or \
+                 (angle[2:0] == 3'b010) or \
+                 (angle[2:0] == 3'b011) or \
+                 (angle[2:0] == 3'b100) or \
                  (angle[2:0] == 3'b101);
     end
 
     if (angle[12:3] == 9'b111111111) begin
-        except = (angle[2:0] == 3'b011) or
-                 (angle[2:0] == 3'b100) or
-                 (angle[2:0] == 3'b101) or
-                 (angle[2:0] == 3'b110) or
+        except = (angle[2:0] == 3'b011) or \
+                 (angle[2:0] == 3'b100) or \
+                 (angle[2:0] == 3'b101) or \
+                 (angle[2:0] == 3'b110) or \
                  (angle[2:0] == 3'b111);
     end
 
