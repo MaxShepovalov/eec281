@@ -46,7 +46,7 @@ module tbench();
     	if (angle == 12'b111111111111) begin
     		$fclosew(file);
     		$finish;
-    	else begin
+    	end else begin
     		angle = angle + 1;
     	end
     end
