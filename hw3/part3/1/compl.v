@@ -14,16 +14,14 @@ angle  #-[V]--------[cos]---------[V]----------------------[V]------
 `timescale 1ns/10ps
 
 module compl(
-    input angle,
+    input [11:0] angle,
     input clk,
-    output r,
-    output i
+    output reg [15:0] r,
+    output reg [15:0] i
 );
 
-//input/output
-wire [11:0] angle;
 reg [11:0] sin_angle, angle_r;
-reg [15:0] r, r_1, i;
+reg [15:0] r_1;
 
 //cos module
 reg [11:0] CM_angle;

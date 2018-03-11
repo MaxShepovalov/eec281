@@ -4,16 +4,11 @@
 
 module cos(
     input clk,
-    input angle,    //12-bit input
-    output result   //16-bit output
+    input [11:0] angle,    //12-bit input
+    output reg [15:0] result   //16-bit output
 );
 
-//inputs/outputs
-wire clk;
-wire [11:0] angle;
-reg [15:0] result, result_c;
-
-//internal
+reg [15:0] result_c;
 reg except = 1'b0;
 reg [14:0] cos_mem [4095:0];
 
@@ -4120,19 +4115,19 @@ end
 always @(angle) begin
     //exception 
     if (angle[12:3] == 9'b000000000) begin
-        except = (angle[2:0] == 3'b000) or \
-                 (angle[2:0] == 3'b001) or \
-                 (angle[2:0] == 3'b010) or \
-                 (angle[2:0] == 3'b011) or \
-                 (angle[2:0] == 3'b100) or \
+        except = (angle[2:0] == 3'b000) or /
+                 (angle[2:0] == 3'b001) or /
+                 (angle[2:0] == 3'b010) or /
+                 (angle[2:0] == 3'b011) or /
+                 (angle[2:0] == 3'b100) or /
                  (angle[2:0] == 3'b101);
     end
 
     if (angle[12:3] == 9'b111111111) begin
-        except = (angle[2:0] == 3'b011) or \
-                 (angle[2:0] == 3'b100) or \
-                 (angle[2:0] == 3'b101) or \
-                 (angle[2:0] == 3'b110) or \
+        except = (angle[2:0] == 3'b011) or /
+                 (angle[2:0] == 3'b100) or /
+                 (angle[2:0] == 3'b101) or /
+                 (angle[2:0] == 3'b110) or /
                  (angle[2:0] == 3'b111);
     end
 
