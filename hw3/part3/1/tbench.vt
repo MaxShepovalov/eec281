@@ -19,7 +19,7 @@ module tbench();
 	initial begin
         $recordfile("mult_test");
         $recordvars(tbench);
-        file = $fopenw("complex_result.m");
+        file = $fopen("complex_result.m", "w");
         angle = 12'b0;
         odd_clock = 1'b0;
         clk = 1'b0;
@@ -40,11 +40,11 @@ module tbench();
     always @(posedge odd_clock) begin
     	
     	//write result to file
-    	$fprintf(file, "%b %b", comp_r, comp_i);
+    	$fwrite(file, "%b %b\n", comp_r, comp_i);
     	
     	//update angle or exit
     	if (angle == 12'b111111111111) begin
-    		$fclosew(file);
+    		$fclose(file);
     		$finish;
     	end else begin
     		angle = angle + 1;
