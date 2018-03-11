@@ -3,14 +3,17 @@
 `timescale 1ns/10ps
 
 module cos(
-    input clk,
-    input [11:0] angle,    //12-bit input
-    output reg [15:0] result   //16-bit output
+    // input clk,
+    // input rst,
+    input cos_en,
+    input [11:0] angle,
+    output reg [15:0] result
 );
 
-reg [15:0] result_c;
-reg except = 1'b0;
+//reg [15:0] result_c;
+reg except;
 reg [14:0] cos_mem [4095:0];
+reg [11:0] angle_mem;
 
 initial begin
     //load values to memory
@@ -4112,23 +4115,32 @@ initial begin
     cos_mem[12'b111111111111] = 15'b000000000000000;
 end
 
-always @(angle) begin
-    //exception 
-    if (angle[12:3] == 9'b000000000) begin
-        except = (angle[2:0] == 3'b000) || (angle[2:0] == 3'b001) || (angle[2:0] == 3'b010) || (angle[2:0] == 3'b011) || (angle[2:0] == 3'b100) || (angle[2:0] == 3'b101);
-    end
+always @(angle or cos_en) begin
+    //cos/sin selection
+    if (cos_en == 1'b1)
+        //compute cos(angle)
+        angle_mem = angle;
+    else
+        //compute sin(angle) = cos (pi/2 - angle)
+        angle_mem = 12'b0100_0000_0000 - angle;
 
-    if (angle[12:3] == 9'b111111111) begin
-        except = (angle[2:0] == 3'b011) || (angle[2:0] == 3'b100) || (angle[2:0] == 3'b101) || (angle[2:0] == 3'b110) || (angle[2:0] == 3'b111);
-    end
+    //exception (when need to return == +1.0)
+    except = (angle_mem == 12'b0000_0000_0000);
+    except = except || (angle_mem == 12'b0000_0000_0001);
+    except = except || (angle_mem == 12'b0000_0000_0010);
+    except = except || (angle_mem == 12'b0000_0000_0011);
+    except = except || (angle_mem == 12'b0000_0000_0100);
+    except = except || (angle_mem == 12'b0000_0000_0101);
+
+    except = except || (angle_mem == 12'b1111_1111_1011);
+    except = except || (angle_mem == 12'b1111_1111_1100);
+    except = except || (angle_mem == 12'b1111_1111_1101);
+    except = except || (angle_mem == 12'b1111_1111_1111);
+    except = except || (angle_mem == 12'b1111_1111_1110);
 
     //memory
-    result_c = {cos_mem[angle][14], cos_mem[angle]};
-    result_c[14] = result_c[14] & except; //in exception output 0000 0000 0000
-end
-
-always @(posedge clk) begin
-    result <= #1 result_c;
+    result = {cos_mem[angle_mem][14], cos_mem[angle_mem]};
+    result[14] = result[14] | except;
 end
 
 endmodule

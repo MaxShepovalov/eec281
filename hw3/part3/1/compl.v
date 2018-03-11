@@ -1,54 +1,79 @@
 /*
 Top level for complex number generator
-          |                        |                        |
-          | CM_angle     CM_result |     r_1                |     r
-angle  #-[V]--------[cos]---------[V]----------------------[V]------
--------#  |                        |                        |
-       |  | angle_r      sin_angle | CM_angle     CM_result |     i
-       #-[V]--------[   ]---------[V]--------[cos]---------[V]------
-          |         [ - ]          |                        |
-          |    90 --[   ]          |                        |
-          |                        |                        |
-
 */
+
 `timescale 1ns/10ps
 
 module compl(
     input [11:0] angle,
+    input start,
     input clk,
+    input reset,
     output reg [15:0] r,
-    output reg [15:0] i
+    output reg [15:0] i,
+    output reg ready
 );
 
-reg [11:0] sin_angle, angle_r;
-reg [15:0] r_1;
+parameter IDLE = 2'b00;
+parameter COS = 2'b01;
+parameter SIN = 2'b10;
 
-//cos module
-reg [11:0] CM_angle;
-wire [15:0] CM_result;
-cos cos_mem (.angle (CM_angle), .clk (clk), .result (CM_result));
+reg [1:0] mode, mode_c;
+reg [11:0] angle_mem;
+reg [15:0] r_c, i_c;
+wire [15:0] cos_val;
+reg ready_c, cos_en;
 
-always @(posedge clk) begin
-    CM_angle <= #1 angle;
-    angle_r <= #1 angle;
+cos cos_mem (.angle (angle), .cos_en(cos_en), .result(cos_val));
+
+//State Machine
+always @(angle or start or mode) begin
+    mode_c = mode;
+    case(mode)
+        IDLE: begin
+            if (start == 1'b1)  begin
+                ready_c = 1'b0;
+                mode_c = COS;
+                cos_en = 1'b1;
+                angle_mem = angle;
+            end
+        end
+        COS: begin
+            r_c = cos_val;
+            mode_c = SIN;
+            cos_en = 1'b0;
+        end
+        SIN: begin
+            i_c = cos_val;
+            mode_c = IDLE;
+            ready_c = 1'b1;
+        end
+        default: begin
+            mode_c = IDLE;
+        end
+    endcase
 end
 
-//stage 1. real [cos()] and sin_angle
-always @(angle_r) begin
-    // sin(a) = cos(90 - a)
-    sin_angle = 12'b010000000000 - angle_r;
+//Mode FFlop
+always @(posedge clk or posedge reset) begin
+    if (reset == 1'b1) begin
+        mode <= #1 IDLE;
+    end else begin
+        mode <= #1 mode_c;
+    end
 end
 
-//stage 2. imag [sin()]
-always @(posedge clk) begin
-    CM_angle <= #1 sin_angle;
-    r_1 <= #1 CM_result;
-end
-
-//output result
-always @(posedge clk) begin
-    r <= #1 r_1;
-    i <= #1 CM_result;
+//output FFlop
+always @(posedge clk or posedge reset) begin
+    if (reset == 1'b1 || ready_c == 1'b0) begin
+        r <= #1 16'b0000_0000_0000_0000;
+        i <= #1 16'b0000_0000_0000_0000;
+        ready <= #1 1'b0;
+    end else begin
+        r <= #1 r_c;
+        i <= #1 i_c;
+        ready <= #1 1'b1;
+    end
 end
 
 endmodule
