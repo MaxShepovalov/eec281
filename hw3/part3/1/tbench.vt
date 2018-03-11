@@ -1,53 +1,60 @@
 `timescale 1ns/10ps
 module tbench();
-	
-	//input/output
-	reg [11:0] angle;
-	reg odd_clock;
-	integer file;
-	wire [15:0] comp_r;
-	wire [15:0] comp_i;
-	reg clk;
+    
+    reg [11:0] angle;
+    integer file;
+    wire [15:0] comp_r;
+    wire [15:0] comp_i;
+    reg clk, start, rst;
+    wire read_val;
 
-	compl C1 (
-		.angle (angle),
-		.clk (clk),
-		.r (comp_r),
-		.i (comp_i)
-	);
+    compl C1 (
+        .angle (angle),
+        .start (start),
+        .clk (clk),
+        .reset (rst),
+        .r (comp_r),
+        .i (comp_i),
+        .ready (read_val)
+    );
 
-	initial begin
+    initial begin
         $recordfile("mult_test");
         $recordvars(tbench);
         file = $fopen("complex_result.m", "w");
         angle = 12'b0;
-        odd_clock = 1'b0;
         clk = 1'b0;
-	end
+        start = 1'b0;
+        rst = 1'b1;
+        #30;
+        rst = 1'b0;
+        start = 1'b1;
+    end
 
-	//clock
+    //clock
     always begin
         #10;
         clk = ~clk;
     end
-    
-    //devide clk by 2
-    always @(posedge clk) begin
-    	odd_clock <= #1 ~odd_clock;
-    end
 
     //tests
-    always @(posedge odd_clock) begin
-    	
-    	//write result to file
-    	$fwrite(file, "%b %b\n", comp_r, comp_i);
-    	
-    	//update angle or exit
-    	if (angle == 12'b111111111111) begin
-    		$fclose(file);
-    		$finish;
-    	end else begin
-    		angle = angle + 1;
-    	end
+    always @(posedge clk) begin
+        start = 1'b0;
+        if (rst == 1'b0 && read_val == 1'b1) begin
+            //write result to file
+            $fwrite(file, "%b %b\n", comp_r, comp_i);
+        
+            //update angle or exit
+            if (angle == 12'b111111111111) begin
+                $fclose(file);
+                $finish;
+            end else begin
+                angle = angle + 1;
+                start = 1'b1;
+                // rst = 1'b1;
+                // #1;
+                // rst = 1'b0;
+            end
+        end
     end
 endmodule
