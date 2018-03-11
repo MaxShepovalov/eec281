@@ -26,7 +26,7 @@ module tbench();
         clk = 1'b0;
         start = 1'b0;
         rst = 1'b1;
-        #30;
+        #25;
         rst = 1'b0;
         start = 1'b1;
     end
