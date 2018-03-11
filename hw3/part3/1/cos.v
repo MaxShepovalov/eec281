@@ -4123,7 +4123,7 @@ always @(angle) begin
     end
 
     //memory
-    result_c = [cos_mem(angle)[14], cos_mem(angle)];
+    result_c = {cos_mem(angle)[14], cos_mem(angle)};
     result_c[14] = result_c[14] & except; //in exception output 0000 0000 0000
 end
 
