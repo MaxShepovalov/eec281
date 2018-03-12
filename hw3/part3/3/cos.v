@@ -6,13 +6,11 @@ module addr_selector(
     input [11:0] angle,
     input angle_shift,
     input cos_en,
-    output mem_address,
+    output reg [8:0] mem_address,
     output reg do_except,
     output reg select_cos_mem,
     output reg select_positive
 );
-
-reg [8:0] mem_address; //memory address
 
 //logic variables
 reg [11:0] angle_output, angle_mem_full;
@@ -89,7 +87,7 @@ module cos(
     output reg [15:0] result
 );
 
-reg [15:0] result1, result2;
+reg [15:0] result0, result1;
 reg [16:0] result2x;
 reg [14:0] cos_mem [256:0];
 reg [14:0] sin_mem [256:0];
@@ -420,7 +418,7 @@ end
 //write output
 always @(result1 or result0) begin
     result2x = result1 + result0;
-    result = result2x[16:1];
+    result = result2x[16:1]; //devide by 2
 end
 
 endmodule
