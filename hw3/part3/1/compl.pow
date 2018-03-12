@@ -1,4 +1,4 @@
-Warning: Main library 'gtech' does not specify the following unit required for power: 'Leakage Power'. (PWR-424)
+Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: Design has unannotated primary inputs. (PWR-414)
 Warning: Design has unannotated sequential cell outputs. (PWR-415)
@@ -9,47 +9,50 @@ Report : power
         -analysis_effort low
 Design : compl
 Version: J-2014.09-SP2
-Date   : Sun Mar 11 20:29:29 2018
+Date   : Sun Mar 11 23:43:32 2018
 ****************************************
 
 
 Library(s) Used:
 
-    gtech (File: /software/Synopsys/DesignCompiler/current/libraries/syn/gtech.db)
+    NangateOpenCellLibrary (File: /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db)
 
 
-Operating Conditions: nom_pvt   Library: gtech
+Operating Conditions: typical   Library: NangateOpenCellLibrary
 Wire Load Model Mode: top
 
+Design        Wire Load Model            Library
+------------------------------------------------
+compl                  5K_hvratio_1_1    NangateOpenCellLibrary
 
-Global Operating Voltage = 5    
+
+Global Operating Voltage = 1.1  
 Power-specific unit information :
     Voltage Units = 1V
-    Capacitance Units = 0.100000ff
+    Capacitance Units = 1.000000ff
     Time Units = 1ns
-    Dynamic Power Units = 100nW    (derived from V,C,T units)
-    Leakage Power Units = Unitless
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
 
 
-  Cell Internal Power  =   0.0000 nW    (0%)
-  Net Switching Power  =   1.1639 uW  (100%)
+  Cell Internal Power  =  84.4896 uW   (94%)
+  Net Switching Power  =   5.8258 uW    (6%)
                          ---------
-Total Dynamic Power    =   1.1639 uW  (100%)
+Total Dynamic Power    =  90.3154 uW  (100%)
 
-Cell Leakage Power     =   0.0000 
+Cell Leakage Power     =   5.5297 uW
 
-Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
 
                  Internal         Switching           Leakage            Total
 Power Group      Power            Power               Power              Power   (   %    )  Attrs
 --------------------------------------------------------------------------------------------------
-io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
-memory             0.0000            0.0000            0.0000               NA   (     N/A)
-black_box          0.0000            0.0000            0.0000               NA   (     N/A)
-clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
-register           0.0000        1.1639e+03            0.0000               NA   (     N/A)
-sequential         0.0000            0.0000            0.0000               NA   (     N/A)
-combinational      0.0000            0.0000            0.0000               NA   (     N/A)
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register          80.2840            1.3023        4.0190e+03           85.6053  (  89.32%)
+sequential         3.5177            0.2438        1.3413e+03            5.1029  (   5.32%)
+combinational      0.6879            4.2797          169.3527            5.1370  (   5.36%)
 --------------------------------------------------------------------------------------------------
-Total              0.0000 nW     1.1639e+03 nW         0.0000               NA        
+Total             84.4896 uW         5.8258 uW     5.5297e+03 nW        95.8451 uW
 1

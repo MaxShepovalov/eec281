@@ -8,62 +8,78 @@ Report : timing
         -max_paths 10
 Design : compl
 Version: J-2014.09-SP2
-Date   : Sun Mar 11 20:29:29 2018
+Date   : Sun Mar 11 23:43:32 2018
 ****************************************
 
-Operating Conditions: nom_pvt   Library: gtech
+Operating Conditions: typical   Library: NangateOpenCellLibrary
 Wire Load Model Mode: top
 
-  Startpoint: i_reg[9] (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: i[9] (output port clocked by clk)
+  Startpoint: mode_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: mode_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
 
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[9]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[9]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[9] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  mode_reg[0]/CK (DFFR_X1)                 0.00       0.00 r
+  mode_reg[0]/Q (DFFR_X1)                  0.12       0.12 r
+  U11/ZN (AND2_X1)                         0.12       0.24 r
+  mode_reg[1]/D (DFFR_X1)                  0.02       0.27 r
+  data arrival time                                   0.27
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
   clock uncertainty                       -0.20       3.80
-  output external delay                   -0.16       3.64
-  data required time                                  3.64
+  mode_reg[1]/CK (DFFR_X1)                 0.00       3.80 r
+  library setup time                      -0.05       3.75
+  data required time                                  3.75
   -----------------------------------------------------------
-  data required time                                  3.64
-  data arrival time                                   0.00
+  data required time                                  3.75
+  data arrival time                                  -0.27
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.49
 
 
-  Startpoint: i_reg[8] (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: i[8] (output port clocked by clk)
+  Startpoint: mode_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: mode_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
 
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[8]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[8]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[8] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  mode_reg[1]/CK (DFFR_X1)                 0.00       0.00 r
+  mode_reg[1]/QN (DFFR_X1)                 0.08       0.08 r
+  U11/ZN (AND2_X1)                         0.12       0.20 r
+  mode_reg[1]/D (DFFR_X1)                  0.02       0.23 r
+  data arrival time                                   0.23
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
   clock uncertainty                       -0.20       3.80
-  output external delay                   -0.16       3.64
-  data required time                                  3.64
+  mode_reg[1]/CK (DFFR_X1)                 0.00       3.80 r
+  library setup time                      -0.05       3.75
+  data required time                                  3.75
   -----------------------------------------------------------
-  data required time                                  3.64
-  data arrival time                                   0.00
+  data required time                                  3.75
+  data arrival time                                  -0.23
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[7] (rising edge-triggered flip-flop clocked by clk)
@@ -71,14 +87,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[7]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[7]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[7] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[7]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[7]/Q (DFFR_X1)                     0.10       0.10 r
+  i[7] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -87,9 +107,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[6] (rising edge-triggered flip-flop clocked by clk)
@@ -97,14 +117,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[6]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[6]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[6] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[6]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[6]/Q (DFFR_X1)                     0.10       0.10 r
+  i[6] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -113,9 +137,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[5] (rising edge-triggered flip-flop clocked by clk)
@@ -123,14 +147,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[5]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[5]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[5] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[5]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[5]/Q (DFFR_X1)                     0.10       0.10 r
+  i[5] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -139,9 +167,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[4] (rising edge-triggered flip-flop clocked by clk)
@@ -149,14 +177,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[4]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[4]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[4] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[4]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[4]/Q (DFFR_X1)                     0.10       0.10 r
+  i[4] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -165,9 +197,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[3] (rising edge-triggered flip-flop clocked by clk)
@@ -175,14 +207,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[3]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[3]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[3] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[3]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[3]/Q (DFFR_X1)                     0.10       0.10 r
+  i[3] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -191,9 +227,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[2] (rising edge-triggered flip-flop clocked by clk)
@@ -201,14 +237,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[2]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[2]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[2] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[2]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[2]/Q (DFFR_X1)                     0.10       0.10 r
+  i[2] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -217,9 +257,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[1] (rising edge-triggered flip-flop clocked by clk)
@@ -227,14 +267,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[1]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[1]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[1] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[1]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[1]/Q (DFFR_X1)                     0.10       0.10 r
+  i[1] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -243,9 +287,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
   Startpoint: i_reg[0] (rising edge-triggered flip-flop clocked by clk)
@@ -253,14 +297,18 @@ Wire Load Model Mode: top
   Path Group: clk
   Path Type: max
 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  compl              5K_hvratio_1_1        NangateOpenCellLibrary
+
   Point                                    Incr       Path
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  i_reg[0]/clocked_on (**SEQGEN**)         0.00       0.00 r
-  i_reg[0]/Q (**SEQGEN**)                  0.00       0.00 r
-  i[0] (out)                               0.00       0.00 r
-  data arrival time                                   0.00
+  i_reg[0]/CK (DFFR_X1)                    0.00       0.00 r
+  i_reg[0]/Q (DFFR_X1)                     0.10       0.10 r
+  i[0] (out)                               0.01       0.11 r
+  data arrival time                                   0.11
 
   clock clk (rise edge)                    4.00       4.00
   clock network delay (ideal)              0.00       4.00
@@ -269,9 +317,9 @@ Wire Load Model Mode: top
   data required time                                  3.64
   -----------------------------------------------------------
   data required time                                  3.64
-  data arrival time                                   0.00
+  data arrival time                                  -0.11
   -----------------------------------------------------------
-  slack (MET)                                         3.64
+  slack (MET)                                         3.53
 
 
 1

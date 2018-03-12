@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s031: Started on Mar 11, 2018 at 20:28:25 PDT
+TOOL:	ncverilog	15.20-s031: Started on Mar 11, 2018 at 23:42:54 PDT
 ncverilog
 	+access+r
 	-l
@@ -46,4 +46,4 @@ ncsim> run
 Simulation complete via $finish(1) at time 327692 NS + 0
 ./tbench.vt:56                     $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s031: Exiting on Mar 11, 2018 at 20:28:27 PDT  (total: 00:00:02)
+TOOL:	ncverilog	15.20-s031: Exiting on Mar 11, 2018 at 23:42:57 PDT  (total: 00:00:03)
