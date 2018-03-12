@@ -598,23 +598,8 @@ always @(angle or cos_en) begin
         end
     endcase
 
-    //read memory
-    angle_mem = angle_mem_full[10:0];
-    if (select_cos_mem == 1'b1) begin
-        if (select_positive) begin
-            mem_val = cos_mem[angle_mem];
-        end else begin
-            mem_val = -cos_mem[angle_mem];
-        end
-    end else begin
-        if (select_positive) begin
-            mem_val = sin_mem[angle_mem];
-        end else begin
-            mem_val = -sin_mem[angle_mem];
-        end
-    end
-
     //exception (when need to return +1.0)
+    angle_mem = angle_mem_full[9:0];
     except = (angle_mem == 10'b00_0000_0000);
     except = except || (angle_mem == 10'b00_0000_0001);
     except = except || (angle_mem == 10'b00_0000_0010);
@@ -624,8 +609,20 @@ always @(angle or cos_en) begin
     //except only work for cos bank near angle 0
     except = except & select_cos_mem;
 
+    //read memory
+    if (select_cos_mem == 1'b1) begin
+        mem_val = cos_mem[angle_mem];
+    end else begin
+        mem_val = sin_mem[angle_mem];
+    end
+
     //make output
-    result = {mem_val[14], mem_val[14] | except, mem_val[13:0]};
+    if (select_positive == 1'b1) begin
+        result = {mem_val[14], mem_val[14] | except, mem_val[13:0]};
+    end else begin
+        result = -{mem_val[14], mem_val[14] | except, mem_val[13:0]};
+    end
+    
 end
 
 endmodule
