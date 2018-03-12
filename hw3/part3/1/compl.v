@@ -31,7 +31,7 @@ always @(angle or start or mode) begin
     mode_c = mode;
     case(mode)
         IDLE: begin
-            if (start == 1'b1)  begin
+            if (start == 1'b1) begin
                 ready_c = 1'b0;
                 mode_c = COS;
                 cos_en = 1'b1;

@@ -4138,9 +4138,8 @@ always @(angle or cos_en) begin
     except = except || (angle_mem == 12'b1111_1111_1111);
     except = except || (angle_mem == 12'b1111_1111_1110);
 
-    //memory
-    result = {cos_mem[angle_mem][14], cos_mem[angle_mem]};
-    result[14] = result[14] | except;
+    //output
+    result = {cos_mem[angle_mem][14], cos_mem[angle_mem][14] | except, cos_mem[angle_mem][13:0]};
 end
 
 endmodule
