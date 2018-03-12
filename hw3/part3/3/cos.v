@@ -2,31 +2,107 @@
 //full precision and [0 .. 45) degrees
 `timescale 1ns/10ps
 
+module addr_selector(
+    input [11:0] angle,
+    input angle_shift,
+    input cos_en,
+    output mem_address,
+    output reg do_except,
+    output reg select_cos_mem,
+    output reg select_positive
+);
+
+reg [8:0] mem_address; //memory address
+
+//logic variables
+reg [11:0] angle_output, angle_mem_full;
+
+always @(angle or cos_en) begin
+    //cos/sin selection for output
+    if (cos_en == 1'b1)
+        //compute cos(angle)
+        angle_output = angle + angle[0]*angle_shift;
+    else
+        //compute sin(angle) = cos (pi/2 - angle)
+        angle_output = 11'b100_0000_0000 - angle - angle[0]*angle_shift;
+
+    //choose cos/sin mem bank
+    case (angle_output[11:9])
+        3'b000: begin //0 - 45
+            angle_mem_full = angle_output;
+            select_cos_mem = 1'b1;
+            select_positive = 1'b1;
+        end
+        3'b001: begin //45 - 90
+            angle_mem_full = 12'h400 - angle_output;
+            select_cos_mem = 1'b0;
+            select_positive = 1'b1;
+        end
+        3'b010: begin //90 - 135
+            angle_mem_full = angle_output[9:0] - 12'h400;
+            select_cos_mem = 1'b0;
+            select_positive = 1'b0;
+        end
+        3'b011: begin //135 - 180
+            angle_mem_full = 12'h800 - angle_output;
+            select_cos_mem = 1'b1;
+            select_positive = 1'b0;
+        end
+        3'b100: begin //180 - 225
+            angle_mem_full = angle_output - 12'h800;
+            select_cos_mem = 1'b1;
+            select_positive = 1'b0;
+        end
+        3'b101: begin //225 - 270
+            angle_mem_full = 12'hC00 - angle_output;
+            select_cos_mem = 1'b0;
+            select_positive = 1'b0;
+        end
+        3'b110: begin //270 - 315
+            angle_mem_full = angle_output - 12'hC00;
+            select_cos_mem = 1'b0;
+            select_positive = 1'b1;
+        end
+        3'b111: begin //315 - 360
+            angle_mem_full = 13'h1000 - angle_output;
+            select_cos_mem = 1'b1;
+            select_positive = 1'b1;
+        end
+    endcase
+
+    //exception (when need to return +1.0)
+    mem_address = angle_mem_full[9:1];
+    do_except = (mem_address == 10'b00_0000_0000);
+    do_except = do_except || (mem_address == 10'b00_0000_0001);
+    do_except = do_except || (mem_address == 10'b00_0000_0010);
+    //except only work for cos bank near angle 0
+    do_except = do_except & select_cos_mem;
+end
+
+endmodule
+
+//////////////////////////////////////////////////////////////////
+
 module cos(
     input cos_en,
-    input [11:0] angle, //full angle
+    input [11:0] angle,
     output reg [15:0] result
 );
 
-reg except;
+reg [15:0] result1, result2;
+reg [16:0] result2x;
 reg [14:0] cos_mem [256:0];
 reg [14:0] sin_mem [256:0];
-reg [8:0] angle_mem; //memory address
 
-//logic variables
-reg select_cos_mem;
-reg select_positive;
-reg [11:0] angle_output, angle_mem_full;
-reg [14:0] mem_val;
+reg [14:0] mem_val0, mem_val1;
+wire [8:0] mem_adr0, mem_adr1;
+wire select_cos_mem0, select_cos_mem1, select_positive0, select_positive1, except0, except1;
 
 initial begin
     //defaults
     result = 16'b0000_0000_0000_0000;
-    mem_val = 15'b000_0000_0000_0000;
-    angle_output = 12'b0000_0000_0000;
-    angle_mem_full = 12'b0000_0000_0000;
-    select_cos_mem = 1'b0;
-    select_positive = 1'b1;
+    mem_val0 = 15'b000_0000_0000_0000;
+    mem_val1 = 15'b000_0000_0000_0000;
     //load values to memory;
     cos_mem[9'b000000000] = 15'b000000000000000; sin_mem[9'b000000000] = 15'b000000000000000;
     cos_mem[9'b000000001] = 15'b000000000000000; sin_mem[9'b000000001] = 15'b000000000110010;
@@ -289,81 +365,62 @@ initial begin
     cos_mem[9'b100000000] = 15'b010110101000001; sin_mem[9'b100000000] = 15'b010110101000001;
 end
 
-always @(angle or cos_en) begin
-    //cos/sin selection for output
-    if (cos_en == 1'b1)
-        //compute cos(angle)
-        angle_output = angle;
-    else
-        //compute sin(angle) = cos (pi/2 - angle)
-        angle_output = 11'b100_0000_0000 - angle;
+//address calculation for bottom value
+addr_selector ADS0 (
+    .angle (angle),
+    .angle_shift (1'b0),
+    .cos_en (cos_en),
+    .mem_address (mem_adr0),
+    .do_except (except0),
+    .select_cos_mem (select_cos_mem0),
+    .select_positive (select_positive0)
+);
 
-    //choose cos/sin mem bank
-    case (angle_output[11:9])
-        3'b000: begin //0 - 45
-            angle_mem_full = angle_output;
-            select_cos_mem = 1'b1;
-            select_positive = 1'b1;
-        end
-        3'b001: begin //45 - 90
-            angle_mem_full = 12'h400 - angle_output;
-            select_cos_mem = 1'b0;
-            select_positive = 1'b1;
-        end
-        3'b010: begin //90 - 135
-            angle_mem_full = angle_output[9:0] - 12'h400;
-            select_cos_mem = 1'b0;
-            select_positive = 1'b0;
-        end
-        3'b011: begin //135 - 180
-            angle_mem_full = 12'h800 - angle_output;
-            select_cos_mem = 1'b1;
-            select_positive = 1'b0;
-        end
-        3'b100: begin //180 - 225
-            angle_mem_full = angle_output - 12'h800;
-            select_cos_mem = 1'b1;
-            select_positive = 1'b0;
-        end
-        3'b101: begin //225 - 270
-            angle_mem_full = 12'hC00 - angle_output;
-            select_cos_mem = 1'b0;
-            select_positive = 1'b0;
-        end
-        3'b110: begin //270 - 315
-            angle_mem_full = angle_output - 12'hC00;
-            select_cos_mem = 1'b0;
-            select_positive = 1'b1;
-        end
-        3'b111: begin //315 - 360
-            angle_mem_full = 13'h1000 - angle_output;
-            select_cos_mem = 1'b1;
-            select_positive = 1'b1;
-        end
-    endcase
+//address calculation for upper value
+addr_selector ADS1 (
+    .angle (angle),
+    .angle_shift (1'b1),
+    .cos_en (cos_en),
+    .mem_address (mem_adr1),
+    .do_except (except1),
+    .select_cos_mem (select_cos_mem1),
+    .select_positive (select_positive1)
+);
 
-    //exception (when need to return +1.0)
-    angle_mem = angle_mem_full[9:1];
-    except = (angle_mem == 10'b00_0000_0000);
-    except = except || (angle_mem == 10'b00_0000_0001);
-    except = except || (angle_mem == 10'b00_0000_0010);
-    //except only work for cos bank near angle 0
-    except = except & select_cos_mem;
-
+//calculate upper value
+always @(mem_adr1 or mem_adr1 or select_cos_mem1 or select_positive1) begin
     //read memory
-    if (select_cos_mem == 1'b1) begin
-        mem_val = cos_mem[angle_mem];
+    if (select_cos_mem1 == 1'b1) begin
+        mem_val1 = cos_mem[mem_adr1];
     end else begin
-        mem_val = sin_mem[angle_mem];
+        mem_val1 = sin_mem[mem_adr1];
     end
+    if (select_positive1 == 1'b1) begin
+        result1 = {mem_val1[14], mem_val1[14] | except1, mem_val1[13:0]};
+    end else begin
+        result1 = -{mem_val1[14], mem_val1[14] | except1, mem_val1[13:0]};
+    end
+end
 
-    //make output
-    if (select_positive == 1'b1) begin
-        result = {mem_val[14], mem_val[14] | except, mem_val[13:0]};
+//calculate bottom value
+always @(mem_adr0 or mem_adr0 or select_cos_mem0 or select_positive0) begin
+    //read memory
+    if (select_cos_mem0 == 1'b1) begin
+        mem_val0 = cos_mem[mem_adr0];
     end else begin
-        result = -{mem_val[14], mem_val[14] | except, mem_val[13:0]};
+        mem_val0 = sin_mem[mem_adr0];
     end
-    
+    if (select_positive0 == 1'b1) begin
+        result0 = {mem_val0[14], mem_val0[14] | except0, mem_val0[13:0]};
+    end else begin
+        result0 = -{mem_val0[14], mem_val0[14] | except0, mem_val0[13:0]};
+    end
+end
+
+//write output
+always @(result1 or result0) begin
+    result2x = result1 + result0;
+    result = result2x[16:1];
 end
 
 endmodule
