@@ -1,0 +1,10 @@
+Matlab diff:
+
+max(data0-data1) =  +0.001554 +0.001554i =  +0.00155412 +0.00155412i
+min(data0-data1) =  -0.001554 -0.001554i =  -0.00155412 -0.00155412i
+max(data0/data1) = -Inf -Infi
+min(data0/data1) = +Inf +Infi
+approx separated mean(data0/data1) = +0.997796+ +0.997796i
+Energy_data0 = 4096.016469
+Energy_diff  = 0.002413
+Energy_data0/Energy_diff = 1697518.136491 = 62.298144dB
