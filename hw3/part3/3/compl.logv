@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s031: Started on Mar 12, 2018 at 01:24:30 PDT
+TOOL:	ncverilog	15.20-s031: Started on Mar 12, 2018 at 01:49:05 PDT
 ncverilog
 	+access+r
 	-l
@@ -28,7 +28,7 @@ file: tbench.vt
 		worklib.compl:v <0x0f75d19f>
 			streams:   6, words:  4285
 		worklib.cos:v <0x31eb7bad>
-			streams:   4, words: 53705
+			streams:   4, words: 53753
 		worklib.tbench:vt <0x7d705d89>
 			streams:   6, words:  5764
 	Building instance specific data structures.
@@ -50,4 +50,4 @@ ncsim> run
 Simulation complete via $finish(1) at time 327692 NS + 0
 ./tbench.vt:56                     $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s031: Exiting on Mar 12, 2018 at 01:24:33 PDT  (total: 00:00:03)
+TOOL:	ncverilog	15.20-s031: Exiting on Mar 12, 2018 at 01:49:08 PDT  (total: 00:00:03)
