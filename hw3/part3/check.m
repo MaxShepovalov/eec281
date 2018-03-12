@@ -1,6 +1,6 @@
 %check correctness of an output
 clear;
-addpath('2'); %select folder
+addpath('3'); %select folder
 complex_result %add output from simulation
 
 angle = 2 * pi * (output(:,1)) / 4096;

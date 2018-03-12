@@ -347,9 +347,6 @@ always @(angle or cos_en) begin
     except = (angle_mem == 10'b00_0000_0000);
     except = except || (angle_mem == 10'b00_0000_0001);
     except = except || (angle_mem == 10'b00_0000_0010);
-    except = except || (angle_mem == 10'b00_0000_0011);
-    except = except || (angle_mem == 10'b00_0000_0100);
-    except = except || (angle_mem == 10'b00_0000_0101);
     //except only work for cos bank near angle 0
     except = except & select_cos_mem;
 
