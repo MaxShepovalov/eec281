@@ -3,14 +3,11 @@
 `timescale 1ns/10ps
 
 module cos(
-    // input clk,
-    // input rst,
     input cos_en,
     input [11:0] angle,
     output reg [15:0] result
 );
 
-//reg [15:0] result_c;
 reg except;
 reg [14:0] cos_mem [4095:0];
 reg [11:0] angle_mem;

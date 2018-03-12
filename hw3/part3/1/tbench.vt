@@ -6,7 +6,6 @@ module tbench();
     wire [15:0] comp_r;
     wire [15:0] comp_i;
     reg clk, start, rst;
-    wire read_val;
     integer count = 0;
 
     compl C1 (
@@ -15,8 +14,7 @@ module tbench();
         .clk (clk),
         .reset (rst),
         .r (comp_r),
-        .i (comp_i),
-        .ready (read_val)
+        .i (comp_i)
     );
 
     initial begin
@@ -30,7 +28,7 @@ module tbench();
         #25;
         rst = 1'b0;
         start = 1'b1;
-        count = 5;
+        count = 3;
     end
 
     //clock
@@ -45,7 +43,6 @@ module tbench();
         if (count != 0) begin
             count = count - 1;
         end else begin
-        //if (rst == 1'b0 && read_val == 1'b1) begin
             //write result to file
             $fwrite(file, "%b %b\n", comp_r, comp_i);
             //update angle or exit
@@ -55,7 +52,7 @@ module tbench();
             end else begin
                 angle = angle + 1;
                 start = 1'b1;
-                count = 5;
+                count = 3;
             end
         end
     end
