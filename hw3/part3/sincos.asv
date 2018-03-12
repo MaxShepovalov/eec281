@@ -7,9 +7,10 @@ last_val = 2^12;
 fileID = fopen("sincos_quad.txt","w"); %var2
 %fileID = fopen("sincos_small.txt","w"); %var3
 
+% cos_check = [];
 
 %for i = 0:last_val-1     % var 1
-for i = 0:last_val/8   % var 2
+for i = 0:last_val/4   % var 2
 %for i = 0:last_val/8   % var 3, leave only cos
 
     cs = round(cos(2 * pi * i / last_val) * (2^14)); %var 1 and 2
