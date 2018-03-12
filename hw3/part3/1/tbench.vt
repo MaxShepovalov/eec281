@@ -41,6 +41,7 @@ module tbench();
 
     //tests
     always @(posedge clk) begin
+        #2;
         if (rst == 1'b0) begin
             start = 1'b0;
             if (count != 0) begin
