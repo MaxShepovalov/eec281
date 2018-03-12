@@ -23,16 +23,16 @@ reg [15:0] r_c, i_c;
 wire [15:0] cos_val;
 reg cos_en, start_r;
 
-// initial begin
-//     mode = IDLE;
-//     mode_c = IDLE;
-//     angle_mem = 12'b0000_0000_0000;
-//     angle_r = 12'b0000_0000_0000;
-//     r_c = 16'b0000_0000_0000_0000;
-//     i_c = 16'b0000_0000_0000_0000;
-//     cos_en = 1'b0;
-//     start_r = 1'b0;
-// end
+initial begin
+    mode = IDLE;
+    mode_c = IDLE;
+    angle_mem = 12'b0000_0000_0000;
+//    angle_r = 12'b0000_0000_0000;
+    r_c = 16'b0000_0000_0000_0000;
+    i_c = 16'b0000_0000_0000_0000;
+    cos_en = 1'b0;
+//    start_r = 1'b0;
+end
 
 cos cos_mem (.angle (angle_r), .cos_en(cos_en), .result(cos_val));
 
