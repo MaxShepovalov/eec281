@@ -40,9 +40,9 @@ for i = 0:last_val/8   % var 2
     %save values
     if (length(cs_b) ~= 15)
         fprintf("case i=%s (%d), cos=%s requires manual workaround\n",dec2bin(i,12),i,cs_b);
-        fprintf(fileID, "    cos_mem[10'b%s] = 15'b%s; sin_mem[10'b%s] = 15'b%s\n", dec2bin(i,10), dec2bin(0,15), dec2bin(i,10), sn_b);
+        fprintf(fileID, "    cos_mem[10'b%s] = 15'b%s; sin_mem[10'b%s] = 15'b%s;\n", dec2bin(i,10), dec2bin(0,15), dec2bin(i,10), sn_b);
     else
-        fprintf(fileID, "    cos_mem[10'b%s] = 15'b%s; sin_mem[10'b%s] = 15'b%s\n", dec2bin(i,10), cs_b, dec2bin(i,10), sn_b);
+        fprintf(fileID, "    cos_mem[10'b%s] = 15'b%s; sin_mem[10'b%s] = 15'b%s;\n", dec2bin(i,10), cs_b, dec2bin(i,10), sn_b);
     end
 end
 
