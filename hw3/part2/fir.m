@@ -1,3 +1,5 @@
+clear;
+addpath('../part1/') %add numppterms
 %fir
 %coef = [17 -90  241   902  241 -90  17]
 %pps      2   4    3     4    3   4   2
@@ -6,15 +8,12 @@
 %            +4   -1    +4   -1  +4
 %            +2         -2       +2
 
-%scale = 0.532 %12 pps
-%coef_r are [9 -48 128 480 128 -48 9]
-
-
 %original coefficients
 coef = [17 -90 241 902 241 -90 17];
 
 %scaling factor
-%scale = 0.75;
+%scale = 1;
+scale = 0.532; %12 pps, coef_r will be [9 -48 128 480 128 -48 9]
 
 %rounded coedficients
 coef_r = round( coef * scale );
@@ -28,17 +27,7 @@ total = 0;
 %calculation
 for fircoef = 1:7
     total = total + numppterms(coef_r(fircoef));
+    fprintf("coef #%d %d, %d partial products\n", fircoef, coef_r(fircoef), numppterms(coef_r(fircoef)));
 end
 
-fprintf("Need %d partial products\n", total);
-
-%find solution
-% tpp = zeros(1,5001);
-% x = zeros(1,5001);
-% for i = 1:5000
-%     scale = (i + 5000) / 10000;
-%     fir
-%     tpp(i) = total;
-%     x(i) = scale;
-% end
-% plot(x,tpp);
+fprintf("In total, need %d partial products\n", total);

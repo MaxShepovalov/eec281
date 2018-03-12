@@ -1,6 +1,6 @@
 StepSize = 0.5;
 NumTermsArrayPos = zeros(1, 100/StepSize);
-for k = StepSize : StepSize : 100,
+for k = StepSize : StepSize : 100
     NumTermsArrayPos(k/StepSize) = numppterms(k);
 end
 
