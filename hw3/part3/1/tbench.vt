@@ -22,7 +22,7 @@ module tbench();
         $recordvars(tbench);
         file = $fopen("complex_result.m", "w");
         $fwrite(file, "output = [\n");
-        angle = 12'b0;
+        angle = 12'b1111_1111_1111_1111;
         clk = 1'b0;
         start = 1'b0;
         rst = 1'b1;
