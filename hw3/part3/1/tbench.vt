@@ -29,8 +29,6 @@ module tbench();
         #25;
         angle = 12'b0;
         rst = 1'b0;
-        start = 1'b0;
-        start = 1'b1;
         count = 4;
     end
 
@@ -42,21 +40,23 @@ module tbench();
 
     //tests
     always @(posedge clk) begin
-        start = 1'b0;
-        if (count != 0) begin
-            count = count - 1;
-        end else begin
-            //write result to file
-            $fwrite(file, "%d %d %d;\n", angle, comp_r, comp_i);
-            //update angle or exit
-            if (angle == 12'b111111111111) begin
-                $fwrite(file, "];\n");
-                $fclose(file);
-                $finish;
+        if (rst == 1'b0) begin
+            start = 1'b0;
+            if (count != 0) begin
+                count = count - 1;
             end else begin
-                angle = angle + 1;
-                start = 1'b1;
-                count = 4;
+                //write result to file
+                $fwrite(file, "%d %d %d;\n", angle, comp_r, comp_i);
+                //update angle or exit
+                if (angle == 12'b111111111111) begin
+                    $fwrite(file, "];\n");
+                    $fclose(file);
+                    $finish;
+                end else begin
+                    angle = angle + 1;
+                    start = 1'b1;
+                    count = 4;
+                end
             end
         end
     end
