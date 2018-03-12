@@ -1,0 +1,291 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+          Version J-2014.09-SP2 for RHEL64 -- Nov 25, 2014
+               Copyright (c) 1988-2014 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+# dc-template.tcl script 
+#
+# 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
+#             cycle time so very short critical paths are visible in timing 
+#             reports. Also changed clock_skew from 250ps to 5% of cycle time 
+#             so it will scale with clock frequency.
+# 2017/02/10  Uncommented "analyze -format verilog ./proc.v" line. It seems to
+#             be needed only the first time synthesis is run.
+# 2017/02/04  Changes for NanGate 45 nm library including new timing parameters
+# 2012/02/22  Changed:
+#               ungroup -all -flatten -simple_names
+#             to:
+#               if { [sizeof_collection [get_cells * -filter 
+#                  "is_hierarchical==true"]] > 0 } {
+#                  ungroup -all -flatten -simple_names
+#                  }
+# 2010/02/16  Updated commented path to vtvtlib25.db
+# 2009/02/12  Many parts re-written in new tcl version by Zhibin Xiao
+# 2006/01/30  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2004/02/05  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2003/05/22  Increased input_setup from 500 to 6000 (external input delay
+#             now 6ns instead of 9.5ns) so input paths don't show up at the
+#             top of timing reports so often.
+# 2003/05/15  Cleaned up a little
+# 2003/05/14  Written
+#
+# Debugging
+# list -designs
+# list -libraries
+# list -files 
+#
+# Add if you like:
+# Annotates inputs, but doesn't propagate through design to clear warnings.
+#   set_switching_activity -toggle_rate 0.25 -clock "clk" { "in31a" }
+# More power info
+#   report_power -net
+#   report_power -hier
+#   set_max_delay
+#   write -format db -output compl.db
+#
+# Doesn't work quite the way I expect
+#   NameDesign = compl    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output compl.vg
+#===== Set: make sure you change design name elsewhere in this file
+set NameDesign "compl"
+compl
+#===== Set some timing parameters
+set CLK "clk"
+clk
+#===== All values are in units of ns for NanGate 45 nm library
+set clk_period      4
+4
+set clock_skew      [expr {$clk_period} * 0.05 ]
+0.2
+set input_setup     [expr {$clk_period} * 0.97 ]
+3.88
+set output_delay    [expr {$clk_period} * 0.04 ]
+0.16
+set input_delay     [expr {$clk_period} - {$input_setup}]
+0.12
+# It appears only one "analyze" command is needed with .tcl scripts we use.
+# Strangely, it seems to be needed only the first time synthesis is run.
+# Previously, they worked best with one line per module.
+analyze -format verilog ./compl.v
+Running PRESTO HDLC
+Compiling source file ./compl.v
+Warning:  ./compl.v:35: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+1
+elaborate $NameDesign
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/gtech.db'
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 38 in file
+	'./compl.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            40            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine compl line 38 in file
+		'./compl.v'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|       i_c_reg       | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|       r_c_reg       | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     cos_en_reg      | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+
+Inferred memory devices in process
+	in routine compl line 64 in file
+		'./compl.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        i_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      mode_reg       | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+|        r_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'compl'.
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Information: Building the design 'cos'. (HDL-193)
+Warning: Cannot find the design 'cos' in the library 'WORK'. (LBR-1)
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+current_design $NameDesign
+Current design is 'compl'.
+{compl}
+link
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+
+  Linking design 'compl'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  compl                       /home/maxs1993/wq18/281/hw3/part3/1/compl.db
+
+Information: Building the design 'cos'. (HDL-193)
+Warning: Cannot find the design 'cos' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'cos' in 'compl'. (LINK-5)
+0
+uniquify
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+set_max_area 0.0
+1
+#===== Timing and input/output load constraints
+create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_clock_uncertainty $clock_skew $CLK
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#set_clock_skew -plus_uncertainty $clock_skew $CLK
+#set_clock_skew -minus_uncertainty $clock_skew $CLK
+set_input_delay     $input_delay  -clock $CLK [all_inputs]
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#remove_input_delay               -clock $CLK [all_inputs] 
+set_output_delay    $output_delay -clock $CLK [all_outputs]
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_load 1.5 [all_outputs]
+1
+compile -map_effort medium
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Error: Could not read the following target libraries:
+your_library.db 
+ (UIO-3)
+0
+# Comment "ungroup" line to maybe see some submodules
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+# compile -map_effort medium    # May help, or maybe not
+#===== Reports
+write -format verilog -output compl.vg -hierarchy $NameDesign
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Writing verilog file '/home/maxs1993/wq18/281/hw3/part3/1/compl.vg'.
+Warning: Module compl contains unmapped components.  The output netlist might not be read back into the system. (VO-12)
+1
+report_area               > compl.area
+report_cell               > compl.cell
+report_hierarchy          > compl.hier
+report_net                > compl.net
+report_power              > compl.pow
+report_timing -nworst 10  > compl.tim
+check_timing
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+cos_en_reg/data_in
+i_reg[0]/next_state
+i_reg[1]/next_state
+i_reg[2]/next_state
+i_reg[3]/next_state
+i_reg[4]/next_state
+i_reg[5]/next_state
+i_reg[6]/next_state
+i_reg[7]/next_state
+i_reg[8]/next_state
+i_reg[9]/next_state
+i_reg[10]/next_state
+i_reg[11]/next_state
+i_reg[12]/next_state
+i_reg[13]/next_state
+i_reg[14]/next_state
+i_reg[15]/next_state
+r_reg[0]/next_state
+r_reg[1]/next_state
+r_reg[2]/next_state
+r_reg[3]/next_state
+r_reg[4]/next_state
+r_reg[5]/next_state
+r_reg[6]/next_state
+r_reg[7]/next_state
+r_reg[8]/next_state
+r_reg[9]/next_state
+r_reg[10]/next_state
+r_reg[11]/next_state
+r_reg[12]/next_state
+r_reg[13]/next_state
+r_reg[14]/next_state
+r_reg[15]/next_state
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+check_design
+Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+check_design summary:
+Version:     J-2014.09-SP2
+Date:        Sun Mar 11 18:18:35 2018
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     12
+    Multiply driven inputs (LINT-6)                                12
+
+Tristate                                                            1
+    A tristate bus has a non tri-state driver (LINT-34)             1
+--------------------------------------------------------------------------------
+
+Warning: In design 'compl', input port 'angle[11]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[10]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[9]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[8]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[7]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', input port 'angle[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'compl', three-state bus 'cos_en' has non three-state driver 'cos_en_reg/Q'. (LINT-34)
+1
+exit
+
+Thank you...
