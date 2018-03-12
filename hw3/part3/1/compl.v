@@ -68,8 +68,8 @@ always @(posedge clk or posedge reset) begin
         r <= #1 16'b0000_0000_0000_0000;
         i <= #1 16'b0000_0000_0000_0000;
         mode <= #1 IDLE;
-        angle_r = 12'b0000_0000_0000;
-        start_r = 1'b0;
+        angle_r <= #1 12'b0000_0000_0000;
+        start_r <= #1 1'b0;
     end else begin
         r <= #1 r_c;
         i <= #1 i_c;
