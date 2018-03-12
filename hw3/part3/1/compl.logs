@@ -87,7 +87,7 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 analyze -format verilog ./compl.v
 Running PRESTO HDLC
 Compiling source file ./compl.v
-Warning:  ./compl.v:35: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./compl.v:37: The statements in initial blocks are ignored. (VER-281)
 Presto compilation completed successfully.
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
 1
@@ -98,16 +98,16 @@ Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standar
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
 Running PRESTO HDLC
 
-Statistics for case statements in always block at line 38 in file
+Statistics for case statements in always block at line 40 in file
 	'./compl.v'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|            40            |    auto/auto     |
+|            42            |    auto/auto     |
 ===============================================
 
 Inferred memory devices in process
-	in routine compl line 38 in file
+	in routine compl line 40 in file
 		'./compl.v'.
 ===========================================================================
 |    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -118,14 +118,16 @@ Inferred memory devices in process
 ===========================================================================
 
 Inferred memory devices in process
-	in routine compl line 64 in file
+	in routine compl line 66 in file
 		'./compl.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
+|     angle_r_reg     | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     start_r_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|        r_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
 |        i_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
 |      mode_reg       | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
-|        r_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
 ===============================================================================
 Presto compilation completed successfully.
 Elaborated 1 design.
@@ -260,31 +262,28 @@ Warning: Design 'compl' has '1' unresolved references. For more detailed informa
 ****************************************
 check_design summary:
 Version:     J-2014.09-SP2
-Date:        Sun Mar 11 18:18:35 2018
+Date:        Sun Mar 11 20:03:10 2018
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Inputs/Outputs                                                     12
-    Multiply driven inputs (LINT-6)                                12
-
-Tristate                                                            1
-    A tristate bus has a non tri-state driver (LINT-34)             1
+Tristate                                                           13
+    A tristate bus has a non tri-state driver (LINT-34)            13
 --------------------------------------------------------------------------------
 
-Warning: In design 'compl', input port 'angle[11]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[10]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[9]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[8]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[7]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
-Warning: In design 'compl', input port 'angle[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
 Warning: In design 'compl', three-state bus 'cos_en' has non three-state driver 'cos_en_reg/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[0]' has non three-state driver 'angle_r_reg[0]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[1]' has non three-state driver 'angle_r_reg[1]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[2]' has non three-state driver 'angle_r_reg[2]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[3]' has non three-state driver 'angle_r_reg[3]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[4]' has non three-state driver 'angle_r_reg[4]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[5]' has non three-state driver 'angle_r_reg[5]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[6]' has non three-state driver 'angle_r_reg[6]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[7]' has non three-state driver 'angle_r_reg[7]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[8]' has non three-state driver 'angle_r_reg[8]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[9]' has non three-state driver 'angle_r_reg[9]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[10]' has non three-state driver 'angle_r_reg[10]/Q'. (LINT-34)
+Warning: In design 'compl', three-state bus 'angle_r[11]' has non three-state driver 'angle_r_reg[11]/Q'. (LINT-34)
 1
 exit
 

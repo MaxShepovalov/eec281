@@ -9,7 +9,7 @@ Information: Updating graph... (UID-83)
 Report : area
 Design : compl
 Version: J-2014.09-SP2
-Date   : Sun Mar 11 18:18:34 2018
+Date   : Sun Mar 11 20:03:10 2018
 ****************************************
 
 Information: Updating design information... (UID-85)
@@ -18,10 +18,10 @@ Library(s) Used:
     gtech (File: /software/Synopsys/DesignCompiler/current/libraries/syn/gtech.db)
 
 Number of ports:                           47
-Number of nets:                           120
-Number of cells:                           87
+Number of nets:                           133
+Number of cells:                          100
 Number of combinational cells:             15
-Number of sequential cells:                72
+Number of sequential cells:                85
 Number of macros/black boxes:               0
 Number of buf/inv:                         10
 Number of references:                       8

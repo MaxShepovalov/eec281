@@ -9,7 +9,7 @@ Report : power
         -analysis_effort low
 Design : compl
 Version: J-2014.09-SP2
-Date   : Sun Mar 11 18:18:35 2018
+Date   : Sun Mar 11 20:03:10 2018
 ****************************************
 
 
@@ -32,9 +32,9 @@ Power-specific unit information :
 
 
   Cell Internal Power  =   0.0000 nW    (0%)
-  Net Switching Power  =   1.1709 uW  (100%)
+  Net Switching Power  =   1.1639 uW  (100%)
                          ---------
-Total Dynamic Power    =   1.1709 uW  (100%)
+Total Dynamic Power    =   1.1639 uW  (100%)
 
 Cell Leakage Power     =   0.0000 
 
@@ -47,9 +47,9 @@ io_pad             0.0000            0.0000            0.0000               NA  
 memory             0.0000            0.0000            0.0000               NA   (     N/A)
 black_box          0.0000            0.0000            0.0000               NA   (     N/A)
 clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
-register           0.0000        1.1709e+03            0.0000               NA   (     N/A)
+register           0.0000        1.1639e+03            0.0000               NA   (     N/A)
 sequential         0.0000            0.0000            0.0000               NA   (     N/A)
 combinational      0.0000            0.0000            0.0000               NA   (     N/A)
 --------------------------------------------------------------------------------------------------
-Total              0.0000 nW     1.1709e+03 nW         0.0000               NA        
+Total              0.0000 nW     1.1639e+03 nW         0.0000               NA        
 1

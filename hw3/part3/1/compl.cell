@@ -4,7 +4,7 @@ Warning: Design 'compl' has '1' unresolved references. For more detailed informa
 Report : cell
 Design : compl
 Version: J-2014.09-SP2
-Date   : Sun Mar 11 18:18:34 2018
+Date   : Sun Mar 11 20:03:10 2018
 ****************************************
 
 Attributes:
@@ -27,17 +27,29 @@ C6                        GTECH_AND2      gtech           0.000000  c, u
 C8                        GTECH_OR2       gtech           0.000000  c, u
 C11                       GTECH_OR2       gtech           0.000000  c, u
 C13                       GTECH_AND2      gtech           0.000000  c, u
-C179                      *SELECT_OP_4.1_4.1_1            0.000000  s, u
-C180                      *SELECT_OP_4.2_4.1_2            0.000000  s, u
-C181                      *SELECT_OP_4.1_4.1_1            0.000000  s, u
-C182                      *SELECT_OP_4.1_4.1_1            0.000000  s, u
-C198                      GTECH_AND2      gtech           0.000000  c, u
+C205                      *SELECT_OP_4.1_4.1_1            0.000000  s, u
+C206                      *SELECT_OP_4.2_4.1_2            0.000000  s, u
+C207                      *SELECT_OP_4.1_4.1_1            0.000000  s, u
+C208                      *SELECT_OP_4.1_4.1_1            0.000000  s, u
+C224                      GTECH_AND2      gtech           0.000000  c, u
 I_0                       GTECH_NOT       gtech           0.000000  u
 I_1                       GTECH_NOT       gtech           0.000000  u
 I_2                       GTECH_NOT       gtech           0.000000  u
 I_3                       GTECH_NOT       gtech           0.000000  u
 I_4                       GTECH_NOT       gtech           0.000000  u
 I_5                       GTECH_NOT       gtech           0.000000  c, u
+angle_r_reg[0]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[1]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[2]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[3]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[4]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[5]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[6]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[7]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[8]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[9]            **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[10]           **SEQGEN**                      0.000000  n, so, u
+angle_r_reg[11]           **SEQGEN**                      0.000000  n, so, u
 cos_en_reg                **SEQGEN**                      0.000000  n, so, u
 cos_mem                   cos                             0.000000  b
 i_c_reg[0]                **SEQGEN**                      0.000000  n, u
@@ -106,6 +118,7 @@ r_reg[12]                 **SEQGEN**                      0.000000  n, u
 r_reg[13]                 **SEQGEN**                      0.000000  n, u
 r_reg[14]                 **SEQGEN**                      0.000000  n, u
 r_reg[15]                 **SEQGEN**                      0.000000  n, u
+start_r_reg               **SEQGEN**                      0.000000  n, u
 --------------------------------------------------------------------------------
-Total 87 cells                                            0.000000
+Total 100 cells                                           0.000000
 1
