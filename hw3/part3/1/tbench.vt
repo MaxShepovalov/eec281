@@ -21,6 +21,7 @@ module tbench();
         $recordfile("mult_test");
         $recordvars(tbench);
         file = $fopen("complex_result.m", "w");
+        $fwrite(file, "output = [\n");
         angle = 12'b0;
         clk = 1'b0;
         start = 1'b0;
@@ -44,9 +45,10 @@ module tbench();
             count = count - 1;
         end else begin
             //write result to file
-            $fwrite(file, "%b %b\n", comp_r, comp_i);
+            $fwrite(file, "%d %d %d;\n", angle, comp_r, comp_i);
             //update angle or exit
             if (angle == 12'b111111111111) begin
+                $fwrite(file, "];\n");
                 $fclose(file);
                 $finish;
             end else begin
