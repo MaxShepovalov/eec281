@@ -43,14 +43,14 @@ always @(angle_r or start_r or mode) begin
         IDLE: begin
             if (start_r == 1'b1) begin
                 mode_c = COS;
-                cos_en = 1'b1;
+                cos_en = mode_c[0];
                 angle_mem = angle_r;
             end
         end
         COS: begin
             r_c = cos_val;
             mode_c = SIN;
-            cos_en = 1'b0;
+            cos_en = mode_c[0];
         end
         SIN: begin
             i_c = cos_val;
