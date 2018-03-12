@@ -599,7 +599,7 @@ always @(angle or cos_en) begin
     endcase
 
     //read memory
-    angle_mem = angle_output[10:0];
+    angle_mem = angle_mem_full[10:0];
     if (select_cos_mem == 1'b1) begin
         if (select_positive) begin
             mem_val = cos_mem[angle_mem];
