@@ -3,17 +3,11 @@
 % output 16-bit cos and sin
 last_val = 2^12;
 
-%fileID = fopen("sincos_full.txt","w"); %var1
-fileID = fopen("sincos_quad.txt","w"); %var2
-%fileID = fopen("sincos_small.txt","w"); %var3
+fileID = fopen("sincos_full.txt","w");
 
+for i = 0:last_val-1
 
-%for i = 0:last_val-1     % var 1
-for i = 0:last_val/8   % var 2
-%for i = 0:last_val/8   % var 3, leave only cos
-
-    cs = round(cos(2 * pi * i / last_val) * (2^14)); %var 1 and 2
-    %cs = round(cos(4 * pi * i / last_val) * (2^14)); % var 3
+    cs = round(cos(2 * pi * i / last_val) * (2^14));
     cs_b = '';
     
     %convert cos to 16-bit 2's compl
@@ -31,11 +25,9 @@ for i = 0:last_val/8   % var 2
     %save values
     if (length(cs_b) ~= 15)
         fprintf("case i=%s (%d), cos=%s require manual workaround\n",dec2bin(i,12),i,cs_b);
-        %fprintf(fileID, "    cos_mem[12'b%s] = 15'b%s;\n", dec2bin(i,12), dec2bin(0,15));
-        fprintf(fileID, "    cos_mem[11'b%s] = 15'b%s;\n", dec2bin(i,11), dec2bin(0,15)); %var 2 and 3
+        fprintf(fileID, "    cos_mem[12'b%s] = 15'b%s;\n", dec2bin(i,12), dec2bin(0,15));
     else
-        %fprintf(fileID, "    cos_mem[12'b%s] = 15'b%s;\n", dec2bin(i,12), cs_b);
-        fprintf(fileID, "    cos_mem[11'b%s] = 15'b%s;\n", dec2bin(i,11), cs_b); %var 3
+        fprintf(fileID, "    cos_mem[12'b%s] = 15'b%s;\n", dec2bin(i,12), cs_b);        
     end
 end
 
