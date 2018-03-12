@@ -16,6 +16,7 @@ reg [14:0] cos_mem [4095:0];
 reg [11:0] angle_mem;
 
 initial begin
+    result = 16'b0000_0000_0000_0000;
     //load values to memory
     cos_mem[12'b000000000000] = 15'b000000000000000;
     cos_mem[12'b000000000001] = 15'b000000000000000;
