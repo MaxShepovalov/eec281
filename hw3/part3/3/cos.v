@@ -417,7 +417,7 @@ end
 
 //write output
 always @(result1 or result0) begin
-    result2x = result1 + result0;
+    result2x = {result1[15], result1} + {result0[15], result0};
     result = result2x[16:1]; //devide by 2
 end
 
