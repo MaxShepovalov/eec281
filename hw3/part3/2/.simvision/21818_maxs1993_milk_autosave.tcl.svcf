@@ -29,14 +29,6 @@ preferences set toolbar-TimeSearch-WatchWindow {
 }
 
 #
-# Databases
-#
-database require mult_test -search {
-	./mult_test.trn
-	/home/maxs1993/wq18/281/hw3/part3/2/mult_test.trn
-}
-
-#
 # Mnemonic Maps
 #
 mmap new -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
@@ -63,38 +55,8 @@ waveform set \
     -valuewidth 75
 waveform baseline set -time 0
 
-set id [waveform add -signals  {
-	{mult_test::tbench.C1.cos_mem.angle[11:0]}
-	} ]
-set id [waveform add -signals  {
-	{mult_test::tbench.C1.cos_mem.angle_mem[9:0]}
-	} ]
-set id [waveform add -signals  {
-	{mult_test::tbench.C1.cos_mem.angle_mem_full[11:0]}
-	} ]
-set id [waveform add -signals  {
-	{mult_test::tbench.C1.cos_mem.angle_output[11:0]}
-	} ]
-set id [waveform add -signals  {
-	mult_test::tbench.C1.cos_mem.cos_en
-	} ]
-set id [waveform add -signals  {
-	mult_test::tbench.C1.cos_mem.except
-	} ]
-set id [waveform add -signals  {
-	{mult_test::tbench.C1.cos_mem.mem_val[14:0]}
-	} ]
-set id [waveform add -signals  {
-	{mult_test::tbench.C1.cos_mem.result[15:0]}
-	} ]
-set id [waveform add -signals  {
-	mult_test::tbench.C1.cos_mem.select_cos_mem
-	} ]
-set id [waveform add -signals  {
-	mult_test::tbench.C1.cos_mem.select_positive
-	} ]
 
-waveform xview limits 163223.75ns 163723.75ns
+waveform xview limits 0 2000ns
 
 #
 # Waveform Window Links
