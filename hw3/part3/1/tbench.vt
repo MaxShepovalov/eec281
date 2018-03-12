@@ -29,6 +29,7 @@ module tbench();
         #25;
         angle = 12'b0;
         rst = 1'b0;
+        start = 1'b0;
         start = 1'b1;
         count = 4;
     end
