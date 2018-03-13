@@ -71,23 +71,24 @@ compl
 set CLK "clk"
 clk
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      4
-4
+set clk_period      20
+20
 set clock_skew      [expr {$clk_period} * 0.05 ]
-0.2
+1.0
 set input_setup     [expr {$clk_period} * 0.97 ]
-3.88
+19.4
 set output_delay    [expr {$clk_period} * 0.04 ]
-0.16
+0.8
 set input_delay     [expr {$clk_period} - {$input_setup}]
-0.12
+0.6
 # It appears only one "analyze" command is needed with .tcl scripts we use.
 # Strangely, it seems to be needed only the first time synthesis is run.
 # Previously, they worked best with one line per module.
 analyze -format verilog ./compl.v
 Running PRESTO HDLC
 Compiling source file ./compl.v
-Warning:  ./compl.v:37: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./compl.v:552: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./compl.v:664: The statements in initial blocks are ignored. (VER-281)
 Presto compilation completed successfully.
 Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
 Information: Using CCS timing libraries. (TIM-024)
@@ -100,16 +101,16 @@ Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standar
   Loading link library 'gtech'
 Running PRESTO HDLC
 
-Statistics for case statements in always block at line 40 in file
+Statistics for case statements in always block at line 667 in file
 	'./compl.v'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|            42            |    auto/auto     |
+|           669            |    auto/auto     |
 ===============================================
 
 Inferred memory devices in process
-	in routine compl line 40 in file
+	in routine compl line 667 in file
 		'./compl.v'.
 ===========================================================================
 |    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -120,7 +121,7 @@ Inferred memory devices in process
 ===========================================================================
 
 Inferred memory devices in process
-	in routine compl line 66 in file
+	in routine compl line 693 in file
 		'./compl.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -135,8 +136,15 @@ Presto compilation completed successfully.
 Elaborated 1 design.
 Current design is now 'compl'.
 Information: Building the design 'cos'. (HDL-193)
-Warning: Cannot find the design 'cos' in the library 'WORK'. (LBR-1)
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+
+Statistics for case statements in always block at line 552 in file
+	'./compl.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           562            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
 1
 current_design $NameDesign
 Current design is 'compl'.
@@ -149,87 +157,137 @@ link
   NangateOpenCellLibrary (library) /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db
   dw_foundation.sldb (library) /software/Synopsys/DesignCompiler/current/libraries/syn/dw_foundation.sldb
 
-Information: Building the design 'cos'. (HDL-193)
-Warning: Cannot find the design 'cos' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'cos' in 'compl'. (LINK-5)
-0
+1
 uniquify
-Information: Building the design 'cos'. (HDL-193)
-Warning: Cannot find the design 'cos' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'cos' in 'compl'. (LINK-5)
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
    }
+Information: Updating graph... (UID-83)
+1
 set_max_area 0.0
 1
 #===== Timing and input/output load constraints
 create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 set_clock_uncertainty $clock_skew $CLK
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 #set_clock_skew -plus_uncertainty $clock_skew $CLK
 #set_clock_skew -minus_uncertainty $clock_skew $CLK
 set_input_delay     $input_delay  -clock $CLK [all_inputs]
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 #remove_input_delay               -clock $CLK [all_inputs] 
 set_output_delay    $output_delay -clock $CLK [all_outputs]
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 set_load 1.5 [all_outputs]
 1
 compile -map_effort medium
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Warning: Setting attribute 'fix_multiple_port_nets' on design 'compl'. (UIO-59)
+Information: Checking out the license 'DesignWare'. (SEC-104)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
 ============================================================================
 | DesignWare Building Block Library  |         Version         | Available |
 ============================================================================
 | Basic DW Building Blocks           | J-2014.09-DWBB_201409.2 |     *     |
-| Licensed DW Building Blocks        | J-2014.09-DWBB_201409.2 |           |
+| Licensed DW Building Blocks        | J-2014.09-DWBB_201409.2 |     *     |
 ============================================================================
 
 
-Information: There are 13 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+Information: There are 6 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
 
 
   Beginning Pass 1 Mapping
   ------------------------
   Processing 'compl'
-Information: Building the design 'cos'. (HDL-193)
-Warning: Cannot find the design 'cos' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'cos' in 'compl'. (LINK-5)
 
   Updating timing information
 Information: Updating design information... (UID-85)
 
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'compl_DW01_sub_0'
+  Processing 'compl_DW01_sub_1'
+  Processing 'compl_DW01_sub_2'
+
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
+  Mapping Optimization (Phase 1)
+Information: The register 'r_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-1206)
 
                                   TOTAL                                      
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01     348.7      0.00       0.0       0.5                          
-    0:00:01     348.7      0.00       0.0       0.5                          
-    0:00:01     348.7      0.00       0.0       0.5                          
-    0:00:01     348.7      0.00       0.0       0.5                          
-    0:00:01     348.7      0.00       0.0       0.5                          
-    0:00:01     347.7      0.00       0.0       0.5                          
-    0:00:01     347.7      0.00       0.0       0.5                          
-    0:00:01     347.7      0.00       0.0       0.5                          
-    0:00:01     347.7      0.00       0.0       0.5                          
-    0:00:01     347.7      0.00       0.0       0.5                          
-    0:00:01     348.2      0.00       0.0       0.0                          
-    0:00:01     348.2      0.00       0.0       0.0                          
-    0:00:01     348.2      0.00       0.0       0.0                          
-    0:00:01     348.2      0.00       0.0       0.0                          
+    0:00:01     275.6      0.00       0.0       0.0                          
+    0:00:01     275.6      0.00       0.0       0.0                          
+    0:00:01     275.6      0.00       0.0       0.0                          
+    0:00:01     275.6      0.00       0.0       0.0                          
+    0:00:01     275.6      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
 
 
 
@@ -240,9 +298,9 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01     348.2      0.00       0.0       0.0                          
-    0:00:01     348.2      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     239.4      0.00       0.0       0.0                          
+    0:00:01     233.0      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -252,25 +310,26 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     347.1      0.00       0.0       0.0                          
-    0:00:01     345.5      0.00       0.0       0.0                          
-    0:00:01     345.3      0.00       0.0       0.0                          
-    0:00:01     345.3      0.00       0.0       0.0                          
-    0:00:01     345.3      0.00       0.0       0.0                          
-    0:00:01     345.3      0.00       0.0       0.0                          
-    0:00:01     345.3      0.00       0.0       0.0                          
-    0:00:01     345.3      0.00       0.0       0.0                          
-    0:00:01     345.3      0.00       0.0       0.0                          
+    0:00:01     233.0      0.00       0.0       0.0                          
+    0:00:01     233.0      0.00       0.0       0.0                          
+    0:00:01     225.3      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     221.0      0.00       0.0       0.0                          
+    0:00:01     219.5      0.00       0.0       0.0                          
+    0:00:01     219.5      0.00       0.0       0.0                          
+    0:00:01     219.5      0.00       0.0       0.0                          
+    0:00:01     219.5      0.00       0.0       0.0                          
+    0:00:01     219.5      0.00       0.0       0.0                          
+    0:00:01     219.5      0.00       0.0       0.0                          
+    0:00:01     219.5      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -286,8 +345,8 @@ if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
 write -format verilog -output compl.vg -hierarchy $NameDesign
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
-Writing verilog file '/home/maxs1993/wq18/281/hw3/part3/2/compl.vg'.
+Writing verilog file '/home/maxs1993/wq18/281/hw3/part3/2/clk20/compl.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
 1
 report_area               > compl.area
 report_cell               > compl.cell
@@ -296,7 +355,6 @@ report_net                > compl.net
 report_power              > compl.pow
 report_timing -nworst 10  > compl.tim
 check_timing
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 
 Information: Checking generated_clocks...
 
@@ -311,36 +369,12 @@ Warning: The following end-points are not constrained for maximum delay.
 End point
 ---------------
 cos_en_reg/D
-i_reg[0]/D
-i_reg[1]/D
-i_reg[2]/D
-i_reg[3]/D
-i_reg[4]/D
-i_reg[5]/D
-i_reg[6]/D
-i_reg[7]/D
-i_reg[8]/D
-i_reg[9]/D
-i_reg[10]/D
-i_reg[11]/D
-i_reg[12]/D
-i_reg[13]/D
+i_c_reg[14]/D
+i_c_reg[15]/D
 i_reg[14]/D
 i_reg[15]/D
-r_reg[0]/D
-r_reg[1]/D
-r_reg[2]/D
-r_reg[3]/D
-r_reg[4]/D
-r_reg[5]/D
-r_reg[6]/D
-r_reg[7]/D
-r_reg[8]/D
-r_reg[9]/D
-r_reg[10]/D
-r_reg[11]/D
-r_reg[12]/D
-r_reg[13]/D
+r_c_reg[14]/D
+r_c_reg[15]/D
 r_reg[14]/D
 r_reg[15]/D
 
@@ -351,33 +385,47 @@ Information: Checking no_driving_cell...
 Information: Checking partial_input_delay...
 1
 check_design
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
  
 ****************************************
 check_design summary:
 Version:     J-2014.09-SP2
-Date:        Mon Mar 12 00:25:47 2018
+Date:        Mon Mar 12 22:48:53 2018
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Tristate                                                           13
-    A tristate bus has a non tri-state driver (LINT-34)            13
+Inputs/Outputs                                                     28
+    Constant outputs (LINT-52)                                     28
 --------------------------------------------------------------------------------
 
-Warning: In design 'compl', three-state bus 'cos_en' has non three-state driver 'cos_en_reg/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[0]' has non three-state driver 'angle_r_reg[0]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[1]' has non three-state driver 'angle_r_reg[1]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[2]' has non three-state driver 'angle_r_reg[2]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[3]' has non three-state driver 'angle_r_reg[3]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[4]' has non three-state driver 'angle_r_reg[4]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[5]' has non three-state driver 'angle_r_reg[5]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[6]' has non three-state driver 'angle_r_reg[6]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[7]' has non three-state driver 'angle_r_reg[7]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[8]' has non three-state driver 'angle_r_reg[8]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[9]' has non three-state driver 'angle_r_reg[9]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[10]' has non three-state driver 'angle_r_reg[10]/Q'. (LINT-34)
-Warning: In design 'compl', three-state bus 'angle_r[11]' has non three-state driver 'angle_r_reg[11]/Q'. (LINT-34)
+Warning: In design 'compl', output port 'r[13]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[12]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[11]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[10]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[9]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[8]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[7]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[6]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[5]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[4]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[3]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[2]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[1]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[0]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[13]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[12]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[11]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[10]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[9]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[8]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[7]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[6]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[5]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[4]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[3]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[2]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[1]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[0]' is connected directly to 'logic 0'. (LINT-52)
 1
 exit
 

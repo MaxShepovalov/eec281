@@ -1,20 +1,18 @@
 ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s031: Started on Mar 12, 2018 at 01:49:05 PDT
+TOOL:	ncverilog	15.20-s031: Started on Mar 12, 2018 at 22:52:48 PDT
 ncverilog
 	+access+r
 	-l
 	compl.logv
 	-f compl.vfv
 		compl.v
-		cos.v
 		tbench.vt
 file: compl.v
-	module worklib.compl:v
-		errors: 0, warnings: 0
-file: cos.v
 	module worklib.addr_selector:v
 		errors: 0, warnings: 0
 	module worklib.cos:v
+		errors: 0, warnings: 0
+	module worklib.compl:v
 		errors: 0, warnings: 0
 file: tbench.vt
 	module worklib.tbench:vt
@@ -50,4 +48,4 @@ ncsim> run
 Simulation complete via $finish(1) at time 327692 NS + 0
 ./tbench.vt:56                     $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s031: Exiting on Mar 12, 2018 at 01:49:08 PDT  (total: 00:00:03)
+TOOL:	ncverilog	15.20-s031: Exiting on Mar 12, 2018 at 22:52:50 PDT  (total: 00:00:02)

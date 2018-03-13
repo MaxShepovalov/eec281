@@ -4,112 +4,193 @@ module compl ( angle, start, clk, reset, r, i );
   output [15:0] r;
   output [15:0] i;
   input start, clk, reset;
-  wire   cos_en, start_r, N6, N14, n1, n2, n4, n5, n6, n7, n8, n9, n10;
+  wire   cos_en, start_r, N6, N14, N15, N1211, N89, N59, N58, N57, N56, N55,
+         N54, N53, N52, N511, N24, N23, N22, N211, N20, N19, N181, N171, N161,
+         N151, N141, N131, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32,
+         n33, n34, n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45,
+         \r310/B[1] , \r310/B[2] , \r310/B[3] , \r310/B[4] , \r310/B[5] ,
+         \r310/B[6] , \r310/B[7] , \r310/B[8] , n109, n110, n111, n112, n113,
+         n114, n115, n116, n117, n118, n119, n120, n121, n122, n123;
   wire   [11:0] angle_r;
   wire   [15:0] cos_val;
+  wire   [1:0] mode;
   wire   [15:0] r_c;
   wire   [15:0] i_c;
+  wire   [9:0] angle_mem;
+  wire   [10:0] \r310/carry ;
+  wire   [12:0] \sub_559/carry ;
+  assign r[13] = 1'b0;
+  assign r[12] = 1'b0;
+  assign r[11] = 1'b0;
+  assign r[10] = 1'b0;
+  assign r[9] = 1'b0;
+  assign r[8] = 1'b0;
+  assign r[7] = 1'b0;
+  assign r[6] = 1'b0;
+  assign r[5] = 1'b0;
+  assign r[4] = 1'b0;
+  assign r[3] = 1'b0;
+  assign r[2] = 1'b0;
+  assign r[1] = 1'b0;
+  assign r[0] = 1'b0;
+  assign i[13] = 1'b0;
+  assign i[12] = 1'b0;
+  assign i[11] = 1'b0;
+  assign i[10] = 1'b0;
+  assign i[9] = 1'b0;
+  assign i[8] = 1'b0;
+  assign i[7] = 1'b0;
+  assign i[6] = 1'b0;
+  assign i[5] = 1'b0;
+  assign i[4] = 1'b0;
+  assign i[3] = 1'b0;
+  assign i[2] = 1'b0;
+  assign i[1] = 1'b0;
+  assign i[0] = 1'b0;
 
-  cos cos_mem ( .angle(angle_r), .cos_en(cos_en), .result(cos_val) );
-  DFFR_X1 \angle_r_reg[11]  ( .D(angle[11]), .CK(clk), .RN(n10), .Q(
-        angle_r[11]) );
-  DFFR_X1 \angle_r_reg[10]  ( .D(angle[10]), .CK(clk), .RN(n10), .Q(
-        angle_r[10]) );
-  DFFR_X1 \angle_r_reg[9]  ( .D(angle[9]), .CK(clk), .RN(n10), .Q(angle_r[9])
+  DFFR_X1 \mode_reg[1]  ( .D(N14), .CK(clk), .RN(n122), .Q(mode[1]), .QN(n23)
          );
-  DFFR_X1 \angle_r_reg[8]  ( .D(angle[8]), .CK(clk), .RN(n10), .Q(angle_r[8])
-         );
-  DFFR_X1 \angle_r_reg[7]  ( .D(angle[7]), .CK(clk), .RN(n10), .Q(angle_r[7])
-         );
-  DFFR_X1 \angle_r_reg[6]  ( .D(angle[6]), .CK(clk), .RN(n10), .Q(angle_r[6])
-         );
-  DFFR_X1 \angle_r_reg[5]  ( .D(angle[5]), .CK(clk), .RN(n10), .Q(angle_r[5])
-         );
-  DFFR_X1 \angle_r_reg[4]  ( .D(angle[4]), .CK(clk), .RN(n10), .Q(angle_r[4])
-         );
-  DFFR_X1 \angle_r_reg[3]  ( .D(angle[3]), .CK(clk), .RN(n10), .Q(angle_r[3])
-         );
-  DFFR_X1 \angle_r_reg[2]  ( .D(angle[2]), .CK(clk), .RN(n10), .Q(angle_r[2])
-         );
-  DFFR_X1 \angle_r_reg[1]  ( .D(angle[1]), .CK(clk), .RN(n10), .Q(angle_r[1])
-         );
-  DFFR_X1 \angle_r_reg[0]  ( .D(angle[0]), .CK(clk), .RN(n9), .Q(angle_r[0])
-         );
-  DFFR_X1 start_r_reg ( .D(start), .CK(clk), .RN(n9), .Q(start_r) );
-  DLL_X1 cos_en_reg ( .D(N6), .GN(n7), .Q(cos_en) );
-  DFFR_X1 \r_reg[0]  ( .D(r_c[0]), .CK(clk), .RN(n9), .Q(r[0]) );
-  DFFR_X1 \i_reg[0]  ( .D(i_c[0]), .CK(clk), .RN(n9), .Q(i[0]) );
-  DFFR_X1 \r_reg[1]  ( .D(r_c[1]), .CK(clk), .RN(n9), .Q(r[1]) );
-  DFFR_X1 \i_reg[1]  ( .D(i_c[1]), .CK(clk), .RN(n9), .Q(i[1]) );
-  DFFR_X1 \r_reg[2]  ( .D(r_c[2]), .CK(clk), .RN(n9), .Q(r[2]) );
-  DFFR_X1 \i_reg[2]  ( .D(i_c[2]), .CK(clk), .RN(n9), .Q(i[2]) );
-  DFFR_X1 \r_reg[3]  ( .D(r_c[3]), .CK(clk), .RN(n9), .Q(r[3]) );
-  DFFR_X1 \i_reg[3]  ( .D(i_c[3]), .CK(clk), .RN(n9), .Q(i[3]) );
-  DFFR_X1 \r_reg[4]  ( .D(r_c[4]), .CK(clk), .RN(n5), .Q(r[4]) );
-  DFFR_X1 \i_reg[4]  ( .D(i_c[4]), .CK(clk), .RN(n5), .Q(i[4]) );
-  DFFR_X1 \r_reg[5]  ( .D(r_c[5]), .CK(clk), .RN(n5), .Q(r[5]) );
-  DFFR_X1 \i_reg[5]  ( .D(i_c[5]), .CK(clk), .RN(n5), .Q(i[5]) );
-  DFFR_X1 \r_reg[6]  ( .D(r_c[6]), .CK(clk), .RN(n5), .Q(r[6]) );
-  DFFR_X1 \i_reg[6]  ( .D(i_c[6]), .CK(clk), .RN(n5), .Q(i[6]) );
-  DFFR_X1 \r_reg[7]  ( .D(r_c[7]), .CK(clk), .RN(n5), .Q(r[7]) );
-  DFFR_X1 \i_reg[7]  ( .D(i_c[7]), .CK(clk), .RN(n5), .Q(i[7]) );
-  DFFR_X1 \r_reg[8]  ( .D(r_c[8]), .CK(clk), .RN(n5), .Q(r[8]) );
-  DFFR_X1 \i_reg[8]  ( .D(i_c[8]), .CK(clk), .RN(n5), .Q(i[8]) );
-  DFFR_X1 \r_reg[9]  ( .D(r_c[9]), .CK(clk), .RN(n5), .Q(r[9]) );
-  DFFR_X1 \i_reg[9]  ( .D(i_c[9]), .CK(clk), .RN(n5), .Q(i[9]) );
-  DFFR_X1 \r_reg[10]  ( .D(r_c[10]), .CK(clk), .RN(n5), .Q(r[10]) );
-  DFFR_X1 \i_reg[10]  ( .D(i_c[10]), .CK(clk), .RN(n5), .Q(i[10]) );
-  DFFR_X1 \r_reg[11]  ( .D(r_c[11]), .CK(clk), .RN(n5), .Q(r[11]) );
-  DFFR_X1 \i_reg[11]  ( .D(i_c[11]), .CK(clk), .RN(n5), .Q(i[11]) );
-  DFFR_X1 \r_reg[12]  ( .D(r_c[12]), .CK(clk), .RN(n5), .Q(r[12]) );
-  DFFR_X1 \i_reg[12]  ( .D(i_c[12]), .CK(clk), .RN(n5), .Q(i[12]) );
-  DFFR_X1 \r_reg[13]  ( .D(r_c[13]), .CK(clk), .RN(n10), .Q(r[13]) );
-  DFFR_X1 \i_reg[13]  ( .D(i_c[13]), .CK(clk), .RN(n5), .Q(i[13]) );
-  DFFR_X1 \r_reg[14]  ( .D(r_c[14]), .CK(clk), .RN(n10), .Q(r[14]) );
-  DFFR_X1 \i_reg[14]  ( .D(i_c[14]), .CK(clk), .RN(n9), .Q(i[14]) );
-  DFFR_X1 \r_reg[15]  ( .D(r_c[15]), .CK(clk), .RN(n9), .Q(r[15]) );
-  DFFR_X1 \i_reg[15]  ( .D(i_c[15]), .CK(clk), .RN(n9), .Q(i[15]) );
-  DLH_X1 \r_c_reg[0]  ( .G(N14), .D(cos_val[0]), .Q(r_c[0]) );
-  DLH_X1 \i_c_reg[0]  ( .G(n4), .D(cos_val[0]), .Q(i_c[0]) );
-  DLH_X1 \r_c_reg[1]  ( .G(N14), .D(cos_val[1]), .Q(r_c[1]) );
-  DLH_X1 \i_c_reg[1]  ( .G(n4), .D(cos_val[1]), .Q(i_c[1]) );
-  DLH_X1 \r_c_reg[2]  ( .G(N14), .D(cos_val[2]), .Q(r_c[2]) );
-  DLH_X1 \i_c_reg[2]  ( .G(n4), .D(cos_val[2]), .Q(i_c[2]) );
-  DLH_X1 \r_c_reg[3]  ( .G(N14), .D(cos_val[3]), .Q(r_c[3]) );
-  DLH_X1 \i_c_reg[3]  ( .G(n4), .D(cos_val[3]), .Q(i_c[3]) );
-  DLH_X1 \r_c_reg[4]  ( .G(N14), .D(cos_val[4]), .Q(r_c[4]) );
-  DLH_X1 \i_c_reg[4]  ( .G(n4), .D(cos_val[4]), .Q(i_c[4]) );
-  DLH_X1 \r_c_reg[5]  ( .G(N14), .D(cos_val[5]), .Q(r_c[5]) );
-  DLH_X1 \i_c_reg[5]  ( .G(n4), .D(cos_val[5]), .Q(i_c[5]) );
-  DLH_X1 \r_c_reg[6]  ( .G(N14), .D(cos_val[6]), .Q(r_c[6]) );
-  DLH_X1 \i_c_reg[6]  ( .G(n4), .D(cos_val[6]), .Q(i_c[6]) );
-  DLH_X1 \r_c_reg[7]  ( .G(N14), .D(cos_val[7]), .Q(r_c[7]) );
-  DLH_X1 \i_c_reg[7]  ( .G(n4), .D(cos_val[7]), .Q(i_c[7]) );
-  DLH_X1 \r_c_reg[8]  ( .G(N14), .D(cos_val[8]), .Q(r_c[8]) );
-  DLH_X1 \i_c_reg[8]  ( .G(n4), .D(cos_val[8]), .Q(i_c[8]) );
-  DLH_X1 \r_c_reg[9]  ( .G(N14), .D(cos_val[9]), .Q(r_c[9]) );
-  DLH_X1 \i_c_reg[9]  ( .G(n4), .D(cos_val[9]), .Q(i_c[9]) );
-  DLH_X1 \r_c_reg[10]  ( .G(N14), .D(cos_val[10]), .Q(r_c[10]) );
-  DLH_X1 \i_c_reg[10]  ( .G(n4), .D(cos_val[10]), .Q(i_c[10]) );
-  DLH_X1 \r_c_reg[11]  ( .G(N14), .D(cos_val[11]), .Q(r_c[11]) );
-  DLH_X1 \i_c_reg[11]  ( .G(n4), .D(cos_val[11]), .Q(i_c[11]) );
-  DLH_X1 \r_c_reg[12]  ( .G(N14), .D(cos_val[12]), .Q(r_c[12]) );
-  DLH_X1 \i_c_reg[12]  ( .G(n4), .D(cos_val[12]), .Q(i_c[12]) );
-  DLH_X1 \r_c_reg[13]  ( .G(N14), .D(cos_val[13]), .Q(r_c[13]) );
-  DLH_X1 \i_c_reg[13]  ( .G(n4), .D(cos_val[13]), .Q(i_c[13]) );
-  DLH_X1 \r_c_reg[14]  ( .G(N14), .D(cos_val[14]), .Q(r_c[14]) );
-  DLH_X1 \i_c_reg[14]  ( .G(n4), .D(cos_val[14]), .Q(i_c[14]) );
   DLH_X1 \r_c_reg[15]  ( .G(N14), .D(cos_val[15]), .Q(r_c[15]) );
-  DLH_X1 \i_c_reg[15]  ( .G(n4), .D(cos_val[15]), .Q(i_c[15]) );
-  INV_X1 U3 ( .A(reset), .ZN(n5) );
-  OAI21_X1 U4 ( .B1(start_r), .B2(n1), .A(n6), .ZN(n7) );
-  AND2_X1 U5 ( .A1(N6), .A2(start_r), .ZN(n8) );
-  NOR2_X1 U7 ( .A1(n1), .A2(n2), .ZN(N6) );
-  DFFR_X1 \mode_reg[0]  ( .D(n8), .CK(clk), .RN(n5), .Q(n1) );
-  DFFR_X1 \mode_reg[1]  ( .D(N14), .CK(clk), .RN(n5), .Q(n2), .QN(n6) );
-  AND2_X1 U11 ( .A1(n6), .A2(n1), .ZN(N14) );
-  NOR2_X2 U12 ( .A1(n1), .A2(n6), .ZN(n4) );
-  CLKBUF_X1 U13 ( .A(n5), .Z(n9) );
-  CLKBUF_X1 U14 ( .A(n5), .Z(n10) );
+  DFFR_X1 \r_reg[15]  ( .D(r_c[15]), .CK(clk), .RN(n122), .Q(r[15]) );
+  DLH_X1 \i_c_reg[15]  ( .G(N15), .D(cos_val[15]), .Q(i_c[15]) );
+  DFFR_X1 \i_reg[15]  ( .D(i_c[15]), .CK(clk), .RN(n122), .Q(i[15]) );
+  DLH_X1 \r_c_reg[14]  ( .G(N14), .D(cos_val[14]), .Q(r_c[14]) );
+  DFFR_X1 \r_reg[14]  ( .D(r_c[14]), .CK(clk), .RN(n122), .Q(r[14]) );
+  DLH_X1 \i_c_reg[14]  ( .G(N15), .D(cos_val[14]), .Q(i_c[14]) );
+  DFFR_X1 \i_reg[14]  ( .D(i_c[14]), .CK(clk), .RN(n122), .Q(i[14]) );
+  NAND2_X1 U71 ( .A1(N1211), .A2(n25), .ZN(n26) );
+  XOR2_X1 U72 ( .A(n32), .B(n33), .Z(n25) );
+  DLL_X1 cos_en_reg ( .D(N6), .GN(n44), .Q(cos_en) );
+  DFFR_X1 start_r_reg ( .D(start), .CK(clk), .RN(n122), .Q(start_r) );
+  DFFR_X1 \angle_r_reg[11]  ( .D(angle[11]), .CK(clk), .RN(n122), .Q(
+        angle_r[11]), .QN(n121) );
+  DFFR_X1 \angle_r_reg[10]  ( .D(angle[10]), .CK(clk), .RN(n122), .Q(
+        angle_r[10]), .QN(n120) );
+  DFFR_X1 \angle_r_reg[9]  ( .D(angle[9]), .CK(clk), .RN(n122), .Q(angle_r[9]), 
+        .QN(n119) );
+  DFFR_X1 \angle_r_reg[8]  ( .D(angle[8]), .CK(clk), .RN(n122), .Q(angle_r[8]), 
+        .QN(n118) );
+  DFFR_X1 \angle_r_reg[7]  ( .D(angle[7]), .CK(clk), .RN(n122), .Q(angle_r[7]), 
+        .QN(n117) );
+  DFFR_X1 \angle_r_reg[6]  ( .D(angle[6]), .CK(clk), .RN(n122), .Q(angle_r[6]), 
+        .QN(n116) );
+  DFFR_X1 \angle_r_reg[5]  ( .D(angle[5]), .CK(clk), .RN(n122), .Q(angle_r[5]), 
+        .QN(n115) );
+  DFFR_X1 \angle_r_reg[4]  ( .D(angle[4]), .CK(clk), .RN(n122), .Q(angle_r[4]), 
+        .QN(n114) );
+  DFFR_X1 \angle_r_reg[3]  ( .D(angle[3]), .CK(clk), .RN(n122), .Q(angle_r[3]), 
+        .QN(n113) );
+  DFFR_X1 \angle_r_reg[2]  ( .D(angle[2]), .CK(clk), .RN(n122), .Q(angle_r[2]), 
+        .QN(n112) );
+  DFFR_X1 \angle_r_reg[1]  ( .D(angle[1]), .CK(clk), .RN(n122), .Q(angle_r[1]), 
+        .QN(n111) );
+  DFFR_X1 \angle_r_reg[0]  ( .D(angle[0]), .CK(clk), .RN(n122), .Q(N131), .QN(
+        n110) );
+  DFFR_X1 \mode_reg[0]  ( .D(n45), .CK(clk), .RN(n122), .Q(mode[0]) );
+  INV_X1 U136 ( .A(n24), .ZN(N1211) );
+  NOR3_X1 U137 ( .A1(angle_mem[7]), .A2(angle_mem[9]), .A3(angle_mem[8]), .ZN(
+        n30) );
+  AND2_X1 U138 ( .A1(N59), .A2(N89), .ZN(angle_mem[9]) );
+  NAND4_X1 U139 ( .A1(n27), .A2(n28), .A3(n29), .A4(n30), .ZN(n24) );
+  NOR2_X1 U140 ( .A1(angle_mem[4]), .A2(angle_mem[3]), .ZN(n28) );
+  NOR2_X1 U141 ( .A1(angle_mem[6]), .A2(angle_mem[5]), .ZN(n29) );
+  AOI21_X1 U142 ( .B1(angle_mem[2]), .B2(angle_mem[1]), .A(n31), .ZN(n27) );
+  INV_X1 U143 ( .A(n34), .ZN(N89) );
+  XOR2_X1 U144 ( .A(N89), .B(n109), .Z(N59) );
+  NAND2_X1 U145 ( .A1(\r310/carry [8]), .A2(n35), .ZN(n109) );
+  XOR2_X1 U146 ( .A(n34), .B(n32), .Z(n31) );
+  OAI21_X1 U147 ( .B1(n25), .B2(n24), .A(n26), .ZN(cos_val[14]) );
+  AND2_X1 U148 ( .A1(N1211), .A2(n25), .ZN(cos_val[15]) );
+  INV_X1 U149 ( .A(n42), .ZN(\r310/B[1] ) );
+  INV_X1 U150 ( .A(n41), .ZN(\r310/B[2] ) );
+  INV_X1 U151 ( .A(n40), .ZN(\r310/B[3] ) );
+  INV_X1 U152 ( .A(n39), .ZN(\r310/B[4] ) );
+  INV_X1 U153 ( .A(n38), .ZN(\r310/B[5] ) );
+  INV_X1 U154 ( .A(n37), .ZN(\r310/B[6] ) );
+  INV_X1 U155 ( .A(n36), .ZN(\r310/B[7] ) );
+  INV_X1 U156 ( .A(n35), .ZN(\r310/B[8] ) );
+  NOR2_X1 U157 ( .A1(mode[0]), .A2(mode[1]), .ZN(N6) );
+  AND2_X1 U158 ( .A1(mode[0]), .A2(n23), .ZN(N14) );
+  AND2_X1 U159 ( .A1(N6), .A2(start_r), .ZN(n45) );
+  INV_X1 U160 ( .A(cos_en), .ZN(n123) );
+  AOI22_X1 U161 ( .A1(N24), .A2(n123), .B1(angle_r[11]), .B2(cos_en), .ZN(n33)
+         );
+  AOI22_X1 U162 ( .A1(N22), .A2(n123), .B1(cos_en), .B2(angle_r[9]), .ZN(n34)
+         );
+  AOI22_X1 U163 ( .A1(N23), .A2(n123), .B1(angle_r[10]), .B2(cos_en), .ZN(n32)
+         );
+  AOI22_X1 U164 ( .A1(N141), .A2(n123), .B1(angle_r[1]), .B2(cos_en), .ZN(n42)
+         );
+  AOI22_X1 U165 ( .A1(N151), .A2(n123), .B1(angle_r[2]), .B2(cos_en), .ZN(n41)
+         );
+  AOI22_X1 U166 ( .A1(N161), .A2(n123), .B1(angle_r[3]), .B2(cos_en), .ZN(n40)
+         );
+  AOI22_X1 U167 ( .A1(N171), .A2(n123), .B1(angle_r[4]), .B2(cos_en), .ZN(n39)
+         );
+  AOI22_X1 U168 ( .A1(N181), .A2(n123), .B1(angle_r[5]), .B2(cos_en), .ZN(n38)
+         );
+  AOI22_X1 U169 ( .A1(N19), .A2(n123), .B1(angle_r[6]), .B2(cos_en), .ZN(n37)
+         );
+  AOI22_X1 U170 ( .A1(N20), .A2(n123), .B1(angle_r[7]), .B2(cos_en), .ZN(n36)
+         );
+  AOI22_X1 U171 ( .A1(N211), .A2(n123), .B1(angle_r[8]), .B2(cos_en), .ZN(n35)
+         );
+  AOI21_X1 U172 ( .B1(n23), .B2(start_r), .A(N14), .ZN(n44) );
+  NOR2_X1 U173 ( .A1(mode[0]), .A2(n23), .ZN(N15) );
+  AOI22_X1 U174 ( .A1(N131), .A2(n123), .B1(N131), .B2(cos_en), .ZN(n43) );
+  INV_X1 U175 ( .A(reset), .ZN(n122) );
+  XOR2_X1 U204 ( .A(n121), .B(\sub_559/carry [11]), .Z(N24) );
+  XOR2_X1 U205 ( .A(n35), .B(\r310/carry [8]), .Z(N58) );
+  AND2_X1 U206 ( .A1(\r310/carry [7]), .A2(n36), .ZN(\r310/carry [8]) );
+  XOR2_X1 U207 ( .A(n36), .B(\r310/carry [7]), .Z(N57) );
+  AND2_X1 U208 ( .A1(\r310/carry [6]), .A2(n37), .ZN(\r310/carry [7]) );
+  XOR2_X1 U209 ( .A(n37), .B(\r310/carry [6]), .Z(N56) );
+  AND2_X1 U210 ( .A1(\r310/carry [5]), .A2(n38), .ZN(\r310/carry [6]) );
+  XOR2_X1 U211 ( .A(n38), .B(\r310/carry [5]), .Z(N55) );
+  AND2_X1 U212 ( .A1(\r310/carry [4]), .A2(n39), .ZN(\r310/carry [5]) );
+  XOR2_X1 U213 ( .A(n39), .B(\r310/carry [4]), .Z(N54) );
+  AND2_X1 U214 ( .A1(\r310/carry [3]), .A2(n40), .ZN(\r310/carry [4]) );
+  XOR2_X1 U215 ( .A(n40), .B(\r310/carry [3]), .Z(N53) );
+  OR2_X1 U216 ( .A1(n120), .A2(\sub_559/carry [10]), .ZN(\sub_559/carry [11])
+         );
+  XNOR2_X1 U217 ( .A(\sub_559/carry [10]), .B(n120), .ZN(N23) );
+  AND2_X1 U218 ( .A1(\sub_559/carry [9]), .A2(n119), .ZN(\sub_559/carry [10])
+         );
+  XOR2_X1 U219 ( .A(n119), .B(\sub_559/carry [9]), .Z(N22) );
+  AND2_X1 U220 ( .A1(\sub_559/carry [8]), .A2(n118), .ZN(\sub_559/carry [9])
+         );
+  XOR2_X1 U221 ( .A(n118), .B(\sub_559/carry [8]), .Z(N211) );
+  AND2_X1 U222 ( .A1(\sub_559/carry [7]), .A2(n117), .ZN(\sub_559/carry [8])
+         );
+  XOR2_X1 U223 ( .A(n117), .B(\sub_559/carry [7]), .Z(N20) );
+  AND2_X1 U224 ( .A1(\sub_559/carry [6]), .A2(n116), .ZN(\sub_559/carry [7])
+         );
+  XOR2_X1 U225 ( .A(n116), .B(\sub_559/carry [6]), .Z(N19) );
+  AND2_X1 U226 ( .A1(\sub_559/carry [5]), .A2(n115), .ZN(\sub_559/carry [6])
+         );
+  XOR2_X1 U227 ( .A(n115), .B(\sub_559/carry [5]), .Z(N181) );
+  AND2_X1 U228 ( .A1(\sub_559/carry [4]), .A2(n114), .ZN(\sub_559/carry [5])
+         );
+  XOR2_X1 U229 ( .A(n114), .B(\sub_559/carry [4]), .Z(N171) );
+  AND2_X1 U230 ( .A1(\sub_559/carry [3]), .A2(n113), .ZN(\sub_559/carry [4])
+         );
+  XOR2_X1 U231 ( .A(n113), .B(\sub_559/carry [3]), .Z(N161) );
+  AND2_X1 U232 ( .A1(\r310/carry [2]), .A2(n41), .ZN(\r310/carry [3]) );
+  XOR2_X1 U233 ( .A(n41), .B(\r310/carry [2]), .Z(N52) );
+  AND2_X1 U234 ( .A1(n43), .A2(n42), .ZN(\r310/carry [2]) );
+  XOR2_X1 U235 ( .A(n42), .B(n43), .Z(N511) );
+  AND2_X1 U236 ( .A1(\sub_559/carry [2]), .A2(n112), .ZN(\sub_559/carry [3])
+         );
+  XOR2_X1 U237 ( .A(n112), .B(\sub_559/carry [2]), .Z(N151) );
+  AND2_X1 U238 ( .A1(n110), .A2(n111), .ZN(\sub_559/carry [2]) );
+  XOR2_X1 U239 ( .A(n111), .B(n110), .Z(N141) );
+  MUX2_X1 U240 ( .A(\r310/B[1] ), .B(N511), .S(N89), .Z(angle_mem[1]) );
+  MUX2_X1 U241 ( .A(\r310/B[2] ), .B(N52), .S(N89), .Z(angle_mem[2]) );
+  MUX2_X1 U242 ( .A(\r310/B[3] ), .B(N53), .S(N89), .Z(angle_mem[3]) );
+  MUX2_X1 U243 ( .A(\r310/B[4] ), .B(N54), .S(N89), .Z(angle_mem[4]) );
+  MUX2_X1 U244 ( .A(\r310/B[5] ), .B(N55), .S(N89), .Z(angle_mem[5]) );
+  MUX2_X1 U245 ( .A(\r310/B[6] ), .B(N56), .S(N89), .Z(angle_mem[6]) );
+  MUX2_X1 U246 ( .A(\r310/B[7] ), .B(N57), .S(N89), .Z(angle_mem[7]) );
+  MUX2_X1 U247 ( .A(\r310/B[8] ), .B(N58), .S(N89), .Z(angle_mem[8]) );
 endmodule
 

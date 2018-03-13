@@ -1,22 +1,26 @@
-Warning: Design 'compl' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
  
 ****************************************
 Report : hierarchy
 Design : compl
 Version: J-2014.09-SP2
-Date   : Mon Mar 12 00:25:46 2018
+Date   : Mon Mar 12 22:48:52 2018
 ****************************************
 
-Warning: 1 unresolved references are not included in this report. (RPT-2)
-
 compl
-    AND2_X1           NangateOpenCellLibrary
-    CLKBUF_X1         NangateOpenCellLibrary
-    DFFR_X1           NangateOpenCellLibrary
-    DLH_X1            NangateOpenCellLibrary
-    DLL_X1            NangateOpenCellLibrary
-    INV_X1            NangateOpenCellLibrary
-    NOR2_X1           NangateOpenCellLibrary
-    NOR2_X2           NangateOpenCellLibrary
-    OAI21_X1          NangateOpenCellLibrary
+    AND2_X1          NangateOpenCellLibrary
+    AOI21_X1         NangateOpenCellLibrary
+    AOI22_X1         NangateOpenCellLibrary
+    DFFR_X1          NangateOpenCellLibrary
+    DLH_X1           NangateOpenCellLibrary
+    DLL_X1           NangateOpenCellLibrary
+    INV_X1           NangateOpenCellLibrary
+    MUX2_X1          NangateOpenCellLibrary
+    NAND2_X1         NangateOpenCellLibrary
+    NAND4_X1         NangateOpenCellLibrary
+    NOR2_X1          NangateOpenCellLibrary
+    NOR3_X1          NangateOpenCellLibrary
+    OAI21_X1         NangateOpenCellLibrary
+    OR2_X1           NangateOpenCellLibrary
+    XNOR2_X1         NangateOpenCellLibrary
+    XOR2_X1          NangateOpenCellLibrary
 1

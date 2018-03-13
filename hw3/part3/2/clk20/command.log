@@ -1,7 +1,7 @@
 #@ # 
 #@ # Running dc_shell Version J-2014.09-SP2 for amd64 -- Nov 25, 2014
-#@ # Date:   Mon Mar 12 00:25:41 2018
-#@ # Run by: maxs1993@milk
+#@ # Date:   Mon Mar 12 22:48:47 2018
+#@ # Run by: maxs1993@asp
 #@ 
 
 source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup
@@ -3756,8 +3756,8 @@ source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup
 #@ 
 #@ # -- End source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup
 
-source /home/maxs1993/wq18/281/hw3/part3/2/.synopsys_dc.setup
-#@ # -- Starting source /home/maxs1993/wq18/281/hw3/part3/2/.synopsys_dc.setup
+source /home/maxs1993/wq18/281/hw3/part3/2/clk20/.synopsys_dc.setup
+#@ # -- Starting source /home/maxs1993/wq18/281/hw3/part3/2/clk20/.synopsys_dc.setup
 
 #@ # .synopsys_dc.setup 
 #@ #
@@ -3858,10 +3858,10 @@ source /home/maxs1993/wq18/281/hw3/part3/2/.synopsys_dc.setup
 #@ set edifout_netlist_only  "false"
 #@ set edifout_target_system  "cadence"
 #@ set edifout_instantiate_ports  "true"
-#@ # -- End source /home/maxs1993/wq18/281/hw3/part3/2/.synopsys_dc.setup
+#@ # -- End source /home/maxs1993/wq18/281/hw3/part3/2/clk20/.synopsys_dc.setup
 
-source -echo -verbose /home/maxs1993/wq18/281/hw3/part3/2/dc-compl.tcl
-#@ # -- Starting source /home/maxs1993/wq18/281/hw3/part3/2/dc-compl.tcl
+source -echo -verbose /home/maxs1993/wq18/281/hw3/part3/2/clk20/dc-compl.tcl
+#@ # -- Starting source /home/maxs1993/wq18/281/hw3/part3/2/clk20/dc-compl.tcl
 
 #@ # dc-template.tcl script 
 #@ #
@@ -3915,7 +3915,7 @@ source -echo -verbose /home/maxs1993/wq18/281/hw3/part3/2/dc-compl.tcl
 #@ set CLK "clk"
 #@ 
 #@ #===== All values are in units of ns for NanGate 45 nm library
-#@ set clk_period      4
+#@ set clk_period      20
 #@ 
 #@ set clock_skew      [expr {$clk_period} * 0.05 ]
 #@ set input_setup     [expr {$clk_period} * 0.97 ]
