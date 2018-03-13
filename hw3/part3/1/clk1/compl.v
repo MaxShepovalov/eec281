@@ -4146,8 +4146,6 @@ end
 
 endmodule
 
-`timescale 1ns/10ps
-
 module compl(
     input [11:0] angle,
     input start,
