@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : hierarchy
+Design : compl
+Version: J-2014.09-SP2
+Date   : Mon Mar 12 22:35:20 2018
+****************************************
+
+compl
+    AND2_X1          NangateOpenCellLibrary
+    AOI21_X1         NangateOpenCellLibrary
+    AOI22_X1         NangateOpenCellLibrary
+    DFFR_X1          NangateOpenCellLibrary
+    DLH_X1           NangateOpenCellLibrary
+    DLL_X1           NangateOpenCellLibrary
+    INV_X1           NangateOpenCellLibrary
+    NAND4_X1         NangateOpenCellLibrary
+    NOR2_X1          NangateOpenCellLibrary
+    OAI21_X1         NangateOpenCellLibrary
+    OAI22_X1         NangateOpenCellLibrary
+    OR2_X1           NangateOpenCellLibrary
+    XNOR2_X1         NangateOpenCellLibrary
+    XOR2_X1          NangateOpenCellLibrary
+1
