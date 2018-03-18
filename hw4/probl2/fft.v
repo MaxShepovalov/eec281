@@ -539,7 +539,8 @@ always @(posedge clk or posedge rst) begin
 end
 
 //stage 2. get Wn
-reg [16:0] ApB_R_r1, ApB_I_r1, AmB_R_r1, AmB_I_r1, Wn_R, Wn_I;
+reg [16:0] ApB_R_r1, ApB_I_r1, AmB_R_r1, AmB_I_r1;
+wire [16:0] Wn_R, Wn_I;
 //compl already has clk for output
 compl C1 (.angle (wn_exp), .clk (clk), .rst (rst), .r (Wn_R), .i (Wn_I));
 always @(posedge clk) begin
