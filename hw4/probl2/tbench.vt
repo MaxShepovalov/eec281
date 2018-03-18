@@ -120,7 +120,7 @@ module tbench();
                 $fwrite(file, "x(%d+1) = %d + 1i * %d;\n", count-3, print0, print1);
             end
             if (count > 1000) begin
-                $finish
+                $finish;
             end
         end
     end

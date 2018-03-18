@@ -450,7 +450,7 @@ module compl(
     input [11:0] angle,
     //input start,
     input clk,
-    //input reset,
+    input rst,
     output reg [15:0] r,
     output reg [15:0] i
 );
