@@ -1,5 +1,0 @@
-//
-// File created by:  irun
-// Do not modify this file
-
-s1::(12Mar2018:22:35:05):( ncverilog +access+r -l compl.logv -f compl.vfv )

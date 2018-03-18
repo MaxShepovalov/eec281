@@ -1,0 +1,427 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+          Version J-2014.09-SP2 for RHEL64 -- Nov 25, 2014
+               Copyright (c) 1988-2014 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+# dc-template.tcl script 
+#
+# 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
+#             cycle time so very short critical paths are visible in timing 
+#             reports. Also changed clock_skew from 250ps to 5% of cycle time 
+#             so it will scale with clock frequency.
+# 2017/02/10  Uncommented "analyze -format verilog ./proc.v" line. It seems to
+#             be needed only the first time synthesis is run.
+# 2017/02/04  Changes for NanGate 45 nm library including new timing parameters
+# 2012/02/22  Changed:
+#               ungroup -all -flatten -simple_names
+#             to:
+#               if { [sizeof_collection [get_cells * -filter 
+#                  "is_hierarchical==true"]] > 0 } {
+#                  ungroup -all -flatten -simple_names
+#                  }
+# 2010/02/16  Updated commented path to vtvtlib25.db
+# 2009/02/12  Many parts re-written in new tcl version by Zhibin Xiao
+# 2006/01/30  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2004/02/05  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2003/05/22  Increased input_setup from 500 to 6000 (external input delay
+#             now 6ns instead of 9.5ns) so input paths don't show up at the
+#             top of timing reports so often.
+# 2003/05/15  Cleaned up a little
+# 2003/05/14  Written
+#
+# Debugging
+# list -designs
+# list -libraries
+# list -files 
+#
+# Add if you like:
+# Annotates inputs, but doesn't propagate through design to clear warnings.
+#   set_switching_activity -toggle_rate 0.25 -clock "clk" { "in31a" }
+# More power info
+#   report_power -net
+#   report_power -hier
+#   set_max_delay
+#   write -format db -output compl.db
+#
+# Doesn't work quite the way I expect
+#   NameDesign = compl    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output compl.vg
+#===== Set: make sure you change design name elsewhere in this file
+set NameDesign "compl"
+compl
+#===== Set some timing parameters
+set CLK "clk"
+clk
+#===== All values are in units of ns for NanGate 45 nm library
+set clk_period      4
+4
+set clock_skew      [expr {$clk_period} * 0.05 ]
+0.2
+set input_setup     [expr {$clk_period} * 0.97 ]
+3.88
+set output_delay    [expr {$clk_period} * 0.04 ]
+0.16
+set input_delay     [expr {$clk_period} - {$input_setup}]
+0.12
+# It appears only one "analyze" command is needed with .tcl scripts we use.
+# Strangely, it seems to be needed only the first time synthesis is run.
+# Previously, they worked best with one line per module.
+analyze -format verilog ./compl.v
+Running PRESTO HDLC
+Compiling source file ./compl.v
+Warning:  ./compl.v:4120: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./compl.v:4181: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/dw_foundation.sldb'
+1
+elaborate $NameDesign
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/gtech.db'
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 4184 in file
+	'./compl.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           4186           |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine compl line 4184 in file
+		'./compl.v'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|       i_c_reg       | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|       r_c_reg       | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     cos_en_reg      | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+
+Inferred memory devices in process
+	in routine compl line 4210 in file
+		'./compl.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     angle_r_reg     | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     start_r_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|        r_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|        i_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      mode_reg       | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'compl'.
+Information: Building the design 'cos'. (HDL-193)
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|     cos/4144     |  4096  |    1    |      12      | N  |
+===========================================================
+Presto compilation completed successfully.
+1
+current_design $NameDesign
+Current design is 'compl'.
+{compl}
+link
+
+  Linking design 'compl'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  NangateOpenCellLibrary (library) /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db
+  dw_foundation.sldb (library) /software/Synopsys/DesignCompiler/current/libraries/syn/dw_foundation.sldb
+
+1
+uniquify
+1
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+Information: Updating graph... (UID-83)
+Warning: Design 'compl' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+set_max_area 0.0
+1
+#===== Timing and input/output load constraints
+create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
+1
+set_clock_uncertainty $clock_skew $CLK
+1
+#set_clock_skew -plus_uncertainty $clock_skew $CLK
+#set_clock_skew -minus_uncertainty $clock_skew $CLK
+set_input_delay     $input_delay  -clock $CLK [all_inputs]
+1
+#remove_input_delay               -clock $CLK [all_inputs] 
+set_output_delay    $output_delay -clock $CLK [all_outputs]
+1
+set_load 1.5 [all_outputs]
+1
+compile -map_effort medium
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'compl'. (UIO-59)
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | J-2014.09-DWBB_201409.2 |     *     |
+| Licensed DW Building Blocks        | J-2014.09-DWBB_201409.2 |     *     |
+============================================================================
+
+
+Information: There are 1 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'compl'
+Information: The register 'r_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[15]' is a constant and will be removed. (OPT-1206)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'compl_DW01_sub_0'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:01     198.4      0.00       0.0       0.0                          
+    0:00:01     198.4      0.00       0.0       0.0                          
+    0:00:01     198.4      0.00       0.0       0.0                          
+    0:00:01     198.4      0.00       0.0       0.0                          
+    0:00:01     198.4      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     169.2      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+    0:00:01     162.8      0.00       0.0       0.0                          
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+# Comment "ungroup" line to maybe see some submodules
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+# compile -map_effort medium    # May help, or maybe not
+#===== Reports
+write -format verilog -output compl.vg -hierarchy $NameDesign
+Writing verilog file '/home/maxs1993/wq18/281/hw3/part3/1/clk4/compl.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+report_area               > compl.area
+report_cell               > compl.cell
+report_hierarchy          > compl.hier
+report_net                > compl.net
+report_power              > compl.pow
+report_timing -nworst 10  > compl.tim
+check_timing
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+cos_en_reg/D
+i_c_reg[14]/D
+i_reg[14]/D
+r_c_reg[14]/D
+r_reg[14]/D
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+check_design
+ 
+****************************************
+check_design summary:
+Version:     J-2014.09-SP2
+Date:        Mon Mar 12 22:35:21 2018
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     30
+    Constant outputs (LINT-52)                                     30
+--------------------------------------------------------------------------------
+
+Warning: In design 'compl', output port 'r[15]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[13]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[12]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[11]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[10]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[9]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[8]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[7]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[6]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[5]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[4]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[3]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[2]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[1]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'r[0]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[15]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[13]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[12]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[11]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[10]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[9]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[8]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[7]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[6]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[5]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[4]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[3]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[2]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[1]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'compl', output port 'i[0]' is connected directly to 'logic 0'. (LINT-52)
+1
+exit
+
+Thank you...
