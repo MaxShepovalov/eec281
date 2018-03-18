@@ -76,7 +76,7 @@ module tbench();
     end
 
     always @(posedge clk) begin
-        $printf("done %d\%\n",count/10);
+        $display("done %d\%",count/10);
         A_buffer[3] <= A_buffer[2];
         A_buffer[2] <= A_buffer[1];
         A_buffer[1] <= A_buffer[0];
