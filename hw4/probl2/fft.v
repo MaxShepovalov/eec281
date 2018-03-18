@@ -471,7 +471,7 @@ always @(clk or posedge rst) begin
         r <= #1 16'b0000_0000_0000_0000;
         angle_r <= #1 12'b0000_0000_0000;
         r_mem <= #1 16'b0000_0000_0000_0000;
-    end else
+    end else begin
         if (clk == 1) begin //posedge clk
             i <= #1 cos_val;
             r <= #1 r_mem;
@@ -510,10 +510,10 @@ module fftbtf (
     input [15:0] A_I,
     input [15:0] B_R,
     input [15:0] B_I,
-    output [15:0] X_R,
-    output [15:0] X_I,
-    output [15:0] Y_R,
-    output [15:0] Y_I
+    output reg [15:0] X_R,
+    output reg [15:0] X_I,
+    output reg [15:0] Y_R,
+    output reg [15:0] Y_I
     );
 
 //stage 1. A+B and A-B
