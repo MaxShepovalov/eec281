@@ -541,7 +541,7 @@ end
 //stage 2. get Wn
 reg [16:0] ApB_R_r1, ApB_I_r1, AmB_R_r1, AmB_I_r1, Wn_R, Wn_I;
 //compl already has clk for output
-compl C1 (.angle (wn_exp), .clk (clk), .reset (rst), .r (Wn_R), .i (Wn_I));
+compl C1 (.angle (wn_exp), .clk (clk), .rst (rst), .r (Wn_R), .i (Wn_I));
 always @(posedge clk) begin
     ApB_R_r1 <= #1 ApB_R_r;
     ApB_I_r1 <= #1 ApB_I_r;
