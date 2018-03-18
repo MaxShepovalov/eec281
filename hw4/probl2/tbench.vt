@@ -24,7 +24,7 @@ module tbench();
     reg [31:0] B_buffer [3:0];
     reg [11:0] exp_buffer [3:0];
 
-    fft F1 (
+    fftbtf F1 (
         .clk (clk),
         .rst (rst),
         .wn_exp (angle),
