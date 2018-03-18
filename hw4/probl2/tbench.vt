@@ -42,7 +42,7 @@ module tbench();
         $recordfile("fft_test");
         $recordvars(tbench);
         file = $fopen("complex_result.m", "w");
-        
+        clk = 1'b0;
         //set extreme cases
 
         //init buffer
