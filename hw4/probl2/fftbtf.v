@@ -526,6 +526,7 @@ endmodule
 module fftbtf (
     input clk,
     input rst,
+    input start,
     input [11:0] wn_exp,
     input [15:0] A_R,
     input [15:0] A_I,
@@ -545,17 +546,20 @@ assign AmB_R = A_R - B_R;
 assign AmB_I = A_I - B_I;
 
 reg [16:0] ApB_R_r, ApB_I_r, AmB_R_r, AmB_I_r;
+reg start_r;
 always @(posedge clk or posedge rst) begin
     if (rst == 1) begin
         ApB_R_r <= #1 16'b0000_0000_0000_0000;
         ApB_I_r <= #1 16'b0000_0000_0000_0000;
         AmB_R_r <= #1 16'b0000_0000_0000_0000;
         AmB_I_r <= #1 16'b0000_0000_0000_0000;
+        start_r <= #1 1'b0;
     end else begin
         ApB_R_r <= #1 ApB_R;
         ApB_I_r <= #1 ApB_I;
         AmB_R_r <= #1 AmB_R;
         AmB_I_r <= #1 AmB_I;
+        start_r <= #1 start;
     end
 end
 
@@ -565,7 +569,7 @@ reg [16:0] ApB_R_r2, ApB_I_r2, AmB_R_r2, AmB_I_r2;
 reg [16:0] ApB_R_r3, ApB_I_r3, AmB_R_r3, AmB_I_r3;
 wire [15:0] Wn_R, Wn_I;
 //compl already has clk for output, 3 cycles delay
-compl C1 (.angle (wn_exp), .clk (clk), .rst (rst), .r (Wn_R), .i (Wn_I));
+compl C1 (.angle (wn_exp), .clk (clk), .start (start), .reset (rst), .r (Wn_R), .i (Wn_I));
 always @(posedge clk) begin
     ApB_R_r1 <= #1 ApB_R_r;
     ApB_I_r1 <= #1 ApB_I_r;
