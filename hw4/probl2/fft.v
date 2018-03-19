@@ -465,7 +465,7 @@ reg cos_en;
 
 cos cos_mem (.angle (angle_r), .cos_en(cos_en), .result(cos_val));
 
-always @(clk or posedge rst) begin
+always @(posedge clk or negedge clk or posedge rst) begin
     if (rst == 1) begin
         i <= #1 16'b0000_0000_0000_0000;
         r <= #1 16'b0000_0000_0000_0000;
