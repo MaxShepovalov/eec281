@@ -48,10 +48,6 @@ module tbench();
         A_imag = 16'd0;
         B_real = 16'd0;
         B_imag = 16'd0;
-        X_real = 16'd0;
-        X_imag = 16'd0;
-        Y_real = 16'd0;
-        Y_imag = 16'd0;
         //set extreme cases
         extreme_exp[0] = 12'b0000_0000_0000;
         extreme_A[0] = 32'h00000000;
