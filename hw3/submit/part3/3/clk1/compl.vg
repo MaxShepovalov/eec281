@@ -25,7 +25,7 @@ module compl ( angle, start, clk, reset, r, i );
   wire   [15:0] result1;
   wire   [8:0] mem_adr1;
   wire   [8:0] mem_adr0;
-  wire   [16:1] \add_424/carry ;
+  wire   [16:1] \add_425/carry ;
   wire   [10:0] \r393/carry ;
   wire   [11:1] \add_261/carry ;
   wire   [10:0] \r389/carry ;
@@ -76,10 +76,10 @@ module compl ( angle, start, clk, reset, r, i );
   XOR2_X1 U136 ( .A(n78), .B(n79), .Z(n75) );
   NAND2_X1 U137 ( .A1(N38), .A2(n80), .ZN(n82) );
   XOR2_X1 U138 ( .A(n83), .B(n84), .Z(n80) );
-  FA_X1 \add_424/U1_15  ( .A(result1[15]), .B(result0[15]), .CI(
-        \add_424/carry [15]), .CO(\add_424/carry [16]), .S(cos_val[14]) );
-  FA_X1 \add_424/U1_16  ( .A(result1[15]), .B(result0[15]), .CI(
-        \add_424/carry [16]), .S(cos_val[15]) );
+  FA_X1 \add_425/U1_15  ( .A(result1[15]), .B(result0[15]), .CI(
+        \add_425/carry [15]), .CO(\add_425/carry [16]), .S(cos_val[14]) );
+  FA_X1 \add_425/U1_16  ( .A(result1[15]), .B(result0[15]), .CI(
+        \add_425/carry [16]), .S(cos_val[15]) );
   DFFR_X1 start_r_reg ( .D(start), .CK(clk), .RN(n247), .Q(start_r) );
   DFFR_X1 \angle_r_reg[11]  ( .D(angle[11]), .CK(clk), .RN(n247), .Q(N241) );
   DFFR_X1 \angle_r_reg[10]  ( .D(angle[10]), .CK(clk), .RN(n247), .Q(N231), 
@@ -180,7 +180,7 @@ module compl ( angle, start, clk, reset, r, i );
   AOI21_X1 U325 ( .B1(n74), .B2(start_r), .A(N14), .ZN(n97) );
   AOI22_X1 U326 ( .A1(N391), .A2(n235), .B1(N391), .B2(n234), .ZN(n96) );
   INV_X1 U327 ( .A(reset), .ZN(n247) );
-  AND2_X1 U354 ( .A1(result0[14]), .A2(result1[14]), .ZN(\add_424/carry [15])
+  AND2_X1 U354 ( .A1(result0[14]), .A2(result1[14]), .ZN(\add_425/carry [15])
          );
   XOR2_X1 U355 ( .A(result0[14]), .B(result1[14]), .Z(cos_val[13]) );
   XOR2_X1 U356 ( .A(n101), .B(\r389/carry [8]), .Z(N83) );

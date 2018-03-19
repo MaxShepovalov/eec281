@@ -87,8 +87,8 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 analyze -format verilog ./compl.v
 Running PRESTO HDLC
 Compiling source file ./compl.v
-Warning:  ./compl.v:371: The statements in initial blocks are ignored. (VER-281)
-Warning:  ./compl.v:460: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./compl.v:372: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./compl.v:461: The statements in initial blocks are ignored. (VER-281)
 Presto compilation completed successfully.
 Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
 Information: Using CCS timing libraries. (TIM-024)
@@ -101,16 +101,16 @@ Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standar
   Loading link library 'gtech'
 Running PRESTO HDLC
 
-Statistics for case statements in always block at line 463 in file
+Statistics for case statements in always block at line 464 in file
 	'./compl.v'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|           465            |    auto/auto     |
+|           466            |    auto/auto     |
 ===============================================
 
 Inferred memory devices in process
-	in routine compl line 463 in file
+	in routine compl line 464 in file
 		'./compl.v'.
 ===========================================================================
 |    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -121,7 +121,7 @@ Inferred memory devices in process
 ===========================================================================
 
 Inferred memory devices in process
-	in routine compl line 489 in file
+	in routine compl line 490 in file
 		'./compl.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -311,7 +311,7 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
   --------- --------- --------- --------- --------- -------------------------
     0:00:01     377.7      0.00       0.0       0.0                          
     0:00:01     377.7      0.00       0.0       0.0                          
-    0:00:02     371.1      0.00       0.0       0.0                          
+    0:00:01     371.1      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -321,27 +321,27 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:02     371.1      0.00       0.0       0.0                          
-    0:00:02     371.1      0.00       0.0       0.0                          
-    0:00:02     357.5      0.00       0.0       0.0                          
-    0:00:02     348.2      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     347.1      0.00       0.0       0.0                          
-    0:00:02     342.3      0.00       0.0       0.0                          
-    0:00:02     342.3      0.00       0.0       0.0                          
-    0:00:02     342.3      0.00       0.0       0.0                          
-    0:00:02     342.3      0.00       0.0       0.0                          
-    0:00:02     342.3      0.00       0.0       0.0                          
-    0:00:02     342.3      0.00       0.0       0.0                          
-    0:00:02     342.3      0.00       0.0       0.0                          
+    0:00:01     371.1      0.00       0.0       0.0                          
+    0:00:01     371.1      0.00       0.0       0.0                          
+    0:00:01     357.5      0.00       0.0       0.0                          
+    0:00:01     348.2      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     347.1      0.00       0.0       0.0                          
+    0:00:01     342.3      0.00       0.0       0.0                          
+    0:00:01     342.3      0.00       0.0       0.0                          
+    0:00:01     342.3      0.00       0.0       0.0                          
+    0:00:01     342.3      0.00       0.0       0.0                          
+    0:00:01     342.3      0.00       0.0       0.0                          
+    0:00:01     342.3      0.00       0.0       0.0                          
+    0:00:01     342.3      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -357,7 +357,7 @@ if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
 write -format verilog -output compl.vg -hierarchy $NameDesign
-Writing verilog file '/home/maxs1993/wq18/281/hw3/part3/3/clk1/compl.vg'.
+Writing verilog file '/home/maxs1993/wq18/281/hw3/submit/part3/3/clk1/compl.vg'.
 Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
 1
 report_area               > compl.area
@@ -405,7 +405,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     J-2014.09-SP2
-Date:        Mon Mar 12 22:51:18 2018
+Date:        Sun Mar 18 23:41:45 2018
 ****************************************
 
                    Name                                            Total

@@ -3,7 +3,7 @@
 Report : cell
 Design : compl
 Version: J-2014.09-SP2
-Date   : Mon Mar 12 22:51:18 2018
+Date   : Sun Mar 18 23:41:44 2018
 ****************************************
 
 Attributes:
@@ -346,9 +346,9 @@ U438                      MUX2_X1         NangateOpenCellLibrary
                                                           1.862000  mo
 U439                      MUX2_X1         NangateOpenCellLibrary
                                                           1.862000  mo
-add_424/U1_15             FA_X1           NangateOpenCellLibrary
+add_425/U1_15             FA_X1           NangateOpenCellLibrary
                                                           4.256000  mo, r
-add_424/U1_16             FA_X1           NangateOpenCellLibrary
+add_425/U1_16             FA_X1           NangateOpenCellLibrary
                                                           4.256000  mo, r
 angle_r_reg[0]            DFFR_X1         NangateOpenCellLibrary
                                                           5.320000  n
