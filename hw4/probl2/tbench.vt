@@ -133,6 +133,7 @@ module tbench();
         angle = extreme_exp[0];
         {A_real, A_imag} = extreme_A[0];
         {B_real, B_imag} = extreme_B[1];
+        timer = 3;
     end
 
     always begin
@@ -158,33 +159,38 @@ module tbench();
         exp_buffer[0] <= angle;
 
         if (rst == 0) begin
-            count = count + 1;
-            if (count < 20) begin
-                //send next values
-                {A_real, A_imag} = extreme_A[count];
-                {B_real, B_imag} = extreme_B[count];
-                angle = extreme_exp[count];
+            if (timer > 0) begin
+                timer = timer - 1;
             end else begin
-                {A_real, A_imag} = $random;
-                {B_real, B_imag} = $random;
-                angle = $random % 4096;
-            end
-            //report
-            if (count >= 5) begin
-                $fwrite(file, "wn_exp(%d+1) = %d; ", count-3, exp_buffer[3]);
-                {print0, print1} = A_buffer[3];
-                $fwrite(file, "a(%d+1) = %d + 1i * %d; ", count-3, print0, print1);
-                {print0, print1} = B_buffer[3];
-                $fwrite(file, "b(%d+1) = %d + 1i * %d; ", count-3, print0, print1);
-                print0 = X_real;
-                print1 = X_imag;
-                $fwrite(file, "x(%d+1) = %d + 1i * %d; ", count-3, print0, print1);
-                print0 = Y_real;
-                print1 = Y_imag;
-                $fwrite(file, "y(%d+1) = %d + 1i * %d;\n", count-3, print0, print1);
-            end
-            if (count > 1000) begin
-                $finish;
+                count = count + 1;
+                if (count < 20) begin
+                    //send next values
+                    {A_real, A_imag} = extreme_A[count];
+                    {B_real, B_imag} = extreme_B[count];
+                    angle = extreme_exp[count];
+                end else begin
+                    {A_real, A_imag} = $random;
+                    {B_real, B_imag} = $random;
+                    angle = $random % 4096;
+                end
+                //report
+                if (count >= 5) begin
+                    $fwrite(file, "wn_exp(%d+1) = %d; ", count-3, exp_buffer[3]);
+                    {print0, print1} = A_buffer[3];
+                    $fwrite(file, "a(%d+1) = %d + 1i * %d; ", count-3, print0, print1);
+                    {print0, print1} = B_buffer[3];
+                    $fwrite(file, "b(%d+1) = %d + 1i * %d; ", count-3, print0, print1);
+                    print0 = X_real;
+                    print1 = X_imag;
+                    $fwrite(file, "x(%d+1) = %d + 1i * %d; ", count-3, print0, print1);
+                    print0 = Y_real;
+                    print1 = Y_imag;
+                    $fwrite(file, "y(%d+1) = %d + 1i * %d;\n", count-3, print0, print1);
+                    timer = 3;
+                end
+                if (count > 1000) begin
+                    $finish;
+                end
             end
         end
     end
