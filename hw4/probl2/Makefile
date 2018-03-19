@@ -31,7 +31,7 @@
 
 
 #----- Set the top-level module name here
-NAME		:= fft
+NAME		:= fftbtf
 
 #----- Some variables
 USERNAME	:= $(shell whoami)
