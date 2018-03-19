@@ -458,33 +458,43 @@ module compl(
 reg [11:0] angle_r;
 reg [15:0] r_mem;
 wire [15:0] cos_val;//, sin_val;
-reg cos_en;
+reg cos_en, cos_clk1, cos_clk2;
 
 //cos on posedge clk
 //sin on negedge clk
 
 cos cos_mem (.angle (angle_r), .cos_en(cos_en), .result(cos_val));
 
-always @(posedge clk or negedge clk or posedge rst) begin
-    if (rst == 1) begin
+always @(posedge clk or posedge rst) begin
+    if (rst == 1'b1) begin
         i <= #1 16'b0000_0000_0000_0000;
         r <= #1 16'b0000_0000_0000_0000;
         angle_r <= #1 12'b0000_0000_0000;
+        cos_clk1 <= #1 1'b0;
+    end else begin //posedge clk
+        i <= #1 cos_val;
+        r <= #1 r_mem;
+        cos_clk1 <= #1 ~cos_clk1;
+        angle_r <= #1 angle;
+    end
+end
+
+always @(negedge clk or posedge rst) begin
+    if (rst == 1'b1) begin
+        cos_clk2 <= #1 1'b0;
         r_mem <= #1 16'b0000_0000_0000_0000;
-    end else begin
-        if (clk == 1) begin //posedge clk
-            i <= #1 cos_val;
-            r <= #1 r_mem;
-            cos_en <= #1 1'b1;
-            angle_r <= #1 angle;
-        end else begin      //negedge clk
-            cos_en <= #1 1'b0;
-            r_mem <= #1 cos_val;
-        end
+    end else begin      //negedge clk
+        cos_clk2 <= #1 ~cos_clk2;
+        r_mem <= #1 cos_val;
     end
 end
 
 endmodule
+
+// clk  0000001111111000000111111000000
+// c1/  0000000111111111111100000000000
+// c2\  0000000000000011111111111100000
+// cout 0000000111111100000011111100000
 
 
 /*
