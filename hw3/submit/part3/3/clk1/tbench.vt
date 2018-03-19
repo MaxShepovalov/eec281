@@ -10,9 +10,8 @@ module tbench();
 
     compl C1 (
         .angle (angle),
-        .start (start),
         .clk (clk),
-        .reset (rst),
+        .rst (rst),
         .r (comp_r),
         .i (comp_i)
     );

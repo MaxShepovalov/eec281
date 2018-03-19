@@ -3,28 +3,28 @@
 Report : hierarchy
 Design : compl
 Version: J-2014.09-SP2
-Date   : Sun Mar 18 23:41:44 2018
+Date   : Sun Mar 18 23:52:27 2018
 ****************************************
 
 Attributes:
     r - licensed design
 
 compl              r
-    AND2_X1          NangateOpenCellLibrary
-    AOI21_X1         NangateOpenCellLibrary
-    AOI22_X1         NangateOpenCellLibrary
-    BUF_X1           NangateOpenCellLibrary
-    DFFR_X1          NangateOpenCellLibrary
-    DLH_X1           NangateOpenCellLibrary
-    DLL_X1           NangateOpenCellLibrary
-    FA_X1            NangateOpenCellLibrary
-    INV_X1           NangateOpenCellLibrary
-    MUX2_X1          NangateOpenCellLibrary
-    NAND2_X1         NangateOpenCellLibrary
-    NAND4_X1         NangateOpenCellLibrary
-    NOR2_X1          NangateOpenCellLibrary
-    NOR3_X1          NangateOpenCellLibrary
-    OAI21_X1         NangateOpenCellLibrary
-    XNOR2_X1         NangateOpenCellLibrary
-    XOR2_X1          NangateOpenCellLibrary
+    AND2_X1           NangateOpenCellLibrary
+    AND3_X1           NangateOpenCellLibrary
+    CLKBUF_X1         NangateOpenCellLibrary
+    DFFR_X1           NangateOpenCellLibrary
+    DFFR_X2           NangateOpenCellLibrary
+    INV_X1            NangateOpenCellLibrary
+    MUX2_X1           NangateOpenCellLibrary
+    NAND2_X1          NangateOpenCellLibrary
+    NAND3_X1          NangateOpenCellLibrary
+    OAI21_X1          NangateOpenCellLibrary
+    OAI22_X1          NangateOpenCellLibrary
+    OAI33_X1          NangateOpenCellLibrary
+    OAI211_X1         NangateOpenCellLibrary
+    OAI222_X1         NangateOpenCellLibrary
+    OR2_X1            NangateOpenCellLibrary
+    XNOR2_X1          NangateOpenCellLibrary
+    XOR2_X1           NangateOpenCellLibrary
 1

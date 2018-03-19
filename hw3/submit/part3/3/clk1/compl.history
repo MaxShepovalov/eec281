@@ -1,1 +1,2 @@
-s1(18Mar2018:23:41:18):  ncverilog +access+r -l compl.logv -f compl.vfv 
+s1(18Mar2018:23:51:48):  ncverilog +access+r -l compl.logv -f compl.vfv 
+s2(18Mar2018:23:52:11):  ncverilog +access+r -l compl.logv -f compl.vfv 

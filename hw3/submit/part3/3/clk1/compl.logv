@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s031: Started on Mar 18, 2018 at 23:41:18 PDT
+TOOL:	ncverilog	15.20-s031: Started on Mar 18, 2018 at 23:52:11 PDT
 ncverilog
 	+access+r
 	-l
@@ -7,13 +7,9 @@ ncverilog
 	-f compl.vfv
 		compl.v
 		tbench.vt
-file: compl.v
-	module worklib.addr_selector:v
-		errors: 0, warnings: 0
-	module worklib.cos:v
-		errors: 0, warnings: 0
-	module worklib.compl:v
-		errors: 0, warnings: 0
+Recompiling... reason: file './tbench.vt' is newer than expected.
+	expected: Sun Mar 18 23:51:13 2018
+	actual:   Sun Mar 18 23:52:09 2018
 file: tbench.vt
 	module worklib.tbench:vt
 		errors: 0, warnings: 0
@@ -23,29 +19,29 @@ file: tbench.vt
 	Generating native compiled code:
 		worklib.addr_selector:v <0x73299ea8>
 			streams:   1, words:  3959
-		worklib.compl:v <0x0f75d19f>
-			streams:   6, words:  4285
+		worklib.compl:v <0x3dbf0e22>
+			streams:   7, words:  3535
 		worklib.cos:v <0x31eb7bad>
 			streams:   4, words: 53753
-		worklib.tbench:vt <0x7d705d89>
-			streams:   6, words:  5764
+		worklib.tbench:vt <0x4447a945>
+			streams:   6, words:  5489
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
 		Modules:                  5       4
-		Registers:               36      30
+		Registers:               33      27
 		Scalar wires:            14       -
 		Vectored wires:           7       -
 		Always blocks:            9       8
-		Initial blocks:           4       4
-		Pseudo assignments:       3       3
+		Initial blocks:           3       3
+		Pseudo assignments:       2       2
 		Simulation timescale:  10ps
 	Writing initial simulation snapshot: worklib.tbench:vt
 Loading snapshot worklib.tbench:vt .................... Done
 ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
 ncsim> run
-Simulation complete via $finish(1) at time 327692 NS + 0
-./tbench.vt:56                     $finish;
+Simulation complete via $finish(1) at time 81992 NS + 0
+./tbench.vt:55                     $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s031: Exiting on Mar 18, 2018 at 23:41:21 PDT  (total: 00:00:03)
+TOOL:	ncverilog	15.20-s031: Exiting on Mar 18, 2018 at 23:52:14 PDT  (total: 00:00:03)

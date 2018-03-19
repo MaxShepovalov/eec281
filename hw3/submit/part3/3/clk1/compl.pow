@@ -8,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : compl
 Version: J-2014.09-SP2
-Date   : Sun Mar 18 23:41:45 2018
+Date   : Sun Mar 18 23:52:28 2018
 ****************************************
 
 
@@ -34,12 +34,12 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  = 221.3613 uW   (72%)
-  Net Switching Power  =  85.3586 uW   (28%)
+  Cell Internal Power  = 167.6052 uW   (87%)
+  Net Switching Power  =  24.3629 uW   (13%)
                          ---------
-Total Dynamic Power    = 306.7200 uW  (100%)
+Total Dynamic Power    = 191.9681 uW  (100%)
 
-Cell Leakage Power     =   6.7423 uW
+Cell Leakage Power     =   3.2322 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -48,10 +48,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register         157.2034            9.6015        1.7530e+03          168.5580  (  53.77%)
-sequential         3.7744            3.5336          279.2643            7.5873  (   2.42%)
-combinational     60.3835           72.2236        4.7100e+03          137.3170  (  43.81%)
+clock_network      1.9816            5.6348           14.3532            7.6307  (   3.91%)
+register         154.0925            5.0305        1.7786e+03          160.9016  (  82.43%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational     11.5311           13.6976        1.4393e+03           26.6680  (  13.66%)
 --------------------------------------------------------------------------------------------------
-Total            221.3613 uW        85.3587 uW     6.7423e+03 nW       313.4623 uW
+Total            167.6052 uW        24.3629 uW     3.2322e+03 nW       195.2003 uW
 1
