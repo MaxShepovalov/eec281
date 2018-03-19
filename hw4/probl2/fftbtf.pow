@@ -8,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : fftbtf
 Version: J-2014.09-SP2
-Date   : Sun Mar 18 23:32:57 2018
+Date   : Mon Mar 19 00:16:06 2018
 ****************************************
 
 
@@ -34,12 +34,12 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  = 350.5832 uW   (74%)
-  Net Switching Power  = 124.9920 uW   (26%)
+  Cell Internal Power  = 654.0737 uW   (87%)
+  Net Switching Power  = 100.4498 uW   (13%)
                          ---------
-Total Dynamic Power    = 475.5752 uW  (100%)
+Total Dynamic Power    = 754.5236 uW  (100%)
 
-Cell Leakage Power     =  53.8827 uW
+Cell Leakage Power     =  70.6597 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -48,10 +48,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network      0.4954            1.4132           14.3532            1.9230  (   0.36%)
-register         256.9171            5.1874        1.1966e+04          274.0704  (  51.76%)
-sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational     93.1707          118.3915        4.1903e+04          253.4646  (  47.87%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register         580.4226           27.9607        2.7971e+04          636.3541  (  77.12%)
+sequential         1.0083            0.9493          279.3394            2.2370  (   0.27%)
+combinational     72.6429           71.5398        4.2409e+04          186.5921  (  22.61%)
 --------------------------------------------------------------------------------------------------
-Total            350.5833 uW       124.9921 uW     5.3883e+04 nW       529.4579 uW
+Total            654.0739 uW       100.4498 uW     7.0660e+04 nW       825.1831 uW
 1

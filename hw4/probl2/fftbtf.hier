@@ -3,7 +3,7 @@
 Report : hierarchy
 Design : fftbtf
 Version: J-2014.09-SP2
-Date   : Sun Mar 18 23:32:56 2018
+Date   : Mon Mar 19 00:16:05 2018
 ****************************************
 
 Attributes:
@@ -12,9 +12,12 @@ Attributes:
 fftbtf             r
     AND2_X1           NangateOpenCellLibrary
     AOI21_X1          NangateOpenCellLibrary
+    AOI22_X1          NangateOpenCellLibrary
     BUF_X1            NangateOpenCellLibrary
     DFFR_X1           NangateOpenCellLibrary
     DFF_X1            NangateOpenCellLibrary
+    DLH_X1            NangateOpenCellLibrary
+    DLL_X1            NangateOpenCellLibrary
     FA_X1             NangateOpenCellLibrary
     HA_X1             NangateOpenCellLibrary
     INV_X1            NangateOpenCellLibrary

@@ -7,16 +7,15 @@ Report : timing
         -max_paths 10
 Design : fftbtf
 Version: J-2014.09-SP2
-Date   : Sun Mar 18 23:32:57 2018
+Date   : Mon Mar 19 00:16:06 2018
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
 Wire Load Model Mode: top
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_R_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -28,46 +27,53 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.12       1.30 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.31 f
-  data arrival time                                   1.31
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U7001/ZN (INV_X1)                        0.06       0.24 f
+  U6871/ZN (INV_X1)                        0.19       0.43 r
+  U7241/Z (XOR2_X1)                        0.08       0.50 f
+  U1871/CO (HA_X1)                         0.07       0.57 f
+  U1832/CO (HA_X1)                         0.05       0.63 f
+  U1791/CO (FA_X1)                         0.09       0.72 f
+  U1751/CO (FA_X1)                         0.09       0.81 f
+  U1712/CO (FA_X1)                         0.09       0.91 f
+  U1671/CO (FA_X1)                         0.10       1.00 f
+  U1622/CO (FA_X1)                         0.11       1.11 f
+  U1571/CO (FA_X1)                         0.11       1.22 f
+  U1532/CO (FA_X1)                         0.09       1.31 f
+  U1481/CO (FA_X1)                         0.09       1.41 f
+  U991/CO (FA_X1)                          0.11       1.51 f
+  U981/CO (FA_X1)                          0.09       1.61 f
+  U971/CO (FA_X1)                          0.09       1.70 f
+  U961/CO (FA_X1)                          0.09       1.79 f
+  U951/CO (FA_X1)                          0.09       1.89 f
+  U941/CO (FA_X1)                          0.09       1.98 f
+  U932/CO (FA_X1)                          0.09       2.07 f
+  U921/CO (FA_X1)                          0.09       2.17 f
+  U912/CO (FA_X1)                          0.09       2.26 f
+  U7221/Z (XOR2_X1)                        0.07       2.33 f
+  U7211/Z (XOR2_X1)                        0.09       2.42 f
+  U2_141/CO (FA_X1)                        0.11       2.53 f
+  U2_151/S (FA_X1)                         0.13       2.66 r
+  Y_R_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_R_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.31
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_I_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -79,46 +85,55 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.12       1.30 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.31 f
-  data arrival time                                   1.31
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U699/ZN (INV_X1)                         0.06       0.24 f
+  U687/ZN (INV_X1)                         0.19       0.43 r
+  U731/Z (XOR2_X1)                         0.08       0.50 f
+  U187/CO (HA_X1)                          0.07       0.57 f
+  U1831/CO (HA_X1)                         0.05       0.63 f
+  U179/CO (FA_X1)                          0.09       0.72 f
+  U175/CO (FA_X1)                          0.09       0.81 f
+  U1711/CO (FA_X1)                         0.09       0.91 f
+  U167/CO (FA_X1)                          0.10       1.00 f
+  U1621/CO (FA_X1)                         0.11       1.11 f
+  U157/CO (FA_X1)                          0.11       1.22 f
+  U1531/CO (FA_X1)                         0.09       1.31 f
+  U148/CO (FA_X1)                          0.09       1.41 f
+  U99/CO (FA_X1)                           0.11       1.51 f
+  U98/CO (FA_X1)                           0.09       1.61 f
+  U97/CO (FA_X1)                           0.09       1.70 f
+  U96/CO (FA_X1)                           0.09       1.79 f
+  U95/CO (FA_X1)                           0.09       1.89 f
+  U94/CO (FA_X1)                           0.09       1.98 f
+  U931/CO (FA_X1)                          0.10       2.08 f
+  U711/ZN (NAND2_X1)                       0.04       2.12 r
+  U713/ZN (NAND3_X1)                       0.04       2.16 f
+  U911/CO (FA_X1)                          0.09       2.25 f
+  U729/Z (XOR2_X1)                         0.05       2.31 r
+  U728/Z (XOR2_X1)                         0.08       2.38 r
+  U15/ZN (INV_X1)                          0.04       2.42 f
+  U2_14/CO (FA_X1)                         0.11       2.53 f
+  U2_15/S (FA_X1)                          0.13       2.66 r
+  Y_I_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_I_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.31
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_I_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -130,46 +145,55 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.12       1.30 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.31 f
-  data arrival time                                   1.31
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U699/ZN (INV_X1)                         0.06       0.24 f
+  U687/ZN (INV_X1)                         0.19       0.43 r
+  U731/Z (XOR2_X1)                         0.08       0.50 f
+  U187/CO (HA_X1)                          0.07       0.57 f
+  U1831/CO (HA_X1)                         0.05       0.63 f
+  U179/CO (FA_X1)                          0.09       0.72 f
+  U175/CO (FA_X1)                          0.09       0.81 f
+  U1711/CO (FA_X1)                         0.09       0.91 f
+  U167/CO (FA_X1)                          0.10       1.00 f
+  U1621/CO (FA_X1)                         0.11       1.11 f
+  U157/CO (FA_X1)                          0.11       1.22 f
+  U1531/CO (FA_X1)                         0.09       1.31 f
+  U148/CO (FA_X1)                          0.09       1.41 f
+  U99/CO (FA_X1)                           0.11       1.51 f
+  U98/CO (FA_X1)                           0.09       1.61 f
+  U97/CO (FA_X1)                           0.09       1.70 f
+  U96/CO (FA_X1)                           0.09       1.79 f
+  U95/CO (FA_X1)                           0.09       1.89 f
+  U94/CO (FA_X1)                           0.09       1.98 f
+  U931/CO (FA_X1)                          0.10       2.08 f
+  U711/ZN (NAND2_X1)                       0.04       2.12 r
+  U713/ZN (NAND3_X1)                       0.04       2.16 f
+  U911/CO (FA_X1)                          0.09       2.25 f
+  U729/Z (XOR2_X1)                         0.05       2.31 r
+  U728/Z (XOR2_X1)                         0.08       2.38 r
+  U15/ZN (INV_X1)                          0.04       2.42 f
+  U2_14/CO (FA_X1)                         0.11       2.53 f
+  U2_15/S (FA_X1)                          0.13       2.66 r
+  Y_I_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_I_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.31
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_R_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -181,46 +205,53 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.12       1.30 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.31 f
-  data arrival time                                   1.31
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U7001/ZN (INV_X1)                        0.06       0.24 f
+  U6871/ZN (INV_X1)                        0.19       0.43 r
+  U7241/Z (XOR2_X1)                        0.08       0.50 f
+  U1871/CO (HA_X1)                         0.07       0.57 f
+  U1832/CO (HA_X1)                         0.05       0.63 f
+  U1791/CO (FA_X1)                         0.09       0.72 f
+  U1751/CO (FA_X1)                         0.09       0.81 f
+  U1712/CO (FA_X1)                         0.09       0.91 f
+  U1671/CO (FA_X1)                         0.10       1.00 f
+  U1622/CO (FA_X1)                         0.11       1.11 f
+  U1571/CO (FA_X1)                         0.11       1.22 f
+  U1532/CO (FA_X1)                         0.09       1.31 f
+  U1481/CO (FA_X1)                         0.09       1.41 f
+  U991/CO (FA_X1)                          0.11       1.51 f
+  U981/CO (FA_X1)                          0.09       1.61 f
+  U971/CO (FA_X1)                          0.09       1.70 f
+  U961/CO (FA_X1)                          0.09       1.79 f
+  U951/CO (FA_X1)                          0.09       1.89 f
+  U941/CO (FA_X1)                          0.09       1.98 f
+  U932/CO (FA_X1)                          0.09       2.07 f
+  U921/CO (FA_X1)                          0.09       2.17 f
+  U912/CO (FA_X1)                          0.09       2.26 f
+  U7221/Z (XOR2_X1)                        0.07       2.33 f
+  U7211/Z (XOR2_X1)                        0.09       2.42 f
+  U2_141/CO (FA_X1)                        0.11       2.53 f
+  U2_151/S (FA_X1)                         0.13       2.66 r
+  Y_R_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_R_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.31
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_I_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -232,46 +263,55 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.12       1.29 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.31 f
-  data arrival time                                   1.31
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U699/ZN (INV_X1)                         0.06       0.24 f
+  U687/ZN (INV_X1)                         0.19       0.43 r
+  U731/Z (XOR2_X1)                         0.08       0.50 f
+  U187/CO (HA_X1)                          0.07       0.57 f
+  U1831/CO (HA_X1)                         0.05       0.63 f
+  U179/CO (FA_X1)                          0.09       0.72 f
+  U175/CO (FA_X1)                          0.09       0.81 f
+  U1711/CO (FA_X1)                         0.09       0.91 f
+  U167/CO (FA_X1)                          0.10       1.00 f
+  U1621/CO (FA_X1)                         0.11       1.11 f
+  U157/CO (FA_X1)                          0.11       1.22 f
+  U1531/CO (FA_X1)                         0.09       1.31 f
+  U148/CO (FA_X1)                          0.09       1.41 f
+  U99/CO (FA_X1)                           0.11       1.51 f
+  U98/CO (FA_X1)                           0.09       1.61 f
+  U97/CO (FA_X1)                           0.09       1.70 f
+  U96/CO (FA_X1)                           0.09       1.79 f
+  U95/CO (FA_X1)                           0.09       1.89 f
+  U94/CO (FA_X1)                           0.09       1.98 f
+  U931/CO (FA_X1)                          0.10       2.08 f
+  U711/ZN (NAND2_X1)                       0.04       2.12 r
+  U713/ZN (NAND3_X1)                       0.04       2.16 f
+  U911/CO (FA_X1)                          0.09       2.25 f
+  U729/Z (XOR2_X1)                         0.07       2.32 f
+  U728/Z (XOR2_X1)                         0.05       2.38 r
+  U15/ZN (INV_X1)                          0.04       2.41 f
+  U2_14/CO (FA_X1)                         0.11       2.53 f
+  U2_15/S (FA_X1)                          0.13       2.66 r
+  Y_I_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_I_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.31
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_I_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -283,46 +323,55 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.12       1.29 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.31 f
-  data arrival time                                   1.31
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U699/ZN (INV_X1)                         0.06       0.24 f
+  U687/ZN (INV_X1)                         0.19       0.43 r
+  U731/Z (XOR2_X1)                         0.08       0.50 f
+  U187/CO (HA_X1)                          0.07       0.57 f
+  U1831/CO (HA_X1)                         0.05       0.63 f
+  U179/CO (FA_X1)                          0.09       0.72 f
+  U175/CO (FA_X1)                          0.09       0.81 f
+  U1711/CO (FA_X1)                         0.09       0.91 f
+  U167/CO (FA_X1)                          0.10       1.00 f
+  U1621/CO (FA_X1)                         0.11       1.11 f
+  U157/CO (FA_X1)                          0.11       1.22 f
+  U1531/CO (FA_X1)                         0.09       1.31 f
+  U148/CO (FA_X1)                          0.09       1.41 f
+  U99/CO (FA_X1)                           0.11       1.51 f
+  U98/CO (FA_X1)                           0.09       1.61 f
+  U97/CO (FA_X1)                           0.09       1.70 f
+  U96/CO (FA_X1)                           0.09       1.79 f
+  U95/CO (FA_X1)                           0.09       1.89 f
+  U94/CO (FA_X1)                           0.09       1.98 f
+  U931/CO (FA_X1)                          0.10       2.08 f
+  U711/ZN (NAND2_X1)                       0.04       2.12 r
+  U713/ZN (NAND3_X1)                       0.04       2.16 f
+  U911/CO (FA_X1)                          0.09       2.25 f
+  U729/Z (XOR2_X1)                         0.07       2.32 f
+  U728/Z (XOR2_X1)                         0.05       2.38 r
+  U15/ZN (INV_X1)                          0.04       2.41 f
+  U2_14/CO (FA_X1)                         0.11       2.53 f
+  U2_15/S (FA_X1)                          0.13       2.66 r
+  Y_I_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_I_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.31
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_I_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -334,46 +383,55 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.11       1.29 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.30 f
-  data arrival time                                   1.30
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U699/ZN (INV_X1)                         0.06       0.24 f
+  U687/ZN (INV_X1)                         0.19       0.43 r
+  U731/Z (XOR2_X1)                         0.08       0.50 f
+  U187/CO (HA_X1)                          0.07       0.57 f
+  U1831/CO (HA_X1)                         0.05       0.63 f
+  U179/CO (FA_X1)                          0.09       0.72 f
+  U175/CO (FA_X1)                          0.09       0.81 f
+  U1711/CO (FA_X1)                         0.09       0.91 f
+  U167/CO (FA_X1)                          0.10       1.00 f
+  U1621/CO (FA_X1)                         0.11       1.11 f
+  U157/CO (FA_X1)                          0.11       1.22 f
+  U1531/CO (FA_X1)                         0.09       1.31 f
+  U148/CO (FA_X1)                          0.09       1.41 f
+  U99/CO (FA_X1)                           0.11       1.51 f
+  U98/CO (FA_X1)                           0.09       1.61 f
+  U97/CO (FA_X1)                           0.09       1.70 f
+  U96/CO (FA_X1)                           0.09       1.79 f
+  U95/CO (FA_X1)                           0.09       1.89 f
+  U94/CO (FA_X1)                           0.09       1.98 f
+  U931/CO (FA_X1)                          0.10       2.08 f
+  U711/ZN (NAND2_X1)                       0.04       2.12 r
+  U713/ZN (NAND3_X1)                       0.04       2.16 f
+  U911/CO (FA_X1)                          0.09       2.25 f
+  U729/Z (XOR2_X1)                         0.05       2.30 r
+  U728/Z (XOR2_X1)                         0.08       2.38 r
+  U15/ZN (INV_X1)                          0.04       2.41 f
+  U2_14/CO (FA_X1)                         0.11       2.53 f
+  U2_15/S (FA_X1)                          0.13       2.66 r
+  Y_I_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_I_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.30
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_I_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -385,46 +443,55 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.11       1.29 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.30 f
-  data arrival time                                   1.30
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U699/ZN (INV_X1)                         0.06       0.24 f
+  U687/ZN (INV_X1)                         0.19       0.43 r
+  U731/Z (XOR2_X1)                         0.08       0.50 f
+  U187/CO (HA_X1)                          0.07       0.57 f
+  U1831/CO (HA_X1)                         0.05       0.63 f
+  U179/CO (FA_X1)                          0.09       0.72 f
+  U175/CO (FA_X1)                          0.09       0.81 f
+  U1711/CO (FA_X1)                         0.09       0.91 f
+  U167/CO (FA_X1)                          0.10       1.00 f
+  U1621/CO (FA_X1)                         0.11       1.11 f
+  U157/CO (FA_X1)                          0.11       1.22 f
+  U1531/CO (FA_X1)                         0.09       1.31 f
+  U148/CO (FA_X1)                          0.09       1.41 f
+  U99/CO (FA_X1)                           0.11       1.51 f
+  U98/CO (FA_X1)                           0.09       1.61 f
+  U97/CO (FA_X1)                           0.09       1.70 f
+  U96/CO (FA_X1)                           0.09       1.79 f
+  U95/CO (FA_X1)                           0.09       1.89 f
+  U94/CO (FA_X1)                           0.09       1.98 f
+  U931/CO (FA_X1)                          0.10       2.08 f
+  U711/ZN (NAND2_X1)                       0.04       2.12 r
+  U713/ZN (NAND3_X1)                       0.04       2.16 f
+  U911/CO (FA_X1)                          0.09       2.25 f
+  U729/Z (XOR2_X1)                         0.05       2.30 r
+  U728/Z (XOR2_X1)                         0.08       2.38 r
+  U15/ZN (INV_X1)                          0.04       2.41 f
+  U2_14/CO (FA_X1)                         0.11       2.52 f
+  U2_15/S (FA_X1)                          0.13       2.66 r
+  Y_I_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_I_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.30
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.45
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_R_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -436,46 +503,53 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.11       1.29 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.30 f
-  data arrival time                                   1.30
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U7001/ZN (INV_X1)                        0.06       0.24 f
+  U6871/ZN (INV_X1)                        0.19       0.43 r
+  U7241/Z (XOR2_X1)                        0.08       0.50 f
+  U1871/CO (HA_X1)                         0.07       0.57 f
+  U1832/CO (HA_X1)                         0.05       0.63 f
+  U1791/CO (FA_X1)                         0.09       0.72 f
+  U1751/CO (FA_X1)                         0.09       0.81 f
+  U1712/CO (FA_X1)                         0.09       0.91 f
+  U1671/CO (FA_X1)                         0.09       1.00 f
+  U1622/CO (FA_X1)                         0.11       1.11 f
+  U1571/CO (FA_X1)                         0.11       1.22 f
+  U1532/CO (FA_X1)                         0.09       1.31 f
+  U1481/CO (FA_X1)                         0.09       1.40 f
+  U991/CO (FA_X1)                          0.11       1.51 f
+  U981/CO (FA_X1)                          0.09       1.60 f
+  U971/CO (FA_X1)                          0.09       1.70 f
+  U961/CO (FA_X1)                          0.09       1.79 f
+  U951/CO (FA_X1)                          0.09       1.88 f
+  U941/CO (FA_X1)                          0.09       1.98 f
+  U932/CO (FA_X1)                          0.09       2.07 f
+  U921/CO (FA_X1)                          0.09       2.16 f
+  U912/CO (FA_X1)                          0.09       2.25 f
+  U7221/Z (XOR2_X1)                        0.07       2.33 f
+  U7211/Z (XOR2_X1)                        0.09       2.41 f
+  U2_141/CO (FA_X1)                        0.11       2.52 f
+  U2_151/S (FA_X1)                         0.13       2.66 r
+  Y_R_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_R_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.30
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.46
+  slack (MET)                                         1.10
 
 
-  Startpoint: angle_r_reg[0]
-              (rising edge-triggered flip-flop clocked by clk)
-  Endpoint: r_mem_reg[15]
-            (rising edge-triggered flip-flop clocked by clk')
+  Startpoint: r_reg[14] (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: Y_R_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
   Path Group: clk
   Path Type: max
 
@@ -487,40 +561,48 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock clk (rise edge)                    0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  angle_r_reg[0]/CK (DFFR_X1)              0.00       0.00 r
-  angle_r_reg[0]/QN (DFFR_X1)              0.09       0.09 r
-  U300/ZN (AND2_X1)                        0.06       0.15 r
-  U298/ZN (AND2_X1)                        0.05       0.20 r
-  U296/ZN (AND2_X1)                        0.05       0.25 r
-  U294/ZN (AND2_X1)                        0.05       0.30 r
-  U292/ZN (AND2_X1)                        0.05       0.36 r
-  U290/ZN (AND2_X1)                        0.05       0.41 r
-  U288/ZN (AND2_X1)                        0.05       0.46 r
-  U286/ZN (AND2_X1)                        0.07       0.53 r
-  U222/Z (XOR2_X1)                         0.19       0.72 r
-  U317/Z (MUX2_X1)                         0.10       0.81 f
-  U197/ZN (NOR3_X1)                        0.07       0.88 r
-  U192/ZN (NAND4_X1)                       0.06       0.94 f
-  U191/ZN (INV_X1)                         0.04       0.98 r
-  U70/ZN (NAND2_X1)                        0.03       1.01 f
-  U209/ZN (OAI21_X1)                       0.04       1.06 r
-  U254/ZN (AND2_X1)                        0.05       1.11 r
-  add_440/U1_15/CO (FA_X1)                 0.07       1.18 r
-  add_440/U1_16/S (FA_X1)                  0.11       1.29 f
-  r_mem_reg[15]/D (DFFR_X1)                0.01       1.30 f
-  data arrival time                                   1.30
+  r_reg[14]/CK (DFFR_X1)                   0.00       0.00 r
+  r_reg[14]/Q (DFFR_X1)                    0.18       0.18 r
+  U7001/ZN (INV_X1)                        0.06       0.24 f
+  U6871/ZN (INV_X1)                        0.19       0.43 r
+  U7241/Z (XOR2_X1)                        0.08       0.50 f
+  U1871/CO (HA_X1)                         0.07       0.57 f
+  U1832/CO (HA_X1)                         0.05       0.63 f
+  U1791/CO (FA_X1)                         0.09       0.72 f
+  U1751/CO (FA_X1)                         0.09       0.81 f
+  U1712/CO (FA_X1)                         0.09       0.91 f
+  U1671/CO (FA_X1)                         0.10       1.00 f
+  U1622/CO (FA_X1)                         0.11       1.11 f
+  U1571/CO (FA_X1)                         0.11       1.22 f
+  U1532/CO (FA_X1)                         0.09       1.31 f
+  U1481/CO (FA_X1)                         0.09       1.41 f
+  U991/CO (FA_X1)                          0.11       1.51 f
+  U981/CO (FA_X1)                          0.09       1.61 f
+  U971/CO (FA_X1)                          0.09       1.70 f
+  U961/CO (FA_X1)                          0.09       1.79 f
+  U951/CO (FA_X1)                          0.09       1.89 f
+  U941/CO (FA_X1)                          0.09       1.98 f
+  U932/CO (FA_X1)                          0.09       2.07 f
+  U921/CO (FA_X1)                          0.09       2.16 f
+  U912/CO (FA_X1)                          0.09       2.25 f
+  U7221/Z (XOR2_X1)                        0.07       2.33 f
+  U7211/Z (XOR2_X1)                        0.09       2.41 f
+  U2_141/CO (FA_X1)                        0.11       2.52 f
+  U2_151/S (FA_X1)                         0.13       2.66 r
+  Y_R_reg[15]/D (DFF_X1)                   0.01       2.67 r
+  data arrival time                                   2.67
 
-  clock clk' (rise edge)                   2.00       2.00
-  clock network delay (ideal)              0.00       2.00
-  clock uncertainty                       -0.20       1.80
-  r_mem_reg[15]/CK (DFFR_X1)               0.00       1.80 r
-  library setup time                      -0.04       1.76
-  data required time                                  1.76
+  clock clk (rise edge)                    4.00       4.00
+  clock network delay (ideal)              0.00       4.00
+  clock uncertainty                       -0.20       3.80
+  Y_R_reg[15]/CK (DFF_X1)                  0.00       3.80 r
+  library setup time                      -0.03       3.77
+  data required time                                  3.77
   -----------------------------------------------------------
-  data required time                                  1.76
-  data arrival time                                  -1.30
+  data required time                                  3.77
+  data arrival time                                  -2.67
   -----------------------------------------------------------
-  slack (MET)                                         0.46
+  slack (MET)                                         1.10
 
 
 1
