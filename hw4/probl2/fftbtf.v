@@ -540,10 +540,10 @@ module fftbtf (
 
 //stage 1. A+B and A-B
 wire [16:0] ApB_R, ApB_I, AmB_R, AmB_I;
-assign ApB_R = A_R + B_R;
-assign ApB_I = A_I + B_I;
-assign AmB_R = A_R - B_R;
-assign AmB_I = A_I - B_I;
+assign ApB_R = {A_R[15], A_R} + {B_R[15], B_R};
+assign ApB_I = {A_I[15], A_I} + {B_I[15], B_I};
+assign AmB_R = {A_R[15], A_R} - {B_R[15], B_R};
+assign AmB_I = {A_I[15], A_I} - {B_I[15], B_I};
 
 reg [16:0] ApB_R_r, ApB_I_r, AmB_R_r, AmB_I_r;
 reg start_r;
