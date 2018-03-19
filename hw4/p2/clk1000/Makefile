@@ -1,7 +1,5 @@
 # Makefile for synthesis and checking
 #
-# 2018/02/15  Generation of dc-$(NAME).tcl completely re-written so the file
-#             can be automatically generated from the *.vfs file
 # 2017/01/31  Many big changes to merge simulation and synthesis,
 #             auto generate dc-$(NAME).tcl file, etc.
 # 2016/01/27  Small tweaks for NCVerilog
@@ -95,14 +93,8 @@ check:
 checknc:
 	ncverilog -c -l $(NAME).logs -f $(NAME).vfs
 
-# Note: alternate top of file cmd instead of awk: sed '/BEFORE_ANALYZE_SEC.../q'
-dc-$(NAME).tcl: dc-template.tcl $(NAME).vfs Makefile
-	@echo "===== Making a new dc-$(NAME).tcl"
-	awk '/BEFORE_ANALYZE_SECTION/ {exit} {print}' dc-template.tcl | sed 's/prac/$(NAME)/' | sed 's/dc-template.tcl/dc-$(NAME).tcl/' > dc-$(NAME).tcl
-	grep -v '#' $(NAME).vfs | grep '.*\.v' | awk '{print "analyze -format verilog " $$1}' >> dc-$(NAME).tcl
-	awk '/AFTER_ANALYZE_SECTION/,EOF' dc-template.tcl | grep -v 'AFTER_ANALYZE_SECTION' | sed 's/prac/$(NAME)/' >> dc-$(NAME).tcl
-	@echo "===== New dc-$(NAME).tcl ready"
-	@echo 
+dc-$(NAME).tcl: dc-template.tcl
+	sed s/prac/$(NAME)/ < dc-template.tcl > dc-$(NAME).tcl
 
 synth: dc-$(NAME).tcl
 	dc_shell-t -f dc-$(NAME).tcl | tee $(NAME).logs
@@ -124,14 +116,12 @@ clean:
 cleanall: clean
 	rm -f $(NAME).area
 	rm -f $(NAME).cell
-	rm -f dc-$(NAME).tcl
 	rm -f $(NAME).db
 	rm -f $(NAME).hier
 	rm -f $(NAME).history
 	rm -f $(NAME).log
 	rm -f $(NAME).logs
 	rm -f $(NAME).logs.clean
-	rm -f $(NAME).logv
 	rm -f $(NAME).net
 	rm -f $(NAME).pow
 	rm -f $(NAME).tim
@@ -141,6 +131,3 @@ cleanall: clean
 	rm -f $(NAME).vpd
 	rm -f command.log
 
-#----- Old code
-# dc-$(NAME).tcl: dc-template.tcl Makefile
-# 	sed s/prac/$(NAME)/ < dc-template.tcl > dc-$(NAME).tcl

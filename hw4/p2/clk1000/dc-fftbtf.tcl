@@ -1,4 +1,4 @@
-# dc-fftbtf.tcl script 
+# dc-template.tcl script 
 #
 # 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
 #             cycle time so very short critical paths are visible in timing 
@@ -50,7 +50,7 @@ set NameDesign "fftbtf"
 set CLK "clk"
 
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      4
+set clk_period      1000000
 
 set clock_skew      [expr {$clk_period} * 0.05 ]
 set input_setup     [expr {$clk_period} * 0.97 ]
@@ -107,4 +107,3 @@ check_design
 
 exit
 
-analyze -format verilog fftbtf.v

@@ -71,16 +71,16 @@ fftbtf
 set CLK "clk"
 clk
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      4
-4
+set clk_period      2.25
+2.25
 set clock_skew      [expr {$clk_period} * 0.05 ]
-0.2
+0.1125
 set input_setup     [expr {$clk_period} * 0.97 ]
-3.88
+2.1825
 set output_delay    [expr {$clk_period} * 0.04 ]
-0.16
+0.09
 set input_delay     [expr {$clk_period} - {$input_setup}]
-0.12
+0.0675
 # It appears only one "analyze" command is needed with .tcl scripts we use.
 # Strangely, it seems to be needed only the first time synthesis is run.
 # Previously, they worked best with one line per module.
@@ -271,8 +271,6 @@ Information: Updating design information... (UID-85)
   Processing 'fftbtf_DW01_sub_7'
   Processing 'fftbtf_DW01_add_4'
   Processing 'fftbtf_DW01_sub_8'
-  Building model 'DW01_sub_width15' (rpl)
-  Processing 'DW01_sub_width15'
   Mapping 'DW_mult_uns'
 Information: Added key list 'DesignWare' to design 'dp_cluster_1_2'. (DDB-72)
   Mapping 'DW_mult_uns'
@@ -288,82 +286,85 @@ Information: Added key list 'DesignWare' to design 'fftbtf'. (DDB-72)
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
   Mapping Optimization (Phase 1)
-Information: The register 'r_c_reg[12]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[12]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[11]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[11]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[10]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[10]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[9]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[9]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[8]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[8]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_c_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'r_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[12]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[12]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[11]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[11]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[10]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[10]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[9]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[9]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[8]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[8]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[7]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[6]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[5]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[4]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[3]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[2]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[1]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_c_reg[0]' is a constant and will be removed. (OPT-1206)
-Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-1206)
 
                                   TOTAL                                      
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6597.3      0.22       1.4       0.0                          
-    0:00:05    6603.2      0.18       1.1       0.0                          
-    0:00:05    6609.8      0.13       0.6       0.0                          
-    0:00:06    6608.8      0.08       0.5       0.0                          
-    0:00:06    6612.2      0.08       0.4       0.0                          
-    0:00:06    6620.2      0.03       0.1       0.0                          
-    0:00:06    6623.4      0.03       0.1       0.0                          
-    0:00:06    6623.7      0.03       0.1       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
+    0:00:06   10164.7      0.25       2.4      20.8 *cell*7117/*cell*7202/ZN 
+    0:00:06   10164.7      0.25       2.4      20.8 *cell*7117/*cell*7202/ZN 
+    0:00:06   10080.9      0.02       0.0       7.4 *cell*7117/U44/ZN        
+    0:00:06   10072.4      0.02       0.0       7.4 *cell*7117/*cell*7267/ZN 
+    0:00:06   10064.1      0.02       0.0       7.4 *cell*7117/*cell*7168/ZN 
+    0:00:06   10068.9      0.28       2.2      16.3 *cell*7278/U103/ZN       
+    0:00:07    9980.6      0.04       0.1      11.9 *cell*7278/*cell*7344/ZN 
+    0:00:07    9966.0      0.04       0.1       7.4 *cell*7278/*cell*7368/ZN 
+Information: The register 'r_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[12]' is a constant and will be removed. (OPT-1206)
+    0:00:07    9249.1      0.04       0.1       0.0                          
+    0:00:07    9249.1      0.04       0.1       0.0                          
+    0:00:07    9249.1      0.04       0.1       0.0                          
+    0:00:07    9249.6      0.04       0.1       0.0                          
+    0:00:07    9249.6      0.04       0.1       0.0                          
+    0:00:08    7175.9      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
 
 
 
@@ -374,9 +375,9 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6632.2      0.00       0.0       0.0                          
-    0:00:06    6618.9      0.00       0.0     158.3                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7153.5      0.00       0.0       0.0                          
+    0:00:08    7140.2      0.00       0.0     161.1                          
 
 
   Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
@@ -386,8 +387,8 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:06    6618.9      0.00       0.0     158.3                          
-    0:00:06    6619.7      0.00       0.0       0.0                          
+    0:00:08    7140.2      0.00       0.0     161.1                          
+    0:00:08    7141.0      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -397,30 +398,30 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:06    6619.7      0.00       0.0       0.0                          
-    0:00:06    6619.7      0.00       0.0       0.0                          
-    0:00:06    6578.7      0.00       0.0       0.0                          
-    0:00:06    6559.3      0.00       0.0       0.0                          
-    0:00:06    6548.7      0.00       0.0       0.0                          
-    0:00:06    6540.4      0.00       0.0       0.0                          
-    0:00:06    6533.5      0.00       0.0       0.0                          
-    0:00:06    6533.5      0.00       0.0       0.0                          
-    0:00:06    6533.8      0.00       0.0       0.0                          
-    0:00:06    6530.3      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6500.5      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:07    6218.5      0.00       0.0       0.0                          
+    0:00:08    7141.0      0.00       0.0       0.0                          
+    0:00:08    7141.0      0.00       0.0       0.0                          
+    0:00:08    7086.2      0.00       0.0       0.0                          
+    0:00:08    7058.3      0.00       0.0       0.0                          
+    0:00:08    7053.0      0.00       0.0       0.0                          
+    0:00:08    7053.0      0.00       0.0       0.0                          
+    0:00:08    7053.0      0.00       0.0       0.0                          
+    0:00:08    7053.0      0.00       0.0       0.0                          
+    0:00:08    7053.0      0.00       0.0       0.0                          
+    0:00:08    7041.3      0.00       0.0       0.0                          
+    0:00:08    7040.2      0.00       0.0       0.0                          
+    0:00:08    7040.2      0.00       0.0       0.0                          
+    0:00:08    7040.2      0.00       0.0       0.0                          
+    0:00:08    7040.2      0.00       0.0       0.0                          
+    0:00:08    7040.2      0.00       0.0       0.0                          
+    0:00:08    7040.2      0.00       0.0       0.0                          
+    0:00:08    6952.4      0.00       0.0       0.0                          
+    0:00:08    6935.7      0.00       0.0       0.0                          
+    0:00:08    6935.7      0.00       0.0       0.0                          
+    0:00:08    6935.7      0.00       0.0       0.0                          
+    0:00:08    6935.7      0.00       0.0       0.0                          
+    0:00:08    6935.7      0.00       0.0       0.0                          
+    0:00:08    6935.7      0.00       0.0       0.0                          
+    0:00:09    6533.8      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -438,7 +439,7 @@ Information: Updating graph... (UID-83)
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
 write -format verilog -output fftbtf.vg -hierarchy $NameDesign
-Writing verilog file '/home/maxs1993/wq18/281/hw4/probl2/fftbtf.vg'.
+Writing verilog file '/home/maxs1993/wq18/281/hw4/p2/clk4/fftbtf.vg'.
 1
 report_area               > fftbtf.area
 report_cell               > fftbtf.cell
@@ -485,7 +486,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     J-2014.09-SP2
-Date:        Mon Mar 19 12:06:29 2018
+Date:        Mon Mar 19 12:26:35 2018
 ****************************************
 
                    Name                                            Total
@@ -494,40 +495,40 @@ Nets                                                               34
     Unloaded nets (LINT-2)                                         34
 --------------------------------------------------------------------------------
 
-Warning: In design 'fftbtf', net 'n277' driven by pin 'U448/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n276' driven by pin 'U447/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n275' driven by pin 'U446/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n274' driven by pin 'U445/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n257' driven by pin 'U347/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n256' driven by pin 'U334/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n274' driven by pin 'U447/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n273' driven by pin 'U446/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n272' driven by pin 'U445/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n271' driven by pin 'U444/**logic_0**' has no loads. (LINT-2)
 Warning: In design 'fftbtf', net 'n7' driven by pin 'U20/**logic_0**' has no loads. (LINT-2)
 Warning: In design 'fftbtf', net 'n6' driven by pin 'U19/**logic_0**' has no loads. (LINT-2)
 Warning: In design 'fftbtf', net 'n5' driven by pin 'U18/**logic_0**' has no loads. (LINT-2)
 Warning: In design 'fftbtf', net 'n4' driven by pin 'U17/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[0]' driven by pin 'U333/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[2]' driven by pin 'U335/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[3]' driven by pin 'U336/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[4]' driven by pin 'U337/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[5]' driven by pin 'U338/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[6]' driven by pin 'U339/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[7]' driven by pin 'U340/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[8]' driven by pin 'U341/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[9]' driven by pin 'U342/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[10]' driven by pin 'U343/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[11]' driven by pin 'U344/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[12]' driven by pin 'U345/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[0]' driven by pin 'U346/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[2]' driven by pin 'U348/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[3]' driven by pin 'U349/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[4]' driven by pin 'U350/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[5]' driven by pin 'U351/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[6]' driven by pin 'U352/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[7]' driven by pin 'U353/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[8]' driven by pin 'U354/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[9]' driven by pin 'U355/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[10]' driven by pin 'U356/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[11]' driven by pin 'U357/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[12]' driven by pin 'U358/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[0]' driven by pin 'U344/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[1]' driven by pin 'U343/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[2]' driven by pin 'U342/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[3]' driven by pin 'U341/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[4]' driven by pin 'U340/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[5]' driven by pin 'U339/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[6]' driven by pin 'U338/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[7]' driven by pin 'U337/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[8]' driven by pin 'U336/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[9]' driven by pin 'U335/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[10]' driven by pin 'U334/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[11]' driven by pin 'U333/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[12]' driven by pin 'U332/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[0]' driven by pin 'U357/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[1]' driven by pin 'U356/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[2]' driven by pin 'U355/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[3]' driven by pin 'U354/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[4]' driven by pin 'U353/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[5]' driven by pin 'U352/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[6]' driven by pin 'U351/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[7]' driven by pin 'U350/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[8]' driven by pin 'U349/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[9]' driven by pin 'U348/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[10]' driven by pin 'U347/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[11]' driven by pin 'U346/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[12]' driven by pin 'U345/**logic_0**' has no loads. (LINT-2)
 1
 exit
 

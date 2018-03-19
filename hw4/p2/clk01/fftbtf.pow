@@ -8,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : fftbtf
 Version: J-2014.09-SP2
-Date   : Mon Mar 19 12:06:29 2018
+Date   : Mon Mar 19 12:19:57 2018
 ****************************************
 
 
@@ -34,12 +34,12 @@ Power-specific unit information :
     Leakage Power Units = 1nW
 
 
-  Cell Internal Power  = 899.3119 uW   (69%)
-  Net Switching Power  = 411.4597 uW   (31%)
+  Cell Internal Power  =  36.4888 mW   (66%)
+  Net Switching Power  =  19.0807 mW   (34%)
                          ---------
-Total Dynamic Power    =   1.3108 mW  (100%)
+Total Dynamic Power    =  55.5695 mW  (100%)
 
-Cell Leakage Power     = 125.8005 uW
+Cell Leakage Power     = 157.7915 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -49,9 +49,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register         567.9736           24.9970        2.7327e+04          620.2975  (  43.18%)
-sequential         1.0083            0.9493          279.3394            2.2370  (   0.16%)
-combinational    330.3298          385.5135        9.8194e+04          814.0381  (  56.67%)
+register       2.2722e+04          896.8237        2.7597e+04        2.3646e+04  (  42.43%)
+sequential        42.3651           76.7496          298.1226          119.4128  (   0.21%)
+combinational  1.3724e+04        1.8107e+04        1.2990e+05        3.1961e+04  (  57.35%)
 --------------------------------------------------------------------------------------------------
-Total            899.3118 uW       411.4598 uW     1.2580e+05 nW     1.4366e+03 uW
+Total          3.6489e+04 uW     1.9081e+04 uW     1.5779e+05 nW     5.5727e+04 uW
 1

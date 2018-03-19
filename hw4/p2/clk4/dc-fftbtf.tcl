@@ -50,7 +50,7 @@ set NameDesign "fftbtf"
 set CLK "clk"
 
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      4
+set clk_period      2.25
 
 set clock_skew      [expr {$clk_period} * 0.05 ]
 set input_setup     [expr {$clk_period} * 0.97 ]
