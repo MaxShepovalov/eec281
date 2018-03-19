@@ -43,6 +43,15 @@ module tbench();
         $recordvars(tbench);
         file = $fopen("complex_result.m", "w");
         clk = 1'b0;
+        angle = 12'd0;
+        A_real = 16'd0;
+        A_imag = 16'd0;
+        B_real = 16'd0;
+        B_imag = 16'd0;
+        X_real = 16'd0;
+        X_imag = 16'd0;
+        Y_real = 16'd0;
+        Y_imag = 16'd0;
         //set extreme cases
         extreme_exp[0] = 12'b0000_0000_0000;
         extreme_A[0] = 32'h00000000;
@@ -116,10 +125,10 @@ module tbench();
         B_buffer[2] = 31'd0;
         B_buffer[3] = 31'd0;
 
-        exp_buffer[0] = 11'd0;
-        exp_buffer[1] = 11'd0;
-        exp_buffer[2] = 11'd0;
-        exp_buffer[3] = 11'd0;
+        exp_buffer[0] = 12'd0;
+        exp_buffer[1] = 12'd0;
+        exp_buffer[2] = 12'd0;
+        exp_buffer[3] = 12'd0;
 
         rst = 1'b1;
         #35
@@ -177,7 +186,7 @@ module tbench();
                 $fwrite(file, "x(%d+1) = %d + 1i * %d; ", count-3, print0, print1);
                 print0 = Y_real;
                 print1 = Y_imag;
-                $fwrite(file, "x(%d+1) = %d + 1i * %d;\n", count-3, print0, print1);
+                $fwrite(file, "y(%d+1) = %d + 1i * %d;\n", count-3, print0, print1);
             end
             if (count > 1000) begin
                 $finish;
