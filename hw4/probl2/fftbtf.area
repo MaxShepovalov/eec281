@@ -1,0 +1,31 @@
+ 
+****************************************
+Report : area
+Design : fftbtf
+Version: J-2014.09-SP2
+Date   : Sun Mar 18 21:32:28 2018
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db)
+
+Number of ports:                          142
+Number of nets:                          1602
+Number of cells:                         1213
+Number of combinational cells:           1064
+Number of sequential cells:               149
+Number of macros/black boxes:               0
+Number of buf/inv:                        284
+Number of references:                      24
+
+Combinational area:               2117.360008
+Buf/Inv area:                      156.142001
+Noncombinational area:             716.071993
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  2833.432001
+Total area:                 undefined
+1

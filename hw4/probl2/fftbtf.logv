@@ -1,0 +1,56 @@
+ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s031: Started on Mar 18, 2018 at 21:32:10 PDT
+ncverilog
+	+access+r
+	-l
+	fftbtf.logv
+	-f fftbtf.vfv
+		fftbtf.v
+		tbench.vt
+file: fftbtf.v
+	module worklib.addr_selector:v
+		errors: 0, warnings: 0
+	module worklib.cos:v
+		errors: 0, warnings: 0
+	module worklib.compl:v
+		errors: 0, warnings: 0
+	module worklib.fftbtf:v
+		errors: 0, warnings: 0
+file: tbench.vt
+	module worklib.tbench:vt
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.addr_selector:v <0x73299ea8>
+			streams:   1, words:  3959
+		worklib.compl:v <0x08698fdb>
+			streams:   7, words:  3535
+		worklib.cos:v <0x31eb7bad>
+			streams:   4, words: 53753
+		worklib.fftbtf:v <0x733b5112>
+			streams:  14, words:  8353
+		worklib.tbench:vt <0x4e11a0c8>
+			streams:   6, words: 18720
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  6       5
+		Registers:               63      57
+		Scalar wires:            14       -
+		Vectored wires:          19       -
+		Always blocks:           13      12
+		Initial blocks:           3       3
+		Cont. assignments:        2       4
+		Pseudo assignments:       1       1
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tbench:vt
+Loading snapshot worklib.tbench:vt .................... Done
+ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> run
+Simulation complete via $finish(1) at time 20050 NS + 0
+./tbench.vt:183                 $finish;
+ncsim> exit
+TOOL:	ncverilog	15.20-s031: Exiting on Mar 18, 2018 at 21:32:12 PDT  (total: 00:00:02)
