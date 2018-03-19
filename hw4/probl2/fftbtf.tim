@@ -7,7 +7,7 @@ Report : timing
         -max_paths 10
 Design : fftbtf
 Version: J-2014.09-SP2
-Date   : Sun Mar 18 22:48:23 2018
+Date   : Sun Mar 18 23:32:57 2018
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
