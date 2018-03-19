@@ -1,0 +1,8 @@
+max(data0-data1) =  +0.000000 +0.000000i =  +0 +0i
+min(data0-data1) =  -0.000031 -0.000031i =  -3.05176e-05 -3.05176e-05i
+max(data0/data1) = -Inf -Infi
+min(data0/data1) = +Inf +Infi
+approx separated mean(data0/data1) = +1.005073+ +1.004026i
+Energy_data0 = 1308.355880
+Energy_diff  = 0.000001
+Energy_data0/Energy_diff = 1402032364.379241 = 91.467580dB
