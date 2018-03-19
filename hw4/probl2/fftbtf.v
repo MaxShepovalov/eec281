@@ -545,7 +545,7 @@ assign ApB_I = {A_I[15], A_I} + {B_I[15], B_I};
 assign AmB_R = {A_R[15], A_R} - {B_R[15], B_R};
 assign AmB_I = {A_I[15], A_I} - {B_I[15], B_I};
 
-reg [16:0] ApB_R_r, ApB_I_r, AmB_R_r, AmB_I_r;
+reg [15:0] ApB_R_r, ApB_I_r, AmB_R_r, AmB_I_r;
 reg start_r;
 always @(posedge clk or posedge rst) begin
     if (rst == 1) begin
@@ -555,18 +555,18 @@ always @(posedge clk or posedge rst) begin
         AmB_I_r <= #1 16'b0000_0000_0000_0000;
         start_r <= #1 1'b0;
     end else begin
-        ApB_R_r <= #1 ApB_R;
-        ApB_I_r <= #1 ApB_I;
-        AmB_R_r <= #1 AmB_R;
-        AmB_I_r <= #1 AmB_I;
+        ApB_R_r <= #1 ApB_R[16:1];
+        ApB_I_r <= #1 ApB_I[16:1];
+        AmB_R_r <= #1 AmB_R[16:1];
+        AmB_I_r <= #1 AmB_I[16:1];
         start_r <= #1 start;
     end
 end
 
 //stage 2. get Wn
-reg [16:0] ApB_R_r1, ApB_I_r1, AmB_R_r1, AmB_I_r1;
-reg [16:0] ApB_R_r2, ApB_I_r2, AmB_R_r2, AmB_I_r2;
-reg [16:0] ApB_R_r3, ApB_I_r3, AmB_R_r3, AmB_I_r3;
+reg [15:0] ApB_R_r1, ApB_I_r1, AmB_R_r1, AmB_I_r1;
+reg [15:0] ApB_R_r2, ApB_I_r2, AmB_R_r2, AmB_I_r2;
+reg [15:0] ApB_R_r3, ApB_I_r3, AmB_R_r3, AmB_I_r3;
 wire [15:0] Wn_R, Wn_I;
 //compl already has clk for output, 3 cycles delay
 compl C1 (.angle (wn_exp), .clk (clk), .start (start), .reset (rst), .r (Wn_R), .i (Wn_I));
