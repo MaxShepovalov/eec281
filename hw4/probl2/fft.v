@@ -457,13 +457,13 @@ module compl(
 
 reg [11:0] angle_r;
 reg [15:0] r_mem;
-wire [15:0] cos_val, sin_val;
+wire [15:0] cos_val;//, sin_val;
 reg cos_en;
 
 //cos on posedge clk
 //sin on negedge clk
 
-cos cos_mem (.angle (angle), .cos_en(cos_en), .result(cos_val));
+cos cos_mem (.angle (angle_r), .cos_en(cos_en), .result(cos_val));
 
 always @(clk or posedge rst) begin
     if (rst == 1) begin
@@ -541,7 +541,7 @@ end
 
 //stage 2. get Wn
 reg [16:0] ApB_R_r1, ApB_I_r1, AmB_R_r1, AmB_I_r1;
-wire [16:0] Wn_R, Wn_I;
+wire [15:0] Wn_R, Wn_I;
 //compl already has clk for output
 compl C1 (.angle (wn_exp), .clk (clk), .rst (rst), .r (Wn_R), .i (Wn_I));
 always @(posedge clk) begin
