@@ -57,7 +57,7 @@ module tbench();
                 end else begin
                     angle = angle + 1;
                     start = 1'b1;
-                    count = 3;
+                    count = 0;
                 end
             end
         end
