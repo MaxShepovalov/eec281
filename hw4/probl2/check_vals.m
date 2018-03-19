@@ -2,12 +2,12 @@
 clear;
 complex_result;
 
-A = a / abs(max(a));
-B = b / abs(max(b));
-E = 2* pi * wn_exp / abs(max(wn_exp)); %angle
+A = a / 32768;
+B = b / 32768;
+E = 2* pi * wn_exp / 4096; %angle
 W = exp(1i * E); %fft coef
-Xt = x / abs(max(x)); %test result
-Yt = y / abs(max(y)); %test result
+Xt = x / 32768; %test result
+Yt = y / 32768; %test result
 Xm = A + B; %matlab result
 Ym = (A - B).*W;
 
