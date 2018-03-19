@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s031: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s031: Started on Mar 18, 2018 at 22:15:20 PDT
+TOOL:	ncverilog	15.20-s031: Started on Mar 18, 2018 at 22:48:03 PDT
 ncverilog
 	+access+r
 	-l
@@ -31,14 +31,14 @@ file: tbench.vt
 			streams:   4, words: 53753
 		worklib.fftbtf:v <0x733b5112>
 			streams:  14, words:  8353
-		worklib.tbench:vt <0x4e11a0c8>
-			streams:   6, words: 19405
+		worklib.tbench:vt <0x5a6b0ec6>
+			streams:   6, words: 19337
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
 		Modules:                  6       5
-		Registers:               63      57
+		Registers:               62      56
 		Scalar wires:            14       -
 		Vectored wires:          19       -
 		Always blocks:           13      12
@@ -51,6 +51,6 @@ Loading snapshot worklib.tbench:vt .................... Done
 ncsim> source /apps/Cadence/INCISIVE152/tools/inca/files/ncsimrc
 ncsim> run
 Simulation complete via $finish(1) at time 20050 NS + 0
-./tbench.vt:188                 $finish;
+./tbench.vt:186                 $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s031: Exiting on Mar 18, 2018 at 22:15:24 PDT  (total: 00:00:04)
+TOOL:	ncverilog	15.20-s031: Exiting on Mar 18, 2018 at 22:48:06 PDT  (total: 00:00:03)
