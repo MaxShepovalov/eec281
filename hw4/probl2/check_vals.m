@@ -4,7 +4,7 @@ complex_result;
 
 A = a / abs(max(a));
 B = b / abs(max(b));
-E = 2* pi * wn_exp / abs(min(wn_exp)); %angle
+E = 2* pi * wn_exp / abs(max(wn_exp)); %angle
 W = exp(1i * E); %fft coef
 Xt = x / abs(max(x)); %test result
 Yt = y / abs(max(y)); %test result
