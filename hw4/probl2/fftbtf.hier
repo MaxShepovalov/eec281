@@ -3,7 +3,7 @@
 Report : hierarchy
 Design : fftbtf
 Version: J-2014.09-SP2
-Date   : Mon Mar 19 11:57:30 2018
+Date   : Mon Mar 19 12:06:28 2018
 ****************************************
 
 Attributes:
@@ -11,9 +11,13 @@ Attributes:
 
 fftbtf             r
     AND2_X1           NangateOpenCellLibrary
+    AND3_X1           NangateOpenCellLibrary
     AOI21_X1          NangateOpenCellLibrary
     AOI22_X1          NangateOpenCellLibrary
+    AOI222_X1         NangateOpenCellLibrary
     BUF_X1            NangateOpenCellLibrary
+    BUF_X2            NangateOpenCellLibrary
+    CLKBUF_X1         NangateOpenCellLibrary
     DFFR_X1           NangateOpenCellLibrary
     DFF_X1            NangateOpenCellLibrary
     DLH_X1            NangateOpenCellLibrary
@@ -25,15 +29,15 @@ fftbtf             r
     INV_X4            NangateOpenCellLibrary
     MUX2_X1           NangateOpenCellLibrary
     NAND2_X1          NangateOpenCellLibrary
+    NAND2_X2          NangateOpenCellLibrary
     NAND3_X1          NangateOpenCellLibrary
     NAND4_X1          NangateOpenCellLibrary
     NOR2_X1           NangateOpenCellLibrary
-    NOR2_X2           NangateOpenCellLibrary
     NOR3_X1           NangateOpenCellLibrary
     OAI21_X1          NangateOpenCellLibrary
     OAI22_X1          NangateOpenCellLibrary
-    OAI221_X1         NangateOpenCellLibrary
-    OR2_X1            NangateOpenCellLibrary
+    OAI222_X1         NangateOpenCellLibrary
+    OR3_X1            NangateOpenCellLibrary
     XNOR2_X1          NangateOpenCellLibrary
     XOR2_X1           NangateOpenCellLibrary
     XOR2_X2           NangateOpenCellLibrary
