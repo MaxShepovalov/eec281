@@ -1,7 +1,7 @@
 #@ # 
 #@ # Running dc_shell Version J-2014.09-SP2 for amd64 -- Nov 25, 2014
-#@ # Date:   Mon Mar 19 00:15:54 2018
-#@ # Run by: maxs1993@python
+#@ # Date:   Mon Mar 19 11:57:15 2018
+#@ # Run by: maxs1993@ribbon
 #@ 
 
 source /software/Synopsys/DesignCompiler/current/admin/setup/.synopsys_dc.setup

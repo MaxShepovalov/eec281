@@ -3,7 +3,7 @@
 Report : cell
 Design : fftbtf
 Version: J-2014.09-SP2
-Date   : Mon Mar 19 00:16:05 2018
+Date   : Mon Mar 19 11:57:30 2018
 ****************************************
 
 Attributes:
@@ -730,6 +730,10 @@ U2_152                    FA_X1           NangateOpenCellLibrary
                                                           4.256000  mo, r
 U2_153                    FA_X1           NangateOpenCellLibrary
                                                           4.256000  mo, r
+U2_161                    FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
+U2_162                    FA_X1           NangateOpenCellLibrary
+                                                          4.256000  mo, r
 U3                        INV_X1          NangateOpenCellLibrary
                                                           0.532000  
 U4                        INV_X1          NangateOpenCellLibrary
@@ -920,30 +924,26 @@ U167                      FA_X1           NangateOpenCellLibrary
                                                           4.256000  r
 U171                      INV_X1          NangateOpenCellLibrary
                                                           0.532000  
-U172                      INV_X1          NangateOpenCellLibrary
-                                                          0.532000  
-U173                      INV_X1          NangateOpenCellLibrary
-                                                          0.532000  
+U172                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
+U173                      XNOR2_X1        NangateOpenCellLibrary
+                                                          1.596000  
 U175                      FA_X1           NangateOpenCellLibrary
                                                           4.256000  r
 U179                      FA_X1           NangateOpenCellLibrary
                                                           4.256000  r
 U181                      INV_X1          NangateOpenCellLibrary
                                                           0.532000  
-U182                      XNOR2_X1        NangateOpenCellLibrary
-                                                          1.596000  
-U183                      XNOR2_X1        NangateOpenCellLibrary
-                                                          1.596000  
+U182                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
+U183                      INV_X1          NangateOpenCellLibrary
+                                                          0.532000  
 U187                      HA_X1           NangateOpenCellLibrary
                                                           2.660000  r
 U191                      NAND2_X1        NangateOpenCellLibrary
                                                           0.798000  
 U192                      NAND2_X1        NangateOpenCellLibrary
                                                           0.798000  
-U201                      INV_X1          NangateOpenCellLibrary
-                                                          0.532000  
-U202                      INV_X1          NangateOpenCellLibrary
-                                                          0.532000  
 U259                      INV_X4          NangateOpenCellLibrary
                                                           1.330000  
 U260                      INV_X1          NangateOpenCellLibrary
@@ -2915,5 +2915,5 @@ r_reg[15]                 DFFR_X1         NangateOpenCellLibrary
 start_r_reg               DFFR_X1         NangateOpenCellLibrary
                                                           5.320000  n
 --------------------------------------------------------------------------------
-Total 1449 cells                                          3836.783982
+Total 1449 cells                                          3844.231982
 1
