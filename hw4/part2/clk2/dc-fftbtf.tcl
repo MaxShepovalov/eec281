@@ -1,4 +1,4 @@
-# dc-template.tcl script 
+# dc-fftbtf.tcl script 
 #
 # 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
 #             cycle time so very short critical paths are visible in timing 
@@ -36,21 +36,21 @@
 #   report_power -net
 #   report_power -hier
 #   set_max_delay
-#   write -format db -output prac.db
+#   write -format db -output fftbtf.db
 #
 # Doesn't work quite the way I expect
-#   NameDesign = prac    Set variable ok, but how to concatenate?
-#   write_rtl -format verilog -output prac.vg
+#   NameDesign = fftbtf    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output fftbtf.vg
 
 
 #===== Set: make sure you change design name elsewhere in this file
-set NameDesign "prac"
+set NameDesign "fftbtf"
 
 #===== Set some timing parameters
 set CLK "clk"
 
 #===== All values are in units of ns for NanGate 45 nm library
-set clk_period      2.4
+set clk_period      0.1
 
 set clock_skew      [expr {$clk_period} * 0.05 ]
 set input_setup     [expr {$clk_period} * 0.97 ]
@@ -60,7 +60,7 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 # It appears only one "analyze" command is needed with .tcl scripts we use.
 # Strangely, it seems to be needed only the first time synthesis is run.
 # Previously, they worked best with one line per module.
-analyze -format verilog ./prac.v
+analyze -format verilog ./fftbtf.v
 
 elaborate $NameDesign
 current_design $NameDesign
@@ -93,17 +93,18 @@ if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
 # compile -map_effort medium    # May help, or maybe not
 
 #===== Reports
-write -format verilog -output prac.vg -hierarchy $NameDesign
+write -format verilog -output fftbtf.vg -hierarchy $NameDesign
 
-report_area               > prac.area
-report_cell               > prac.cell
-report_hierarchy          > prac.hier
-report_net                > prac.net
-report_power              > prac.pow
-report_timing -nworst 10  > prac.tim
+report_area               > fftbtf.area
+report_cell               > fftbtf.cell
+report_hierarchy          > fftbtf.hier
+report_net                > fftbtf.net
+report_power              > fftbtf.pow
+report_timing -nworst 10  > fftbtf.tim
 
 check_timing
 check_design
 
 exit
 
+analyze -format verilog fftbtf.v

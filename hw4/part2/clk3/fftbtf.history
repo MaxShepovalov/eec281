@@ -1,0 +1,1 @@
+s1(19Mar2018:16:00:16):  ncverilog -c -l fftbtf.logs -f fftbtf.vfs 
