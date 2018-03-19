@@ -448,70 +448,80 @@ endmodule
 
 module compl(
     input [11:0] angle,
-    //input start,
+    input start,
     input clk,
-    input rst,
+    input reset,
     output reg [15:0] r,
     output reg [15:0] i
 );
 
-reg [11:0] angle_r;
-reg [15:0] r_mem;
-wire [15:0] cos_val;//, sin_val;
-reg cos_en, cos_clk1, cos_clk2;
+parameter IDLE = 2'b00;
+parameter COS = 2'b01;
+parameter SIN = 2'b10;
 
-//cos on posedge clk
-//sin on negedge clk
+reg [1:0] mode, mode_c;
+reg [11:0] angle_mem, angle_r;
+reg [15:0] r_c, i_c;
+wire [15:0] cos_val;
+reg cos_en, start_r;
+
+initial begin
+    mode = IDLE;
+    mode_c = IDLE;
+    angle_mem = 12'b0000_0000_0000;
+//    angle_r = 12'b0000_0000_0000;
+    r_c = 16'b0000_0000_0000_0000;
+    i_c = 16'b0000_0000_0000_0000;
+    cos_en = 1'b0;
+//    start_r = 1'b0;
+end
 
 cos cos_mem (.angle (angle_r), .cos_en(cos_en), .result(cos_val));
 
-always @(posedge clk or posedge rst) begin
-    if (rst == 1'b1) begin
-        i <= #1 16'b0000_0000_0000_0000;
-        r <= #1 16'b0000_0000_0000_0000;
-        angle_r <= #1 12'b0000_0000_0000;
-        cos_clk1 <= #1 1'b0;
-    end else begin //posedge clk
-        i <= #1 cos_val;
-        r <= #1 r_mem;
-        cos_clk1 <= #1 ~cos_clk1;
-        angle_r <= #1 angle;
-    end
+//State Machine
+always @(angle_r or start_r or mode) begin
+    mode_c = mode;
+    case(mode)
+        IDLE: begin
+            if (start_r == 1'b1) begin
+                mode_c = COS;
+                cos_en = mode_c[0];
+                angle_mem = angle_r;
+            end
+        end
+        COS: begin
+            r_c = cos_val;
+            mode_c = SIN;
+            cos_en = mode_c[0];
+        end
+        SIN: begin
+            i_c = cos_val;
+            mode_c = IDLE;
+        end
+        default: begin
+            mode_c = IDLE;
+        end
+    endcase
 end
 
-always @(negedge clk or posedge rst) begin
-    if (rst == 1'b1) begin
-        cos_clk2 <= #1 1'b0;
-        r_mem <= #1 16'b0000_0000_0000_0000;
-    end else begin      //negedge clk
-        cos_clk2 <= #1 ~cos_clk2;
-        r_mem <= #1 cos_val;
+//output FFlop
+always @(posedge clk or posedge reset) begin
+    if (reset == 1'b1) begin
+        r <= #1 16'b0000_0000_0000_0000;
+        i <= #1 16'b0000_0000_0000_0000;
+        mode <= #1 IDLE;
+        angle_r <= #1 12'b0000_0000_0000;
+        start_r <= #1 1'b0;
+    end else begin
+        r <= #1 r_c;
+        i <= #1 i_c;
+        mode <= #1 mode_c;
+        angle_r <= #1 angle;
+        start_r <= #1 start;
     end
 end
 
 endmodule
-
-// clk  0000001111111000000111111000000
-// c1/  0000000111111111111100000000000
-// c2\  0000000000000011111111111100000
-// cout 0000000111111100000011111100000
-
-
-/*
-
-clk     ____/------\______/------\______/------\______/------\_____
-angle   ____x0000000000000x1111111111111x2222222222222x333333333333
-
-angle_r _____x0000000000000x1111111111111x2222222222222x33333333333
-cos_en  _____/------\______/------\______/------\______/------\____
-cos_val _____x000000x111111x222222x333333x444444x555555x666666x7777
-
-r_c     ____________x0000000000000x2222222222222x4444444444444x6666
-
-r       ___________________x0000000000000x2222222222222x44444444444
-i       ___________________x1111111111111x3333333333333x66666666666
-
-*/
 
 module fftbtf (
     input clk,
@@ -551,14 +561,26 @@ end
 
 //stage 2. get Wn
 reg [16:0] ApB_R_r1, ApB_I_r1, AmB_R_r1, AmB_I_r1;
+reg [16:0] ApB_R_r2, ApB_I_r2, AmB_R_r2, AmB_I_r2;
+reg [16:0] ApB_R_r3, ApB_I_r3, AmB_R_r3, AmB_I_r3;
 wire [15:0] Wn_R, Wn_I;
-//compl already has clk for output
+//compl already has clk for output, 3 cycles delay
 compl C1 (.angle (wn_exp), .clk (clk), .rst (rst), .r (Wn_R), .i (Wn_I));
 always @(posedge clk) begin
     ApB_R_r1 <= #1 ApB_R_r;
     ApB_I_r1 <= #1 ApB_I_r;
     AmB_R_r1 <= #1 AmB_R_r;
     AmB_I_r1 <= #1 AmB_I_r;
+
+    ApB_R_r2 <= #1 ApB_R_r1;
+    ApB_I_r2 <= #1 ApB_I_r1;
+    AmB_R_r2 <= #1 AmB_R_r1;
+    AmB_I_r2 <= #1 AmB_I_r1;
+
+    ApB_R_r3 <= #1 ApB_R_r2;
+    ApB_I_r3 <= #1 ApB_I_r2;
+    AmB_R_r3 <= #1 AmB_R_r2;
+    AmB_I_r3 <= #1 AmB_I_r2;
 end
 
 //stage 3. multiply by Wn
@@ -567,11 +589,11 @@ reg [16:0] Y_R_c, Y_I_c;
 //(A-B)*Wn = (AmB_R + i*AmB_I) * (Wn_R + i*Wn_I) = AmB_R*Wn_R - AmB_I*Wn_I + i*[AmB_R * Wn_I + AmB_I * Wn_R]
 //15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
 //32 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16
-always @(AmB_R or AmB_I or Wn_R or Wn_I) begin
-    Y_R_0 = AmB_R * Wn_R;
-    Y_R_1 = AmB_I * Wn_I;
-    Y_I_0 = AmB_R * Wn_I;
-    Y_I_1 = AmB_I * Wn_R;
+always @(AmB_R_r3 or AmB_I_r3 or Wn_R_r3 or Wn_I_r3) begin
+    Y_R_0 = AmB_R_r3 * Wn_R;
+    Y_R_1 = AmB_I_r3 * Wn_I;
+    Y_I_0 = AmB_R_r3 * Wn_I;
+    Y_I_1 = AmB_I_r3 * Wn_R;
     Y_R_c = {Y_R_0[32],Y_R_0[32:18]} - {Y_R_1[32],Y_R_1[32:18]};
     Y_I_c = {Y_I_0[32],Y_I_0[32:18]} - {Y_I_1[32],Y_I_1[32:18]};
 end
@@ -579,8 +601,8 @@ end
 always @(posedge clk) begin
     Y_R <= #1 Y_R_c;
     Y_I <= #1 Y_I_c;
-    X_R <= #1 ApB_R_r1;
-    X_I <= #1 ApB_I_r1;
+    X_R <= #1 ApB_R_r3;
+    X_I <= #1 ApB_I_r3;
 end
 
 endmodule
