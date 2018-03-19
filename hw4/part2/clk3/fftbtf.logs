@@ -1,0 +1,524 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+          Version J-2014.09-SP2 for RHEL64 -- Nov 25, 2014
+               Copyright (c) 1988-2014 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+# dc-fftbtf.tcl script 
+#
+# 2017/02/14  Reduced output_delay to 4% and input_delay to 3% of the clock 
+#             cycle time so very short critical paths are visible in timing 
+#             reports. Also changed clock_skew from 250ps to 5% of cycle time 
+#             so it will scale with clock frequency.
+# 2017/02/10  Uncommented "analyze -format verilog ./proc.v" line. It seems to
+#             be needed only the first time synthesis is run.
+# 2017/02/04  Changes for NanGate 45 nm library including new timing parameters
+# 2012/02/22  Changed:
+#               ungroup -all -flatten -simple_names
+#             to:
+#               if { [sizeof_collection [get_cells * -filter 
+#                  "is_hierarchical==true"]] > 0 } {
+#                  ungroup -all -flatten -simple_names
+#                  }
+# 2010/02/16  Updated commented path to vtvtlib25.db
+# 2009/02/12  Many parts re-written in new tcl version by Zhibin Xiao
+# 2006/01/30  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2004/02/05  Updated /afs/.../vtvtlib25.db path to this quarter's path.
+# 2003/05/22  Increased input_setup from 500 to 6000 (external input delay
+#             now 6ns instead of 9.5ns) so input paths don't show up at the
+#             top of timing reports so often.
+# 2003/05/15  Cleaned up a little
+# 2003/05/14  Written
+#
+# Debugging
+# list -designs
+# list -libraries
+# list -files 
+#
+# Add if you like:
+# Annotates inputs, but doesn't propagate through design to clear warnings.
+#   set_switching_activity -toggle_rate 0.25 -clock "clk" { "in31a" }
+# More power info
+#   report_power -net
+#   report_power -hier
+#   set_max_delay
+#   write -format db -output fftbtf.db
+#
+# Doesn't work quite the way I expect
+#   NameDesign = fftbtf    Set variable ok, but how to concatenate?
+#   write_rtl -format verilog -output fftbtf.vg
+#===== Set: make sure you change design name elsewhere in this file
+set NameDesign "fftbtf"
+fftbtf
+#===== Set some timing parameters
+set CLK "clk"
+clk
+#===== All values are in units of ns for NanGate 45 nm library
+set clk_period      2.4
+2.4
+set clock_skew      [expr {$clk_period} * 0.05 ]
+0.12
+set input_setup     [expr {$clk_period} * 0.97 ]
+2.328
+set output_delay    [expr {$clk_period} * 0.04 ]
+0.096
+set input_delay     [expr {$clk_period} - {$input_setup}]
+0.072
+# It appears only one "analyze" command is needed with .tcl scripts we use.
+# Strangely, it seems to be needed only the first time synthesis is run.
+# Previously, they worked best with one line per module.
+analyze -format verilog ./fftbtf.v
+Running PRESTO HDLC
+Compiling source file ./fftbtf.v
+Warning:  ./fftbtf.v:567: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./fftbtf.v:679: The statements in initial blocks are ignored. (VER-281)
+Presto compilation completed successfully.
+Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/dw_foundation.sldb'
+1
+elaborate $NameDesign
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/gtech.db'
+Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+	in routine fftbtf line 753 in file
+		'./fftbtf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     AmB_R_r_reg     | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     AmB_I_r_reg     | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     ApB_R_r_reg     | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     ApB_I_r_reg     | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fftbtf line 776 in file
+		'./fftbtf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    AmB_I_r2_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    AmB_R_r2_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ApB_I_r2_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ApB_R_r2_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    AmB_I_r1_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    AmB_R_r1_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ApB_I_r1_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ApB_R_r1_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ApB_R_r3_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ApB_I_r3_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    AmB_R_r3_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|    AmB_I_r3_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fftbtf line 808 in file
+		'./fftbtf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       Y_R_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       Y_I_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       X_R_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       X_I_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'fftbtf'.
+Information: Building the design 'compl'. (HDL-193)
+
+Statistics for case statements in always block at line 682 in file
+	'./fftbtf.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           684            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine compl line 682 in file
+		'./fftbtf.v'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|       i_c_reg       | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|       r_c_reg       | Latch |  16   |  Y  | N  | N  | N  | -  | -  | -  |
+|     cos_en_reg      | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+
+Inferred memory devices in process
+	in routine compl line 708 in file
+		'./fftbtf.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     angle_r_reg     | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     start_r_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|        r_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|        i_reg        | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      mode_reg       | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'cos'. (HDL-193)
+
+Statistics for case statements in always block at line 567 in file
+	'./fftbtf.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           577            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+1
+current_design $NameDesign
+Current design is 'fftbtf'.
+{fftbtf}
+link
+
+  Linking design 'fftbtf'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  NangateOpenCellLibrary (library) /software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db
+  dw_foundation.sldb (library) /software/Synopsys/DesignCompiler/current/libraries/syn/dw_foundation.sldb
+
+1
+uniquify
+1
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+Information: Updating graph... (UID-83)
+Warning: Design 'fftbtf' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+set_max_area 0.0
+1
+#===== Timing and input/output load constraints
+create_clock $CLK -name $CLK -period $clk_period -waveform [list 0.0 [expr {$clk_period} / 2.0 ] ] 
+1
+set_clock_uncertainty $clock_skew $CLK
+1
+#set_clock_skew -plus_uncertainty $clock_skew $CLK
+#set_clock_skew -minus_uncertainty $clock_skew $CLK
+set_input_delay     $input_delay  -clock $CLK [all_inputs]
+1
+#remove_input_delay               -clock $CLK [all_inputs] 
+set_output_delay    $output_delay -clock $CLK [all_outputs]
+1
+set_load 1.5 [all_outputs]
+1
+compile -map_effort medium
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'fftbtf'. (UIO-59)
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | J-2014.09-DWBB_201409.2 |     *     |
+| Licensed DW Building Blocks        | J-2014.09-DWBB_201409.2 |     *     |
+============================================================================
+
+
+Information: There are 6 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'fftbtf'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'fftbtf_DW01_sub_0'
+  Processing 'fftbtf_DW01_sub_1'
+  Processing 'fftbtf_DW01_sub_2'
+  Processing 'fftbtf_DW01_add_0'
+  Processing 'fftbtf_DW01_add_1'
+  Processing 'fftbtf_DW01_sub_3'
+  Processing 'fftbtf_DW01_sub_4'
+  Processing 'fftbtf_DW01_sub_5'
+  Mapping 'fftbtf_DW_mult_uns_0'
+  Mapping 'fftbtf_DW_mult_uns_1'
+  Processing 'fftbtf_DW01_sub_6'
+  Mapping 'fftbtf_DW_mult_uns_2'
+  Mapping 'fftbtf_DW_mult_uns_3'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:06   10860.5      0.12       0.8      38.4 *cell*5717/U36/ZN        
+    0:00:06   10860.5      0.12       0.8      38.4 *cell*5717/U36/ZN        
+    0:00:06   10790.8      0.02       0.1      38.4 *cell*5717/*cell*5821/ZN 
+    0:00:06   10780.4      0.02       0.1      34.0 *cell*5717/*cell*5759/ZN 
+    0:00:06   10852.0      0.38       4.6      47.3 *cell*5854/*cell*5895/ZN 
+    0:00:06   10720.1      0.03       0.2      34.0 *cell*5854/*cell*5944/ZN 
+    0:00:06   10695.1      0.02       0.1      34.0 *cell*5854/*cell*5964/ZN 
+    0:00:06   10687.3      0.02       0.1      34.0 *cell*5854/*cell*5975/ZN 
+Information: The register 'r_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[13]' is a constant and will be removed. (OPT-1206)
+    0:00:06    9888.6      0.02       0.1      19.1                          
+    0:00:06    9888.6      0.02       0.1      19.1                          
+    0:00:06    9888.6      0.02       0.1      19.1                          
+    0:00:06    9889.1      0.02       0.1      19.1                          
+    0:00:06    9889.1      0.02       0.1      19.1                          
+    0:00:07    7046.1      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    7006.7      0.00       0.0       0.0                          
+    0:00:07    6992.9      0.00       0.0     161.1                          
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:07    6992.9      0.00       0.0     161.1                          
+    0:00:07    6993.7      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:07    6993.7      0.00       0.0       0.0                          
+    0:00:07    6993.7      0.00       0.0       0.0                          
+    0:00:08    6943.1      0.00       0.0       0.0                          
+    0:00:08    6918.4      0.00       0.0       0.0                          
+    0:00:08    6914.1      0.00       0.0       0.0                          
+    0:00:08    6914.1      0.00       0.0       0.0                          
+    0:00:08    6914.1      0.00       0.0       0.0                          
+    0:00:08    6914.1      0.00       0.0       0.0                          
+    0:00:08    6914.1      0.00       0.0       0.0                          
+    0:00:08    6891.8      0.00       0.0       0.0                          
+    0:00:08    6890.2      0.00       0.0       0.0                          
+    0:00:08    6890.2      0.00       0.0       0.0                          
+    0:00:08    6890.2      0.00       0.0       0.0                          
+    0:00:08    6890.2      0.00       0.0       0.0                          
+    0:00:08    6890.2      0.00       0.0       0.0                          
+    0:00:08    6890.2      0.00       0.0       0.0                          
+    0:00:08    6798.4      0.00       0.0       0.0                          
+    0:00:08    6792.0      0.00       0.0       0.0                          
+    0:00:08    6792.0      0.00       0.0       0.0                          
+    0:00:08    6792.0      0.00       0.0       0.0                          
+    0:00:08    6792.0      0.00       0.0       0.0                          
+    0:00:08    6792.0      0.00       0.0       0.0                          
+    0:00:08    6792.0      0.00       0.0       0.0                          
+    0:00:09    6456.9      0.00       0.0       0.0                          
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+# Comment "ungroup" line to maybe see some submodules
+if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
+   ungroup -all -flatten -simple_names
+   }
+Information: Updating graph... (UID-83)
+Warning: Design 'fftbtf' inherited license information from design 'fftbtf_DW_mult_uns_4'. (DDB-74)
+Information: Added key list 'DesignWare' to design 'fftbtf'. (DDB-72)
+1
+# compile -map_effort medium    # May help, or maybe not
+#===== Reports
+write -format verilog -output fftbtf.vg -hierarchy $NameDesign
+Writing verilog file '/home/maxs1993/wq18/281/hw4/part2/clk3/fftbtf.vg'.
+1
+report_area               > fftbtf.area
+report_cell               > fftbtf.cell
+report_hierarchy          > fftbtf.hier
+report_net                > fftbtf.net
+report_power              > fftbtf.pow
+report_timing -nworst 10  > fftbtf.tim
+check_timing
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+cos_en_reg/D
+i_c_reg[14]/D
+i_c_reg[15]/D
+i_reg[14]/D
+i_reg[15]/D
+r_c_reg[14]/D
+r_c_reg[15]/D
+r_reg[14]/D
+r_reg[15]/D
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
+check_design
+ 
+****************************************
+check_design summary:
+Version:     J-2014.09-SP2
+Date:        Mon Mar 19 16:00:38 2018
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Nets                                                               36
+    Unloaded nets (LINT-2)                                         36
+--------------------------------------------------------------------------------
+
+Warning: In design 'fftbtf', net 'n144' driven by pin 'U255/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n143' driven by pin 'U254/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n142' driven by pin 'U253/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n141' driven by pin 'U252/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n5' driven by pin 'U13/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n4' driven by pin 'U10/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n3' driven by pin 'U9/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n2' driven by pin 'U8/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[0]' driven by pin 'U193/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[1]' driven by pin 'U192/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[2]' driven by pin 'U191/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[3]' driven by pin 'U190/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[4]' driven by pin 'U189/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[5]' driven by pin 'U188/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[6]' driven by pin 'U187/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[7]' driven by pin 'U186/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[8]' driven by pin 'U185/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[9]' driven by pin 'U184/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[10]' driven by pin 'U183/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[11]' driven by pin 'U182/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[12]' driven by pin 'U181/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[13]' driven by pin 'U180/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[0]' driven by pin 'U207/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[1]' driven by pin 'U206/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[2]' driven by pin 'U205/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[3]' driven by pin 'U204/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[4]' driven by pin 'U203/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[5]' driven by pin 'U202/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[6]' driven by pin 'U201/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[7]' driven by pin 'U200/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[8]' driven by pin 'U199/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[9]' driven by pin 'U198/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[10]' driven by pin 'U197/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[11]' driven by pin 'U196/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[12]' driven by pin 'U195/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[13]' driven by pin 'U194/**logic_0**' has no loads. (LINT-2)
+1
+exit
+
+Thank you...
