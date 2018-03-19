@@ -548,4 +548,8 @@ always @(negedge clk or posedge rst) begin
     end
 end
 
+always @(cos_clk1 or cos_clk2) begin
+    cos_en = cos_clk1 xor cos_clk2;
+end
+
 endmodule
