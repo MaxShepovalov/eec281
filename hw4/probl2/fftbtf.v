@@ -589,7 +589,7 @@ reg [16:0] Y_R_c, Y_I_c;
 //(A-B)*Wn = (AmB_R + i*AmB_I) * (Wn_R + i*Wn_I) = AmB_R*Wn_R - AmB_I*Wn_I + i*[AmB_R * Wn_I + AmB_I * Wn_R]
 //15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
 //32 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16
-always @(AmB_R_r3 or AmB_I_r3 or Wn_R_r3 or Wn_I_r3) begin
+always @(AmB_R_r3 or AmB_I_r3 or Wn_R or Wn_I) begin
     Y_R_0 = AmB_R_r3 * Wn_R;
     Y_R_1 = AmB_I_r3 * Wn_I;
     Y_I_0 = AmB_R_r3 * Wn_I;
