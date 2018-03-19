@@ -478,7 +478,7 @@ always @(clk or posedge rst) begin
             cos_en <= #1 1'b1;
             angle_r <= #1 angle;
         end else begin      //negedge clk
-            cos_val <= #1 1'b0;
+            cos_en <= #1 1'b0;
             r_mem <= #1 cos_val;
         end
     end
