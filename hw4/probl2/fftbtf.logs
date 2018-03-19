@@ -87,8 +87,8 @@ set input_delay     [expr {$clk_period} - {$input_setup}]
 analyze -format verilog ./fftbtf.v
 Running PRESTO HDLC
 Compiling source file ./fftbtf.v
-Warning:  ./fftbtf.v:387: The statements in initial blocks are ignored. (VER-281)
-Warning:  ./fftbtf.v:479: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./fftbtf.v:567: The statements in initial blocks are ignored. (VER-281)
+Warning:  ./fftbtf.v:679: The statements in initial blocks are ignored. (VER-281)
 Presto compilation completed successfully.
 Loading db file '/software/Synopsys/DesignCompiler/EEC281/lib/nangate45/NangateOpenCellLibrary.db'
 Information: Using CCS timing libraries. (TIM-024)
@@ -102,7 +102,7 @@ Loading db file '/software/Synopsys/DesignCompiler/current/libraries/syn/standar
 Running PRESTO HDLC
 
 Inferred memory devices in process
-	in routine fftbtf line 550 in file
+	in routine fftbtf line 753 in file
 		'./fftbtf.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -114,7 +114,7 @@ Inferred memory devices in process
 ===============================================================================
 
 Inferred memory devices in process
-	in routine fftbtf line 573 in file
+	in routine fftbtf line 776 in file
 		'./fftbtf.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -134,7 +134,7 @@ Inferred memory devices in process
 ===============================================================================
 
 Inferred memory devices in process
-	in routine fftbtf line 605 in file
+	in routine fftbtf line 808 in file
 		'./fftbtf.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -149,16 +149,16 @@ Elaborated 1 design.
 Current design is now 'fftbtf'.
 Information: Building the design 'compl'. (HDL-193)
 
-Statistics for case statements in always block at line 482 in file
+Statistics for case statements in always block at line 682 in file
 	'./fftbtf.v'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|           484            |    auto/auto     |
+|           684            |    auto/auto     |
 ===============================================
 
 Inferred memory devices in process
-	in routine compl line 482 in file
+	in routine compl line 682 in file
 		'./fftbtf.v'.
 ===========================================================================
 |    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -169,7 +169,7 @@ Inferred memory devices in process
 ===========================================================================
 
 Inferred memory devices in process
-	in routine compl line 508 in file
+	in routine compl line 708 in file
 		'./fftbtf.v'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
@@ -182,15 +182,13 @@ Inferred memory devices in process
 ===============================================================================
 Presto compilation completed successfully.
 Information: Building the design 'cos'. (HDL-193)
-Presto compilation completed successfully.
-Information: Building the design 'addr_selector'. (HDL-193)
 
-Statistics for case statements in always block at line 37 in file
+Statistics for case statements in always block at line 567 in file
 	'./fftbtf.v'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|            47            |    auto/auto     |
+|           577            |    auto/auto     |
 ===============================================
 Presto compilation completed successfully.
 1
@@ -207,7 +205,6 @@ link
 
 1
 uniquify
-Information: Uniquified 2 instances of design 'addr_selector'. (OPT-1056)
 1
 if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
@@ -244,7 +241,7 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 
 
-Information: There are 14 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+Information: There are 6 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
 
 
@@ -257,37 +254,25 @@ Information: Updating design information... (UID-85)
 
   Beginning Implementation Selection
   ----------------------------------
-  Processing 'fftbtf_DW01_add_0'
   Processing 'fftbtf_DW01_sub_0'
   Processing 'fftbtf_DW01_sub_1'
   Processing 'fftbtf_DW01_sub_2'
-  Processing 'fftbtf_DW01_sub_3'
+  Processing 'fftbtf_DW01_add_0'
   Processing 'fftbtf_DW01_add_1'
-  Processing 'fftbtf_DW01_add_2'
+  Processing 'fftbtf_DW01_sub_3'
   Processing 'fftbtf_DW01_sub_4'
   Processing 'fftbtf_DW01_sub_5'
-  Processing 'fftbtf_DW01_add_3'
-  Processing 'fftbtf_DW01_sub_6'
-  Processing 'fftbtf_DW01_sub_7'
-  Processing 'fftbtf_DW01_add_4'
-  Processing 'fftbtf_DW01_sub_8'
-  Building model 'DW01_sub_width15' (rpl)
-  Processing 'DW01_sub_width15'
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_1_2'. (DDB-72)
-  Mapping 'DW_mult_uns'
-Information: Added key list 'DesignWare' to design 'dp_cluster_0_1'. (DDB-72)
-  Processing 'fftbtf_DW01_sub_9'
   Mapping 'fftbtf_DW_mult_uns_0'
   Mapping 'fftbtf_DW_mult_uns_1'
-  Processing 'fftbtf_DW01_sub_10'
+  Processing 'fftbtf_DW01_sub_6'
   Mapping 'fftbtf_DW_mult_uns_2'
   Mapping 'fftbtf_DW_mult_uns_3'
-Information: Added key list 'DesignWare' to design 'fftbtf'. (DDB-72)
 
   Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
   Mapping Optimization (Phase 1)
+Information: The register 'r_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'r_reg[13]' is a constant and will be removed. (OPT-1206)
 Information: The register 'r_c_reg[12]' is a constant and will be removed. (OPT-1206)
 Information: The register 'r_reg[12]' is a constant and will be removed. (OPT-1206)
 Information: The register 'r_c_reg[11]' is a constant and will be removed. (OPT-1206)
@@ -314,6 +299,8 @@ Information: The register 'r_c_reg[1]' is a constant and will be removed. (OPT-1
 Information: The register 'r_reg[1]' is a constant and will be removed. (OPT-1206)
 Information: The register 'r_c_reg[0]' is a constant and will be removed. (OPT-1206)
 Information: The register 'r_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_c_reg[13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'i_reg[13]' is a constant and will be removed. (OPT-1206)
 Information: The register 'i_c_reg[12]' is a constant and will be removed. (OPT-1206)
 Information: The register 'i_reg[12]' is a constant and will be removed. (OPT-1206)
 Information: The register 'i_c_reg[11]' is a constant and will be removed. (OPT-1206)
@@ -345,25 +332,25 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6702.9      0.23       1.5       0.0                          
-    0:00:05    6597.3      0.22       1.4       0.0                          
-    0:00:05    6603.2      0.18       1.1       0.0                          
-    0:00:05    6609.8      0.13       0.6       0.0                          
-    0:00:06    6608.8      0.08       0.5       0.0                          
-    0:00:06    6612.2      0.08       0.4       0.0                          
-    0:00:06    6620.2      0.03       0.1       0.0                          
-    0:00:06    6623.4      0.03       0.1       0.0                          
-    0:00:06    6623.7      0.03       0.1       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6630.3      0.02       0.0       0.0                          
+    0:00:04    6526.6      0.23       1.5       0.0                          
+    0:00:04    6526.6      0.23       1.5       0.0                          
+    0:00:04    6526.6      0.23       1.5       0.0                          
+    0:00:05    6526.6      0.23       1.5       0.0                          
+    0:00:05    6526.6      0.23       1.5       0.0                          
+    0:00:05    6452.6      0.22       1.4       0.0                          
+    0:00:05    6458.5      0.18       1.1       0.0                          
+    0:00:05    6465.1      0.13       0.6       0.0                          
+    0:00:05    6464.1      0.08       0.5       0.0                          
+    0:00:05    6467.5      0.08       0.4       0.0                          
+    0:00:05    6475.5      0.03       0.1       0.0                          
+    0:00:05    6478.7      0.03       0.1       0.0                          
+    0:00:05    6479.0      0.03       0.1       0.0                          
+    0:00:05    6485.6      0.02       0.0       0.0                          
+    0:00:05    6485.6      0.02       0.0       0.0                          
+    0:00:05    6485.6      0.02       0.0       0.0                          
+    0:00:05    6485.6      0.02       0.0       0.0                          
+    0:00:05    6485.6      0.02       0.0       0.0                          
+    0:00:05    6485.6      0.02       0.0       0.0                          
 
 
 
@@ -374,9 +361,9 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:06    6630.3      0.02       0.0       0.0                          
-    0:00:06    6632.2      0.00       0.0       0.0                          
-    0:00:06    6618.9      0.00       0.0     158.3                          
+    0:00:05    6485.6      0.02       0.0       0.0                          
+    0:00:05    6487.5      0.00       0.0       0.0                          
+    0:00:05    6473.6      0.00       0.0     158.3                          
 
 
   Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
@@ -386,8 +373,8 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:06    6618.9      0.00       0.0     158.3                          
-    0:00:06    6619.7      0.00       0.0       0.0                          
+    0:00:05    6473.6      0.00       0.0     158.3                          
+    0:00:05    6474.4      0.00       0.0       0.0                          
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -397,30 +384,30 @@ Information: The register 'i_reg[0]' is a constant and will be removed. (OPT-120
    ELAPSED            WORST NEG   SETUP    DESIGN                            
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:06    6619.7      0.00       0.0       0.0                          
-    0:00:06    6619.7      0.00       0.0       0.0                          
-    0:00:06    6578.7      0.00       0.0       0.0                          
-    0:00:06    6559.3      0.00       0.0       0.0                          
-    0:00:06    6548.7      0.00       0.0       0.0                          
-    0:00:06    6540.4      0.00       0.0       0.0                          
-    0:00:06    6533.5      0.00       0.0       0.0                          
-    0:00:06    6533.5      0.00       0.0       0.0                          
-    0:00:06    6533.8      0.00       0.0       0.0                          
-    0:00:06    6530.3      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6528.7      0.00       0.0       0.0                          
-    0:00:06    6500.5      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:06    6497.3      0.00       0.0       0.0                          
-    0:00:07    6218.5      0.00       0.0       0.0                          
+    0:00:05    6474.4      0.00       0.0       0.0                          
+    0:00:05    6474.4      0.00       0.0       0.0                          
+    0:00:06    6439.3      0.00       0.0       0.0                          
+    0:00:06    6425.0      0.00       0.0       0.0                          
+    0:00:06    6415.4      0.00       0.0       0.0                          
+    0:00:06    6407.1      0.00       0.0       0.0                          
+    0:00:06    6400.2      0.00       0.0       0.0                          
+    0:00:06    6400.2      0.00       0.0       0.0                          
+    0:00:06    6400.5      0.00       0.0       0.0                          
+    0:00:06    6397.0      0.00       0.0       0.0                          
+    0:00:06    6395.4      0.00       0.0       0.0                          
+    0:00:06    6395.4      0.00       0.0       0.0                          
+    0:00:06    6395.4      0.00       0.0       0.0                          
+    0:00:06    6395.4      0.00       0.0       0.0                          
+    0:00:06    6395.4      0.00       0.0       0.0                          
+    0:00:06    6395.4      0.00       0.0       0.0                          
+    0:00:06    6371.0      0.00       0.0       0.0                          
+    0:00:06    6370.2      0.00       0.0       0.0                          
+    0:00:06    6370.2      0.00       0.0       0.0                          
+    0:00:06    6370.2      0.00       0.0       0.0                          
+    0:00:06    6370.2      0.00       0.0       0.0                          
+    0:00:06    6370.2      0.00       0.0       0.0                          
+    0:00:06    6370.2      0.00       0.0       0.0                          
+    0:00:07    6089.5      0.00       0.0       0.0                          
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -434,6 +421,8 @@ if { [sizeof_collection [get_cells * -filter "is_hierarchical==true"]] > 0 } {
    ungroup -all -flatten -simple_names
    }
 Information: Updating graph... (UID-83)
+Warning: Design 'fftbtf' inherited license information from design 'fftbtf_DW_mult_uns_3'. (DDB-74)
+Information: Added key list 'DesignWare' to design 'fftbtf'. (DDB-72)
 1
 # compile -map_effort medium    # May help, or maybe not
 #===== Reports
@@ -461,16 +450,12 @@ Warning: The following end-points are not constrained for maximum delay.
 End point
 ---------------
 cos_en_reg/D
-i_c_reg[13]/D
 i_c_reg[14]/D
 i_c_reg[15]/D
-i_reg[13]/D
 i_reg[14]/D
 i_reg[15]/D
-r_c_reg[13]/D
 r_c_reg[14]/D
 r_c_reg[15]/D
-r_reg[13]/D
 r_reg[14]/D
 r_reg[15]/D
 
@@ -485,49 +470,51 @@ check_design
 ****************************************
 check_design summary:
 Version:     J-2014.09-SP2
-Date:        Mon Mar 19 12:06:29 2018
+Date:        Mon Mar 19 15:33:47 2018
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Nets                                                               34
-    Unloaded nets (LINT-2)                                         34
+Nets                                                               36
+    Unloaded nets (LINT-2)                                         36
 --------------------------------------------------------------------------------
 
-Warning: In design 'fftbtf', net 'n277' driven by pin 'U448/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n276' driven by pin 'U447/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n275' driven by pin 'U446/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n274' driven by pin 'U445/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n257' driven by pin 'U347/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n256' driven by pin 'U334/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n7' driven by pin 'U20/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n6' driven by pin 'U19/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n5' driven by pin 'U18/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'n4' driven by pin 'U17/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[0]' driven by pin 'U333/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[2]' driven by pin 'U335/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[3]' driven by pin 'U336/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[4]' driven by pin 'U337/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[5]' driven by pin 'U338/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[6]' driven by pin 'U339/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[7]' driven by pin 'U340/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[8]' driven by pin 'U341/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[9]' driven by pin 'U342/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[10]' driven by pin 'U343/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[11]' driven by pin 'U344/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_I[12]' driven by pin 'U345/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[0]' driven by pin 'U346/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[2]' driven by pin 'U348/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[3]' driven by pin 'U349/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[4]' driven by pin 'U350/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[5]' driven by pin 'U351/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[6]' driven by pin 'U352/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[7]' driven by pin 'U353/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[8]' driven by pin 'U354/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[9]' driven by pin 'U355/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[10]' driven by pin 'U356/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[11]' driven by pin 'U357/**logic_0**' has no loads. (LINT-2)
-Warning: In design 'fftbtf', net 'Wn_R[12]' driven by pin 'U358/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n147' driven by pin 'U256/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n146' driven by pin 'U255/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n145' driven by pin 'U254/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n144' driven by pin 'U253/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n127' driven by pin 'U196/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n126' driven by pin 'U182/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n5' driven by pin 'U13/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n4' driven by pin 'U10/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n3' driven by pin 'U9/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'n2' driven by pin 'U8/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[0]' driven by pin 'U181/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[2]' driven by pin 'U183/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[3]' driven by pin 'U184/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[4]' driven by pin 'U185/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[5]' driven by pin 'U186/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[6]' driven by pin 'U187/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[7]' driven by pin 'U188/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[8]' driven by pin 'U189/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[9]' driven by pin 'U190/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[10]' driven by pin 'U191/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[11]' driven by pin 'U192/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[12]' driven by pin 'U193/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_I[13]' driven by pin 'U194/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[0]' driven by pin 'U195/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[2]' driven by pin 'U197/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[3]' driven by pin 'U198/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[4]' driven by pin 'U199/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[5]' driven by pin 'U200/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[6]' driven by pin 'U201/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[7]' driven by pin 'U202/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[8]' driven by pin 'U203/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[9]' driven by pin 'U204/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[10]' driven by pin 'U205/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[11]' driven by pin 'U206/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[12]' driven by pin 'U207/**logic_0**' has no loads. (LINT-2)
+Warning: In design 'fftbtf', net 'Wn_R[13]' driven by pin 'U208/**logic_0**' has no loads. (LINT-2)
 1
 exit
 
