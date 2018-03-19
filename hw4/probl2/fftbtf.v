@@ -444,7 +444,7 @@ end
 endmodule
 
 ////////////////////////////////////////////////////////////////////////
-//From Homework 3. Modified
+//From Homework 3
 
 module compl(
     input [11:0] angle,
@@ -523,7 +523,10 @@ end
 
 endmodule
 
+///////////NEW MODULE////////////////
+
 module fftbtf (
+
     input clk,
     input rst,
     input start,

@@ -71,8 +71,14 @@ end
 fprintf("%d area, %d taps, %d PPs\n", min_area, min_numtaps, min_pps);
 fprintf("%f ripple, %f minpass, %f maxstoplo, %f maxstophi\n", min_ripple, min_minpass, min_stoplo, min_stophi);
 
-%3/17/2018
+%3/17/2018 results
 %130 area, 41 taps, 50 PPs
 %0.616699 ripple, -3.442710 minpass, -25.442571 maxstoplo, -28.018272 maxstophi
 %freqs [0   0.09 0.17 1]
 %amps  [0.9 0.9  0    0]
+
+report_area = 130;
+report_taps = 41;
+report_pps = 50;
+report_freqs = [0 0.09 0.17 1];
+report_amps = [0.9 0.9 0 0];
