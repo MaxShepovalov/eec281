@@ -153,14 +153,13 @@ module tbench();
         exp_buffer[0] <= angle;
 
         if (rst == 0) begin
+            count = count + 1;
             if (count < 20) begin
                 //send next values
-                count = count + 1;
                 {A_real, A_imag} = extreme_A[count];
                 {B_real, B_imag} = extreme_B[count];
                 angle = extreme_exp[count];
             end else begin
-                count = count + 1;
                 {A_real, A_imag} = $random;
                 {B_real, B_imag} = $random;
                 angle = $random % 4096;
